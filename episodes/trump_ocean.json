@@ -1,21 +1,86 @@
 {
-  "title": "대서양 → 트럼프양?",
+  "title": "Atlantic -> Trump Ocean?",
+  "lang": "en",
   "output": "out/trump_ocean.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 6,
+      "speed": 1.15
+    },
+    "Reporter": {
+      "sid": 0,
+      "speed": 1.2
+    },
+    "Passerby (M)": {
+      "sid": 8,
+      "speed": 1.15
+    },
+    "Passerby (F)": {
+      "sid": 3,
+      "speed": 1.2
+    },
+    "Expert": {
+      "sid": 9,
+      "speed": 1.1
+    },
+    "British local": {
+      "sid": 5,
+      "speed": 1.15
+    },
+    "French fisherman": {
+      "sid": 7,
+      "speed": 1.15
+    },
+    "Brazilian netizen": {
+      "sid": 1,
+      "speed": 1.2
+    },
+    "Canadian": {
+      "sid": 4,
+      "speed": 1.2
+    }
+  },
   "ticker": [
-    "속보: 트럼프 \"대서양 이름, 트럼프양으로 바꾸자\"",
-    "유럽 각국 \"황당하다\" 반응",
-    "멕시코만 → 미국만 개명 이후 두 번째 바다 이름 논란",
-    "KOWEN NEWS · 픽셀로 보는 오늘의 뉴스"
+    "BREAKING: Trump says the Atlantic should be renamed \"Trump Ocean\"",
+    "Atlantic covers about 106 million km², roughly one fifth of Earth's surface",
+    "After Gulf of America and Mount McKinley, is an ocean next?",
+    "Ocean names are coordinated internationally, not set by one country",
+    "* This video is a satirical reenactment of a hypothetical scenario",
+    "KOWEN NEWS · Today's news, in pixels"
   ],
   "scenes": [
-    { "type": "title", "duration": 3.0 },
+    {
+      "type": "title",
+      "duration": 3.0
+    },
     {
       "type": "anchor",
-      "headline": "대서양 → 트럼프양?",
+      "headline": "TOP STORY",
       "lines": [
-        { "speaker": "앵커", "text": "안녕하십니까, KOWEN NEWS입니다.", "dur": 3.0 },
-        { "speaker": "앵커", "text": "트럼프 대통령이 이번엔 대서양의 이름을 '트럼프양'으로 바꾸자고 했다는데요.", "dur": 5.0 },
-        { "speaker": "앵커", "text": "현장에 나가 있는 기자 연결합니다.", "dur": 3.0 }
+        {
+          "speaker": "Anchor",
+          "text": "Good evening, and welcome to KOWEN News, today's news in pixels."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We start tonight with a story that is, quite literally, oceanic in scale."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "President Trump says the Atlantic Ocean needs a new name. And the name he has in mind? Trump Ocean."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Tonight we break it down in three parts."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "First, what exactly was said at the rally. Second, whether anyone can actually rename an ocean. And third, how the rest of the world is reacting."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Let's go straight to our reporter at the rally. What was the mood like out there?"
+        }
       ]
     },
     {
@@ -23,29 +88,461 @@
       "banner": "MIDTERM RALLY 2026",
       "podium": "TRUMP",
       "lines": [
-        { "speaker": "기자", "text": "트럼프 대통령은 중간선거 지원 유세 현장에서 이 같은 발언을 내놨습니다.", "dur": 5.0 },
-        { "speaker": "기자", "text": "\"대서양은 너무 평범한 이름\"이라며 \"위대한 바다엔 위대한 이름이 필요하다\"고 말했는데요.", "dur": 6.0 },
-        { "speaker": "기자", "text": "지지자들은 환호했지만, 실제로 개명이 가능할지는 미지수입니다.", "dur": 5.0 }
+        {
+          "speaker": "Reporter",
+          "text": "Thanks. I'm here at a midterm campaign rally, where thousands of supporters packed the arena tonight."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The energy was high from the very beginning, with chants and signs everywhere you looked."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "About halfway through his speech, the president suddenly turned to the subject of the sea."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He called the Atlantic, quote, a boring name, a very ordinary name. A great ocean, he said, deserves a great name."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Then he added, people come up to me all the time and they say, sir, Trump Ocean sounds so much better."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The crowd erupted, and for a few minutes the arena was chanting Trump Ocean, Trump Ocean."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "After the speech, however, the White House offered no details on any formal plan."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "So was it a joke, or a real proposal? That is already the big debate tonight."
+        }
       ]
     },
     {
       "type": "map",
       "old": "ATLANTIC OCEAN",
-      "old_ko": "대서양",
       "new": "TRUMP OCEAN",
-      "new_ko": "트럼프양",
       "lines": [
-        { "speaker": "기자", "text": "앞서 트럼프 행정부는 멕시코만을 '미국만'으로 바꾼 바 있습니다.", "dur": 5.0 },
-        { "speaker": "기자", "text": "하지만 대서양은 여러 나라가 맞닿은 국제 수역이라, 한 나라가 이름을 정할 수는 없습니다.", "dur": 6.0 },
-        { "speaker": "기자", "text": "유럽과 아프리카 국가들은 \"황당하다\"는 반응을 보였습니다. KOWEN NEWS 픽셀 기자였습니다.", "dur": 6.0 }
+        {
+          "speaker": "Reporter",
+          "text": "So what exactly is the ocean the president wants to rename?"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The Atlantic is the second largest ocean on the planet, after the Pacific."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It covers roughly one hundred and six million square kilometers. That is about one fifth of the Earth's surface."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "To the west, it touches North and South America. To the east, Europe and Africa."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Dozens of countries have an Atlantic coastline. In other words, this is not one nation's ocean."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "If the name ever did change, maps, textbooks and nautical charts around the world would all need to be redrawn."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "THE RENAMING TIMELINE",
+      "items": [
+        {
+          "old": "Gulf of Mexico",
+          "new": "Gulf of America",
+          "year": "2025"
+        },
+        {
+          "old": "Denali",
+          "new": "Mt. McKinley",
+          "year": "2025"
+        },
+        {
+          "old": "Atlantic",
+          "new": "Trump Ocean?",
+          "year": "2026"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "This would not be the administration's first attempt at renaming things."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Shortly after taking office in 2025, the president signed an executive order renaming the Gulf of Mexico as the Gulf of America."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "North America's tallest peak, Denali, was also given back its old name, Mount McKinley."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Those moves drew sharp criticism at the time, including from the government of Mexico."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But there is a key difference. Those changes applied to names used by the United States government."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "An entire ocean, shared by many nations, is a completely different matter."
+        }
+      ]
+    },
+    {
+      "type": "meeting",
+      "sign": "IHO · MONACO",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "So who decides what a sea is called? Enter the International Hydrographic Organization, or I H O."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Based in Monaco, the organization publishes the reference guide to the limits and names of the world's oceans and seas."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Changing names there requires discussion and agreement among member states. One country cannot simply decide on its own."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Naming disputes can last for decades. Take the waters between Korea and Japan."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Korea calls it the East Sea, Japan calls it the Sea of Japan, and the two sides have argued over the name on the world stage for years."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "If a single sea can spark a decades long diplomatic fight, most experts say renaming the Atlantic is close to impossible."
+        }
       ]
     },
     {
       "type": "anchor",
-      "headline": "대서양 → 트럼프양?",
+      "headline": "WHERE NAMES COME FROM",
       "lines": [
-        { "speaker": "앵커", "text": "바다 이름까지 바꾸자는 말, 앞으로 어떻게 될지 지켜봐야겠습니다.", "dur": 4.5 },
-        { "speaker": "앵커", "text": "지금까지 KOWEN NEWS였습니다.", "dur": 3.0 }
+        {
+          "speaker": "Anchor",
+          "text": "Before we hear from the rest of the world, a quick history lesson. Where did the name Atlantic come from in the first place?"
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "HOW OCEANS GOT THEIR NAMES",
+      "items": [
+        {
+          "old": "Sea of Atlas",
+          "new": "Atlantic",
+          "year": "450BC"
+        },
+        {
+          "old": "Mar Pacifico",
+          "new": "Pacific",
+          "year": "1520"
+        },
+        {
+          "old": "Atlantic",
+          "new": "Trump Ocean?",
+          "year": "2026"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The name Atlantic goes back to ancient Greece. It comes from Atlas, the giant of Greek mythology who was said to hold up the sky."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The Greek historian Herodotus wrote about the Sea of Atlas around two and a half thousand years ago."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The Pacific, meanwhile, got its name from the explorer Ferdinand Magellan, who called it the peaceful sea after crossing calm waters in 1520."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In other words, these names have been on maps for centuries, long before any modern country existed."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Renaming one would mean rewriting not just maps, but a few thousand years of history."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "WORLD REACTS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Thanks. Quite a lot of history behind a single name, it turns out."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "So how are people on the other side of the Atlantic taking the news? Let's find out."
+        }
+      ]
+    },
+    {
+      "type": "reaction",
+      "label": "HYPOTHETICAL",
+      "panels": [
+        {
+          "speaker": "British local",
+          "flag": "uk",
+          "skin": 0,
+          "hair": 1,
+          "top": [
+            40,
+            60,
+            140
+          ]
+        },
+        {
+          "speaker": "French fisherman",
+          "flag": "fr",
+          "skin": 0,
+          "hair": 3,
+          "top": [
+            230,
+            230,
+            235
+          ],
+          "hat": [
+            30,
+            40,
+            90
+          ]
+        },
+        {
+          "speaker": "Brazilian netizen",
+          "flag": "br",
+          "skin": 1,
+          "hair": 0,
+          "top": [
+            250,
+            200,
+            40
+          ],
+          "long": true
+        },
+        {
+          "speaker": "Canadian",
+          "flag": "ca",
+          "skin": 3,
+          "hair": 2,
+          "top": [
+            200,
+            30,
+            40
+          ],
+          "long": true
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "We imagined how people along the Atlantic coast might react. These are hypothetical voices."
+        },
+        {
+          "speaker": "British local",
+          "text": "We've been sailing across that ocean for centuries. Rename it now? I'd sooner rename tea."
+        },
+        {
+          "speaker": "French fisherman",
+          "text": "The fish do not care what the ocean is called. Neither do I. Tomorrow I go fishing, same as always."
+        },
+        {
+          "speaker": "Brazilian netizen",
+          "text": "So can we rename the Amazon the Brazil River? Oh wait, it's already ours."
+        },
+        {
+          "speaker": "Canadian",
+          "text": "Sorry, well, actually not that sorry, but I'm going to keep calling it the Atlantic."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Online, the parodies are pouring in, as renaming everything in sight becomes the internet's newest game."
+        }
+      ]
+    },
+    {
+      "type": "chart",
+      "title": "JUST FOR FUN: WHAT DO YOU THINK OF TRUMP OCEAN?",
+      "bars": [
+        {
+          "label": "Absurd",
+          "value": 62,
+          "color": [
+            230,
+            70,
+            70
+          ]
+        },
+        {
+          "label": "Funny joke",
+          "value": 24,
+          "color": [
+            255,
+            200,
+            60
+          ]
+        },
+        {
+          "label": "Kinda like it",
+          "value": 9,
+          "color": [
+            80,
+            160,
+            230
+          ]
+        },
+        {
+          "label": "Not sure",
+          "value": 5,
+          "color": [
+            150,
+            150,
+            160
+          ]
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "We also made up a poll, just for fun. To be clear, these are not real survey results."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Absurd came out on top, followed by people who simply see it as a funny joke."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Only a small minority said they actually like the name."
+        }
+      ]
+    },
+    {
+      "type": "interview",
+      "bg": "street",
+      "label": "STREET INTERVIEW (HYPOTHETICAL)",
+      "person": {
+        "skin": 0,
+        "hair": 0,
+        "top": [
+          70,
+          120,
+          80
+        ]
+      },
+      "person2": {
+        "skin": 2,
+        "hair": 4,
+        "top": [
+          220,
+          120,
+          160
+        ],
+        "long": true
+      },
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "We also hit the streets to hear what people think."
+        },
+        {
+          "speaker": "Passerby (M)",
+          "text": "Honestly, I thought it was fake news at first. Renaming an ocean? Come on."
+        },
+        {
+          "speaker": "Passerby (F)",
+          "text": "So what's the Pacific going to be called? Trump Ocean two?"
+        },
+        {
+          "speaker": "Passerby (M)",
+          "text": "I mean, I just got used to saying Gulf of America. Now I have to learn a whole new ocean?"
+        }
+      ]
+    },
+    {
+      "type": "interview",
+      "bg": "studio",
+      "label": "INTERNATIONAL LAW EXPERT (HYPOTHETICAL)",
+      "person": {
+        "skin": 0,
+        "hair": 3,
+        "top": [
+          50,
+          50,
+          60
+        ],
+        "glasses": true
+      },
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "So how do experts see it?"
+        },
+        {
+          "speaker": "Expert",
+          "text": "Internationally recognized ocean names don't change because one country wants them to. Legally, this would have essentially no effect."
+        },
+        {
+          "speaker": "Expert",
+          "text": "What the U.S. government can do is use a new name in its own documents, just like it did with the Gulf of America."
+        },
+        {
+          "speaker": "Expert",
+          "text": "In the end, I'd read this less as a real renaming plan and more as a political message aimed at energizing supporters before the midterms."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "That's all from the field. Reporting for KOWEN News."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "ATLANTIC -> TRUMP OCEAN?",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Let's recap tonight's top story."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "At a midterm rally, President Trump proposed renaming the Atlantic as Trump Ocean. But under international practice, no single country can rename an ocean."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Around the world, the reaction has been mostly disbelief, along with a flood of parodies."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "And as the East Sea dispute shows, the names on our maps can matter a great deal more than they seem."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We'll keep watching to see whether this idea sinks or swims."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "That's it for tonight. This has been KOWEN News, today's news in pixels. Thanks for watching, and good night."
+        }
       ]
     }
   ]
