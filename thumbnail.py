@@ -82,6 +82,37 @@ def diesel():
     finish(low, text, "out/russia_diesel_thumb.png")
 
 
+def dmz():
+    low = Image.new("RGB", (TW, TH))
+    d = ImageDraw.Draw(low)
+    k.vgrad(d, 0, 50, (60, 20, 20), (150, 60, 30))
+    d.polygon([(0, 50), (40, 30), (90, 48), (130, 28), (160, 44), (160, 50)], fill=(50, 40, 35))
+    k.rect(d, 0, 50, TW, 40, (80, 95, 55))
+    for r, c in ((26, (255, 120, 40)), (18, (255, 190, 80)), (9, (255, 245, 200))):   # 폭발
+        d.ellipse([80 - r, 52 - r // 1.4, 80 + r, 52 + r // 1.4], fill=c)
+    k.rect(d, 0, 58, TW, 1, (160, 160, 160))                  # 철책
+    for fx in range(0, TW, 10):
+        k.rect(d, fx, 48, 1, 16, (110, 110, 110))
+    for fx in range(0, TW, 3):
+        k.rect(d, fx, 52 + (fx // 3) % 2, 2, 1, (180, 180, 180))
+    d.polygon([(64, 80), (84, 80), (74, 64)], fill=(220, 30, 30))   # 지뢰 경고판
+    k.rect(d, 73, 70, 2, 5, (255, 255, 255))
+    k.rect(d, 73, 76, 2, 2, (255, 255, 255))
+    k.draw_char(d, 30, 92, 0.05, False, "soldier")
+    k.draw_char(d, 132, 92, 0.05, False, "kim_jong_un")
+
+    def text(d):
+        f = k.font(144)
+        w1, w2 = d.textlength("KOREAN WAR 2", font=f), d.textlength("?!", font=f)
+        x = (1280 - w1 - w2) / 2
+        big_text(d, (x, 150), "KOREAN WAR 2", 144, (255, 255, 255), stroke=10)
+        big_text(d, (x + w1, 150), "?!", 144, (255, 60, 60), stroke=10)
+        d.rectangle([420, 330, 860, 396], fill=(0, 0, 0))
+        d.text((640, 338), "MINES IN THE DMZ", font=k.font(48), fill=(255, 210, 60), anchor="ma")
+
+    finish(low, text, "out/dmz_mine_thumb.png")
+
+
 # ---------------------------------------------------------------- 숏츠용 세로 표지 (1080x1920)
 
 VW, VH = 135, 240
@@ -148,6 +179,7 @@ def diesel_short():
 
 
 if __name__ == "__main__":
+    dmz()
     ocean()
     diesel()
     ocean_short()
