@@ -1,0 +1,489 @@
+{
+  "title": "DMZ mine blast",
+  "lang": "en",
+  "output": "out/dmz_mine.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.25
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.3
+    }
+  },
+  "ticker": [
+    "BREAKING: Probe concludes North Korea planted the DMZ mines that wounded 3 South Korean soldiers",
+    "One officer lost a foot in the Sept. 21 blast",
+    "Seoul raises the case at the U.N., demands an apology from Pyongyang",
+    "North Korea denies involvement, Kim Yo Jong mocks Seoul",
+    "Unification Minister under fire for calling it \"a regrettable accident\"",
+    "KOWEN NEWS"
+  ],
+  "scenes": [
+    {
+      "type": "title",
+      "duration": 3.0
+    },
+    {
+      "type": "anchor",
+      "headline": "DMZ MINE BLAST",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Good evening, and welcome to KOWEN News."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Tonight, rising tension on the Korean Peninsula. Investigators have concluded that the landmines that wounded three South Korean soldiers inside the DMZ were *planted by North Korea*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "One officer *lost a foot*. Pyongyang denies everything. And in Seoul, the government's own response has become a political fight."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "It is the most serious mine incident on the border in over a decade."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Now the dispute has reached the *United Nations*. Here's what happened."
+        }
+      ]
+    },
+    {
+      "type": "dmz",
+      "tag": "DMZ · SEPT 21",
+      "boom": 9.0,
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "It happened on September twenty first, inside the *Demilitarized Zone*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Officers from a frontline unit of the Army's *25th Infantry Division* were carrying out a search operation near the boundary of Paju and Yeoncheon, north of Seoul."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Then, a landmine *exploded*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Three officers were wounded. Two were seriously hurt, including a reconnaissance battalion commander, whose *foot was severed*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It was the first time in *eleven years* that a mine blast south of the border line had caused serious injuries in the DMZ."
+        }
+      ]
+    },
+    {
+      "type": "koreamap",
+      "facts": [
+        "248 km long, 4 km wide",
+        "~2 million mines in and around it",
+        "Technically still at war since 1953"
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The DMZ runs *two hundred forty eight kilometers* across the Korean Peninsula, and about four kilometers wide."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "An estimated *two million mines* lie in and around it."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The Korean War ended in 1953 with an armistice, not a peace treaty, so the two Koreas are *technically still at war*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And since 2024, when Kim Jong Un declared the South North Korea's *principal enemy*, Pyongyang has been laying new mines and building barriers along the border."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "kr",
+      "name": "Lt. Gen. Kwon Dae-won",
+      "role": "Vice Chairman, Joint Chiefs of Staff",
+      "person": {
+        "char": "general"
+      },
+      "quote": "We assess that North Korean landmines are highly suspected to have caused the blast.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "A week later, South Korea's military gave its first assessment."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Based on the crater, the pattern of the flames and the soldiers' injuries, Lieutenant General Kwon Dae-won said North Korean landmines were *highly suspected*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The blast site was only about *ten meters* from an area where North Korean troops were believed to have recently planted mines."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He warned that if Pyongyang was responsible, the military would take *appropriate and corresponding measures*."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "THE INVESTIGATION",
+      "items": [
+        {
+          "year": "SEP 21",
+          "text": "Mine blast wounds 3 officers"
+        },
+        {
+          "year": "SEP 28",
+          "text": "Military: N. Korean mines suspected"
+        },
+        {
+          "year": "OCT 5",
+          "text": "Probe: mines planted by N. Korea"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On October fifth, the joint investigation by South Korea's military and the *U.N. Command* reached its conclusion."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The two mines that exploded had been *planted by North Korea*. Forensic tests identified a North Korean made plastic anti-personnel mine."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "A *third mine*, which had not exploded, was also found near the site, and troops removed the remaining North Korean mines."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "South Korea's defense ministry concluded the mine laying *violated the Armistice Agreement*."
+        }
+      ]
+    },
+    {
+      "type": "dmz",
+      "tag": "AUG 4, 2015",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "For many South Koreans, the blast brought back memories of *2015*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "That August, North Korean soldiers crossed more than four hundred forty meters south of the border line and buried *wooden box mines* near a South Korean guard post."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Staff Sergeant Ha Jae-hun lost *both legs*, and Staff Sergeant Kim Jung-won lost his right leg."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "SEOUL UNDER FIRE",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "But this time, much of the anger in South Korea has been aimed at *its own government*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "kr",
+      "name": "Lee Jae-myung",
+      "role": "President of South Korea",
+      "person": {
+        "char": "lee_jae_myung"
+      },
+      "quote": "The military authorities must transparently establish the facts of the case through a swift and thorough investigation.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "President Lee Jae-myung first addressed the blast in public *eight days* after it happened, at a Cabinet meeting."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He called for a swift and thorough investigation, in close cooperation with the U.N. Command."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But critics seized on his description of the blast as an *unexpected accident*."
+        }
+      ]
+    },
+    {
+      "type": "audit",
+      "sign": "NATIONAL ASSEMBLY · OCT 7",
+      "questioner": {
+        "name": "Han Dong-hoon",
+        "role": "Independent lawmaker",
+        "person": {
+          "char": "han_dong_hoon"
+        }
+      },
+      "answerer": {
+        "name": "Chung Dong-young",
+        "role": "Unification Minister",
+        "person": {
+          "char": "chung_dong_young"
+        }
+      },
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The controversy exploded on October seventh, during a parliamentary audit of the Unification Ministry.",
+          "who": "a"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Unification Minister Chung Dong-young called the blast *a regrettable accident*.",
+          "who": "a"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He said the most essential task was ending the long war on the Korean Peninsula and building a *peace regime*.",
+          "who": "a"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He also said it was *not yet possible* to confirm the blast as an attack.",
+          "who": "a"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Independent lawmaker Han Dong-hoon fired back. How can burying mines on our side of the line be an *unexpected accident*?",
+          "who": "q"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He said no one was holding North Korea *accountable* for planting mines that injured South Korean troops.",
+          "who": "q"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Chung replied that *hostility and hatred* created this situation, and that resolving them is the fundamental answer.",
+          "who": "a"
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "nk",
+      "name": "Kim Yo Jong",
+      "role": "Kim Jong Un's sister · Workers' Party official",
+      "person": {
+        "char": "kim_yo_jong"
+      },
+      "quote": "A spectacle too good to watch alone.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Pyongyang was watching. On October eighth, Kim Jong Un's sister, *Kim Yo Jong*, issued a statement through state media mocking Seoul."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "She called the debate in South Korea *a spectacle too good to watch alone*, and an endless dogfight over whether it was an accident or a provocation."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "She also seized on Minister Chung's words, claiming a South Korean official had *confessed* it was hard to call the blast a deliberate attack."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "She also took offense at Seoul's request for a U.N. sanctions exemption to send *medical equipment* to the North, treating it as an insult."
+        }
+      ]
+    },
+    {
+      "type": "un",
+      "name": "Cha Ji-hoon",
+      "role": "South Korea's Ambassador to the U.N.",
+      "speaker": {
+        "skin": 0,
+        "hair": 0,
+        "top": [
+          30,
+          35,
+          60
+        ],
+        "suit": true,
+        "glasses": true
+      },
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The same day, Seoul took the case to the *United Nations*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ambassador Cha Ji-hoon told a U.N. General Assembly committee that the blast was caused by a mine *deliberately buried* south of the border by North Korean troops."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He called it *a clear violation* of the Armistice Agreement."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "North Korea, he said, must halt escalatory actions, *offer an apology*, and take responsible steps."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Foreign Minister Cho Hyun has said Seoul's options include seeking a *Security Council* resolution or statement."
+        }
+      ]
+    },
+    {
+      "type": "un",
+      "name": "North Korean delegate",
+      "role": "Right of reply · U.N. General Assembly",
+      "speaker": {
+        "skin": 0,
+        "hair": 4,
+        "top": [
+          25,
+          25,
+          30
+        ],
+        "suit": true,
+        "tie": [
+          120,
+          30,
+          40
+        ]
+      },
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "North Korea's delegation took the unusual step of demanding a *right of reply*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Its representative called the accusation *a poor trick* by the South Korean military to shift its own responsibility onto North Korea."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And he declared that the North would defend its territory through *strength, not negotiations*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "nk",
+      "plain": true,
+      "name": "Kim Jong Un",
+      "role": "Leader of North Korea",
+      "person": {
+        "char": "kim_jong_un"
+      },
+      "quote": "5 statements denying the blast, all to foreign audiences. Not a word to North Koreans at home.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Back in Pyongyang, there is a notable *silence*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "North Korea has issued *five statements* denying responsibility, but all through outward facing media. Its own people have not been told about the blast."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Kim Jong Un appeared on Saturday at an event marking the Workers' Party anniversary, with his wife and daughter, but made *no comment*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "That is a sharp contrast with *2015*, when North Korea broadcast its denials on state television, aimed squarely at its own citizens."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Analysts say Pyongyang may not want tensions to *delay* its border fortification work."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Hong Min of the Korea Institute for National Unification said the North seems intent on *avoiding construction delays* on its border project."
+        }
+      ]
+    },
+    {
+      "type": "un",
+      "name": "Kim Son-gyong",
+      "role": "North Korean Vice Foreign Minister",
+      "speaker": {
+        "skin": 0,
+        "hair": 4,
+        "top": [
+          25,
+          25,
+          30
+        ],
+        "suit": true,
+        "tie": [
+          120,
+          30,
+          40
+        ],
+        "glasses": true
+      },
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The mine dispute is playing out against a bigger diplomatic chill."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "At the U.N. General Assembly last month, North Korean diplomats sat through President Trump's speech, but *left their seats* during President Lee's address."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "North Korea's vice foreign minister, Kim Son-gyong, told the assembly that its status as a *nuclear weapons state* cannot be reversed under any circumstances."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He also criticized Washington for backing South Korea's push for *nuclear powered submarines*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Meanwhile, President Trump is still seeking *direct talks* with Kim Jong Un, while Seoul is pushing for a bigger role in peninsula affairs."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "DMZ MINE BLAST",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "To recap tonight's top story."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "A joint investigation has concluded that North Korea *planted the mines* that wounded three South Korean soldiers in the DMZ last month."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Seoul is now demanding an *apology* at the United Nations, while Pyongyang denies any role."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "At home, President Lee's government faces criticism for calling it an *accident*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "With North and South refusing to talk face to face, the risk of the next incident remains *very real*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We'll keep following this story. That's all for tonight. This has been KOWEN News. Thanks for watching, and good night."
+        }
+      ]
+    }
+  ]
+}

@@ -169,6 +169,8 @@ HAIRS = [(40, 28, 20), (120, 80, 40), (230, 200, 120), (110, 110, 115), (20, 20,
 
 def draw_person(d, cx, by, t, talking, p, gesture=True):
     """상반신 인물 (앵커/시민/전문가 공용). by = 허리선 y."""
+    if p.get("char"):
+        return draw_char(d, cx, by, t, talking, p["char"])
     skin = SKINS[p.get("skin", 0)]
     hair = HAIRS[p.get("hair", 0)]
     top = tuple(p.get("top", (30, 40, 80)))
@@ -220,6 +222,161 @@ def draw_person(d, cx, by, t, talking, p, gesture=True):
         bob = int(math.sin(t * 10) * 2)
         rect(d, cx + 20, by - 14 + bob, 4, 12, top)
         rect(d, cx + 19, by - 18 + bob, 6, 5, skin)
+
+
+# ---------------------------------------------------------------- 실존 인물 캐리커처
+# 특징(머리 모양, 안경, 옷차림)을 과장해서 누군지 알아보게 한다.
+
+def _mouth(d, cx, y, talking, w=7, lips=(150, 80, 70)):
+    if talking:
+        rect(d, cx - w // 2, y - 1, w, 3, (120, 30, 40))
+        rect(d, cx - w // 2 + 1, y - 1, w - 2, 1, (250, 250, 250))
+    else:
+        rect(d, cx - w // 2, y, w, 1, lips)
+
+
+def _eyes(d, cx, y, t, gap=4, brow=(30, 25, 20), eye=(20, 20, 25), squint=False):
+    blink = ((t + cx * 0.37) % 3.7) < 0.12
+    for ex in (cx - gap - 2, cx + gap):
+        rect(d, ex - 1, y - 3, 4, 1, brow)
+        if blink or squint:
+            rect(d, ex, y + 1, 3, 1, eye)
+        else:
+            rect(d, ex, y, 2, 3, eye)
+
+
+def _suit(d, cx, by, top, shirt=(235, 235, 240), tie=(190, 30, 40), w=36):
+    rect(d, cx - w // 2, by - 24, w, 26, top)
+    rect(d, cx - w // 2 - 2, by - 18, 2, 20, top)
+    rect(d, cx + w // 2, by - 18, 2, 20, top)
+    if shirt:
+        rect(d, cx - 5, by - 24, 10, 10, shirt)
+        rect(d, cx - 3, by - 16, 6, 4, shirt)
+    if tie:
+        rect(d, cx - 1, by - 23, 3, 16, tie)
+        rect(d, cx - 2, by - 24, 5, 2, tie)
+
+
+def _glasses(d, cx, y, gap=4, c=(20, 20, 20)):
+    for ex in (cx - gap - 4, cx + gap - 1):
+        d.rectangle([ex, y - 2, ex + 5, y + 3], outline=c)
+    rect(d, cx - 1, y, 3, 1, c)
+
+
+def draw_char(d, cx, by, t, talking, key):
+    skin = (240, 195, 160)
+    if key == "kim_jong_un":
+        # 검은 인민복(차이나 칼라), 통통한 얼굴, 옆을 바짝 민 투블럭 + 위로 솟은 앞머리
+        sk = (242, 200, 165)
+        _suit(d, cx, by, (25, 25, 30), shirt=None, tie=None, w=42)
+        rect(d, cx - 6, by - 25, 12, 3, (40, 40, 45))           # 차이나 칼라
+        for yy in range(by - 20, by, 5):
+            rect(d, cx, yy, 1, 1, (90, 90, 95))                    # 단추
+        rect(d, cx - 4, by - 29, 9, 6, sk)
+        rect(d, cx - 11, by - 47, 23, 21, sk)                       # 넓은 얼굴
+        rect(d, cx - 12, by - 38, 2, 8, sk)
+        rect(d, cx + 11, by - 38, 2, 8, sk)
+        rect(d, cx - 10, by - 31, 21, 4, (235, 190, 155))           # 볼살/턱
+        rect(d, cx - 11, by - 47, 2, 9, (90, 85, 85))               # 민 옆머리
+        rect(d, cx + 10, by - 47, 2, 9, (90, 85, 85))
+        rect(d, cx - 10, by - 54, 21, 8, (15, 15, 15))              # 위로 솟은 윗머리
+        rect(d, cx - 8, by - 56, 18, 3, (15, 15, 15))
+        rect(d, cx - 10, by - 47, 8, 2, (15, 15, 15))
+        _eyes(d, cx, by - 40, t, gap=4, brow=(15, 15, 15), squint=True)
+        rect(d, cx, by - 36, 2, 2, (220, 170, 135))
+        _mouth(d, cx, by - 32, talking)
+    elif key == "kim_yo_jong":
+        # 뒤로 묶은 검은 머리, 앞머리 옆가르마, 검은 정장
+        _suit(d, cx, by, (25, 25, 30), shirt=None, tie=None)
+        rect(d, cx - 5, by - 24, 10, 4, (40, 40, 45))
+        rect(d, cx - 3, by - 28, 7, 5, skin)
+        rect(d, cx - 8, by - 46, 17, 19, skin)
+        rect(d, cx - 9, by - 50, 19, 6, (15, 15, 15))
+        rect(d, cx - 9, by - 46, 3, 8, (15, 15, 15))
+        rect(d, cx - 6, by - 46, 9, 2, (15, 15, 15))               # 옆으로 쓸어넘긴 앞머리
+        rect(d, cx + 8, by - 48, 5, 7, (15, 15, 15))               # 뒤로 묶은 머리
+        _eyes(d, cx, by - 39, t, gap=3, brow=(15, 15, 15), squint=True)
+        rect(d, cx, by - 35, 2, 2, (220, 170, 135))
+        _mouth(d, cx, by - 31, talking, w=5, lips=(170, 70, 80))
+    elif key == "lee_jae_myung":
+        # 옆가르마 검은 머리(볼륨), 갸름한 얼굴, 네이비 정장 + 파란 넥타이
+        _suit(d, cx, by, (25, 35, 75), tie=(40, 90, 180))
+        rect(d, cx - 3, by - 28, 7, 5, skin)
+        rect(d, cx - 8, by - 47, 17, 20, skin)
+        rect(d, cx - 6, by - 29, 13, 2, (230, 185, 150))
+        rect(d, cx - 9, by - 51, 19, 6, (25, 22, 20))
+        rect(d, cx - 9, by - 52, 12, 2, (25, 22, 20))
+        rect(d, cx + 2, by - 47, 8, 3, (25, 22, 20))               # 오른쪽으로 넘긴 앞머리
+        rect(d, cx - 9, by - 46, 2, 6, (25, 22, 20))
+        rect(d, cx - 4, by - 51, 2, 1, (120, 120, 120))            # 흰머리 몇 가닥
+        _eyes(d, cx, by - 39, t, gap=4, brow=(25, 22, 20))
+        rect(d, cx, by - 35, 2, 3, (220, 170, 135))
+        _mouth(d, cx, by - 31, talking)
+    elif key == "han_dong_hoon":
+        # 검은 뿔테 안경, 단정하게 넘긴 머리, 마른 얼굴, 슬림 정장 + 니트 타이
+        _suit(d, cx, by, (30, 30, 35), tie=(120, 30, 40), w=32)
+        rect(d, cx - 3, by - 28, 7, 5, skin)
+        rect(d, cx - 7, by - 47, 15, 20, skin)
+        rect(d, cx - 8, by - 51, 17, 6, (20, 20, 20))
+        rect(d, cx - 8, by - 46, 2, 5, (20, 20, 20))
+        rect(d, cx - 2, by - 52, 10, 2, (20, 20, 20))              # 위로 넘긴 앞머리
+        _eyes(d, cx, by - 39, t, gap=3, brow=(20, 20, 20))
+        _glasses(d, cx, by - 38, gap=3)
+        rect(d, cx, by - 34, 2, 2, (220, 170, 135))
+        _mouth(d, cx, by - 31, talking, w=5)
+    elif key == "chung_dong_young":
+        # 은발, 둥근 얼굴, 회색 정장
+        _suit(d, cx, by, (70, 70, 80), tie=(60, 90, 160))
+        rect(d, cx - 3, by - 28, 7, 5, skin)
+        rect(d, cx - 9, by - 46, 19, 19, skin)
+        rect(d, cx - 10, by - 50, 21, 6, (215, 215, 220))
+        rect(d, cx - 10, by - 45, 3, 7, (215, 215, 220))
+        rect(d, cx + 8, by - 45, 3, 5, (215, 215, 220))
+        _eyes(d, cx, by - 39, t, gap=4, brow=(170, 170, 175))
+        rect(d, cx - 5, by - 33, 2, 1, (225, 175, 145))            # 미소 주름
+        rect(d, cx + 4, by - 33, 2, 1, (225, 175, 145))
+        rect(d, cx, by - 35, 2, 3, (220, 170, 135))
+        _mouth(d, cx, by - 31, talking)
+    elif key == "putin":
+        # 많이 벗겨진 옅은 머리, 좁고 창백한 얼굴, 차가운 눈, 짙은 정장
+        sk = (245, 215, 195)
+        _suit(d, cx, by, (30, 32, 40), tie=(80, 80, 110), w=34)
+        rect(d, cx - 3, by - 28, 7, 5, sk)
+        rect(d, cx - 7, by - 47, 15, 20, sk)
+        rect(d, cx - 8, by - 49, 17, 3, sk)                         # 넓은 이마
+        rect(d, cx - 8, by - 46, 2, 6, (190, 170, 140))             # 옆머리만 남음
+        rect(d, cx + 7, by - 46, 2, 6, (190, 170, 140))
+        rect(d, cx - 4, by - 50, 9, 1, (200, 180, 150))             # 얇게 남은 윗머리
+        _eyes(d, cx, by - 39, t, gap=3, brow=(200, 180, 150), eye=(60, 80, 110), squint=True)
+        rect(d, cx, by - 35, 2, 3, (230, 190, 170))
+        rect(d, cx - 5, by - 33, 1, 3, (230, 190, 170))             # 팔자 주름
+        rect(d, cx + 5, by - 33, 1, 3, (230, 190, 170))
+        _mouth(d, cx, by - 30, talking, w=5, lips=(190, 120, 110))
+    elif key in ("general", "soldier"):
+        # 육군 전투복(위장 무늬) + 베레모/전투모, 장군은 별 3개
+        top = (85, 100, 60)
+        rect(d, cx - 18, by - 24, 36, 26, top)
+        rnd = random.Random(cx)
+        for _ in range(18):
+            rect(d, cx - 18 + rnd.randint(0, 32), by - 24 + rnd.randint(0, 22), 4, 3,
+                 rnd.choice([(60, 70, 40), (120, 110, 70), (40, 45, 30)]))
+        rect(d, cx - 3, by - 28, 7, 5, skin)
+        rect(d, cx - 8, by - 46, 17, 19, skin)
+        if key == "general":
+            rect(d, cx - 10, by - 52, 21, 7, (60, 70, 45))          # 전투모
+            rect(d, cx - 11, by - 46, 23, 2, (50, 60, 40))
+            for sx in (-5, 0, 5):
+                rect(d, cx + sx - 1, by - 50, 3, 3, (250, 220, 80))  # 별 3개
+            for sx in (-12, 9):
+                rect(d, cx + sx, by - 22, 3, 3, (250, 220, 80))
+        else:
+            d.ellipse([cx - 11, by - 56, cx + 11, by - 42], fill=(70, 85, 50))   # 방탄모
+            rect(d, cx - 11, by - 46, 23, 2, (55, 65, 40))
+        _eyes(d, cx, by - 39, t, gap=4)
+        rect(d, cx, by - 35, 2, 3, (220, 170, 135))
+        _mouth(d, cx, by - 31, talking)
+    else:
+        draw_person(d, cx, by, t, talking, {"suit": True})
 
 
 ANCHOR = {"skin": 0, "hair": 0, "top": (30, 40, 80), "suit": True}
@@ -338,6 +495,24 @@ def draw_flag(d, kind, x, y, w, h):
         d.ellipse([x + w // 2 - h // 4, y + h // 4, x + w // 2 + h // 4, y + 3 * h // 4], fill=(30, 50, 140))
     elif kind == "us":
         draw_us_flag(d, x + 2, y, 0, w - 2, h)
+    elif kind == "kr":
+        rect(d, x, y, w, h, (245, 245, 245))
+        r = h // 4
+        d.pieslice([x + w // 2 - r, y + h // 2 - r, x + w // 2 + r, y + h // 2 + r], 180, 360, fill=(200, 30, 50))
+        d.pieslice([x + w // 2 - r, y + h // 2 - r, x + w // 2 + r, y + h // 2 + r], 0, 180, fill=(30, 60, 150))
+        for tx, ty in ((x + w // 6, y + h // 5), (x + 5 * w // 6 - 6, y + h // 5),
+                       (x + w // 6, y + 4 * h // 5 - 6), (x + 5 * w // 6 - 6, y + 4 * h // 5 - 6)):
+            for k2 in range(3):
+                rect(d, tx, ty + k2 * 2, 6, 1, (20, 20, 20))
+    elif kind == "nk":
+        rect(d, x, y, w, h, (30, 60, 160))
+        rect(d, x, y + h // 6, w, 4 * h // 6, (245, 245, 245))
+        rect(d, x, y + h // 6 + 2, w, 4 * h // 6 - 4, (210, 30, 40))
+        d.ellipse([x + w // 4 - h // 5, y + h // 2 - h // 5, x + w // 4 + h // 5, y + h // 2 + h // 5], fill=(245, 245, 245))
+        rect(d, x + w // 4 - 2, y + h // 2 - 2, 5, 5, (210, 30, 40))
+    elif kind == "un":
+        rect(d, x, y, w, h, (90, 150, 220))
+        d.ellipse([x + w // 2 - h // 4, y + h // 4, x + w // 2 + h // 4, y + 3 * h // 4], outline=(245, 245, 245), width=2)
     elif kind == "ua":
         rect(d, x, y, w, h // 2, (30, 90, 200))
         rect(d, x, y + h // 2, w, h - h // 2, (250, 210, 30))
@@ -836,7 +1011,7 @@ class QuoteScene(Scene):
         d.text((480, 356), role, font=f, fill=(200, 200, 220))
 
 
-PUTIN = {"skin": 3, "hair": 2, "top": (35, 35, 45), "suit": True, "tie": (60, 60, 90)}
+PUTIN = {"char": "putin"}
 
 
 class CallScene(Scene):
@@ -909,7 +1084,169 @@ class PumpScene(Scene):
         d.text((96, 236), title, font=f, fill=(255, 255, 255))
 
 
-SCENES = {"call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
+class DMZScene(Scene):
+    """비무장지대: 철책, 지뢰 경고판, 수색 중인 장병, (옵션) 폭발 연출."""
+    focus = (160, 90)
+
+    def draw(self, d, t):
+        vgrad(d, 0, 70, (150, 170, 190), (200, 205, 200))
+        for i, (hx, hh) in enumerate(((0, 30), (70, 40), (160, 28), (240, 44))):
+            d.polygon([(hx - 40, 70), (hx + 40, 70 - hh), (hx + 120, 70)], fill=(80, 100, 70))
+        rect(d, 0, 70, W, 110, (95, 115, 65))
+        rnd = random.Random(4)
+        for _ in range(140):
+            rect(d, rnd.randint(0, W), rnd.randint(70, 180), 2, 3, rnd.choice([(70, 90, 50), (120, 130, 70)]))
+        # 철책
+        rect(d, 0, 76, W, 1, (150, 150, 150))
+        for fx in range(0, W, 16):
+            rect(d, fx, 64, 2, 22, (110, 110, 110))
+        for yy in (68, 72, 80):
+            for fx in range(0, W, 4):
+                rect(d, fx, yy + (fx // 4) % 2, 2, 1, (170, 170, 170))
+        # 지뢰 경고판
+        for mx in (40, 200, 290):
+            rect(d, mx, 96, 2, 12, (90, 70, 50))
+            d.polygon([(mx - 7, 98), (mx + 9, 98), (mx + 1, 86)], fill=(220, 30, 30))
+            rect(d, mx, 92, 2, 3, (255, 255, 255))
+        # 수색 중인 장병 3명 (탐지기 휘두르기)
+        boom = self.spec.get("boom")
+        for i, sx in enumerate((110, 150, 190)):
+            bob = int(math.sin(t * 4 + i) * 1)
+            x = sx + int(math.sin(t * 0.6) * 4)
+            draw_char(d, x, 148 + bob, t, False, "soldier")
+            sw = int(math.sin(t * 3 + i) * 6)
+            d.line([(x + 18, 136), (x + 26 + sw, 160)], fill=(40, 40, 40), width=2)
+            rect(d, x + 22 + sw, 158, 10, 3, (60, 60, 60))
+        if boom is not None and boom <= t < boom + 1.6:
+            k = (t - boom) / 1.6
+            r = int(10 + 60 * k)
+            c = lerp((255, 240, 160), (120, 110, 100), k)
+            d.ellipse([230 - r, 140 - r // 2, 230 + r, 140 + r // 2], fill=c)
+            for j in range(10):
+                a = j / 10 * 6.283
+                rect(d, int(230 + math.cos(a) * r * 1.2), int(140 + math.sin(a) * r * 0.5), 3, 3, (60, 50, 40))
+
+    def overlay(self, d, t, cam):
+        tag = self.spec.get("tag", "DMZ")
+        f = font(32)
+        tw = d.textlength(tag, font=f)
+        rect(d, 32, 28, int(tw) + 32, 44, (40, 60, 40))
+        d.text((48, 34), tag, font=f, fill=(255, 255, 255))
+        rect(d, FW - 268, 28, 236, 40, (0, 0, 0))
+        d.text((FW - 256, 32), "ILLUSTRATION", font=f, fill=(255, 230, 120))
+        boom = self.spec.get("boom")
+        if boom is not None and boom <= t < boom + 0.15:
+            rect(d, 0, 0, FW, FH, (255, 255, 230))
+
+
+class KoreaMapScene(Scene):
+    """한반도 지도 + DMZ 선 + 사고 지점 표시."""
+    zoomable = False
+    KOREA = [(150, 6), (170, 4), (196, 14), (206, 30), (190, 44), (180, 58), (172, 70),
+             (182, 84), (196, 110), (200, 140), (190, 168), (160, 176), (136, 170), (128, 150),
+             (136, 120), (126, 100), (132, 80), (124, 66), (134, 46), (140, 26)]
+
+    def draw(self, d, t):
+        rect(d, 0, 0, W, H, (30, 80, 150))
+        for y in range(6, H, 12):
+            for x in range(0, W, 16):
+                rect(d, (x + int(t * 8) + y) % W, y, 5, 1, (60, 120, 190))
+        d.polygon([(0, 0), (150, 0), (140, 26), (110, 30), (60, 20), (0, 30)], fill=(150, 140, 110))
+        d.polygon(self.KOREA, fill=(90, 150, 80))
+        d.polygon([(124, 66), (134, 46), (140, 26), (150, 6), (170, 4), (196, 14), (206, 30), (190, 44),
+                   (180, 58), (172, 70)], fill=(120, 120, 120))       # 북한 (회색)
+        d.line([(126, 72), (150, 70), (176, 66)], fill=(230, 40, 40), width=3)   # DMZ
+        if int(t * 3) % 2 == 0:
+            d.ellipse([139, 66, 147, 74], outline=(255, 230, 60), width=2)
+        rect(d, 142, 69, 2, 2, (255, 230, 60))
+
+    def overlay(self, d, t, cam):
+        cam.text(d, 186, 22, "NORTH KOREA", 32, (255, 255, 255))
+        cam.text(d, 196, 120, "SOUTH KOREA", 32, (255, 255, 255))
+        cam.text(d, 196, 64, "DMZ", 40, (255, 90, 90))
+        cam.text(d, 40, 82, "Paju–Yeoncheon", 32, (255, 230, 60))
+        for i, row in enumerate(self.spec.get("facts", [])):
+            k = ease((t - 0.5 - i * 0.6) / 0.4)
+            if k > 0:
+                rect(d, int(40 - (1 - k) * 400), 420 + i * 52, 480, 44, (0, 0, 0))
+                d.text((56 - (1 - k) * 400, 426 + i * 52), row, font=font(32), fill=(255, 255, 255))
+
+
+class UNScene(Scene):
+    """유엔 총회장: 연단의 발언자 + 초록 대리석 벽 + 유엔 엠블럼."""
+    focus = (160, 70)
+
+    def draw(self, d, t):
+        rect(d, 0, 0, W, H, (40, 90, 70))
+        for x in range(0, W, 20):
+            rect(d, x, 0, 1, H, (55, 110, 85))
+        rect(d, 110, 0, 100, 120, (200, 170, 90))
+        d.ellipse([130, 10, 190, 70], fill=(90, 150, 220))
+        d.ellipse([140, 20, 180, 60], outline=(245, 245, 245), width=2)
+        rect(d, 159, 22, 2, 36, (245, 245, 245))
+        rect(d, 142, 39, 36, 2, (245, 245, 245))
+        p = self.spec.get("speaker", {"suit": True})
+        draw_person(d, 160, 128, t, int(t * 9) % 2 == 0, p, gesture=False)
+        rect(d, 132, 118, 56, 62, (60, 40, 30))
+        rect(d, 128, 114, 64, 6, (90, 60, 40))
+        rect(d, 158, 104, 2, 12, (40, 40, 40))
+        rect(d, 0, 150, W, 30, (30, 30, 40))
+        rnd = random.Random(11)
+        for x in range(4, W, 14):
+            rect(d, x, 146 + rnd.randint(0, 4), 10, 10, rnd.choice(SKINS))
+            rect(d, x - 1, 154, 12, 26, rnd.choice([(30, 30, 40), (50, 50, 70), (70, 60, 50)]))
+
+    def overlay(self, d, t, cam):
+        f = font(32)
+        for i, txt in enumerate((self.spec.get("name", ""), self.spec.get("role", ""))):
+            if txt:
+                ff = font(40) if i == 0 else f
+                tw = d.textlength(txt, font=ff)
+                rect(d, 32, 28 + i * 52, int(tw) + 32, 48, (0, 0, 0) if i else (40, 90, 160))
+                d.text((48, 32 + i * 52), txt, font=ff, fill=(255, 255, 255))
+
+
+class AuditScene(Scene):
+    """국회 국정감사장: 왼쪽 질의 의원, 오른쪽 답변 장관."""
+    zoomable = False
+
+    def draw(self, d, t):
+        vgrad(d, 0, 110, (150, 120, 90), (120, 95, 70))
+        for x in range(0, W, 24):
+            rect(d, x, 0, 2, 110, (110, 85, 60))
+        rect(d, 100, 10, 120, 24, (30, 50, 110))
+        rect(d, 0, 110, W, 70, (90, 60, 40))
+        q, a = self.spec["questioner"], self.spec["answerer"]
+        who = self.active(t)
+        flap = int(t * 9) % 2 == 0
+        draw_person(d, 80, 124, t, who == "q" and flap, q["person"], gesture=False)
+        draw_person(d, 240, 124, t, who == "a" and flap, a["person"], gesture=False)
+        for x in (80, 240):
+            rect(d, x - 40, 132, 80, 48, (70, 45, 30))
+            rect(d, x - 2, 118, 2, 16, (40, 40, 40))
+            rect(d, x - 20, 136, 40, 10, (245, 245, 245))
+
+    def active(self, t):
+        _, e = self.line_at(t)
+        if e is None:
+            return None
+        return e["line"].get("who")
+
+    def overlay(self, d, t, cam):
+        cam.text(d, 160, 14, self.spec.get("sign", "NATIONAL ASSEMBLY AUDIT"), 32, (255, 255, 255), center=True,
+                 shadow=False)
+        f = font(32)
+        for x, side in ((80, "questioner"), (240, "answerer")):
+            info = self.spec[side]
+            sx, _ = cam.pt(x, 150)
+            for i, txt in enumerate((info["name"], info["role"])):
+                ff = font(36) if i == 0 else font(24)
+                tw = d.textlength(txt, font=ff)
+                rect(d, int(sx - tw / 2) - 12, 150 + i * 44, int(tw) + 24, 40, (0, 0, 0))
+                d.text((sx - tw / 2, 154 + i * 44), txt, font=ff, fill=(255, 255, 255) if i == 0 else (200, 200, 220))
+
+
+SCENES = {"dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
           "signboard": SignboardScene, "meeting": MeetingScene, "reaction": ReactionScene,
           "chart": ChartScene, "interview": InterviewScene}
 
