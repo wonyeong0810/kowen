@@ -1,0 +1,145 @@
+{
+  "title": "DMZ mine short",
+  "format": "short",
+  "lang": "en",
+  "output": "out/dmz_mine_short.mp4",
+  "hook": "Korean War 2?! North Korea planted mines in the DMZ",
+  "cta": "FULL STORY ON OUR CHANNEL",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.3
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.35
+    }
+  },
+  "scenes": [
+    {
+      "type": "dmz",
+      "tag": "DMZ · SEPT 21",
+      "boom": 3.2,
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "South Korean soldiers were searching inside the *DMZ*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Then a landmine *exploded*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Three officers were wounded. One battalion commander *lost a foot*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The worst mine injury on the border in *eleven years*."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "THE VERDICT",
+      "items": [
+        {
+          "year": "OCT 5",
+          "text": "Probe: mines planted by N. Korea"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "A joint investigation with the U.N. Command found the mines were *planted by North Korea*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "A third, unexploded mine was found nearby."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "nk",
+      "name": "Kim Yo Jong",
+      "role": "Kim Jong Un's sister",
+      "person": {
+        "char": "kim_yo_jong"
+      },
+      "quote": "A spectacle too good to watch alone.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Pyongyang denies it. Kim Yo Jong *mocked* Seoul, calling the debate a spectacle too good to watch alone."
+        }
+      ]
+    },
+    {
+      "type": "audit",
+      "sign": "NATIONAL ASSEMBLY · OCT 7",
+      "questioner": {
+        "name": "Han Dong-hoon",
+        "role": "Independent lawmaker",
+        "person": {
+          "char": "han_dong_hoon"
+        }
+      },
+      "answerer": {
+        "name": "Chung Dong-young",
+        "role": "Unification Minister",
+        "person": {
+          "char": "chung_dong_young"
+        }
+      },
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "In Seoul, the Unification Minister called it *a regrettable accident*.",
+          "who": "a"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Lawmaker Han Dong-hoon shot back: how is burying mines on our side an *accident*?",
+          "who": "q"
+        }
+      ]
+    },
+    {
+      "type": "un",
+      "name": "Cha Ji-hoon",
+      "role": "South Korea's Ambassador to the U.N.",
+      "speaker": {
+        "skin": 0,
+        "hair": 0,
+        "top": [
+          30,
+          35,
+          60
+        ],
+        "suit": true,
+        "glasses": true
+      },
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Now Seoul is demanding an *apology* at the United Nations."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "North Korea's reply? It will defend its territory with *strength, not negotiations*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "WAR NEXT?",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "How close is the peninsula to the edge? Watch the *full story* on our channel."
+        }
+      ]
+    }
+  ]
+}

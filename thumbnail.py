@@ -178,9 +178,38 @@ def diesel_short():
     finish_v(low, text, "out/russia_diesel_short_thumb.png")
 
 
+def dmz_short():
+    low = Image.new("RGB", (VW, VH))
+    d = ImageDraw.Draw(low)
+    k.vgrad(d, 0, 150, (60, 20, 20), (160, 70, 30))
+    d.polygon([(0, 150), (30, 120), (70, 140), (110, 115), (135, 135), (135, 150)], fill=(50, 40, 35))
+    k.rect(d, 0, 150, VW, 90, (80, 95, 55))
+    for r, c in ((40, (255, 120, 40)), (28, (255, 190, 80)), (14, (255, 245, 200))):
+        d.ellipse([67 - r, 150 - r // 1.4, 67 + r, 150 + r // 1.4], fill=c)
+    k.rect(d, 0, 160, VW, 1, (160, 160, 160))
+    for fx in range(0, VW, 10):
+        k.rect(d, fx, 146, 1, 18, (110, 110, 110))
+    for fx in range(0, VW, 3):
+        k.rect(d, fx, 152 + (fx // 3) % 2, 2, 1, (180, 180, 180))
+    d.polygon([(57, 196), (77, 196), (67, 180)], fill=(220, 30, 30))
+    k.rect(d, 66, 186, 2, 5, (255, 255, 255))
+    k.rect(d, 66, 192, 2, 2, (255, 255, 255))
+    k.draw_char(d, 28, 242, 0.05, False, "soldier")
+    k.draw_char(d, 106, 242, 0.05, False, "kim_jong_un")
+
+    def text(d):
+        big_text(d, (540, 300), "KOREAN", 208, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 520), "WAR 2?!", 208, (255, 70, 60), stroke=12, anchor="ma")
+        d.rectangle([180, 800, 900, 880], fill=(0, 0, 0))
+        d.text((540, 810), "MINES IN THE DMZ", font=k.font(64), fill=(255, 210, 60), anchor="ma")
+
+    finish_v(low, text, "out/dmz_mine_short_thumb.png")
+
+
 if __name__ == "__main__":
     dmz()
     ocean()
     diesel()
     ocean_short()
     diesel_short()
+    dmz_short()
