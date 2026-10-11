@@ -26,7 +26,8 @@ W, H = 320, 180          # 픽셀 아트 캔버스
 FW, FH = 1280, 720       # 출력 해상도
 FPS = 24
 SR = 44100               # 오디오 샘플레이트
-GAP = 0.15               # 대사 사이 쉼 (초)
+GAP = 0.06               # 대사 사이 쉼 (초)
+EMPH = 1.0               # 강조 효과 지속 (초)
 ZOOMS = [(4, 320, 180), (5, 256, 144)]   # (배율, 잘라낼 폭, 높이) - 정수 배율이라 픽셀이 고르게 유지됨
 
 FONT_PATH = "/usr/share/fonts/opentype/unifont/unifont.otf"
@@ -112,7 +113,7 @@ class Voice:
         key = hashlib.sha1(f"{self.lang}|{sid}|{speed}|{text}".encode()).hexdigest()
         path = os.path.join(CACHE_DIR, key + ".npy")
         if os.path.exists(path):
-            return np.load(path)
+            return punch(np.load(path))
         if self.tts is None:
             self._load()
         import sherpa_onnx
@@ -131,7 +132,33 @@ class Voice:
         x = x / max(1e-6, np.abs(x).max()) * 0.9
         os.makedirs(CACHE_DIR, exist_ok=True)
         np.save(path, x)
-        return x
+        return punch(x)
+
+
+def punch(x):
+    """긴 쉼 줄이기 + 컴프레션으로 또렷하고 빠르게."""
+    hop = SR // 100
+    n = len(x) // hop
+    quiet = np.array([np.sqrt(np.mean(x[i * hop:(i + 1) * hop] ** 2)) < 0.012 for i in range(n)])
+    keep, run = [], 0
+    for i in range(n):
+        run = run + 1 if quiet[i] else 0
+        if run <= 7:          # 무음은 최대 70ms만 남김
+            keep.append(x[i * hop:(i + 1) * hop])
+    x = np.concatenate(keep + [x[n * hop:]]) if keep else x
+    x = np.tanh(2.2 * x) / np.tanh(2.2)
+    return (x * 0.95).astype(np.float32)
+
+
+def parse_emph(text):
+    """'*강조*' 표시를 떼어내고 (깨끗한 문장, [(시작, 끝, 단어)]) 반환."""
+    clean, spans, i = "", [], 0
+    parts = text.split("*")
+    for k, part in enumerate(parts):
+        if k % 2 == 1:
+            spans.append((len(clean), len(clean) + len(part), part))
+        clean += part
+    return clean, spans
 
 
 # ---------------------------------------------------------------- 캐릭터
@@ -336,12 +363,15 @@ class Scene:
         self.timeline, acc = [], 0.0
         for l in spec.get("lines", []):
             vc = voice_cfg.get(l["speaker"], {"sid": 6, "speed": 1.2})
-            audio = voices.say(l["text"], vc["sid"], vc.get("speed", 1.2))
+            clean, spans = parse_emph(l["text"])
+            audio = voices.say(clean, vc["sid"], vc.get("speed", 1.2))
             adur = len(audio) / SR
+            emph = [(acc + adur * a / max(1, len(clean)), a, b, w) for a, b, w in spans]
             hop = SR // FPS
             env = np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) for i in range(0, len(audio), hop)])
             self.timeline.append({"start": acc, "end": acc + adur + GAP, "adur": adur,
-                                  "line": l, "audio": audio, "env": env})
+                                  "line": l, "audio": audio, "env": env,
+                                  "clean": clean, "emph": emph})
             acc += adur + GAP
         self.duration = spec.get("duration") or acc
 
@@ -822,7 +852,7 @@ def draw_subtitle(d, scene, t):
     if e is None:
         return
     l = e["line"]
-    text = l["text"]
+    text = e["clean"]
     n = int(len(text) * min(1.0, (t - e["start"]) / max(0.1, e["adur"] * 0.85)))
     f = font(32)
     rows = wrap(d, text, f, FW - 160)
@@ -839,7 +869,38 @@ def draw_subtitle(d, scene, t):
         start = text.find(row, pos)
         part = row[:max(0, n - start)]
         pos = start + len(row)
-        d.text((76, y0 + 10 + i * 40), part, font=f, fill=(255, 255, 255))
+        x = 76
+        for j, ch in enumerate(part):
+            ci = start + j
+            hot = any(a <= ci < b for _, a, b, _ in e["emph"])
+            if hot:
+                rect(d, int(x), y0 + 8 + i * 40, int(d.textlength(ch, font=f)) + 1, 36, (200, 30, 40))
+            d.text((x, y0 + 10 + i * 40), ch, font=f, fill=(255, 230, 80) if hot else (255, 255, 255))
+            x += d.textlength(ch, font=f)
+
+
+def active_emph(scene, t):
+    for e in scene.timeline:
+        for te, _, _, w in e["emph"]:
+            if te <= t < te + EMPH:
+                return t - te, w
+    return None
+
+
+def draw_stinger(d, dt, word):
+    """강조 단어 팝업 (튀어나왔다가 자리 잡음)."""
+    k = ease(dt / 0.15)
+    size = int(48 + 40 * (1 - k)) if dt < 0.15 else 48 + (8 if dt < 0.25 else 0)
+    f = font(size)
+    txt = word.upper()
+    tw = d.textlength(txt, font=f)
+    x, y = (FW - tw) / 2, 250 - size / 2
+    if dt > EMPH - 0.12:
+        x += (dt - (EMPH - 0.12)) / 0.12 * FW
+    rect(d, int(x) - 24, int(y) - 12, int(tw) + 48, size + 24, (200, 30, 40))
+    rect(d, int(x) - 24, int(y) + size + 6, int(tw) + 48, 6, (255, 210, 60))
+    d.text((x + 4, y + 4), txt, font=f, fill=(0, 0, 0))
+    d.text((x, y), txt, font=f, fill=(255, 255, 255))
 
 
 def draw_ticker(d, ticker, gt):
@@ -869,7 +930,7 @@ def bgm(total):
     """128BPM 칩튠 비트 (킥 + 하이햇 + 베이스)."""
     n = int(SR * total)
     out = np.zeros(n)
-    beat = 60 / 128
+    beat = 60 / 140
     rng = np.random.default_rng(3)
     kick_t = np.arange(int(SR * 0.12)) / SR
     kick = np.sin(2 * np.pi * (110 - 400 * kick_t) * kick_t) * np.exp(-kick_t * 30)
@@ -896,7 +957,7 @@ def build_audio(scenes, total):
         i = int(start * SR)
         buf[i:i + len(sig)] += sig[: len(buf) - i]
 
-    music = bgm(total) * 0.35
+    music = bgm(total) * 0.5
     voice = np.zeros_like(buf)
     t0 = 0.0
     for sc in scenes:
@@ -913,6 +974,11 @@ def build_audio(scenes, total):
             swell = 0.5 + 0.5 * np.abs(np.sin(np.arange(n) / SR * 1.3))
             add(t0, noise * 0.25 * swell)
         for e in sc.timeline:
+            for te, _, _, _ in e["emph"]:   # 강조 '쿵' 효과음
+                ht = np.arange(int(SR * 0.35)) / SR
+                hit = np.sin(2 * np.pi * (90 - 60 * ht) * ht) * np.exp(-ht * 9) * 0.35
+                add(t0 + te - 0.05, hit)
+                add(t0 + te - 0.05, square(1320, 0.06, 0.04))
             i = int((t0 + e["start"]) * SR)
             a = e["audio"]
             voice[i:i + len(a)] += a[: len(voice) - i]
@@ -920,7 +986,7 @@ def build_audio(scenes, total):
     # 목소리 나올 때 배경음 낮추기 (더킹)
     k = SR // 10
     env = np.convolve(np.abs(voice), np.ones(k) / k, "same")
-    duck = 1 - 0.6 * np.clip(env * 20, 0, 1)
+    duck = 1 - 0.45 * np.clip(env * 20, 0, 1)
     m = min(len(buf), len(music))
     buf[:m] += music[:m] * duck[:m]
     buf += voice
@@ -971,9 +1037,18 @@ def render(ep_path):
         sc.draw(ImageDraw.Draw(low), t)
         # 줄마다 줌 컷을 바꿔서 템포감
         li, _ = sc.line_at(t)
-        zi = 0 if getattr(sc, "zoomable", True) is False or li < 0 else li % 2
+        em = active_emph(sc, t)
+        if getattr(sc, "zoomable", True) is False or li < 0:
+            zi = 0
+        elif em:
+            zi = 1
+        else:   # 줄 안에서도 2.5초마다 컷
+            zi = (li + int((t - sc.timeline[li]["start"]) / 2.5)) % 2
         s, cw, ch = ZOOMS[zi]
         fx, fy = sc.focus_at(t)
+        if em and em[0] < 0.2:   # 강조 순간 흔들림
+            fx += random.choice((-2, 2))
+            fy += random.choice((-1, 1))
         ox = max(0, min(W - cw, fx - cw // 2))
         oy = max(0, min(H - ch, fy - ch // 2))
         img = low.crop((ox, oy, ox + cw, oy + ch)).resize((FW, FH), Image.NEAREST)
@@ -981,6 +1056,8 @@ def render(ep_path):
         d = ImageDraw.Draw(img)
         sc.overlay(d, t, cam)
         if not isinstance(sc, TitleScene):
+            if em:
+                draw_stinger(d, *em)
             draw_subtitle(d, sc, t)
             draw_ticker(d, ep.get("ticker", []), gt)
         # 장면 전환: 짧은 화이트 플래시

@@ -4,12 +4,12 @@
   "output": "out/trump_ocean.mp4",
   "voices": {
     "Anchor": {
-      "sid": 6,
-      "speed": 1.1
+      "sid": 5,
+      "speed": 1.25
     },
     "Reporter": {
-      "sid": 0,
-      "speed": 1.15
+      "sid": 1,
+      "speed": 1.3
     }
   },
   "ticker": [
@@ -35,15 +35,27 @@
         },
         {
           "speaker": "Anchor",
-          "text": "First the Gulf of Mexico. Then Lake Ontario. Now, President Trump says he may have his eye on an entire ocean."
+          "text": "First the Gulf of Mexico. Then Lake Ontario. Now, President Trump says he may have his eye on *an entire ocean*."
         },
         {
           "speaker": "Anchor",
-          "text": "At a campaign rally in Tennessee on Saturday night, the president floated renaming the Atlantic or the Pacific. Among the names he suggested: Trump Ocean."
+          "text": "At a campaign rally in Tennessee on Saturday night, the president floated renaming the Atlantic or the Pacific. Among the names he suggested: *Trump Ocean*."
         },
         {
           "speaker": "Anchor",
           "text": "Tonight, we look at what he said, how it fits into a growing list of name changes, and how America's neighbors have been responding."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Also tonight: why Canada's leaders say *Lake America* will never catch on north of the border."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "How Mexico, the White House press corps and even *your map app* got pulled into the fight."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "And the big question: could an ocean really be next?"
         },
         {
           "speaker": "Anchor",
@@ -63,7 +75,7 @@
         },
         {
           "speaker": "Reporter",
-          "text": "Musician Kid Rock opened the event, and the crowd filled the arena well before the president took the stage."
+          "text": "Musician *Kid Rock* opened the event, and the crowd filled the arena well before the president took the stage."
         },
         {
           "speaker": "Reporter",
@@ -75,7 +87,7 @@
         },
         {
           "speaker": "Reporter",
-          "text": "He also took aim at Iran, calling the country's leaders crazy."
+          "text": "He also took aim at Iran, calling the country's leaders *crazy*."
         },
         {
           "speaker": "Reporter",
@@ -87,11 +99,11 @@
         },
         {
           "speaker": "Reporter",
-          "text": "He suggested the Atlantic or the Pacific could become the Trump Ocean, or, as another option, the Ocean of the Americas."
+          "text": "He suggested the Atlantic or the Pacific could become the *Trump Ocean*, or, as another option, the Ocean of the Americas."
         },
         {
           "speaker": "Reporter",
-          "text": "He also said he was not looking to rename the Mississippi River, telling the crowd that he loves Mississippi."
+          "text": "He also said he was not looking to rename the Mississippi River, telling the crowd that he *loves Mississippi*."
         },
         {
           "speaker": "Reporter",
@@ -99,7 +111,7 @@
         },
         {
           "speaker": "Reporter",
-          "text": "He announced no formal plan, and there is no indication of any executive order on the subject."
+          "text": "He announced *no formal plan*, and there is no indication of any executive order on the subject."
         }
       ]
     },
@@ -118,7 +130,7 @@
         },
         {
           "speaker": "Reporter",
-          "text": "According to reporters in the room, he said, we have a Gulf, and we have a lake. Now all we need is an ocean."
+          "text": "According to reporters in the room, he said, we have a Gulf, and we have a lake. Now *all we need is an ocean*."
         },
         {
           "speaker": "Reporter",
@@ -130,7 +142,7 @@
         },
         {
           "speaker": "Reporter",
-          "text": "Unlike a gulf or a lake, both oceans border dozens of countries, and none of them would be bound by an American renaming."
+          "text": "Unlike a gulf or a lake, both oceans border *dozens of countries*, and none of them would be bound by an American renaming."
         }
       ]
     },
@@ -167,7 +179,7 @@
       "lines": [
         {
           "speaker": "Reporter",
-          "text": "In January of last year, shortly after taking office, President Trump signed an executive order renaming the Gulf of Mexico as the Gulf of America."
+          "text": "In January of last year, shortly after taking office, President Trump signed an executive order renaming the Gulf of Mexico as the *Gulf of America*."
         },
         {
           "speaker": "Reporter",
@@ -175,19 +187,87 @@
         },
         {
           "speaker": "Reporter",
-          "text": "Then, on August twenty seventh of this year, in the middle of a trade fight with Canada, the president signed another order, this time renaming Lake Ontario as Lake America."
+          "text": "Then, on August twenty seventh of this year, in the middle of a trade fight with Canada, the president signed another order, this time renaming Lake Ontario as *Lake America*."
         },
         {
           "speaker": "Reporter",
-          "text": "The order directs federal agencies to use the new name on their maps, documents and databases, effective immediately."
+          "text": "The order directs federal agencies to use the new name on their maps, documents and databases, *effective immediately*."
         },
         {
           "speaker": "Reporter",
-          "text": "Lake Ontario sits on the border between the United States and Canada, and Canada is not bound by the order."
+          "text": "Lake Ontario sits on the border between the United States and Canada, and Canada is *not bound* by the order."
         },
         {
           "speaker": "Reporter",
-          "text": "And at Saturday's rally, the president added one more idea, saying he might rename the Strait of Hormuz the Trump Strait."
+          "text": "And at Saturday's rally, the president added one more idea, saying he might rename the Strait of Hormuz the *Trump Strait*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "THE GULF FIGHT",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "And the *Gulf of America* change was not just a line on a map. It sparked real fights, at home and abroad."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "mx",
+      "name": "Claudia Sheinbaum",
+      "role": "President of Mexico",
+      "person": {
+        "skin": 1,
+        "hair": 0,
+        "top": [
+          110,
+          30,
+          50
+        ],
+        "long": true
+      },
+      "quote": "Why don't we call it Mexican America?",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Mexican President Claudia Sheinbaum answered with a joke of her own, pointing to an old map and suggesting North America be called *Mexican America*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Mexico has continued to use the name Gulf of Mexico, and has asked Google not to apply the new name to waters beyond U.S. jurisdiction."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "us",
+      "name": "Associated Press",
+      "role": "News agency",
+      "person": {
+        "skin": 0,
+        "hair": 4,
+        "top": [
+          40,
+          40,
+          50
+        ],
+        "suit": true
+      },
+      "quote": "Barred from Oval Office events after declining to use \"Gulf of America\".",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "In Washington, the White House *barred* Associated Press journalists from some events, after the news agency said it would keep using the name Gulf of Mexico."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The AP took the dispute to court, arguing the ban violated press freedom."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The president also declared February ninth, two thousand twenty five, the first ever *Gulf of America Day*."
         }
       ]
     },
@@ -197,7 +277,7 @@
       "lines": [
         {
           "speaker": "Anchor",
-          "text": "The Lake America order in particular has drawn a sharp response north of the border."
+          "text": "The *Lake America* order in particular has drawn a sharp response north of the border."
         }
       ]
     },
@@ -224,7 +304,7 @@
         },
         {
           "speaker": "Reporter",
-          "text": "He pointed out that the name Lake Ontario comes from the Wendat language, and is more than four hundred years old, older than both Canadian Confederation and the U.S. Declaration of Independence."
+          "text": "He pointed out that the name Lake Ontario comes from the Wendat language, and is more than *four hundred years* old, older than both Canadian Confederation and the U.S. Declaration of Independence."
         }
       ]
     },
@@ -247,7 +327,7 @@
       "lines": [
         {
           "speaker": "Reporter",
-          "text": "Nova Scotia Premier Tim Houston was more blunt. Real foolishness now, he wrote. It's Lake Ontario, buddy."
+          "text": "Nova Scotia Premier Tim Houston was more blunt. *Real foolishness* now, he wrote. It's Lake Ontario, buddy."
         }
       ]
     },
@@ -275,11 +355,11 @@
       "lines": [
         {
           "speaker": "Reporter",
-          "text": "Ontario Premier Doug Ford dismissed the move as a lot of rhetoric."
+          "text": "Ontario Premier Doug Ford dismissed the move as a lot of *rhetoric*."
         },
         {
           "speaker": "Reporter",
-          "text": "He also put up a sign near Grimsby, on the lake's shore, reading Lake Ontario, Now and Always."
+          "text": "He also put up a sign near Grimsby, on the lake's shore, reading Lake Ontario, *Now and Always*."
         }
       ]
     },
@@ -310,19 +390,19 @@
         },
         {
           "speaker": "Reporter",
-          "text": "After the U.S. government updated its official place names database, Google Maps began showing Lake America to users in the United States."
+          "text": "After the U.S. government updated its official place names database, Google Maps began showing *Lake America* to users in the United States."
         },
         {
           "speaker": "Reporter",
-          "text": "Users in Canada still see Lake Ontario, and users elsewhere see both names. It is the same approach Google took with the Gulf of America."
+          "text": "Users in Canada still see Lake Ontario, and users elsewhere see both names. It is the same approach Google took with the *Gulf of America*."
         },
         {
           "speaker": "Reporter",
-          "text": "Reuters reported that Apple also changed the name on the web version of Apple Maps in early September."
+          "text": "Reuters reported that Apple also changed the name on the web version of *Apple Maps* in early September."
         },
         {
           "speaker": "Reporter",
-          "text": "Not every map company has followed. MapQuest has said it intends to keep the original name."
+          "text": "Not every map company has followed. *MapQuest* has said it intends to keep the original name."
         }
       ]
     },
@@ -354,7 +434,7 @@
         },
         {
           "speaker": "Reporter",
-          "text": "Illinois Governor JB Pritzker mocked the order by sarcastically declaring that Lake Michigan would now be called Lake Illinois, and joking that he would annex Green Bay."
+          "text": "Illinois Governor JB Pritzker mocked the order by sarcastically declaring that Lake Michigan would now be called *Lake Illinois*, and joking that he would annex Green Bay."
         }
       ]
     },
@@ -383,11 +463,11 @@
         },
         {
           "speaker": "Reporter",
-          "text": "Other countries along the Atlantic and Pacific coasts would be under no obligation to follow."
+          "text": "Other countries along the Atlantic and Pacific coasts would be under *no obligation* to follow."
         },
         {
           "speaker": "Reporter",
-          "text": "Whether the Trump Ocean remains a rally line or becomes the next executive order is a question the president has not yet answered."
+          "text": "Whether the *Trump Ocean* remains a rally line or becomes the next executive order is a question the president has not yet answered."
         },
         {
           "speaker": "Reporter",
@@ -405,15 +485,23 @@
         },
         {
           "speaker": "Anchor",
-          "text": "At a rally in Clarksville, Tennessee, President Trump floated renaming the Atlantic or the Pacific as the Trump Ocean, or the Ocean of the Americas."
+          "text": "At a rally in Clarksville, Tennessee, President Trump floated renaming the Atlantic or the Pacific as the *Trump Ocean*, or the Ocean of the Americas."
         },
         {
           "speaker": "Anchor",
-          "text": "At the same rally, he also joked about renaming the Strait of Hormuz as the Trump Strait."
+          "text": "At the same rally, he also joked about renaming the Strait of Hormuz as the *Trump Strait*."
         },
         {
           "speaker": "Anchor",
-          "text": "He announced no formal plan. The remark follows his orders renaming the Gulf of Mexico and, in August, Lake Ontario, a move Canada's leaders have firmly rejected."
+          "text": "The White House has given no timeline, and no sign of an executive order. For now, the *Trump Ocean* remains a rally line."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "But after a gulf and a lake, few are ruling anything out."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "He announced *no formal plan*. The remark follows his orders renaming the Gulf of Mexico and, in August, Lake Ontario, a move Canada's leaders have firmly rejected."
         },
         {
           "speaker": "Anchor",
