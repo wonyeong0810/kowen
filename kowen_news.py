@@ -338,6 +338,18 @@ def draw_flag(d, kind, x, y, w, h):
         d.ellipse([x + w // 2 - h // 4, y + h // 4, x + w // 2 + h // 4, y + 3 * h // 4], fill=(30, 50, 140))
     elif kind == "us":
         draw_us_flag(d, x + 2, y, 0, w - 2, h)
+    elif kind == "ua":
+        rect(d, x, y, w, h // 2, (30, 90, 200))
+        rect(d, x, y + h // 2, w, h - h // 2, (250, 210, 30))
+    elif kind == "ru":
+        rect(d, x, y, w, h // 3, (240, 240, 240))
+        rect(d, x, y + h // 3, w, h // 3, (30, 60, 170))
+        rect(d, x, y + 2 * h // 3, w, h - 2 * h // 3, (210, 30, 40))
+    elif kind == "eu":
+        rect(d, x, y, w, h, (30, 50, 150))
+        for k in range(12):
+            a = k / 12 * 6.283
+            rect(d, int(x + w / 2 + math.cos(a) * h / 3), int(y + h / 2 + math.sin(a) * h / 3), 2, 2, (250, 210, 30))
     elif kind == "mx":
         rect(d, x, y, w // 3, h, (20, 110, 60))
         rect(d, x + w // 3, y, w // 3, h, (240, 240, 240))
@@ -599,6 +611,9 @@ class SignboardScene(Scene):
                 continue
             y = 26 + k * 34
             cam.text(d, 41, y + 8, it["year"], 24, (20, 25, 50), center=True, shadow=False)
+            if "text" in it:
+                cam.text(d, 66, y + 6, it["text"], 32, (255, 255, 255))
+                continue
             sx, sy, tw = cam.text(d, 66, y + 6, it["old"], 40, (255, 255, 255))
             since = t - self.reveal(k) - 0.3
             if since > 0.5 and it["old"] != it["new"]:
@@ -708,7 +723,7 @@ class ChartScene(Scene):
         grow = ease((t - 0.5) / 2.0)
         for i, b in enumerate(bars):
             y = 34 + i * 24
-            w = int(170 * b["value"] / 100 * grow)
+            w = int(170 * b["value"] / self.spec.get("max", 100) * grow)
             rect(d, 112, y, w, 16, tuple(b["color"]))
             rect(d, 112, y + 14, w, 2, lerp(tuple(b["color"]), (0, 0, 0), 0.4))
 
@@ -720,8 +735,9 @@ class ChartScene(Scene):
         for i, b in enumerate(self.spec["bars"]):
             y = 34 + i * 24
             cam.text(d, 8, y + 2, b["label"], 32, (255, 255, 255))
-            w = 170 * b["value"] / 100 * grow
-            cam.text(d, 116 + w, y + 2, f"{round(b['value'] * grow)}%", 32, (255, 255, 255))
+            w = 170 * b["value"] / self.spec.get("max", 100) * grow
+            v = round(b["value"] * grow)
+            cam.text(d, 116 + w, y + 2, f"{v:,}{self.spec.get('unit', '%')}", 32, (255, 255, 255))
 
 
 class InterviewScene(Scene):
@@ -809,7 +825,8 @@ class QuoteScene(Scene):
 
     def overlay(self, d, t, cam):
         f = font(32)
-        rows = wrap(d, "\u201c" + self.spec["quote"] + "\u201d", f, FW - 120)
+        q = self.spec["quote"] if self.spec.get("plain") else "\u201c" + self.spec["quote"] + "\u201d"
+        rows = wrap(d, q, f, FW - 120)
         k = ease(t / 0.4)
         for i, row in enumerate(rows[:4]):
             d.text((60 - (1 - k) * 80, 24 + i * 40), row, font=f, fill=(255, 230, 120))
@@ -819,7 +836,79 @@ class QuoteScene(Scene):
         d.text((480, 356), role, font=f, fill=(200, 200, 220))
 
 
-SCENES = {"quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
+PUTIN = {"skin": 3, "hair": 2, "top": (35, 35, 45), "suit": True, "tie": (60, 60, 90)}
+
+
+class CallScene(Scene):
+    """정상 통화: 왼쪽 트럼프, 오른쪽 푸틴 분할 화면."""
+    zoomable = False
+
+    def draw(self, d, t):
+        draw_us_flag(d, 0, 0, 0, 160, 120)
+        draw_flag(d, "ru", 160, 0, 160, 120)
+        rect(d, 156, 0, 8, H, (10, 10, 15))
+        rect(d, 10, 20, 140, 100, (60, 40, 30))
+        rect(d, 170, 20, 140, 100, (90, 90, 100))
+        draw_trump(d, 80, 112, t, talking=int(t / 1.6) % 2 == 0)
+        draw_person(d, 240, 112, t, int(t / 1.6) % 2 == 1 and int(t * 9) % 2 == 0, PUTIN, gesture=False)
+        rect(d, 225, 70, 5, 14, (30, 30, 30))   # 수화기
+        rect(d, 10, 108, 140, 12, (90, 60, 40))
+        rect(d, 170, 108, 140, 12, (60, 60, 70))
+        # 전화선 파동
+        for i in range(6):
+            yy = 60 + int(math.sin(t * 8 + i) * 4)
+            rect(d, 152 + (i % 2) * 8, yy + i * 3, 3, 2, (255, 220, 60))
+
+    def overlay(self, d, t, cam):
+        f = font(32)
+        for x, name in ((40, "TRUMP"), (680, "PUTIN")):
+            rect(d, x, 500 - 60, int(d.textlength(name, font=f)) + 24, 40, (0, 0, 0))
+            d.text((x + 12, 444), name, font=f, fill=(255, 255, 255))
+        tag = self.spec.get("tag", "PHONE CALL")
+        tw = d.textlength(tag, font=f)
+        rect(d, int((FW - tw) / 2) - 16, 24, int(tw) + 32, 44, (200, 30, 40))
+        d.text(((FW - tw) / 2, 28), tag, font=f, fill=(255, 255, 255))
+
+
+class PumpScene(Scene):
+    """주유소 가격판: 숫자가 올라가며 기록 경신."""
+    zoomable = False
+
+    def draw(self, d, t):
+        vgrad(d, 0, 120, (250, 160, 90), (120, 70, 120))
+        rect(d, 0, 120, W, 60, (70, 70, 75))
+        rect(d, 20, 40, 200, 10, (220, 40, 40))
+        for px in (40, 190):
+            rect(d, px, 50, 8, 70, (200, 200, 205))
+        for i, px in enumerate((70, 140)):
+            rect(d, px, 80, 28, 42, (220, 220, 225))
+            rect(d, px + 4, 86, 20, 10, (20, 20, 30))
+            rect(d, px + 28, 90, 6, 3, (30, 30, 30))
+        rect(d, 238, 20, 70, 100, (30, 30, 40))
+        rect(d, 270, 120, 6, 20, (60, 60, 60))
+        cx = int((t * 40) % (W + 140)) - 140   # 트럭
+        rect(d, cx, 128, 80, 30, (230, 230, 235))
+        rect(d, cx + 80, 136, 26, 22, (40, 90, 170))
+        rect(d, cx + 88, 140, 12, 8, (170, 210, 240))
+        for wx in (cx + 10, cx + 60, cx + 92):
+            rect(d, wx, 156, 10, 8, (20, 20, 20))
+
+    def overlay(self, d, t, cam):
+        rows = self.spec.get("prices", [])
+        for i, r in enumerate(rows):
+            k = ease((t - 0.3 - i * 0.4) / 0.8)
+            val = r["value"] * k
+            y = 96 + i * 130
+            d.text((962, y), r["label"], font=font(32), fill=(255, 220, 120))
+            d.text((962, y + 40), f"${val:0.2f}", font=font(64), fill=(255, 80, 60) if r.get("hot") else (255, 255, 255))
+        title = self.spec.get("title", "")
+        f = font(32)
+        tw = d.textlength(title, font=f)
+        rect(d, 80, 230, int(tw) + 32, 48, (20, 25, 50))
+        d.text((96, 236), title, font=f, fill=(255, 255, 255))
+
+
+SCENES = {"call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
           "signboard": SignboardScene, "meeting": MeetingScene, "reaction": ReactionScene,
           "chart": ChartScene, "interview": InterviewScene}
 

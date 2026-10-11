@@ -1,0 +1,540 @@
+{
+  "title": "Trump eases Russia sanctions for diesel",
+  "lang": "en",
+  "output": "out/russia_diesel.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.25
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.3
+    }
+  },
+  "ticker": [
+    "BREAKING: U.S. suspends sanctions on Russian diesel after Trump-Putin call",
+    "Treasury's General License 135 runs until April 7, 2027",
+    "Trump: Russia to release over 300,000 tons of diesel immediately",
+    "Zelensky calls the deal \"not fair and not honest\"",
+    "Bipartisan backlash in Congress",
+    "EU and UK bans on Russian fuel remain in force",
+    "KOWEN NEWS"
+  ],
+  "scenes": [
+    {
+      "type": "title",
+      "duration": 3.0
+    },
+    {
+      "type": "anchor",
+      "headline": "RUSSIA SANCTIONS EASED",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Good evening, and welcome to KOWEN News."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Tonight, a major reversal in Washington. President Trump has *suspended U.S. sanctions* on Russian diesel."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "The move follows a phone call with Vladimir Putin, and comes just weeks after the president signed one of the *toughest Russia sanctions laws* in years."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Coming up: what exactly was agreed, why the White House says it's about *fuel prices*, and why Ukraine is calling it a betrayal."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Plus, the backlash from *both parties* in Congress."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We begin with that phone call."
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "tag": "TRUMP-PUTIN CALL · OCT 9",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On Thursday, President Trump spoke by phone with Russian President *Vladimir Putin*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Shortly after, the president announced a deal. Russia, he said, would release large amounts of diesel fuel onto *world markets*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "To make that possible, the United States would set aside its own sanctions on Russian diesel."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Within hours, the Treasury Department's sanctions office issued what's called *General License 135*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It authorizes the sale, delivery and import of Russian origin diesel, until *April seventh, 2027*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "President Trump said he was happy with the deal. Putin's own statement gave *no specifics* on timing or volume."
+        }
+      ]
+    },
+    {
+      "type": "chart",
+      "title": "RUSSIAN DIESEL: TRUMP'S ANNOUNCED SCHEDULE (TONS)",
+      "max": 3000000,
+      "unit": "",
+      "bars": [
+        {
+          "label": "Now",
+          "value": 300000,
+          "color": [
+            230,
+            70,
+            70
+          ]
+        },
+        {
+          "label": "November",
+          "value": 500000,
+          "color": [
+            255,
+            200,
+            60
+          ]
+        },
+        {
+          "label": "Then",
+          "value": 1000000,
+          "color": [
+            80,
+            160,
+            230
+          ]
+        },
+        {
+          "label": "Later",
+          "value": 3000000,
+          "color": [
+            150,
+            150,
+            160
+          ]
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Here is the schedule the president laid out on social media."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "More than *three hundred thousand tons* right away, another five hundred thousand tons in November, and one million tons after that."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Roughly three million more tons would follow later, for a total of up to *4.8 million tons*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The later shipments depend on how much Russia's refineries can actually produce."
+        }
+      ]
+    },
+    {
+      "type": "pump",
+      "title": "U.S. DIESEL, PER GALLON",
+      "prices": [
+        {
+          "label": "RECORD (SEP 15)",
+          "value": 6.285,
+          "hot": true
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "So why make this deal now? The answer, the White House says, is *the price at the pump*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "U.S. diesel hit a national average record of about *six dollars and twenty nine cents* a gallon in mid September, according to government data."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "That figure comes from the U.S. *Energy Information Administration*. Private trackers put the peak even higher, around six dollars and forty cents."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "As of this week, prices were still only around *twenty cents* below that record."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The spike is tied to the *war with Iran*. Iran's closure of the Strait of Hormuz earlier this year caused what analysts call the largest oil supply shock ever recorded."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Shipping through the strait has improved in recent weeks, but fuel prices have stayed stubbornly high."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And with the *midterm elections* less than a month away, high diesel prices are hurting truckers, farmers and voters alike."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The president has argued that more supply will push prices down *quickly*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "A SHARP REVERSAL",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "But this deal comes as a surprise, because only weeks ago, the president was moving in the *opposite direction*."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "FROM TOUGH SANCTIONS TO A WAIVER",
+      "items": [
+        {
+          "year": "AUG 7",
+          "text": "Senate passes Graham sanctions bill, 86 votes"
+        },
+        {
+          "year": "SEP 18",
+          "text": "Trump signs it into law"
+        },
+        {
+          "year": "OCT 9",
+          "text": "Russian diesel sanctions suspended"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The bill was the signature cause of Senator *Lindsey Graham*, who died in July."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Graham first pushed the idea in 2025, originally proposing tariffs as high as *five hundred percent* on buyers of Russian energy."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It passed the Senate in August with eighty six votes, and the House in September, *two sixty two to one fifty nine*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "On September eighteenth, President Trump signed it into law as the *Lindsey O. Graham Sanctioning Russia and Iran Act*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The law targets Russian officials, banks, oligarchs and the so called *shadow fleet* of oil tankers."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It also lets the president impose tariffs of up to *one hundred percent* on countries that buy Russian oil and gas."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The same law extends U.S. sanctions on *Iran* for another five years."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Three weeks later, the administration is now opening the door to Russian diesel *instead*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Legal experts note that the license does not repeal the *import ban* Congress passed in 2022, and some say the deal contradicts sanctions law."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "UKRAINE REACTS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "The sharpest reaction came from Kyiv."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Volodymyr Zelensky",
+      "role": "President of Ukraine",
+      "person": {
+        "skin": 0,
+        "hair": 0,
+        "top": [
+          60,
+          70,
+          50
+        ]
+      },
+      "quote": "Not fair and not honest.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Ukrainian President Volodymyr Zelensky told Axios the deal was *not fair and not honest*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He called it a *gift to Putin*, and warned it would give the Kremlin more money to fund its war against Ukraine."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In a statement, he said any easing of sanctions without a clear and lasting de-escalation agreement is an *obvious weakness*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The two leaders had already clashed over diesel. Last month, the president urged Ukraine to stop striking *Russian refineries*, saying the attacks were hurting the whole world."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "On September thirteenth, the president said publicly, there are plenty of other targets. *Don't strike diesel*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "According to Axios, he repeated that request in a *phone call* with Zelensky a week later."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Asked about Zelensky's criticism this week, President Trump declined to respond directly. The Hill reported that he said Ukraine should *get a new leader*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "eu",
+      "plain": true,
+      "name": "Europe",
+      "role": "Germany · EU · UK",
+      "person": {
+        "skin": 0,
+        "hair": 3,
+        "top": [
+          30,
+          50,
+          150
+        ],
+        "suit": true
+      },
+      "quote": "EU and UK import bans on Russian fuel, and the $100 per barrel price cap on Russian products, remain in force.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "In Europe, the German government *condemned* the agreement, and reaffirmed its commitment to EU sanctions on Russia."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Importantly, the American license does not change *European rules*. EU and British import bans on Russian fuel remain fully in force."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "BACKLASH IN CONGRESS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Back in Washington, the criticism is coming from *both sides* of the aisle."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "us",
+      "name": "Shaheen · Schumer · Warren",
+      "role": "Democratic Senators",
+      "person": {
+        "skin": 3,
+        "hair": 2,
+        "top": [
+          40,
+          50,
+          90
+        ],
+        "long": true
+      },
+      "quote": "A total betrayal of Ukraine, our European allies and American national security.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "In a joint statement, Democratic Senators Jeanne Shaheen, Chuck Schumer and Elizabeth Warren called the move a *total betrayal* of Ukraine, America's European allies and U.S. national security."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Senator Richard Blumenthal, who co-wrote the sanctions law with Graham, urged the president to *rescind this agreement immediately*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Senator Mark Kelly put it more simply. *Whose side is Trump on?*"
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "us",
+      "name": "Lisa Murkowski",
+      "role": "Republican Senator, Alaska",
+      "person": {
+        "skin": 3,
+        "hair": 1,
+        "top": [
+          120,
+          40,
+          60
+        ],
+        "long": true
+      },
+      "quote": "...instead of allowing Russia to export diesel, rake in revenues, and continue its catastrophic war in Ukraine.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Republicans pushed back too. Senator Lisa Murkowski said the president should use the sanctions powers Congress just passed."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Instead, she said, the deal allows Russia to export diesel, *rake in revenues*, and continue its catastrophic war in Ukraine."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "us",
+      "name": "Don Bacon",
+      "role": "Republican Congressman, Nebraska",
+      "person": {
+        "skin": 0,
+        "hair": 3,
+        "top": [
+          40,
+          40,
+          50
+        ],
+        "suit": true
+      },
+      "quote": "Propping up Russia's war economy is terrible.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Republican Congressman Don Bacon said the president has always had a *moral blindness* when it comes to Putin."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Propping up Russia's war economy, he said, *is terrible*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "us",
+      "name": "Mike Pence",
+      "role": "Former Vice President",
+      "person": {
+        "skin": 0,
+        "hair": 3,
+        "top": [
+          30,
+          35,
+          50
+        ],
+        "suit": true
+      },
+      "quote": "Makes no sense and is a betrayal of the legacy and leadership of the late Senator Lindsey Graham.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Even the president's former vice president weighed in. Mike Pence said lifting sanctions on Russian fuel while Putin attacks civilian targets in Ukraine *makes no sense*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He called it a *betrayal* of the legacy of the late Senator Lindsey Graham."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "WILL IT WORK?",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "So the big question now: will Russian diesel actually bring prices down, and what does it cost Washington's *credibility* on sanctions?"
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Our reporter has more."
+        }
+      ]
+    },
+    {
+      "type": "meeting",
+      "sign": "WHITE HOUSE",
+      "screen": false,
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "So will the deal actually bring prices down? Many analysts are *skeptical*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The world uses around *thirty million barrels* of diesel every day. One analyst told Al Jazeera the Russian shipments are only a short term fix."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "For now, the license runs for *six months*, through early April."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The White House is betting cheaper fuel will matter more to voters than the backlash. Whether that bet pays off may be clear by *Election Day*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Reporting from Washington, for KOWEN News."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "RUSSIA SANCTIONS EASED",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "To recap tonight's top story."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "After a call with Vladimir Putin, President Trump has suspended U.S. sanctions on *Russian diesel* until April 2027."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "The White House says the goal is to bring down near record *fuel prices* before the midterms."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Ukraine calls the deal a *gift to Putin*, Germany has condemned it, and lawmakers from both parties are demanding it be reversed."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "All this, just three weeks after the president signed a sweeping new *Russia sanctions law*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We'll be following what happens next. That's all for tonight. This has been KOWEN News. Thanks for watching, and good night."
+        }
+      ]
+    }
+  ]
+}
