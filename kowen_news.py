@@ -309,6 +309,13 @@ def draw_flag(d, kind, x, y, w, h):
         d.polygon([(x + w // 2, y + 2), (x + w - 3, y + h // 2), (x + w // 2, y + h - 3), (x + 2, y + h // 2)],
                   fill=(250, 210, 40))
         d.ellipse([x + w // 2 - h // 4, y + h // 4, x + w // 2 + h // 4, y + 3 * h // 4], fill=(30, 50, 140))
+    elif kind == "us":
+        draw_us_flag(d, x + 2, y, 0, w - 2, h)
+    elif kind == "mx":
+        rect(d, x, y, w // 3, h, (20, 110, 60))
+        rect(d, x + w // 3, y, w // 3, h, (240, 240, 240))
+        rect(d, x + 2 * w // 3, y, w - 2 * w // 3, h, (200, 30, 40))
+        d.ellipse([x + w // 2 - 6, y + h // 2 - 6, x + w // 2 + 6, y + h // 2 + 6], fill=(140, 90, 40))
     elif kind == "ca":
         rect(d, x, y, w, h, (240, 240, 240))
         rect(d, x, y, w // 4, h, (210, 30, 40))
@@ -395,13 +402,9 @@ class TitleScene(Scene):
         d.text((x + 6, y + 6), txt, font=f, fill=(0, 0, 0))
         d.text((x, y), txt, font=f, fill=(255, 210, 60))
         if t > 0.7:
-            sub = "Today's news, in pixels"
+            sub = "EVENING NEWS"
             d.text(((FW - d.textlength(sub, font=font(32))) / 2, y + 120), sub,
                    font=font(32), fill=(230, 230, 255))
-        if t > 1.2:
-            note = "* Satirical reenactment based on a hypothetical scenario"
-            d.text(((FW - d.textlength(note, font=font(16))) / 2, 690), note,
-                   font=font(16), fill=(160, 160, 190))
 
 
 class AnchorScene(Scene):
@@ -479,8 +482,11 @@ class RallyScene(Scene):
         rect(d, int((FW - tw) / 2) - 24, 28, int(tw) + 48, 64, (200, 30, 40))
         d.text(((FW - tw) / 2, 36), banner, font=f, fill=(255, 255, 255))
         cam.text(d, 160, 112, self.spec.get("podium", ""), 32, (255, 255, 255), center=True, shadow=False)
-        rect(d, 1080, 40, 176, 40, (0, 0, 0))
-        d.text((1096, 44), "REENACTED", font=font(32), fill=(255, 230, 120))
+        tag = self.spec.get("tag", "LIVE")
+        f2 = font(32)
+        tw = int(d.textlength(tag, font=f2))
+        rect(d, 1240 - tw - 32, 108, tw + 32, 40, (0, 0, 0))
+        d.text((1240 - tw - 16, 112), tag, font=f2, fill=(255, 230, 120))
 
 
 class MapScene(Scene):
@@ -565,7 +571,7 @@ class SignboardScene(Scene):
             cam.text(d, 41, y + 8, it["year"], 24, (20, 25, 50), center=True, shadow=False)
             sx, sy, tw = cam.text(d, 66, y + 6, it["old"], 40, (255, 255, 255))
             since = t - self.reveal(k) - 0.3
-            if since > 0.5:
+            if since > 0.5 and it["old"] != it["new"]:
                 rect(d, int(sx) - 4, int(sy + 5 * cam.s), int((tw + 8) * ease((since - 0.5) / 0.2)),
                      cam.s * 2, (230, 40, 40))
             if since > 0.8:
@@ -583,10 +589,18 @@ class MeetingScene(Scene):
         vgrad(d, 0, 120, (210, 220, 235), (170, 185, 210))
         rect(d, 0, 0, W, 8, (40, 60, 110))
         # 뒤 스크린: 동해 지도
-        rect(d, 104, 16, 112, 64, (20, 20, 30))
-        rect(d, 107, 19, 106, 58, (40, 110, 200))
-        d.polygon([(140, 19), (150, 30), (148, 50), (152, 70), (140, 77), (130, 60), (134, 30)], fill=(70, 160, 80))
-        d.polygon([(213, 30), (190, 40), (178, 60), (170, 77), (213, 77)], fill=(70, 160, 80))
+        if self.spec.get("screen", True):
+            rect(d, 104, 16, 112, 64, (20, 20, 30))
+            rect(d, 107, 19, 106, 58, (40, 110, 200))
+            d.polygon([(140, 19), (150, 30), (148, 50), (152, 70), (140, 77), (130, 60), (134, 30)],
+                      fill=(70, 160, 80))
+            d.polygon([(213, 30), (190, 40), (178, 60), (170, 77), (213, 77)], fill=(70, 160, 80))
+        else:  # 파란 커튼 + 원형 문장
+            for cx in range(96, 226, 8):
+                rect(d, cx, 8, 6, 90, (30, 50, 120))
+                rect(d, cx + 6, 8, 2, 90, (20, 35, 90))
+            d.ellipse([140, 26, 180, 66], fill=(230, 200, 110))
+            d.ellipse([146, 32, 174, 60], fill=(40, 60, 130))
         # 깃발 줄
         rnd = random.Random(5)
         for fx in list(range(8, 96, 14)) + list(range(226, 316, 14)):
@@ -608,8 +622,10 @@ class MeetingScene(Scene):
             rect(d, x - 1, 102, 2, 12, (40, 40, 40))
 
     def overlay(self, d, t, cam):
-        cam.text(d, 160, 82, self.spec.get("sign", ""), 32, (40, 60, 110), center=True, shadow=False)
-        if t > self.duration * 0.4:
+        cam.text(d, 160, 82, self.spec.get("sign", ""), 32,
+                 (40, 60, 110) if self.spec.get("screen", True) else (255, 255, 255), center=True,
+                 shadow=not self.spec.get("screen", True))
+        if self.spec.get("screen", True) and t > self.duration * 0.4:
             cam.text(d, 160, 40, "EAST SEA", 40, (255, 255, 255), center=True)
             cam.text(d, 160, 56, "SEA OF JAPAN?", 24, (255, 255, 255), center=True)
 
@@ -750,7 +766,30 @@ class InterviewScene(Scene):
         cam.text(d, 191, 103, "K", 16, (255, 255, 255), center=True, shadow=False)
 
 
-SCENES = {"title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
+class QuoteScene(Scene):
+    """실제 발언 인용 카드: 국기 배경 + 인물 + 이름표 + 인용문 (기자가 읽음)."""
+    zoomable = False
+
+    def draw(self, d, t):
+        draw_flag(d, self.spec.get("flag", "ca"), 0, 0, W, H)
+        rect(d, 0, 0, W, H // 3, (0, 0, 0))
+        rect(d, 20, 64, 90, 70, (20, 20, 30))
+        rect(d, 23, 67, 84, 64, (60, 70, 90))
+        draw_person(d, 65, 133, t, False, self.spec.get("person", {"suit": True}), gesture=False)
+
+    def overlay(self, d, t, cam):
+        f = font(32)
+        rows = wrap(d, "\u201c" + self.spec["quote"] + "\u201d", f, FW - 120)
+        k = ease(t / 0.4)
+        for i, row in enumerate(rows[:4]):
+            d.text((60 - (1 - k) * 80, 24 + i * 40), row, font=f, fill=(255, 230, 120))
+        name, role = self.spec.get("name", ""), self.spec.get("role", "")
+        rect(d, 460, 290, int(max(d.textlength(name, font=font(48)), d.textlength(role, font=f))) + 40, 116, (0, 0, 0))
+        d.text((480, 300), name, font=font(48), fill=(255, 255, 255))
+        d.text((480, 356), role, font=f, fill=(200, 200, 220))
+
+
+SCENES = {"quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
           "signboard": SignboardScene, "meeting": MeetingScene, "reaction": ReactionScene,
           "chart": ChartScene, "interview": InterviewScene}
 

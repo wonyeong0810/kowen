@@ -1,52 +1,24 @@
 {
-  "title": "Atlantic -> Trump Ocean?",
+  "title": "Trump floats 'Trump Ocean'",
   "lang": "en",
   "output": "out/trump_ocean.mp4",
   "voices": {
     "Anchor": {
       "sid": 6,
-      "speed": 1.15
+      "speed": 1.1
     },
     "Reporter": {
       "sid": 0,
-      "speed": 1.2
-    },
-    "Passerby (M)": {
-      "sid": 8,
       "speed": 1.15
-    },
-    "Passerby (F)": {
-      "sid": 3,
-      "speed": 1.2
-    },
-    "Expert": {
-      "sid": 9,
-      "speed": 1.1
-    },
-    "British local": {
-      "sid": 5,
-      "speed": 1.15
-    },
-    "French fisherman": {
-      "sid": 7,
-      "speed": 1.15
-    },
-    "Brazilian netizen": {
-      "sid": 1,
-      "speed": 1.2
-    },
-    "Canadian": {
-      "sid": 4,
-      "speed": 1.2
     }
   },
   "ticker": [
-    "BREAKING: Trump says the Atlantic should be renamed \"Trump Ocean\"",
-    "Atlantic covers about 106 million km², roughly one fifth of Earth's surface",
-    "After Gulf of America and Mount McKinley, is an ocean next?",
-    "Ocean names are coordinated internationally, not set by one country",
-    "* This video is a satirical reenactment of a hypothetical scenario",
-    "KOWEN NEWS · Today's news, in pixels"
+    "BREAKING: Trump floats renaming the Atlantic or Pacific \"Trump Ocean\" at Tennessee rally",
+    "Trump also jokes about a \"Trump Strait\" for the Strait of Hormuz",
+    "Lake Ontario renamed \"Lake America\" by executive order on Aug. 27",
+    "Canada's Carney: Canadians will keep the name Lake Ontario",
+    "No formal plan announced for renaming an ocean",
+    "KOWEN NEWS"
   ],
   "scenes": [
     {
@@ -55,107 +27,126 @@
     },
     {
       "type": "anchor",
-      "headline": "TOP STORY",
+      "headline": "\"TRUMP OCEAN\"?",
       "lines": [
         {
           "speaker": "Anchor",
-          "text": "Good evening, and welcome to KOWEN News, today's news in pixels."
+          "text": "Good evening, and welcome to KOWEN News."
         },
         {
           "speaker": "Anchor",
-          "text": "We start tonight with a story that is, quite literally, oceanic in scale."
+          "text": "First the Gulf of Mexico. Then Lake Ontario. Now, President Trump says he may have his eye on an entire ocean."
         },
         {
           "speaker": "Anchor",
-          "text": "President Trump says the Atlantic Ocean needs a new name. And the name he has in mind? Trump Ocean."
+          "text": "At a campaign rally in Tennessee on Saturday night, the president floated renaming the Atlantic or the Pacific. Among the names he suggested: Trump Ocean."
         },
         {
           "speaker": "Anchor",
-          "text": "Tonight we break it down in three parts."
+          "text": "Tonight, we look at what he said, how it fits into a growing list of name changes, and how America's neighbors have been responding."
         },
         {
           "speaker": "Anchor",
-          "text": "First, what exactly was said at the rally. Second, whether anyone can actually rename an ocean. And third, how the rest of the world is reacting."
-        },
-        {
-          "speaker": "Anchor",
-          "text": "Let's go straight to our reporter at the rally. What was the mood like out there?"
+          "text": "Our reporter has the story from Clarksville."
         }
       ]
     },
     {
       "type": "rally",
-      "banner": "MIDTERM RALLY 2026",
+      "banner": "MIDTERM RALLY · CLARKSVILLE, TN",
       "podium": "TRUMP",
+      "tag": "OCT 10",
       "lines": [
         {
           "speaker": "Reporter",
-          "text": "Thanks. I'm here at a midterm campaign rally, where thousands of supporters packed the arena tonight."
+          "text": "The president was in Clarksville, Tennessee on Saturday, headlining a midterm rally at the F and M Bank Arena."
         },
         {
           "speaker": "Reporter",
-          "text": "The energy was high from the very beginning, with chants and signs everywhere you looked."
+          "text": "Musician Kid Rock opened the event, and the crowd filled the arena well before the president took the stage."
         },
         {
           "speaker": "Reporter",
-          "text": "About halfway through his speech, the president suddenly turned to the subject of the sea."
+          "text": "He was there to campaign for Tennessee Republicans, including Senator Bill Hagerty and Marsha Blackburn, who is running for governor."
         },
         {
           "speaker": "Reporter",
-          "text": "He called the Atlantic, quote, a boring name, a very ordinary name. A great ocean, he said, deserves a great name."
+          "text": "For much of the speech, the president focused on familiar themes, touting new investment in Tennessee and urging supporters to turn out in November."
         },
         {
           "speaker": "Reporter",
-          "text": "Then he added, people come up to me all the time and they say, sir, Trump Ocean sounds so much better."
+          "text": "He also took aim at Iran, calling the country's leaders crazy."
         },
         {
           "speaker": "Reporter",
-          "text": "The crowd erupted, and for a few minutes the arena was chanting Trump Ocean, Trump Ocean."
+          "text": "But it was a riff about geography that grabbed the headlines."
         },
         {
           "speaker": "Reporter",
-          "text": "After the speech, however, the White House offered no details on any formal plan."
+          "text": "Pointing to his earlier decision to rename the Gulf of Mexico, the president told the crowd that what the country still needs is an ocean."
         },
         {
           "speaker": "Reporter",
-          "text": "So was it a joke, or a real proposal? That is already the big debate tonight."
+          "text": "He suggested the Atlantic or the Pacific could become the Trump Ocean, or, as another option, the Ocean of the Americas."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He also said he was not looking to rename the Mississippi River, telling the crowd that he loves Mississippi."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The crowd cheered and laughed. Several outlets described the remarks as a joke, and the president did not say which ocean he preferred."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He announced no formal plan, and there is no indication of any executive order on the subject."
         }
       ]
     },
     {
       "type": "map",
       "old": "ATLANTIC OCEAN",
-      "new": "TRUMP OCEAN",
+      "new": "TRUMP OCEAN?",
       "lines": [
         {
           "speaker": "Reporter",
-          "text": "So what exactly is the ocean the president wants to rename?"
+          "text": "Still, the idea is not entirely new."
         },
         {
           "speaker": "Reporter",
-          "text": "The Atlantic is the second largest ocean on the planet, after the Pacific."
+          "text": "The president first raised the possibility of renaming an ocean back in August, at the White House."
         },
         {
           "speaker": "Reporter",
-          "text": "It covers roughly one hundred and six million square kilometers. That is about one fifth of the Earth's surface."
+          "text": "According to reporters in the room, he said, we have a Gulf, and we have a lake. Now all we need is an ocean."
         },
         {
           "speaker": "Reporter",
-          "text": "To the west, it touches North and South America. To the east, Europe and Africa."
+          "text": "At the time, he mentioned both the Atlantic and the Pacific, without settling on a name."
         },
         {
           "speaker": "Reporter",
-          "text": "Dozens of countries have an Atlantic coastline. In other words, this is not one nation's ocean."
+          "text": "On Saturday, the president went further, putting his own name forward as one of the options."
         },
         {
           "speaker": "Reporter",
-          "text": "If the name ever did change, maps, textbooks and nautical charts around the world would all need to be redrawn."
+          "text": "Unlike a gulf or a lake, both oceans border dozens of countries, and none of them would be bound by an American renaming."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "THE RENAMING LIST",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "The ocean remark is only the latest entry on a growing list. Here's how we got here."
         }
       ]
     },
     {
       "type": "signboard",
-      "title": "THE RENAMING TIMELINE",
+      "title": "THE RENAMING LIST",
       "items": [
         {
           "old": "Gulf of Mexico",
@@ -163,385 +154,274 @@
           "year": "2025"
         },
         {
-          "old": "Denali",
-          "new": "Mt. McKinley",
-          "year": "2025"
+          "old": "Lake Ontario",
+          "new": "Lake America",
+          "year": "AUG"
         },
         {
-          "old": "Atlantic",
+          "old": "Atlantic/Pacific",
           "new": "Trump Ocean?",
-          "year": "2026"
+          "year": "OCT"
         }
       ],
       "lines": [
         {
           "speaker": "Reporter",
-          "text": "This would not be the administration's first attempt at renaming things."
+          "text": "In January of last year, shortly after taking office, President Trump signed an executive order renaming the Gulf of Mexico as the Gulf of America."
         },
         {
           "speaker": "Reporter",
-          "text": "Shortly after taking office in 2025, the president signed an executive order renaming the Gulf of Mexico as the Gulf of America."
+          "text": "Mexico's government rejected the change, and the new name applies only to how the U.S. federal government refers to the gulf."
         },
         {
           "speaker": "Reporter",
-          "text": "North America's tallest peak, Denali, was also given back its old name, Mount McKinley."
+          "text": "Then, on August twenty seventh of this year, in the middle of a trade fight with Canada, the president signed another order, this time renaming Lake Ontario as Lake America."
         },
         {
           "speaker": "Reporter",
-          "text": "Those moves drew sharp criticism at the time, including from the government of Mexico."
+          "text": "The order directs federal agencies to use the new name on their maps, documents and databases, effective immediately."
         },
         {
           "speaker": "Reporter",
-          "text": "But there is a key difference. Those changes applied to names used by the United States government."
+          "text": "Lake Ontario sits on the border between the United States and Canada, and Canada is not bound by the order."
         },
         {
           "speaker": "Reporter",
-          "text": "An entire ocean, shared by many nations, is a completely different matter."
-        }
-      ]
-    },
-    {
-      "type": "meeting",
-      "sign": "IHO · MONACO",
-      "lines": [
-        {
-          "speaker": "Reporter",
-          "text": "So who decides what a sea is called? Enter the International Hydrographic Organization, or I H O."
-        },
-        {
-          "speaker": "Reporter",
-          "text": "Based in Monaco, the organization publishes the reference guide to the limits and names of the world's oceans and seas."
-        },
-        {
-          "speaker": "Reporter",
-          "text": "Changing names there requires discussion and agreement among member states. One country cannot simply decide on its own."
-        },
-        {
-          "speaker": "Reporter",
-          "text": "Naming disputes can last for decades. Take the waters between Korea and Japan."
-        },
-        {
-          "speaker": "Reporter",
-          "text": "Korea calls it the East Sea, Japan calls it the Sea of Japan, and the two sides have argued over the name on the world stage for years."
-        },
-        {
-          "speaker": "Reporter",
-          "text": "If a single sea can spark a decades long diplomatic fight, most experts say renaming the Atlantic is close to impossible."
+          "text": "And at Saturday's rally, the president added one more idea, saying he might rename the Strait of Hormuz the Trump Strait."
         }
       ]
     },
     {
       "type": "anchor",
-      "headline": "WHERE NAMES COME FROM",
+      "headline": "CANADA RESPONDS",
       "lines": [
         {
           "speaker": "Anchor",
-          "text": "Before we hear from the rest of the world, a quick history lesson. Where did the name Atlantic come from in the first place?"
+          "text": "The Lake America order in particular has drawn a sharp response north of the border."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ca",
+      "name": "Mark Carney",
+      "role": "Prime Minister of Canada",
+      "person": {
+        "skin": 0,
+        "hair": 3,
+        "top": [
+          30,
+          35,
+          50
+        ],
+        "suit": true
+      },
+      "quote": "The name is more than 400 years old, predating both the Confederation of Canada and the Declaration of Independence.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Canadian Prime Minister Mark Carney said Canadians will keep using the original name."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He pointed out that the name Lake Ontario comes from the Wendat language, and is more than four hundred years old, older than both Canadian Confederation and the U.S. Declaration of Independence."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ca",
+      "name": "Tim Houston",
+      "role": "Premier of Nova Scotia",
+      "person": {
+        "skin": 3,
+        "hair": 1,
+        "top": [
+          40,
+          45,
+          70
+        ],
+        "suit": true
+      },
+      "quote": "Real foolishness now. It's Lake Ontario, buddy.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Nova Scotia Premier Tim Houston was more blunt. Real foolishness now, he wrote. It's Lake Ontario, buddy."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ca",
+      "name": "Doug Ford",
+      "role": "Premier of Ontario",
+      "person": {
+        "skin": 3,
+        "hair": 2,
+        "top": [
+          30,
+          40,
+          80
+        ],
+        "suit": true,
+        "tie": [
+          40,
+          80,
+          160
+        ]
+      },
+      "quote": "Lake Ontario. Now and always.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Ontario Premier Doug Ford dismissed the move as a lot of rhetoric."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He also put up a sign near Grimsby, on the lake's shore, reading Lake Ontario, Now and Always."
         }
       ]
     },
     {
       "type": "signboard",
-      "title": "HOW OCEANS GOT THEIR NAMES",
+      "title": "WHAT THE MAP APPS SHOW",
       "items": [
         {
-          "old": "Sea of Atlas",
-          "new": "Atlantic",
-          "year": "450BC"
+          "old": "Lake Ontario",
+          "new": "Lake America",
+          "year": "US"
         },
         {
-          "old": "Mar Pacifico",
-          "new": "Pacific",
-          "year": "1520"
+          "old": "Lake Ontario",
+          "new": "Lake Ontario",
+          "year": "CA"
         },
         {
-          "old": "Atlantic",
-          "new": "Trump Ocean?",
-          "year": "2026"
+          "old": "Lake Ontario",
+          "new": "Both names",
+          "year": "ETC"
         }
       ],
       "lines": [
         {
           "speaker": "Reporter",
-          "text": "The name Atlantic goes back to ancient Greece. It comes from Atlas, the giant of Greek mythology who was said to hold up the sky."
+          "text": "The change has already shown up on the apps millions of people use every day."
         },
         {
           "speaker": "Reporter",
-          "text": "The Greek historian Herodotus wrote about the Sea of Atlas around two and a half thousand years ago."
+          "text": "After the U.S. government updated its official place names database, Google Maps began showing Lake America to users in the United States."
         },
         {
           "speaker": "Reporter",
-          "text": "The Pacific, meanwhile, got its name from the explorer Ferdinand Magellan, who called it the peaceful sea after crossing calm waters in 1520."
+          "text": "Users in Canada still see Lake Ontario, and users elsewhere see both names. It is the same approach Google took with the Gulf of America."
         },
         {
           "speaker": "Reporter",
-          "text": "In other words, these names have been on maps for centuries, long before any modern country existed."
+          "text": "Reuters reported that Apple also changed the name on the web version of Apple Maps in early September."
         },
         {
           "speaker": "Reporter",
-          "text": "Renaming one would mean rewriting not just maps, but a few thousand years of history."
+          "text": "Not every map company has followed. MapQuest has said it intends to keep the original name."
         }
       ]
     },
     {
-      "type": "anchor",
-      "headline": "WORLD REACTS",
-      "lines": [
-        {
-          "speaker": "Anchor",
-          "text": "Thanks. Quite a lot of history behind a single name, it turns out."
-        },
-        {
-          "speaker": "Anchor",
-          "text": "So how are people on the other side of the Atlantic taking the news? Let's find out."
-        }
-      ]
-    },
-    {
-      "type": "reaction",
-      "label": "HYPOTHETICAL",
-      "panels": [
-        {
-          "speaker": "British local",
-          "flag": "uk",
-          "skin": 0,
-          "hair": 1,
-          "top": [
-            40,
-            60,
-            140
-          ]
-        },
-        {
-          "speaker": "French fisherman",
-          "flag": "fr",
-          "skin": 0,
-          "hair": 3,
-          "top": [
-            230,
-            230,
-            235
-          ],
-          "hat": [
-            30,
-            40,
-            90
-          ]
-        },
-        {
-          "speaker": "Brazilian netizen",
-          "flag": "br",
-          "skin": 1,
-          "hair": 0,
-          "top": [
-            250,
-            200,
-            40
-          ],
-          "long": true
-        },
-        {
-          "speaker": "Canadian",
-          "flag": "ca",
-          "skin": 3,
-          "hair": 2,
-          "top": [
-            200,
-            30,
-            40
-          ],
-          "long": true
-        }
-      ],
-      "lines": [
-        {
-          "speaker": "Reporter",
-          "text": "We imagined how people along the Atlantic coast might react. These are hypothetical voices."
-        },
-        {
-          "speaker": "British local",
-          "text": "We've been sailing across that ocean for centuries. Rename it now? I'd sooner rename tea."
-        },
-        {
-          "speaker": "French fisherman",
-          "text": "The fish do not care what the ocean is called. Neither do I. Tomorrow I go fishing, same as always."
-        },
-        {
-          "speaker": "Brazilian netizen",
-          "text": "So can we rename the Amazon the Brazil River? Oh wait, it's already ours."
-        },
-        {
-          "speaker": "Canadian",
-          "text": "Sorry, well, actually not that sorry, but I'm going to keep calling it the Atlantic."
-        },
-        {
-          "speaker": "Reporter",
-          "text": "Online, the parodies are pouring in, as renaming everything in sight becomes the internet's newest game."
-        }
-      ]
-    },
-    {
-      "type": "chart",
-      "title": "JUST FOR FUN: WHAT DO YOU THINK OF TRUMP OCEAN?",
-      "bars": [
-        {
-          "label": "Absurd",
-          "value": 62,
-          "color": [
-            230,
-            70,
-            70
-          ]
-        },
-        {
-          "label": "Funny joke",
-          "value": 24,
-          "color": [
-            255,
-            200,
-            60
-          ]
-        },
-        {
-          "label": "Kinda like it",
-          "value": 9,
-          "color": [
-            80,
-            160,
-            230
-          ]
-        },
-        {
-          "label": "Not sure",
-          "value": 5,
-          "color": [
-            150,
-            150,
-            160
-          ]
-        }
-      ],
-      "lines": [
-        {
-          "speaker": "Reporter",
-          "text": "We also made up a poll, just for fun. To be clear, these are not real survey results."
-        },
-        {
-          "speaker": "Reporter",
-          "text": "Absurd came out on top, followed by people who simply see it as a funny joke."
-        },
-        {
-          "speaker": "Reporter",
-          "text": "Only a small minority said they actually like the name."
-        }
-      ]
-    },
-    {
-      "type": "interview",
-      "bg": "street",
-      "label": "STREET INTERVIEW (HYPOTHETICAL)",
+      "type": "quote",
+      "flag": "us",
+      "name": "JB Pritzker",
+      "role": "Governor of Illinois",
       "person": {
         "skin": 0,
         "hair": 0,
         "top": [
-          70,
-          120,
-          80
+          30,
+          30,
+          40
+        ],
+        "suit": true,
+        "tie": [
+          40,
+          80,
+          160
         ]
       },
-      "person2": {
-        "skin": 2,
-        "hair": 4,
-        "top": [
-          220,
-          120,
-          160
-        ],
-        "long": true
-      },
+      "quote": "Lake Michigan is now Lake Illinois.",
       "lines": [
         {
           "speaker": "Reporter",
-          "text": "We also hit the streets to hear what people think."
-        },
-        {
-          "speaker": "Passerby (M)",
-          "text": "Honestly, I thought it was fake news at first. Renaming an ocean? Come on."
-        },
-        {
-          "speaker": "Passerby (F)",
-          "text": "So what's the Pacific going to be called? Trump Ocean two?"
-        },
-        {
-          "speaker": "Passerby (M)",
-          "text": "I mean, I just got used to saying Gulf of America. Now I have to learn a whole new ocean?"
-        }
-      ]
-    },
-    {
-      "type": "interview",
-      "bg": "studio",
-      "label": "INTERNATIONAL LAW EXPERT (HYPOTHETICAL)",
-      "person": {
-        "skin": 0,
-        "hair": 3,
-        "top": [
-          50,
-          50,
-          60
-        ],
-        "glasses": true
-      },
-      "lines": [
-        {
-          "speaker": "Reporter",
-          "text": "So how do experts see it?"
-        },
-        {
-          "speaker": "Expert",
-          "text": "Internationally recognized ocean names don't change because one country wants them to. Legally, this would have essentially no effect."
-        },
-        {
-          "speaker": "Expert",
-          "text": "What the U.S. government can do is use a new name in its own documents, just like it did with the Gulf of America."
-        },
-        {
-          "speaker": "Expert",
-          "text": "In the end, I'd read this less as a real renaming plan and more as a political message aimed at energizing supporters before the midterms."
+          "text": "Criticism has come from inside the United States as well."
         },
         {
           "speaker": "Reporter",
-          "text": "That's all from the field. Reporting for KOWEN News."
+          "text": "Illinois Governor JB Pritzker mocked the order by sarcastically declaring that Lake Michigan would now be called Lake Illinois, and joking that he would annex Green Bay."
         }
       ]
     },
     {
       "type": "anchor",
-      "headline": "ATLANTIC -> TRUMP OCEAN?",
+      "headline": "WHAT'S NEXT",
       "lines": [
         {
           "speaker": "Anchor",
-          "text": "Let's recap tonight's top story."
+          "text": "So could the Atlantic or the Pacific actually be next?"
+        }
+      ]
+    },
+    {
+      "type": "meeting",
+      "sign": "WHITE HOUSE",
+      "screen": false,
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "For now, the White House has not announced any formal step toward renaming an ocean."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Even if the president did sign an order, it would only change the name used by the U.S. federal government, as with the gulf and the lake."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Other countries along the Atlantic and Pacific coasts would be under no obligation to follow."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Whether the Trump Ocean remains a rally line or becomes the next executive order is a question the president has not yet answered."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "With the midterms just weeks away, the president is expected to keep up a busy schedule of rallies. Reporting from Clarksville, for KOWEN News."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "\"TRUMP OCEAN\"?",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "To recap tonight's top story."
         },
         {
           "speaker": "Anchor",
-          "text": "At a midterm rally, President Trump proposed renaming the Atlantic as Trump Ocean. But under international practice, no single country can rename an ocean."
+          "text": "At a rally in Clarksville, Tennessee, President Trump floated renaming the Atlantic or the Pacific as the Trump Ocean, or the Ocean of the Americas."
         },
         {
           "speaker": "Anchor",
-          "text": "Around the world, the reaction has been mostly disbelief, along with a flood of parodies."
+          "text": "At the same rally, he also joked about renaming the Strait of Hormuz as the Trump Strait."
         },
         {
           "speaker": "Anchor",
-          "text": "And as the East Sea dispute shows, the names on our maps can matter a great deal more than they seem."
+          "text": "He announced no formal plan. The remark follows his orders renaming the Gulf of Mexico and, in August, Lake Ontario, a move Canada's leaders have firmly rejected."
         },
         {
           "speaker": "Anchor",
-          "text": "We'll keep watching to see whether this idea sinks or swims."
+          "text": "We'll keep following the story as it develops."
         },
         {
           "speaker": "Anchor",
-          "text": "That's it for tonight. This has been KOWEN News, today's news in pixels. Thanks for watching, and good night."
+          "text": "That's all for tonight. This has been KOWEN News. Thanks for watching, and good night."
         }
       ]
     }
