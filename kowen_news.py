@@ -873,6 +873,7 @@ class CallScene(Scene):
 class PumpScene(Scene):
     """주유소 가격판: 숫자가 올라가며 기록 경신."""
     zoomable = False
+    focus = (200, 80)
 
     def draw(self, d, t):
         vgrad(d, 0, 120, (250, 160, 90), (120, 70, 120))
@@ -936,35 +937,36 @@ def wrap(d, text, f, maxw):
 SPEAKER_COLOR = {"Anchor": (40, 70, 160), "Reporter": (200, 30, 40)}
 
 
-def draw_subtitle(d, scene, t):
+def draw_subtitle(d, scene, t, left=48, width=FW - 96, bottom=652, fs=32, top=None):
     _, e = scene.line_at(t)
     if e is None:
         return
     l = e["line"]
     text = e["clean"]
     n = int(len(text) * min(1.0, (t - e["start"]) / max(0.1, e["adur"] * 0.85)))
-    f = font(32)
-    rows = wrap(d, text, f, FW - 160)
-    box_h = 20 + len(rows) * 40
-    y0 = 652 - box_h
+    f = font(fs)
+    lh = int(fs * 1.25)
+    rows = wrap(d, text, f, width - 64)
+    box_h = 20 + len(rows) * lh
+    y0 = top + lh if top is not None else bottom - box_h
     col = SPEAKER_COLOR.get(l["speaker"], (90, 90, 110))
-    rect(d, 48, y0, FW - 96, box_h, (0, 0, 0))
-    rect(d, 48, y0, 6, box_h, col)
+    rect(d, left, y0, width, box_h, (0, 0, 0))
+    rect(d, left, y0, 6, box_h, col)
     lw = d.textlength(l["speaker"], font=f)
-    rect(d, 48, y0 - 40, int(lw) + 24, 40, col)
-    d.text((60, y0 - 38), l["speaker"], font=f, fill=(255, 255, 255))
+    rect(d, left, y0 - lh, int(lw) + 24, lh, col)
+    d.text((left + 12, y0 - lh + 2), l["speaker"], font=f, fill=(255, 255, 255))
     pos = 0
     for i, row in enumerate(rows):
         start = text.find(row, pos)
         part = row[:max(0, n - start)]
         pos = start + len(row)
-        x = 76
+        x = left + 28
         for j, ch in enumerate(part):
             ci = start + j
             hot = any(a <= ci < b for _, a, b, _ in e["emph"])
             if hot:
-                rect(d, int(x), y0 + 8 + i * 40, int(d.textlength(ch, font=f)) + 1, 36, (200, 30, 40))
-            d.text((x, y0 + 10 + i * 40), ch, font=f, fill=(255, 230, 80) if hot else (255, 255, 255))
+                rect(d, int(x), y0 + 8 + i * lh, int(d.textlength(ch, font=f)) + 1, lh - 4, (200, 30, 40))
+            d.text((x, y0 + 10 + i * lh), ch, font=f, fill=(255, 230, 80) if hot else (255, 255, 255))
             x += d.textlength(ch, font=f)
 
 
@@ -976,16 +978,16 @@ def active_emph(scene, t):
     return None
 
 
-def draw_stinger(d, dt, word):
+def draw_stinger(d, dt, word, cy=250, fw=FW):
     """강조 단어 팝업 (튀어나왔다가 자리 잡음)."""
     k = ease(dt / 0.15)
     size = int(48 + 40 * (1 - k)) if dt < 0.15 else 48 + (8 if dt < 0.25 else 0)
     f = font(size)
     txt = word.upper()
     tw = d.textlength(txt, font=f)
-    x, y = (FW - tw) / 2, 250 - size / 2
+    x, y = (fw - tw) / 2, cy - size / 2
     if dt > EMPH - 0.12:
-        x += (dt - (EMPH - 0.12)) / 0.12 * FW
+        x += (dt - (EMPH - 0.12)) / 0.12 * fw
     rect(d, int(x) - 24, int(y) - 12, int(tw) + 48, size + 24, (200, 30, 40))
     rect(d, int(x) - 24, int(y) + size + 6, int(tw) + 48, 6, (255, 210, 60))
     d.text((x + 4, y + 4), txt, font=f, fill=(0, 0, 0))
@@ -1083,6 +1085,48 @@ def build_audio(scenes, total):
     return (buf * 32767).astype(np.int16)
 
 
+# ---------------------------------------------------------------- 숏폼 (세로)
+
+SW, SH = 1080, 1920
+BAND_Y = 520   # 장면이 들어가는 띠 위치 (높이 720)
+
+
+def compose_short(frame, sc, t, gt, total, em, ep, focus_x):
+    """가로 장면을 1080 폭으로 잘라 세로 화면 가운데에 넣고, 위에 훅 제목 / 아래에 큰 자막."""
+    img = Image.new("RGB", (SW, SH), (12, 16, 40))
+    d = ImageDraw.Draw(img)
+    cx = int(max(0, min(FW - SW, focus_x - SW // 2)))
+    img.paste(frame.crop((cx, 0, cx + SW, FH)), (0, BAND_Y))
+    rect(d, 0, BAND_Y - 8, SW, 8, (255, 200, 60))
+    rect(d, 0, BAND_Y + FH, SW, 8, (255, 200, 60))
+    # 상단: 배지 + 훅 제목
+    rect(d, 40, 70, 380, 76, (255, 200, 60))
+    d.text((58, 76), "KOWEN NEWS", font=font(64), fill=(15, 20, 50))
+    rect(d, 440, 70, 260, 76, (200, 30, 40))
+    d.text((462, 82), "BREAKING", font=font(48), fill=(255, 255, 255))
+    f = font(80)
+    for i, row in enumerate(wrap(d, ep.get("hook", ""), f, SW - 80)[:3]):
+        d.text((40, 190 + i * 96), row, font=f, fill=(255, 220, 60), stroke_width=6, stroke_fill=(0, 0, 0))
+    if em:
+        draw_stinger(d, *em, cy=BAND_Y + 600, fw=SW)
+    if not isinstance(sc, TitleScene):
+        draw_subtitle(d, sc, t, left=30, width=SW - 60, fs=48, top=BAND_Y + FH + 40)
+    # 마지막: 롱폼 유도 문구
+    if gt > total - 4.0:
+        k = ease((gt - (total - 4.0)) / 0.3)
+        y = int(SH - 300 + (1 - k) * 200)
+        rect(d, 40, y, SW - 80, 160, (200, 30, 40))
+        cta = ep.get("cta", "FULL STORY ON OUR CHANNEL")
+        f2 = font(56)
+        d.text(((SW - d.textlength(cta, font=f2)) / 2, y + 20), cta, font=f2, fill=(255, 255, 255))
+        sub = "▶ Tap the channel name"
+        d.text(((SW - d.textlength(sub, font=font(40))) / 2, y + 96), sub, font=font(40),
+               fill=(255, 230, 120) if int(gt * 3) % 2 else (255, 255, 255))
+    # 진행 바
+    rect(d, 0, SH - 16, int(SW * gt / total), 16, (255, 200, 60))
+    return img
+
+
 # ---------------------------------------------------------------- 렌더
 
 def render(ep_path):
@@ -1107,9 +1151,11 @@ def render(ep_path):
         wf.setframerate(SR)
         wf.writeframes(build_audio(scenes, total).tobytes())
 
+    short = ep.get("format") == "short"
+    OW, OH = (SW, SH) if short else (FW, FH)
     proc = subprocess.Popen(
         ["ffmpeg", "-y", "-loglevel", "error",
-         "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{FW}x{FH}", "-r", str(FPS), "-i", "-",
+         "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{OW}x{OH}", "-r", str(FPS), "-i", "-",
          "-i", wav_path, "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-crf", "20",
          "-c:a", "aac", "-b:a", "160k", "-shortest", out],
         stdin=subprocess.PIPE)
@@ -1144,7 +1190,9 @@ def render(ep_path):
         cam = Cam(s, ox, oy)
         d = ImageDraw.Draw(img)
         sc.overlay(d, t, cam)
-        if not isinstance(sc, TitleScene):
+        if short:
+            img = compose_short(img, sc, t, gt, total, em, ep, (fx - ox) * s)
+        elif not isinstance(sc, TitleScene):
             if em:
                 draw_stinger(d, *em)
             draw_subtitle(d, sc, t)

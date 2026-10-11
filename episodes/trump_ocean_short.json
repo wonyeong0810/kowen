@@ -1,0 +1,108 @@
+{
+  "title": "Trump Ocean short",
+  "format": "short",
+  "lang": "en",
+  "output": "out/trump_ocean_short.mp4",
+  "hook": "Trump wants an OCEAN named after himself?!",
+  "cta": "FULL STORY ON OUR CHANNEL",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.3
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.35
+    }
+  },
+  "scenes": [
+    {
+      "type": "rally",
+      "banner": "CLARKSVILLE, TN",
+      "podium": "TRUMP",
+      "tag": "OCT 10",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "President Trump just floated renaming an *entire ocean*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "At a rally in Tennessee, he said the Atlantic or the Pacific could become the *Trump Ocean*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Or, as another option, the *Ocean of the Americas*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The crowd cheered. Several outlets called it a joke, and he didn't say *which ocean*."
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "old": "ATLANTIC OCEAN",
+      "new": "TRUMP OCEAN?",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "And it's not his first rename. First, the Gulf of Mexico became the *Gulf of America*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Then in August, Lake Ontario became *Lake America*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In his words: we have a gulf, we have a lake. *Now all we need is an ocean.*"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Google Maps already shows *Lake America* to users in the U.S."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ca",
+      "name": "Tim Houston",
+      "role": "Premier of Nova Scotia",
+      "person": {
+        "skin": 3,
+        "hair": 1,
+        "top": [
+          40,
+          45,
+          70
+        ],
+        "suit": true
+      },
+      "quote": "Real foolishness now. It's Lake Ontario, buddy.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Canada fired back. Nova Scotia's premier wrote: *It's Lake Ontario, buddy.*"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And Prime Minister Mark Carney says Canadians will keep the *400 year old* name."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "OCEAN NEXT?",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "So could an ocean really be next? And why can't one country rename it?"
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Watch the *full story* on our channel."
+        }
+      ]
+    }
+  ]
+}

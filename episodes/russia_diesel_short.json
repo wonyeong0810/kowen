@@ -1,0 +1,123 @@
+{
+  "title": "Russia diesel short",
+  "format": "short",
+  "lang": "en",
+  "output": "out/russia_diesel_short.mp4",
+  "hook": "Trump signed Russia sanctions… then waived them 3 weeks later?!",
+  "cta": "FULL STORY ON OUR CHANNEL",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.3
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.35
+    }
+  },
+  "scenes": [
+    {
+      "type": "signboard",
+      "title": "3 WEEKS",
+      "items": [
+        {
+          "year": "SEP 18",
+          "text": "Trump signs Russia sanctions law"
+        },
+        {
+          "year": "OCT 9",
+          "text": "Russian diesel sanctions suspended"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On September eighteenth, President Trump signed one of the *toughest Russia sanctions laws* in years."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "That law lets the president put tariffs of up to *100 percent* on buyers of Russian oil."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Three weeks later, he *suspended* U.S. sanctions on Russian diesel."
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "tag": "TRUMP-PUTIN CALL · OCT 9",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "It came right after a *phone call with Putin*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Trump says Russia will send up to *4.8 million tons* of diesel to world markets."
+        }
+      ]
+    },
+    {
+      "type": "pump",
+      "title": "U.S. DIESEL, PER GALLON",
+      "prices": [
+        {
+          "label": "RECORD (SEP 15)",
+          "value": 6.285,
+          "hot": true
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The reason? Diesel near *record highs*, weeks before the midterms."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "U.S. diesel hit a record of about *six dollars and twenty nine cents* a gallon in September."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Volodymyr Zelensky",
+      "role": "President of Ukraine",
+      "person": {
+        "skin": 0,
+        "hair": 0,
+        "top": [
+          60,
+          70,
+          50
+        ]
+      },
+      "quote": "Not fair and not honest.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine's Zelensky called it *not fair and not honest*, a gift to Putin."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And lawmakers from *both parties* are furious."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Republican Congressman Don Bacon said propping up Russia's war economy is *terrible*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "WHAT'S NEXT?",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Will it actually lower prices? Watch the *full story* on our channel."
+        }
+      ]
+    }
+  ]
+}
