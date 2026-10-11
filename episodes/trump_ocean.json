@@ -1,0 +1,52 @@
+{
+  "title": "대서양 → 트럼프양?",
+  "output": "out/trump_ocean.mp4",
+  "ticker": [
+    "속보: 트럼프 \"대서양 이름, 트럼프양으로 바꾸자\"",
+    "유럽 각국 \"황당하다\" 반응",
+    "멕시코만 → 미국만 개명 이후 두 번째 바다 이름 논란",
+    "KOWEN NEWS · 픽셀로 보는 오늘의 뉴스"
+  ],
+  "scenes": [
+    { "type": "title", "duration": 3.0 },
+    {
+      "type": "anchor",
+      "headline": "대서양 → 트럼프양?",
+      "lines": [
+        { "speaker": "앵커", "text": "안녕하십니까, KOWEN NEWS입니다.", "dur": 3.0 },
+        { "speaker": "앵커", "text": "트럼프 대통령이 이번엔 대서양의 이름을 '트럼프양'으로 바꾸자고 했다는데요.", "dur": 5.0 },
+        { "speaker": "앵커", "text": "현장에 나가 있는 기자 연결합니다.", "dur": 3.0 }
+      ]
+    },
+    {
+      "type": "rally",
+      "banner": "MIDTERM RALLY 2026",
+      "podium": "TRUMP",
+      "lines": [
+        { "speaker": "기자", "text": "트럼프 대통령은 중간선거 지원 유세 현장에서 이 같은 발언을 내놨습니다.", "dur": 5.0 },
+        { "speaker": "기자", "text": "\"대서양은 너무 평범한 이름\"이라며 \"위대한 바다엔 위대한 이름이 필요하다\"고 말했는데요.", "dur": 6.0 },
+        { "speaker": "기자", "text": "지지자들은 환호했지만, 실제로 개명이 가능할지는 미지수입니다.", "dur": 5.0 }
+      ]
+    },
+    {
+      "type": "map",
+      "old": "ATLANTIC OCEAN",
+      "old_ko": "대서양",
+      "new": "TRUMP OCEAN",
+      "new_ko": "트럼프양",
+      "lines": [
+        { "speaker": "기자", "text": "앞서 트럼프 행정부는 멕시코만을 '미국만'으로 바꾼 바 있습니다.", "dur": 5.0 },
+        { "speaker": "기자", "text": "하지만 대서양은 여러 나라가 맞닿은 국제 수역이라, 한 나라가 이름을 정할 수는 없습니다.", "dur": 6.0 },
+        { "speaker": "기자", "text": "유럽과 아프리카 국가들은 \"황당하다\"는 반응을 보였습니다. KOWEN NEWS 픽셀 기자였습니다.", "dur": 6.0 }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "대서양 → 트럼프양?",
+      "lines": [
+        { "speaker": "앵커", "text": "바다 이름까지 바꾸자는 말, 앞으로 어떻게 될지 지켜봐야겠습니다.", "dur": 4.5 },
+        { "speaker": "앵커", "text": "지금까지 KOWEN NEWS였습니다.", "dur": 3.0 }
+      ]
+    }
+  ]
+}
