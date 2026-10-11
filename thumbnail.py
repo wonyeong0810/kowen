@@ -82,6 +82,73 @@ def diesel():
     finish(low, text, "out/russia_diesel_thumb.png")
 
 
+# ---------------------------------------------------------------- 숏츠용 세로 표지 (1080x1920)
+
+VW, VH = 135, 240
+
+
+def finish_v(low, draw_text, path):
+    img = low.resize((VW * S, VH * S), Image.NEAREST)
+    d = ImageDraw.Draw(img)
+    draw_text(d)
+    d.rectangle([60, 80, 460, 168], fill=(255, 200, 60))
+    d.rectangle([60, 168, 460, 178], fill=(200, 30, 40))
+    d.text((80, 88), "KOWEN NEWS", font=k.font(72), fill=(15, 20, 50))
+    img.save(path)
+    print("완료:", path)
+
+
+def ocean_short():
+    low = Image.new("RGB", (VW, VH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, VW, VH, (30, 90, 170))
+    for y in range(4, VH, 8):
+        for x in range(0, VW, 12):
+            k.rect(d, x + (y % 12), y, 4, 1, (70, 140, 215))
+    d.polygon([(105, 120), (135, 110), (135, 240), (118, 240), (108, 190)], fill=(70, 160, 80))
+    k.rect(d, 98, 150, 1, 26, (230, 230, 230))
+    k.rect(d, 99, 150, 16, 9, (255, 205, 60))
+    k.rect(d, 101, 153, 12, 2, (200, 30, 40))
+    k.draw_trump(d, 52, 205, 0.05)
+    k.rect(d, 0, 205, 105, 35, (230, 200, 120))   # 해변
+
+    def text(d):
+        big_text(d, (540, 300), "ATLANTIC", 112, (255, 255, 255), anchor="ma")
+        x0, y0, x1, y1 = d.textbbox((540, 300), "ATLANTIC", font=k.font(112), anchor="ma")
+        d.rectangle([x0 - 12, (y0 + y1) // 2 - 7, x1 + 12, (y0 + y1) // 2 + 7], fill=(230, 30, 40))
+        big_text(d, (540, 450), "TRUMP", 224, (255, 210, 60), stroke=12, anchor="ma")
+        big_text(d, (540, 690), "OCEAN?!", 192, (255, 210, 60), stroke=12, anchor="ma")
+
+    finish_v(low, text, "out/trump_ocean_short_thumb.png")
+
+
+def diesel_short():
+    low = Image.new("RGB", (VW, VH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, VW, VH, (40, 50, 130))
+    for i in range(0, 120, 12):
+        k.rect(d, 0, i, VW, 6, (190, 30, 40))
+    k.draw_flag(d, "ru", 0, 120, VW, 120)
+    k.rect(d, 0, 118, VW, 4, (10, 10, 15))
+    k.draw_trump(d, 40, 122, 0.05)
+    k.draw_person(d, 95, 242, 0, False, k.PUTIN, gesture=False)
+    k.rect(d, 14, 196, 22, 44, (230, 230, 235))       # 주유기
+    k.rect(d, 17, 200, 16, 8, (20, 20, 30))
+    k.rect(d, 16, 214, 18, 6, (250, 200, 40))
+
+    def text(d):
+        big_text(d, (540, 230), "3 WEEKS LATER", 96, (255, 255, 255), anchor="ma")
+        d.rectangle([60, 1000, 1020, 1240], fill=(0, 0, 0))
+        big_text(d, (540, 1010), "SANCTIONS", 128, (255, 255, 255), anchor="ma")
+        big_text(d, (540, 1120), "WAIVED?!", 112, (255, 210, 60), stroke=10, anchor="ma")
+        d.rectangle([340, 1460, 740, 1530], fill=(200, 30, 40))
+        d.text((540, 1468), "DIESEL DEAL", font=k.font(56), fill=(255, 255, 255), anchor="ma")
+
+    finish_v(low, text, "out/russia_diesel_short_thumb.png")
+
+
 if __name__ == "__main__":
     ocean()
     diesel()
+    ocean_short()
+    diesel_short()
