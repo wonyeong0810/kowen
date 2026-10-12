@@ -396,6 +396,45 @@ def draw_char(d, cx, by, t, talking, key):
         else:
             rect(d, cx - 5, by - 32, 11, 2, (250, 250, 250))          # 활짝 웃는 이
             rect(d, cx - 5, by - 30, 11, 1, (150, 80, 70))
+    elif key == "macron":
+        # 뒤로 넘긴 갈색 웨이브 머리(관자놀이 흰머리), 파란 눈, 갸름한 얼굴, 네이비 정장
+        _suit(d, cx, by, (25, 30, 60), tie=(30, 40, 90), w=34)
+        rect(d, cx - 3, by - 28, 7, 5, skin)
+        rect(d, cx - 8, by - 47, 17, 20, skin)
+        rect(d, cx - 9, by - 51, 19, 6, (95, 70, 50))
+        rect(d, cx - 6, by - 52, 14, 2, (95, 70, 50))
+        rect(d, cx - 9, by - 46, 2, 4, (170, 160, 150))              # 관자놀이 흰머리
+        rect(d, cx + 8, by - 46, 2, 4, (170, 160, 150))
+        _eyes(d, cx, by - 39, t, gap=4, brow=(95, 70, 50), eye=(50, 90, 150))
+        rect(d, cx, by - 35, 2, 3, (220, 170, 135))
+        _mouth(d, cx, by - 31, talking, w=5)
+    elif key in ("student", "student2"):
+        # 후드티 고등학생 (두 가지 색)
+        top = (200, 60, 60) if key == "student" else (60, 110, 180)
+        rect(d, cx - 17, by - 24, 34, 26, top)
+        rect(d, cx - 7, by - 26, 14, 4, lerp(top, (0, 0, 0), 0.3))   # 후드
+        rect(d, cx - 2, by - 20, 1, 8, (240, 240, 240))               # 끈
+        rect(d, cx + 2, by - 20, 1, 8, (240, 240, 240))
+        rect(d, cx - 3, by - 28, 7, 5, skin)
+        rect(d, cx - 8, by - 46, 17, 19, skin)
+        hc = (40, 28, 20) if key == "student" else (180, 130, 60)
+        rect(d, cx - 9, by - 50, 19, 6, hc)
+        rect(d, cx - 9, by - 46, 3, 7, hc)
+        rect(d, cx + 7, by - 46, 3, 7, hc)
+        _eyes(d, cx, by - 39, t, gap=4, brow=hc)
+        rect(d, cx, by - 35, 2, 2, (220, 170, 135))
+        _mouth(d, cx, by - 31, talking)
+    elif key == "riot_police":
+        # 진압복 + 헬멧 + 바이저
+        top = (30, 35, 45)
+        rect(d, cx - 19, by - 24, 38, 26, top)
+        rect(d, cx - 12, by - 22, 24, 10, (45, 50, 60))
+        rect(d, cx - 3, by - 28, 7, 5, skin)
+        rect(d, cx - 8, by - 46, 17, 19, skin)
+        d.ellipse([cx - 11, by - 56, cx + 11, by - 38], fill=(25, 30, 40))
+        rect(d, cx - 9, by - 44, 19, 8, (90, 110, 130))               # 바이저
+        rect(d, cx - 9, by - 44, 19, 1, (150, 170, 190))
+        _mouth(d, cx, by - 31, talking)
     elif key == "trump":
         draw_trump(d, cx, by, t, talking)
     elif key in ("general", "soldier"):
@@ -541,6 +580,10 @@ def draw_flag(d, kind, x, y, w, h):
         d.ellipse([x + w // 2 - h // 4, y + h // 4, x + w // 2 + h // 4, y + 3 * h // 4], fill=(30, 50, 140))
     elif kind == "us":
         draw_us_flag(d, x + 2, y, 0, w - 2, h)
+    elif kind == "fr2":
+        rect(d, x, y, w // 3, h, (30, 60, 160))
+        rect(d, x + w // 3, y, w // 3, h, (240, 240, 240))
+        rect(d, x + 2 * w // 3, y, w - 2 * w // 3, h, (220, 40, 50))
     elif kind == "kr":
         rect(d, x, y, w, h, (245, 245, 245))
         r = h // 4
@@ -807,14 +850,19 @@ class SignboardScene(Scene):
                 rect(d, int(x + dx), cy + dy, w, 6, (250, 250, 255))
         items = self.spec["items"]
         for k in range(len(items)):
-            y = 26 + k * 34
+            y = 26 + k * self.row_h()
             show = ease((t - self.reveal(k)) / 0.3)
             if show <= 0:
                 continue
             xo = int((1 - show) * 340)
-            rect(d, 20 + xo, y, 280, 28, (255, 255, 255))
-            rect(d, 21 + xo, y + 1, 278, 26, (20, 110, 60))
-            rect(d, 24 + xo, y + 4, 34, 20, (255, 200, 60))
+            bh = self.row_h() - 6
+            rect(d, 20 + xo, y, 280, bh, (255, 255, 255))
+            rect(d, 21 + xo, y + 1, 278, bh - 2, (20, 110, 60))
+            rect(d, 24 + xo, y + 3, 34, bh - 6, (255, 200, 60))
+
+    def row_h(self):
+        # 자막 상자(저해상도 y≈128부터)에 가리지 않게 항목 수에 따라 간격을 줄인다
+        return min(34, 100 // max(1, len(self.spec["items"])))
 
     def reveal(self, k):
         n = len(self.spec["items"])
@@ -830,7 +878,7 @@ class SignboardScene(Scene):
             show = ease((t - self.reveal(k)) / 0.3)
             if show < 1:
                 continue
-            y = 26 + k * 34
+            y = 26 + k * self.row_h()
             cam.text(d, 41, y + 8, it["year"], 24, (20, 25, 50), center=True, shadow=False)
             if "text" in it:
                 cam.text(d, 66, y + 6, it["text"], 32, (255, 255, 255))
@@ -1364,7 +1412,104 @@ class PressScene(Scene):
         d.text((SAFE_X + 48, 34), tag, font=f, fill=(255, 255, 255))
 
 
-SCENES = {"xpost": XPostScene, "press": PressScene, "dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
+class ProtestScene(Scene):
+    """학생 시위: 리세(고등학교) 건물, 피켓 든 학생 무리, (옵션) 최루가스와 진압 경찰."""
+    focus = (160, 90)
+
+    def draw(self, d, t):
+        vgrad(d, 0, 60, (150, 175, 210), (205, 215, 225))
+        # 리세 건물 (위쪽으로 올려 학생들이 자막에 가리지 않게)
+        rect(d, 40, 8, 240, 56, (215, 200, 170))
+        rect(d, 40, 4, 240, 6, (150, 90, 70))
+        for wx in range(52, 270, 22):
+            for wy in (16, 38):
+                rect(d, wx, wy, 12, 14, (90, 120, 150))
+        rect(d, 140, 42, 40, 22, (110, 70, 50))
+        rect(d, 0, 64, W, 116, (120, 120, 125))
+        # 피켓 든 학생 무리
+        rnd = random.Random(31)
+        cheer = self.spec.get("cheer", 1.0)
+        for row, y in enumerate((96, 108, 120)):
+            x = -6 + row * 6
+            while x < W + 10:
+                top = rnd.choice([(200, 60, 60), (60, 110, 180), (50, 50, 55), (220, 200, 60), (90, 160, 90)])
+                ph = rnd.random() * 6.28
+                bob = int(abs(math.sin(t * 5 * cheer + ph)) * 3 * cheer)
+                yy = y - bob
+                rect(d, x, yy + 9, 12, 22, top)
+                rect(d, x + 2, yy, 8, 9, rnd.choice(SKINS))
+                rect(d, x + 1, yy - 1, 10, 3, rnd.choice(HAIRS))
+                if rnd.random() < 0.18:
+                    rect(d, x + 5, yy - 20, 1, 18, (120, 90, 60))
+                    rect(d, x - 4, yy - 30, 20, 11, (245, 245, 240))
+                    rect(d, x - 2, yy - 27, 16, 2, rnd.choice([(30, 30, 30), (200, 30, 40)]))
+                    rect(d, x - 2, yy - 23, 11, 2, (30, 30, 30))
+                x += 13 + rnd.randint(0, 3)
+        # 큰 현수막
+        rect(d, 70, 68, 180, 18, (245, 245, 240))
+        rect(d, 72, 70, 176, 14, (200, 30, 40))
+        if self.spec.get("police"):
+            for i, px in enumerate((24, 52, 268, 296)):
+                draw_char(d, px, 126, t, False, "riot_police")
+                rect(d, px - 14, 98, 6, 30, (50, 60, 80))                   # 방패
+            for k2 in range(4):                                             # 최루가스
+                gx = (int(t * 25) + k2 * 80) % (W + 60) - 30
+                r = 14 + int(math.sin(t * 2 + k2) * 4)
+                d.ellipse([gx - r, 70 - r // 2, gx + r, 70 + r // 2], fill=(215, 215, 210))
+
+    def overlay(self, d, t, cam):
+        cam.text(d, 160, 71, self.spec.get("banner", ""), 32, (255, 255, 255), center=True, shadow=False)
+        tag = self.spec.get("tag", "")
+        if tag:
+            tw = d.textlength(tag, font=font(32))
+            rect(d, SAFE_X + 32, 28, int(tw) + 32, 44, (30, 40, 90))
+            d.text((SAFE_X + 48, 34), tag, font=font(32), fill=(255, 255, 255))
+
+
+class ClassroomScene(Scene):
+    """낡은 교실: 꽉 찬 책상, 금 간 천장과 물 샘, 온도계, 쥐, 빈 교사 자리."""
+    zoomable = False
+
+    def draw(self, d, t):
+        rect(d, 0, 0, W, H, (190, 185, 160))
+        rect(d, 0, 0, W, 10, (160, 155, 130))
+        d.line([(60, 0), (75, 10), (70, 18), (90, 24)], fill=(110, 100, 80), width=2)   # 천장 균열
+        for k2 in range(3):                                                           # 물방울
+            yy = (int(t * 40) + k2 * 30) % 70 + 12
+            rect(d, 88, yy, 2, 3, (90, 140, 200))
+        rect(d, 84, 80, 12, 2, (90, 140, 200))
+        rect(d, 110, 14, 100, 46, (40, 70, 50))                                        # 칠판
+        rect(d, 108, 12, 104, 2, (120, 90, 60))
+        rect(d, 140, 62, 40, 14, (120, 90, 60))                                        # 빈 교탁
+        rect(d, 250, 18, 6, 40, (240, 240, 240))                                       # 온도계
+        h = 30 + int(math.sin(t) * 2)
+        rect(d, 251, 56 - h, 4, h, (220, 40, 40))
+        d.ellipse([248, 54, 258, 64], fill=(220, 40, 40))
+        rnd = random.Random(7)
+        for row in range(4):                                                           # 빽빽한 학생들
+            for col in range(9):
+                x, y = 16 + col * 34, 92 + row * 22
+                rect(d, x - 2, y + 10, 28, 4, (150, 110, 70))
+                rect(d, x + 7, y, 10, 10, rnd.choice(SKINS))
+                rect(d, x + 6, y - 1, 12, 3, rnd.choice(HAIRS))
+                rect(d, x + 5, y + 6, 14, 6, rnd.choice([(200, 60, 60), (60, 110, 180), (90, 160, 90)]))
+        rx = int((t * 30) % (W + 40)) - 20                                             # 쥐
+        rect(d, rx, 172, 8, 4, (90, 80, 75))
+        rect(d, rx + 8, 173, 3, 2, (90, 80, 75))
+        rect(d, rx - 5, 174, 5, 1, (150, 120, 110))
+
+    def overlay(self, d, t, cam):
+        cam.text(d, 160, 26, self.spec.get("board", ""), 32, (240, 240, 230), center=True, shadow=False)
+        cam.text(d, 253, 66, self.spec.get("temp", "40°C"), 24, (220, 40, 40), center=True)
+        for i, row in enumerate(self.spec.get("facts", [])):
+            k2 = ease((t - 0.4 - i * self.duration / max(1, len(self.spec["facts"])) * 0.8) / 0.4)
+            if k2 > 0:
+                tw = d.textlength(row, font=font(32))
+                rect(d, int(FW - 40 - tw - 32 + (1 - k2) * 600), 100 + i * 52, int(tw) + 32, 44, (0, 0, 0))
+                d.text((FW - 40 - tw - 16 + (1 - k2) * 600, 106 + i * 52), row, font=font(32), fill=(255, 230, 120))
+
+
+SCENES = {"protest": ProtestScene, "classroom": ClassroomScene, "xpost": XPostScene, "press": PressScene, "dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
           "signboard": SignboardScene, "meeting": MeetingScene, "reaction": ReactionScene,
           "chart": ChartScene, "interview": InterviewScene}
 

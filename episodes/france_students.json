@@ -1,0 +1,516 @@
+{
+  "title": "France student protests",
+  "lang": "en",
+  "output": "out/france_students.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.25
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.3
+    }
+  },
+  "ticker": [
+    "BREAKING: More than 260,000 high school students march across France",
+    "Students protest crumbling schools, missing teachers and overcrowded classes",
+    "More than 6,000 arrested since the movement began, most of them minors",
+    "Unions demand 10 billion euros for education \"right now\"",
+    "Prime Minister Lecornu promises new measures by the end of the month",
+    "KOWEN NEWS"
+  ],
+  "scenes": [
+    {
+      "type": "title",
+      "duration": 3.0
+    },
+    {
+      "type": "anchor",
+      "headline": "FRANCE: STUDENTS REVOLT",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Good evening, and welcome to KOWEN News."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "In France, more than *two hundred sixty thousand* high school students have taken to the streets."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "What began at a single school outside Paris has turned into the biggest student movement in France in *decades*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Police have arrested thousands, and some schools have been *set on fire*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Tonight: why teenagers are blockading their own schools, how it turned *violent*, and how the government is responding."
+        }
+      ]
+    },
+    {
+      "type": "protest",
+      "tag": "FRANCE · OCT 6",
+      "banner": "MORE TEACHERS!",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On Tuesday, October sixth, students marched in cities across France."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "France's Interior Ministry counted more than *two hundred sixty thousand* high school students, including fifty six thousand in Paris."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Organizers put the total turnout even higher, at around *four hundred fifty thousand*, including teachers, parents and university students."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Twenty thousand marched in Lyon. Thirteen thousand five hundred in Toulouse. Twelve thousand five hundred in Nantes."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Unlike the days before, Tuesday's marches were *largely peaceful*, often guided by parents and union members."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "HOW IT SPREAD",
+      "items": [
+        {
+          "year": "SEP 17",
+          "text": "Teachers strike in Creteil, near Paris"
+        },
+        {
+          "year": "SEP 21",
+          "text": "Pupils protest at Lycee Saint-Exupery"
+        },
+        {
+          "year": "OCT 1",
+          "text": "1,000+ high schools hit, 1,949 arrests"
+        },
+        {
+          "year": "OCT 6",
+          "text": "260,000+ students march nationwide"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "It started in *Creteil*, in the Paris suburbs."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "A day after teachers went on strike over a lack of staff and resources, pupils at the Lycee Saint-Exupery organised their own protest."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Videos spread on social media, and within days, schools across the Paris suburbs were being *blockaded*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "By October first, the government said more than *a thousand high schools* were affected in a single day."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The movement has since spread across France, and even into parts of *Belgium*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "WHY ARE THEY PROTESTING?",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "So what are these students so angry about? The answer is inside their *classrooms*."
+        }
+      ]
+    },
+    {
+      "type": "classroom",
+      "board": "NO TEACHER TODAY",
+      "temp": "40°C",
+      "facts": [
+        "32-35 pupils per class",
+        "Teachers not replaced",
+        "Crumbling buildings, rats",
+        "Parcoursup stress"
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Students describe classes of *thirty two to thirty five* pupils."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "When teachers leave or fall ill, they often *aren't replaced*. One student union leader cited a pupil who went seven months without a French teacher, in a year with a French exam."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Buildings are falling apart. In Saint-Denis, one protester told CBS News, ceilings are crumbling, there is water in the walls, and *rats*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "During this year's heat waves, some classrooms reached *forty degrees Celsius*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And students say *Parcoursup*, the national website used to apply to university, adds enormous stress."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "More than half of all schools are short staffed this year, according to a survey by a secondary teachers' union."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "fr2",
+      "name": "Rania, 15",
+      "role": "High school student · Al Jazeera",
+      "person": {
+        "char": "student"
+      },
+      "quote": "We don't feel listened to at all. We feel inferior, especially considering that we're the future.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Students told Al Jazeera they simply don't feel heard."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Rania, fifteen, said: we don't feel listened to at all. We feel *inferior*, especially considering that we're the future."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "fr2",
+      "name": "Olympe, 16",
+      "role": "High school student · Al Jazeera",
+      "person": {
+        "char": "student2"
+      },
+      "quote": "Teachers are absent, and compared with schools in Paris we don't have the same resources.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Olympe, sixteen, pointed to *inequality*. Teachers are absent, she said, and compared with schools in Paris, we don't have the same resources."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The movement began in the suburbs of Paris, areas that have long been *underserved*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "fr2",
+      "name": "Clemence, 30",
+      "role": "Math teacher, Paris · Al Jazeera",
+      "person": {
+        "skin": 3,
+        "hair": 1,
+        "top": [
+          120,
+          60,
+          90
+        ],
+        "long": true
+      },
+      "quote": "Their demands are ones we've been making for years.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Many teachers are marching *with* their students."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Clemence, a math teacher in Paris, said: I support the high schoolers' movement one hundred percent. *Their demands are ones we've been making for years*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "A major secondary teachers' union called a *strike* in support of the students' demands."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "fr2",
+      "name": "Theo, 19",
+      "role": "Student · Al Jazeera",
+      "person": {
+        "char": "student2"
+      },
+      "quote": "We're really short of resources. Not just schools, but hospitals too.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "For some, the anger goes beyond schools. Theo, nineteen, said: we're really *short of resources*, not just in schools, but hospitals too."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Macron's government, he said, has to *stop investing only in war*. We all have the same demands: a better future."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The protests coincide with a public sector strike over the government's *budget plans*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "CLASHES & ARRESTS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "But in the days before Tuesday's march, the protests turned *violent*."
+        }
+      ]
+    },
+    {
+      "type": "protest",
+      "tag": "CLASHES",
+      "banner": "BLOCKADE",
+      "police": true,
+      "cheer": 1.6,
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Riot police were sent to break up school blockades, using *tear gas* and stun grenades."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "More than *six thousand* protesters have been arrested, eighty five percent of them under eighteen."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In the northern town of Lens, a fifteen year old *lost a hand* after picking up a police grenade, according to authorities."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Officials say some two hundred ten teenagers and seven hundred fifteen police officers have been wounded."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Near Paris, a fourteen year old suffered a *double fracture of the jaw* after allegedly being hit in the face by a tear gas grenade."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Some schools were *set on fire*. The education minister says twenty four have been ransacked or burned."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "France's police watchdog has opened at least *ten investigations* into police conduct, and Amnesty International has warned against excessive force."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "THE CRACKDOWN",
+      "items": [
+        {
+          "year": "OCT 2",
+          "text": "400+ high schools closed"
+        },
+        {
+          "year": "OCT 2",
+          "text": "Gatherings banned outside schools"
+        },
+        {
+          "year": "OCT 2",
+          "text": "Parents may pay for damage"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On October second, authorities *closed more than four hundred* high schools, switching many to remote classes."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Prefects banned gatherings outside the closed schools."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Justice Minister Gerald Darmanin told prosecutors to seek *parental liability*, so families would pay for damage caused by their children."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The education minister said the movement had been *taken hostage* by ultra violent groups, and warned parents that in the street, children are in danger."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "fr2",
+      "plain": true,
+      "name": "Sebastien Lecornu",
+      "role": "Prime Minister of France",
+      "person": {
+        "skin": 0,
+        "hair": 0,
+        "top": [
+          25,
+          30,
+          55
+        ],
+        "suit": true,
+        "tie": [
+          40,
+          60,
+          120
+        ]
+      },
+      "quote": "The government blames far-left groups. The opposition calls the movement spontaneous.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The government accuses the far left party *France Unbowed* of stirring up the unrest."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Prime Minister Sebastien Lecornu's office called it an operation organised by the party and its proxies. The party says the government is *sinking into conspiracism*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In parliament, Lecornu said that *burning a high school* does not improve the state of high school buildings."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "THE GOVERNMENT RESPONDS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "So what is the government offering the students?"
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "THE DEMANDS VS THE OFFER",
+      "items": [
+        {
+          "year": "ASK",
+          "text": "10 billion euros for education, now"
+        },
+        {
+          "year": "GOV",
+          "text": "+1.2 billion euros next year"
+        },
+        {
+          "year": "GOV",
+          "text": "Urgent teacher gaps fixed in 8 days"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On October second, the government met student leaders and announced a *five point plan* for public schools. Students called it not enough."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Student unions have united behind one demand: *ten billion euros* for education, right now."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "They say the movement will stop when the government writes that check."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The education ministry is set to receive an extra *one point two billion euros* next year, which opposition parties say barely keeps up with inflation."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Education Minister Edouard Geffray promised that all urgent teacher replacement problems would be dealt with *in eight days*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But the government ruled out scrapping *Parcoursup*, promising only to make it more transparent and simpler."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Prime Minister Lecornu has pledged new measures *by the end of the month*. A new platform for student complaints received some forty thousand submissions in its first days."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "fr2",
+      "plain": true,
+      "name": "Emmanuel Macron",
+      "role": "President of France",
+      "person": {
+        "char": "macron"
+      },
+      "quote": "Outgoing president. Presidential election next spring.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The crisis is a fresh test for outgoing President *Emmanuel Macron*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "His government is mired in political deadlock, with a *presidential election* due next spring."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "France has seen this before. In 1990, around a hundred fifty thousand high school students protested nationwide, and the government answered with an *emergency plan* and a bigger education budget."
+        }
+      ]
+    },
+    {
+      "type": "protest",
+      "tag": "WHAT'S NEXT",
+      "banner": "10 BILLION NOW",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "For now, the students say they are *not backing down*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Another big march is planned for *October seventeenth*, bringing together high schoolers, university students and farmers."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "As one sixteen year old put it: if nothing changes, *we'll keep going* for much longer. Reporting for KOWEN News."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "FRANCE: STUDENTS REVOLT",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "To recap tonight's top story."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "More than two hundred sixty thousand French high school students marched on Tuesday, protesting *crumbling schools*, missing teachers and overcrowded classes."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "More than six thousand have been arrested, and dozens of schools damaged or burned."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Students want *ten billion euros*. The government promises fixes within weeks."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We'll keep following this story. That's all for tonight. This has been KOWEN News. Thanks for watching, and good night."
+        }
+      ]
+    }
+  ]
+}
