@@ -1,0 +1,101 @@
+{
+  "title": "russia_plague_short",
+  "format": "short",
+  "lang": "en",
+  "output": "out/russia_plague_short.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.3
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.3
+    }
+  },
+  "hook": "Plague in Russia?!",
+  "punch": "PLAGUE IN RUSSIA?",
+  "question": "Do you trust Russia's answer? Comment below!",
+  "scenes": [
+    {
+      "type": "lab",
+      "tag": "IRKUTSK ANTI-PLAGUE INSTITUTE",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "A worker at a Siberian *plague lab* is dead."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Reports say she told doctors she *broke a test tube* of live bacteria."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "She died of *severe pneumonia* on October second. She was twenty eight."
+        }
+      ]
+    },
+    {
+      "type": "hospital",
+      "tag": "IRKUTSK REGION",
+      "sign": "QUARANTINE",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Nearly *two hundred people* were put under observation. Hospitals went into quarantine."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "One region's leader first said she *died of plague*. Then his statement was quietly edited to *possibly*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Four neighbouring countries added *border checks*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "One resident said ambulance doctors are driving around in *full Covid suits*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ru",
+      "plain": true,
+      "name": "Rospotrebnadzor",
+      "role": "Russia's health watchdog",
+      "person": {
+        "char": "hazmat"
+      },
+      "quote": "",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "But Russia says it was *not plague*, and there is no epidemic risk."
+        }
+      ]
+    },
+    {
+      "type": "un",
+      "name": "Tedros Adhanom Ghebreyesus",
+      "role": "Director-General, WHO",
+      "speaker": {
+        "char": "tedros"
+      },
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The WHO and the U.S. are still *demanding answers*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Experts say quarantining two hundred people for one case of pneumonia is *unusual*. Some fear it's *not plague at all*, but something worse."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Do you believe Russia? *Tell us in the comments*."
+        }
+      ]
+    }
+  ]
+}

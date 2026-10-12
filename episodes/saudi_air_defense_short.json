@@ -1,0 +1,103 @@
+{
+  "title": "saudi_air_defense_short",
+  "format": "short",
+  "lang": "en",
+  "output": "out/saudi_air_defense_short.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.3
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.3
+    }
+  },
+  "hook": "Saudi Arabia is running out of missiles?!",
+  "punch": "RUNNING OUT OF MISSILES",
+  "question": "Should the U.S. join the fight? Comment below!",
+  "scenes": [
+    {
+      "type": "airport",
+      "tag": "RIYADH · OCT 10",
+      "sign": "KING KHALID INTERNATIONAL AIRPORT",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "A Houthi missile just hit *Riyadh's main airport*. Thirteen dead, around three hundred wounded."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The next day, the airport was hit *again*. It's the deadliest attack on a Gulf state since the Iran war began."
+        }
+      ]
+    },
+    {
+      "type": "airdefense",
+      "tag": "SAUDI AIR DEFENSE",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "And Saudi officials say the kingdom is *running low* on interceptor missiles."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Each attack burns through expensive Patriot missiles, and they can't be made *overnight*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Officials say batteries are being moved to protect *palaces and oil sites*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "pk",
+      "name": "Lt. Gen. Ahmed Sharif Chaudhry",
+      "role": "Pakistan military spokesman · CNN",
+      "person": {
+        "char": "pak_officer"
+      },
+      "quote": "",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "So Riyadh asked allies for help, including *Pakistan*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "France, Britain and Egypt were asked too."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Pakistan's military says its forces *are already there*, under a new mutual defense pact."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But Pakistan says its troops *won't cross the border* to attack the Houthis."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "sa",
+      "plain": true,
+      "name": "Mohammed bin Salman",
+      "role": "Crown Prince of Saudi Arabia",
+      "person": {
+        "char": "mbs"
+      },
+      "quote": "",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Now President Trump says he is weighing *joining the fight* against the Houthis."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Should America get involved? *Tell us in the comments*."
+        }
+      ]
+    }
+  ]
+}

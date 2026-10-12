@@ -1,0 +1,109 @@
+{
+  "title": "france_students_short",
+  "format": "short",
+  "lang": "en",
+  "output": "out/france_students_short.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.3
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.3
+    }
+  },
+  "hook": "260,000 French students hit the streets",
+  "punch": "260,000 STUDENTS",
+  "question": "Would you join them? Comment below!",
+  "scenes": [
+    {
+      "type": "protest",
+      "tag": "FRANCE · OCT 6",
+      "banner": "MORE TEACHERS!",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "More than *two hundred sixty thousand* high school students just marched across France."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Fifty six thousand in Paris alone."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It started at *one school* outside Paris, and spread across the country in two weeks."
+        }
+      ]
+    },
+    {
+      "type": "classroom",
+      "board": "NO TEACHER TODAY",
+      "temp": "40°C",
+      "facts": [
+        "32-35 pupils per class",
+        "Teachers not replaced",
+        "Crumbling buildings, rats"
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Why? Classes of up to *thirty five* students. Teachers who are never replaced."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Crumbling ceilings, *rats*, and classrooms that hit forty degrees in the heat."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "One student went *seven months* without a French teacher, in a year with a French exam."
+        }
+      ]
+    },
+    {
+      "type": "protest",
+      "tag": "CLASHES",
+      "banner": "BLOCKADE",
+      "police": true,
+      "cheer": 1.6,
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Police answered with *tear gas*. More than six thousand arrested, most of them minors."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "One fifteen year old *lost a hand* to a police grenade."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Some schools were even *set on fire*. Hundreds were closed."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "fr2",
+      "name": "Rania, 15",
+      "role": "High school student · Al Jazeera",
+      "person": {
+        "char": "student"
+      },
+      "quote": "",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "We don't feel listened to at all, one student said. *We're the future*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Students want *ten billion euros* for education. The government is offering far less."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Would you protest for better schools? *Tell us in the comments*."
+        }
+      ]
+    }
+  ]
+}

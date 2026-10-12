@@ -30,6 +30,7 @@ GAP = 0.06               # 대사 사이 쉼 (초)
 EMPH = 1.0               # 강조 효과 지속 (초)
 ZOOMS = [(4, 320, 180), (5, 256, 144)]   # (배율, 잘라낼 폭, 높이) - 정수 배율이라 픽셀이 고르게 유지됨
 
+VIEW_R = 1280            # 오른쪽 끝 (숏츠에서는 잘린 화면의 오른쪽 끝)
 SAFE_X = 0               # 왼쪽 위 표시 위치 보정 (숏츠에서 가로 장면을 잘라낼 때)
 FONT_PATH = "/usr/share/fonts/opentype/unifont/unifont.otf"
 TTS_DIR = os.environ.get(
@@ -1170,8 +1171,15 @@ class QuoteScene(Scene):
         for i, row in enumerate(rows[:4]):
             d.text((60 - (1 - k) * 80, 24 + i * 40), row, font=f, fill=(255, 230, 120))
         name, role = self.spec.get("name", ""), self.spec.get("role", "")
-        rect(d, 460, 290, int(max(d.textlength(name, font=font(48)), d.textlength(role, font=f))) + 40, 116, (0, 0, 0))
-        d.text((480, 300), name, font=font(48), fill=(255, 255, 255))
+        nf = 48   # 이름이 화면(숏츠는 잘린 폭) 밖으로 나가지 않게 글자 크기 줄이기
+        while nf > 24 and 480 + d.textlength(name, font=font(nf)) > VIEW_R - 30:
+            nf -= 4
+        rf = 32
+        while rf > 16 and 480 + d.textlength(role, font=font(rf)) > VIEW_R - 30:
+            rf -= 4
+        f = font(rf)
+        rect(d, 460, 290, int(max(d.textlength(name, font=font(nf)), d.textlength(role, font=f))) + 40, 116, (0, 0, 0))
+        d.text((480, 300), name, font=font(nf), fill=(255, 255, 255))
         d.text((480, 356), role, font=f, fill=(200, 200, 220))
 
 
@@ -1296,8 +1304,8 @@ class DMZScene(Scene):
         tw = d.textlength(tag, font=f)
         rect(d, SAFE_X + 32, 28, int(tw) + 32, 44, (40, 60, 40))
         d.text((SAFE_X + 48, 34), tag, font=f, fill=(255, 255, 255))
-        rect(d, FW - 268, 28, 236, 40, (0, 0, 0))
-        d.text((FW - 256, 32), "ILLUSTRATION", font=f, fill=(255, 230, 120))
+        rect(d, VIEW_R - 268, 28, 236, 40, (0, 0, 0))
+        d.text((VIEW_R - 256, 32), "ILLUSTRATION", font=f, fill=(255, 230, 120))
         boom = self.spec.get("boom")
         if boom is not None and boom <= t < boom + 0.15:
             rect(d, 0, 0, FW, FH, (255, 255, 230))
@@ -1611,7 +1619,7 @@ class AirDefenseScene(Scene):
         rect(d, SAFE_X + 32, 28, int(tw) + 32, 44, (30, 40, 90))
         d.text((SAFE_X + 48, 34), tag, font=font(32), fill=(255, 255, 255))
         level = 1.0 - 0.75 * min(1.0, t / max(1.0, self.duration * 0.8))  # 요격미사일 게이지
-        x0, y0 = FW - 360, 100
+        x0, y0 = VIEW_R - 360, 100
         d.text((x0, y0 - 40), "INTERCEPTORS", font=font(32), fill=(255, 255, 255))
         rect(d, x0, y0, 300, 36, (40, 40, 50))
         col = (80, 200, 90) if level > 0.5 else (240, 180, 50) if level > 0.3 else (230, 50, 50)
@@ -1686,8 +1694,8 @@ class LabScene(Scene):
         tw = d.textlength(tag, font=font(32))
         rect(d, SAFE_X + 32, 28, int(tw) + 32, 44, (150, 30, 30))
         d.text((SAFE_X + 48, 34), tag, font=font(32), fill=(255, 255, 255))
-        rect(d, FW - 268, 28, 236, 40, (0, 0, 0))
-        d.text((FW - 256, 32), "ILLUSTRATION", font=font(32), fill=(255, 230, 120))
+        rect(d, VIEW_R - 268, 28, 236, 40, (0, 0, 0))
+        d.text((VIEW_R - 256, 32), "ILLUSTRATION", font=font(32), fill=(255, 230, 120))
 
 
 class HospitalScene(Scene):
@@ -2071,8 +2079,9 @@ def render(ep_path):
         img = low.crop((ox, oy, ox + cw, oy + ch)).resize((FW, FH), Image.NEAREST)
         cam = Cam(s, ox, oy)
         d = ImageDraw.Draw(img)
-        global SAFE_X
+        global SAFE_X, VIEW_R
         SAFE_X = int(max(0, min(FW - SW, (fx - ox) * s - SW // 2))) if short else 0
+        VIEW_R = SAFE_X + SW if short else FW
         sc.overlay(d, t, cam)
         if short:
             img = compose_short(img, sc, t, gt, total, em, ep, (fx - ox) * s)
