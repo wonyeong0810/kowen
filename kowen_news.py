@@ -1544,6 +1544,63 @@ BAND_Y = 520   # 장면이 들어가는 띠 위치 (높이 720)
 
 
 def compose_short(frame, sc, t, gt, total, em, ep, focus_x):
+    if ep.get("layout") == "classic":
+        return compose_short_classic(frame, sc, t, gt, total, em, ep, focus_x)
+    return compose_short_v2(frame, sc, t, gt, total, ep, focus_x)
+
+
+def compose_short_v2(frame, sc, t, gt, total, ep, focus_x):
+    """숏츠 v2: 첫 2초 '펀치' 문구로 스와이프 막기, 하단 상시 FULL STORY 표시, 끝은 질문으로 롱폼 유도."""
+    img = Image.new("RGB", (SW, SH), (12, 16, 40))
+    d = ImageDraw.Draw(img)
+    cx = int(max(0, min(FW - SW, focus_x - SW // 2)))
+    img.paste(frame.crop((cx, 0, cx + SW, FH)), (0, BAND_Y))
+    rect(d, 0, BAND_Y - 8, SW, 8, (255, 200, 60))
+    rect(d, 0, BAND_Y + FH, SW, 8, (255, 200, 60))
+    rect(d, 40, 60, 300, 64, (255, 200, 60))
+    d.text((56, 66), "KOWEN NEWS", font=font(52), fill=(15, 20, 50))
+    punch = ep.get("punch")
+    if not (punch and gt < 1.8):
+        f = font(88)
+        for i, row in enumerate(wrap(d, ep.get("hook", ""), f, SW - 80)[:3]):
+            d.text((40, 160 + i * 104), row, font=f, fill=(255, 255, 255), stroke_width=7, stroke_fill=(0, 0, 0))
+    if not isinstance(sc, TitleScene):
+        draw_subtitle(d, sc, t, left=30, width=SW - 60, fs=48, top=BAND_Y + FH + 40)
+    # 첫 1.8초: 위쪽에 큰 펀치 문구 (튀어나오며 시작, 장면은 가리지 않음)
+    if punch and gt < 1.8:
+        k = ease(gt / 0.18)
+        size = int(130 - 40 * (1 - k))
+        pf = font(size)
+        rows = wrap(d, punch, pf, SW - 60)[:3]
+        h = len(rows) * int(size * 1.1)
+        y0 = 150 + (BAND_Y - 150 - h) // 2
+        rect(d, 0, y0 - 30, SW, h + 60, (200, 30, 40))
+        for i, row in enumerate(rows):
+            d.text(((SW - d.textlength(row, font=pf)) / 2, y0 + i * int(size * 1.1)), row, font=pf,
+                   fill=(255, 255, 255), stroke_width=8, stroke_fill=(0, 0, 0))
+    # 상시: 롱폼 버튼 자리를 가리키는 표시
+    ya = SH - 210 + int(math.sin(gt * 6) * 8)
+    cta = "FULL STORY ▼"
+    cf = font(56)
+    tw = d.textlength(cta, font=cf)
+    rect(d, 40, ya, int(tw) + 40, 76, (200, 30, 40))
+    d.text((60, ya + 8), cta, font=cf, fill=(255, 255, 255))
+    # 마지막: 답을 안 주고 질문으로 끝내기
+    q = ep.get("question")
+    if q and gt > total - 3.5:
+        k = ease((gt - (total - 3.5)) / 0.25)
+        qf = font(72)
+        rows = wrap(d, q, qf, SW - 120)[:3]
+        h = len(rows) * 86 + 60
+        y = int(BAND_Y + 120 + (1 - k) * 300)
+        rect(d, 40, y, SW - 80, h, (255, 200, 60))
+        for i, row in enumerate(rows):
+            d.text(((SW - d.textlength(row, font=qf)) / 2, y + 30 + i * 86), row, font=qf, fill=(15, 20, 50))
+    rect(d, 0, SH - 16, int(SW * gt / total), 16, (255, 200, 60))
+    return img
+
+
+def compose_short_classic(frame, sc, t, gt, total, em, ep, focus_x):
     """가로 장면을 1080 폭으로 잘라 세로 화면 가운데에 넣고, 위에 훅 제목 / 아래에 큰 자막."""
     img = Image.new("RGB", (SW, SH), (12, 16, 40))
     d = ImageDraw.Draw(img)

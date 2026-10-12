@@ -1,0 +1,79 @@
+{
+  "title": "Ukraine new leader short",
+  "format": "short",
+  "lang": "en",
+  "output": "out/ukraine_new_leader_short.mp4",
+  "hook": "Trump wants Zelensky OUT?!",
+  "punch": "\"TIME FOR A NEW PRESIDENT\"",
+  "question": "What did Zelensky demand from Trump?",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.3
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.35
+    }
+  },
+  "scenes": [
+    {
+      "type": "press",
+      "tag": "WHITE HOUSE · OCT 10",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Trump just said it's *time for Ukraine to get a new president*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He blames Zelensky's strikes on Russian refineries for *high diesel prices*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He could have made many deals, Trump said, but *he never does*."
+        }
+      ]
+    },
+    {
+      "type": "xpost",
+      "name": "Elon Musk",
+      "handle": "@elonmusk",
+      "person": {
+        "char": "musk"
+      },
+      "post": "I agree, it's time for Ukraine to get a new leader.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Hours later, Elon Musk wrote that Zelensky *has gone too far*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Elon Musk agreed. *Time for a new leader.*"
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "plain": true,
+      "name": "Volodymyr Zelensky",
+      "role": "President of Ukraine",
+      "person": {
+        "char": "zelensky"
+      },
+      "quote": "",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Now Zelensky has answered, and he has *one condition* for Trump."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Tap *full story* below to see it."
+        }
+      ]
+    }
+  ]
+}

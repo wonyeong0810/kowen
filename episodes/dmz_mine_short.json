@@ -143,5 +143,6 @@
     }
   ],
   "zoom_cuts": true,
-  "stinger": true
+  "stinger": true,
+  "layout": "classic"
 }
