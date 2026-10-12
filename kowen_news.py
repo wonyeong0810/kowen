@@ -1510,12 +1510,14 @@ def render(ep_path):
         # 줄마다 줌 컷을 바꿔서 템포감
         li, _ = sc.line_at(t)
         em = active_emph(sc, t)
-        if getattr(sc, "zoomable", True) is False or li < 0:
+        if not ep.get("zoom_cuts", False) or getattr(sc, "zoomable", True) is False or li < 0:
             zi = 0
         elif em:
             zi = 1
         else:   # 줄 안에서도 2.5초마다 컷
             zi = (li + int((t - sc.timeline[li]["start"]) / 2.5)) % 2
+        if not ep.get("stinger", False):
+            em = None   # 강조 팝업/흔들림 끔 (자막 강조 표시는 유지)
         s, cw, ch = ZOOMS[zi]
         fx, fy = sc.focus_at(t)
         if em and em[0] < 0.2:   # 강조 순간 흔들림

@@ -141,5 +141,7 @@
         }
       ]
     }
-  ]
+  ],
+  "zoom_cuts": true,
+  "stinger": true
 }
