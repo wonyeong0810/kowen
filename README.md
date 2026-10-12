@@ -45,3 +45,11 @@ Copy `episodes/trump_ocean.json` and change the content.
 | `reaction` | Reactions from people abroad (`panels[{speaker,flag,...}]`, flags: uk/fr/br/ca) |
 | `chart` | Poll bar chart (`title`, `bars`) |
 | `interview` | Street or studio interview (`bg`: street/studio, `person`, `person2`) |
+
+## Shorts guidelines (from channel analytics)
+
+- Target **30–40 seconds**.
+- **0–2s:** strong hook. Use `punch` for the first frame and open with the most striking line.
+- **Middle:** the key facts, changing scenes every few seconds.
+- **End:** finish on a question to viewers (`question`, plus a spoken line asking them to comment). Don't give away the full story, so the long-form video stays worth watching.
+- Use the default (v2) Shorts layout. Set "Related video" to the long-form on upload.
