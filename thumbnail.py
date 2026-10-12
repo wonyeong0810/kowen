@@ -186,7 +186,7 @@ def france():
     k.draw_char(d, 136, 92, 0.05, False, "riot_police")
 
     def text(d):
-        _two_line(d, 135, "260,000 STUDENTS", (255, 255, 255), 245, "REVOLT?!", (255, 210, 60))
+        _two_line(d, 135, "260,000 STUDENTS", (255, 255, 255), 245, "REVOLT", (255, 210, 60))
 
     finish(low, text, "out/france_students_thumb.png")
 
@@ -212,7 +212,7 @@ def saudi():
     k.draw_char(d, 132, 94, 0.05, False, "mbs")
 
     def text(d):
-        _two_line(d, 135, "SAUDI MISSILES", (255, 255, 255), 245, "RUNNING OUT?!", (255, 80, 60))
+        _two_line(d, 135, "SAUDI MISSILES", (255, 255, 255), 245, "RUNNING OUT", (255, 80, 60))
 
     finish(low, text, "out/saudi_air_defense_thumb.png")
 
@@ -233,7 +233,7 @@ def plague():
     _biohazard(d, 128, 62, 14)
 
     def text(d):
-        _two_line(d, 135, "PLAGUE IN", (255, 255, 255), 245, "RUSSIA?!", (255, 80, 60))
+        _two_line(d, 135, "PLAGUE SCARE", (255, 255, 255), 245, "IN RUSSIA", (255, 80, 60))
 
     finish(low, text, "out/russia_plague_thumb.png")
 
@@ -363,7 +363,7 @@ def france_short():
     def text(d):
         big_text(d, (540, 300), "260,000", 200, (255, 255, 255), stroke=12, anchor="ma")
         big_text(d, (540, 540), "STUDENTS", 160, (255, 210, 60), stroke=12, anchor="ma")
-        big_text(d, (540, 730), "REVOLT?!", 120, (255, 80, 60), stroke=10, anchor="ma")
+        big_text(d, (540, 730), "REVOLT", 120, (255, 80, 60), stroke=10, anchor="ma")
 
     finish_v(low, text, "out/france_students_short_thumb.png")
 
@@ -380,7 +380,7 @@ def saudi_short():
     def text(d):
         big_text(d, (540, 260), "SAUDI", 200, (255, 255, 255), stroke=12, anchor="ma")
         big_text(d, (540, 470), "MISSILES", 160, (255, 255, 255), stroke=12, anchor="ma")
-        big_text(d, (540, 660), "RUNNING OUT?!", 96, (255, 80, 60), stroke=10, anchor="ma")
+        big_text(d, (540, 660), "RUNNING OUT", 96, (255, 80, 60), stroke=10, anchor="ma")
 
     finish_v(low, text, "out/saudi_air_defense_short_thumb.png")
 
@@ -396,8 +396,9 @@ def plague_short():
     _biohazard(d, 100, 150, 18)
 
     def text(d):
-        big_text(d, (540, 300), "PLAGUE", 220, (255, 255, 255), stroke=12, anchor="ma")
-        big_text(d, (540, 540), "IN RUSSIA?!", 140, (255, 80, 60), stroke=12, anchor="ma")
+        big_text(d, (540, 260), "PLAGUE", 220, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 480), "SCARE", 200, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 700), "IN RUSSIA", 140, (255, 80, 60), stroke=12, anchor="ma")
 
     finish_v(low, text, "out/russia_plague_short_thumb.png")
 

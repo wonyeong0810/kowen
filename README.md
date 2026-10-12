@@ -53,3 +53,8 @@ Copy `episodes/trump_ocean.json` and change the content.
 - **Middle:** the key facts, changing scenes every few seconds.
 - **End:** finish on a question to viewers (`question`, plus a spoken line asking them to comment). Don't give away the full story, so the long-form video stays worth watching.
 - Use the default (v2) Shorts layout. Set "Related video" to the long-form on upload.
+
+## Thumbnail guidelines
+
+- No question marks or exclamation points in thumbnail text.
+- When a claim is unconfirmed, use a word like "SCARE" instead of a "?" so the text doesn't state it as fact.
