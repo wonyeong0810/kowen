@@ -5,7 +5,7 @@
   "output": "out/ukraine_new_leader_short.mp4",
   "hook": "Trump wants Zelensky OUT?!",
   "punch": "\"TIME FOR A NEW PRESIDENT\"",
-  "question": "What did Zelensky demand from Trump?",
+  "question": "Should Ukraine get a new president? Comment below!",
   "voices": {
     "Anchor": {
       "sid": 5,
@@ -42,12 +42,23 @@
       "person": {
         "char": "musk"
       },
-      "post": "I agree, it's time for Ukraine to get a new leader.",
+      "post": "Zelenskyy has gone too far",
       "lines": [
         {
           "speaker": "Reporter",
           "text": "Hours later, Elon Musk wrote that Zelensky *has gone too far*."
-        },
+        }
+      ]
+    },
+    {
+      "type": "xpost",
+      "name": "Elon Musk",
+      "handle": "@elonmusk",
+      "person": {
+        "char": "musk"
+      },
+      "post": "I agree, it's time for Ukraine to get a new leader.",
+      "lines": [
         {
           "speaker": "Reporter",
           "text": "Elon Musk agreed. *Time for a new leader.*"
@@ -67,11 +78,11 @@
       "lines": [
         {
           "speaker": "Reporter",
-          "text": "Now Zelensky has answered, and he has *one condition* for Trump."
+          "text": "Zelensky says it's up to *Ukrainians* to choose their leader."
         },
         {
           "speaker": "Reporter",
-          "text": "Tap *full story* below to see it."
+          "text": "So what do you think? Should Ukraine get a *new president*? Tell us in the comments."
         }
       ]
     }

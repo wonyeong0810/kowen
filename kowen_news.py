@@ -30,6 +30,7 @@ GAP = 0.06               # 대사 사이 쉼 (초)
 EMPH = 1.0               # 강조 효과 지속 (초)
 ZOOMS = [(4, 320, 180), (5, 256, 144)]   # (배율, 잘라낼 폭, 높이) - 정수 배율이라 픽셀이 고르게 유지됨
 
+SAFE_X = 0               # 왼쪽 위 표시 위치 보정 (숏츠에서 가로 장면을 잘라낼 때)
 FONT_PATH = "/usr/share/fonts/opentype/unifont/unifont.otf"
 TTS_DIR = os.environ.get(
     "KOWEN_TTS_MODEL", os.path.expanduser("~/models/sherpa-onnx-supertonic-3-tts-int8-2026-05-11"))
@@ -705,10 +706,10 @@ class AnchorScene(Scene):
         rect(d, 92, 99, 22, 4, (250, 250, 250))
 
     def overlay(self, d, t, cam):
-        rect(d, 32, 28, 96, 40, (210, 30, 40))
+        rect(d, SAFE_X + 32, 28, 96, 40, (210, 30, 40))
         if int(t * 2) % 2 == 0:
-            d.ellipse([42, 40, 58, 56], fill=(255, 255, 255))
-        d.text((64, 32), "LIVE", font=font(32), fill=(255, 255, 255))
+            d.ellipse([SAFE_X + 42, 40, SAFE_X + 58, 56], fill=(255, 255, 255))
+        d.text((SAFE_X + 64, 32), "LIVE", font=font(32), fill=(255, 255, 255))
         cam.text(d, 135, 116, "KOWEN NEWS", 48, (255, 210, 60), center=True, shadow=False)
         head = self.spec.get("headline")
         if head:
@@ -890,8 +891,8 @@ class MeetingScene(Scene):
         if not self.spec.get("screen", True):
             tag = self.spec.get("sign", "")
             tw = d.textlength(tag, font=font(32))
-            rect(d, 32, 28, int(tw) + 32, 44, (30, 40, 90))
-            d.text((48, 34), tag, font=font(32), fill=(255, 255, 255))
+            rect(d, SAFE_X + 32, 28, int(tw) + 32, 44, (30, 40, 90))
+            d.text((SAFE_X + 48, 34), tag, font=font(32), fill=(255, 255, 255))
         else:
             cam.text(d, 160, 82, self.spec.get("sign", ""), 32, (40, 60, 110), center=True, shadow=False)
         if self.spec.get("screen", True) and t > self.duration * 0.4:
@@ -928,8 +929,8 @@ class ReactionScene(Scene):
                 draw_person(d, x + 37, 132, t, False, pp, gesture=False)
 
     def overlay(self, d, t, cam):
-        rect(d, 32, 28, 200, 44, (230, 120, 30))
-        d.text((48, 34), self.spec.get("label", "HYPOTHETICAL"), font=font(32), fill=(255, 255, 255))
+        rect(d, SAFE_X + 32, 28, 200, 44, (230, 120, 30))
+        d.text((SAFE_X + 48, 34), self.spec.get("label", "HYPOTHETICAL"), font=font(32), fill=(255, 255, 255))
         p = self.panel_for(self.speaker(t))
         if not p:
             for i, pp in enumerate(self.spec["panels"]):
@@ -1031,18 +1032,20 @@ class InterviewScene(Scene):
         if self.spec.get("person2"):
             label = f"{self.first_speaker() if key == 'person' else self.second_speaker()} · {label}"
         f = font(32)
-        rect(d, 32, 28, int(d.textlength(label, font=f)) + 32, 44, (40, 40, 60))
-        d.text((48, 34), label, font=f, fill=(255, 255, 255))
+        rect(d, SAFE_X + 32, 28, int(d.textlength(label, font=f)) + 32, 44, (40, 40, 60))
+        d.text((SAFE_X + 48, 34), label, font=f, fill=(255, 255, 255))
         cam.text(d, 191, 103, "K", 16, (255, 255, 255), center=True, shadow=False)
 
 
 class QuoteScene(Scene):
     """실제 발언 인용 카드: 국기 배경 + 인물 + 이름표 + 인용문 (기자가 읽음)."""
     zoomable = False
+    focus = (120, 90)   # 숏츠로 잘라도 왼쪽 인물 상자가 잘리지 않게
 
     def draw(self, d, t):
         draw_flag(d, self.spec.get("flag", "ca"), 0, 0, W, H)
-        rect(d, 0, 0, W, H // 3, (0, 0, 0))
+        if self.spec.get("quote"):
+            rect(d, 0, 0, W, H // 3, (0, 0, 0))
         rect(d, 20, 64, 90, 70, (20, 20, 30))
         rect(d, 23, 67, 84, 64, (60, 70, 90))
         draw_person(d, 65, 133, t, False, self.spec.get("person", {"suit": True}), gesture=False)
@@ -1179,8 +1182,8 @@ class DMZScene(Scene):
         tag = self.spec.get("tag", "DMZ")
         f = font(32)
         tw = d.textlength(tag, font=f)
-        rect(d, 32, 28, int(tw) + 32, 44, (40, 60, 40))
-        d.text((48, 34), tag, font=f, fill=(255, 255, 255))
+        rect(d, SAFE_X + 32, 28, int(tw) + 32, 44, (40, 60, 40))
+        d.text((SAFE_X + 48, 34), tag, font=f, fill=(255, 255, 255))
         rect(d, FW - 268, 28, 236, 40, (0, 0, 0))
         d.text((FW - 256, 32), "ILLUSTRATION", font=f, fill=(255, 230, 120))
         boom = self.spec.get("boom")
@@ -1251,8 +1254,8 @@ class UNScene(Scene):
             if txt:
                 ff = font(40) if i == 0 else f
                 tw = d.textlength(txt, font=ff)
-                rect(d, 32, 28 + i * 52, int(tw) + 32, 48, (0, 0, 0) if i else (40, 90, 160))
-                d.text((48, 32 + i * 52), txt, font=ff, fill=(255, 255, 255))
+                rect(d, SAFE_X + 32, 28 + i * 52, int(tw) + 32, 48, (0, 0, 0) if i else (40, 90, 160))
+                d.text((SAFE_X + 48, 32 + i * 52), txt, font=ff, fill=(255, 255, 255))
 
 
 class AuditScene(Scene):
@@ -1357,8 +1360,8 @@ class PressScene(Scene):
         tag = self.spec.get("tag", "WHITE HOUSE")
         f = font(32)
         tw = d.textlength(tag, font=f)
-        rect(d, 32, 28, int(tw) + 32, 44, (30, 40, 90))
-        d.text((48, 34), tag, font=f, fill=(255, 255, 255))
+        rect(d, SAFE_X + 32, 28, int(tw) + 32, 44, (30, 40, 90))
+        d.text((SAFE_X + 48, 34), tag, font=f, fill=(255, 255, 255))
 
 
 SCENES = {"xpost": XPostScene, "press": PressScene, "dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
@@ -1560,7 +1563,9 @@ def compose_short_v2(frame, sc, t, gt, total, ep, focus_x):
     rect(d, 40, 60, 300, 64, (255, 200, 60))
     d.text((56, 66), "KOWEN NEWS", font=font(52), fill=(15, 20, 50))
     punch = ep.get("punch")
-    if not (punch and gt < 1.8):
+    q = ep.get("question")
+    q_on = bool(q) and gt > total - 3.5
+    if not (punch and gt < 1.8) and not q_on:
         f = font(88)
         for i, row in enumerate(wrap(d, ep.get("hook", ""), f, SW - 80)[:3]):
             d.text((40, 160 + i * 104), row, font=f, fill=(255, 255, 255), stroke_width=7, stroke_fill=(0, 0, 0))
@@ -1586,16 +1591,15 @@ def compose_short_v2(frame, sc, t, gt, total, ep, focus_x):
     rect(d, 40, ya, int(tw) + 40, 76, (200, 30, 40))
     d.text((60, ya + 8), cta, font=cf, fill=(255, 255, 255))
     # 마지막: 답을 안 주고 질문으로 끝내기
-    q = ep.get("question")
-    if q and gt > total - 3.5:
+    if q_on:   # 위쪽 제목 자리에 질문 카드 (장면은 가리지 않음)
         k = ease((gt - (total - 3.5)) / 0.25)
-        qf = font(72)
-        rows = wrap(d, q, qf, SW - 120)[:3]
-        h = len(rows) * 86 + 60
-        y = int(BAND_Y + 120 + (1 - k) * 300)
+        qf = font(64)
+        rows = wrap(d, q, qf, SW - 120)[:4]
+        h = len(rows) * 76 + 50
+        y = int(140 + (BAND_Y - 150 - h) // 2 - (1 - k) * 200)
         rect(d, 40, y, SW - 80, h, (255, 200, 60))
         for i, row in enumerate(rows):
-            d.text(((SW - d.textlength(row, font=qf)) / 2, y + 30 + i * 86), row, font=qf, fill=(15, 20, 50))
+            d.text(((SW - d.textlength(row, font=qf)) / 2, y + 25 + i * 76), row, font=qf, fill=(15, 20, 50))
     rect(d, 0, SH - 16, int(SW * gt / total), 16, (255, 200, 60))
     return img
 
@@ -1700,6 +1704,8 @@ def render(ep_path):
         img = low.crop((ox, oy, ox + cw, oy + ch)).resize((FW, FH), Image.NEAREST)
         cam = Cam(s, ox, oy)
         d = ImageDraw.Draw(img)
+        global SAFE_X
+        SAFE_X = int(max(0, min(FW - SW, (fx - ox) * s - SW // 2))) if short else 0
         sc.overlay(d, t, cam)
         if short:
             img = compose_short(img, sc, t, gt, total, em, ep, (fx - ox) * s)
