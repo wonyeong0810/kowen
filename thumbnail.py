@@ -113,6 +113,31 @@ def dmz():
     finish(low, text, "out/dmz_mine_thumb.png")
 
 
+def ukraine():
+    low = Image.new("RGB", (TW, TH))
+    d = ImageDraw.Draw(low)
+    k.draw_flag(d, "ua", 0, 0, TW, TH)
+    k.rect(d, 0, 0, TW, 40, (12, 16, 40))
+    k.draw_char(d, 30, 106, 0.05, False, "trump")
+    k.draw_char(d, 130, 104, 0.05, False, "zelensky")
+    # 젤렌스키 위 빨간 X
+    for i in range(-10, 11):
+        k.rect(d, 130 + i, 64 + i, 3, 3, (230, 30, 40))
+        k.rect(d, 130 + i, 64 - i, 3, 3, (230, 30, 40))
+    k.draw_char(d, 80, 106, 0.05, False, "musk")
+
+    def text(d):
+        big_text(d, (640, 135), "NEW PRESIDENT", 112, (255, 255, 255), stroke=10, anchor="ma")
+        f = k.font(112)
+        w1 = d.textlength("FOR UKRAINE", font=f)
+        w2 = d.textlength("?!", font=f)
+        x = (1280 - w1 - w2) / 2
+        big_text(d, (x, 245), "FOR UKRAINE", 112, (255, 210, 60), stroke=10)
+        big_text(d, (x + w1, 245), "?!", 112, (255, 60, 60), stroke=10)
+
+    finish(low, text, "out/ukraine_new_leader_thumb.png")
+
+
 # ---------------------------------------------------------------- 숏츠용 세로 표지 (1080x1920)
 
 VW, VH = 135, 240
@@ -206,6 +231,26 @@ def dmz_short():
     finish_v(low, text, "out/dmz_mine_short_thumb.png")
 
 
+def ukraine_short():
+    low = Image.new("RGB", (VW, VH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, VW, 120, (12, 16, 40))
+    k.draw_flag(d, "ua", 0, 120, VW, 120)
+    k.draw_char(d, 34, 182, 0.05, False, "trump")
+    k.draw_char(d, 101, 182, 0.05, False, "zelensky")
+    for i in range(-10, 11):
+        k.rect(d, 101 + i, 142 + i, 3, 3, (230, 30, 40))
+        k.rect(d, 101 + i, 142 - i, 3, 3, (230, 30, 40))
+    k.draw_char(d, 67, 242, 0.05, False, "musk")
+
+    def text(d):
+        big_text(d, (540, 260), "TRUMP WANTS", 120, (255, 255, 255), stroke=10, anchor="ma")
+        big_text(d, (540, 420), "ZELENSKY", 160, (255, 210, 60), stroke=12, anchor="ma")
+        big_text(d, (540, 610), "OUT?!", 200, (255, 60, 60), stroke=12, anchor="ma")
+
+    finish_v(low, text, "out/ukraine_new_leader_short_thumb.png")
+
+
 if __name__ == "__main__":
     dmz()
     ocean()
@@ -213,3 +258,5 @@ if __name__ == "__main__":
     ocean_short()
     diesel_short()
     dmz_short()
+    ukraine()
+    ukraine_short()
