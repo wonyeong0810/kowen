@@ -1208,7 +1208,7 @@ class CallScene(Scene):
 
     def overlay(self, d, t, cam):
         f = font(32)
-        for x, name in ((40, "TRUMP"), (680, "PUTIN")):
+        for x, name in ((max(40, SAFE_X), "TRUMP"), (680, "PUTIN")):
             rect(d, x, 500 - 60, int(d.textlength(name, font=f)) + 24, 40, (0, 0, 0))
             d.text((x + 12, 444), name, font=f, fill=(255, 255, 255))
         tag = self.spec.get("tag", "PHONE CALL")
@@ -1438,7 +1438,9 @@ class XPostScene(Scene):
         name, handle = self.spec.get("name", ""), self.spec.get("handle", "")
         d.text((320, 70), name, font=font(40), fill=(255, 255, 255))
         d.text((320 + d.textlength(name, font=font(40)) + 16, 78), handle, font=font(32), fill=(130, 140, 155))
-        d.text((1080, 60), "X", font=font(64), fill=(255, 255, 255))
+        logo = self.spec.get("logo", "X")
+        d.text((1150 - d.textlength(logo, font=font(48 if len(logo) > 1 else 64)), 64 if len(logo) > 1 else 60),
+               logo, font=font(48 if len(logo) > 1 else 64), fill=(255, 255, 255))
         k = ease((t - 0.3) / 0.6)
         if k > 0:
             for i, row in enumerate(wrap(d, self.spec.get("post", ""), font(48), 920)[:4]):

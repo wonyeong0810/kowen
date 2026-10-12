@@ -403,7 +403,60 @@ def plague_short():
     finish_v(low, text, "out/russia_plague_short_thumb.png")
 
 
+def _pylon(d, cx, by, h, fire=True):
+    c = (150, 155, 165)
+    for i in range(h):                                 # 송전탑 다리
+        w = max(1, (h - i) // 4)
+        k.rect(d, cx - w, by - i, 1, 1, c)
+        k.rect(d, cx + w, by - i, 1, 1, c)
+    for y in (by - h * 2 // 3, by - h + 3):           # 팔
+        k.rect(d, cx - 9, y, 19, 1, c)
+    k.rect(d, cx, by - h, 1, h, c)
+    if fire:
+        for i, col in enumerate(((230, 60, 30), (250, 140, 30), (255, 220, 80))):
+            k.rect(d, cx - 6 + i * 2, by - h - 10 + i * 3, 12 - i * 4, 10 - i * 3, col)
+
+
+def ceasefire():
+    low = Image.new("RGB", (TW, TH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, TW, TH, (12, 16, 40))
+    k.draw_flag(d, "ua", 60, 46, 50, 44)
+    k.draw_flag(d, "ru", 110, 46, 50, 44)
+    k.rect(d, 109, 46, 2, 44, (10, 10, 15))
+    _pylon(d, 85, 90, 28)
+    _pylon(d, 140, 90, 28)
+    k.draw_char(d, 30, 106, 0.05, False, "trump")
+
+    def text(d):
+        _two_line(d, 135, "ENERGY CEASEFIRE", (255, 210, 60), 245, "RUSSIA SILENT", (255, 80, 60), size=104)
+
+    finish(low, text, "out/energy_ceasefire_thumb.png")
+
+
+def ceasefire_short():
+    low = Image.new("RGB", (VW, VH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, VW, VH, (12, 16, 40))
+    k.draw_flag(d, "ua", 0, 130, VW // 2, 110)
+    k.draw_flag(d, "ru", VW // 2, 130, VW - VW // 2, 110)
+    _pylon(d, 100, 200, 40)
+    k.draw_char(d, 40, 242, 0.05, False, "trump")
+
+    def text(d):
+        big_text(d, (540, 260), "ENERGY", 200, (255, 210, 60), stroke=12, anchor="ma")
+        big_text(d, (540, 470), "CEASEFIRE", 160, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 660), "RUSSIA SILENT", 110, (255, 80, 60), stroke=12, anchor="ma")
+
+    finish_v(low, text, "out/energy_ceasefire_short_thumb.png")
+
+
 if __name__ == "__main__":
+    import sys
+    if len(sys.argv) > 1:
+        for name in sys.argv[1:]:
+            globals()[name]()
+        sys.exit()
     dmz()
     ocean()
     diesel()

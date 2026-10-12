@@ -1,0 +1,611 @@
+{
+  "title": "Trump declares an energy ceasefire",
+  "lang": "en",
+  "output": "out/energy_ceasefire.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.25
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.25
+    }
+  },
+  "ticker": [
+    "BREAKING: Trump declares an \"ENERGY CEASEFIRE\" between Russia and Ukraine",
+    "Kremlin: \"Contacts are ongoing\" - no confirmation from Moscow",
+    "Zelensky: \"We learned from the media\"",
+    "Ukraine says Russia struck a power plant in Kharkiv after the announcement",
+    "Trump's diesel deal with Putin: 300,000 tons now, 500,000 in November",
+    "KOWEN NEWS"
+  ],
+  "scenes": [
+    {
+      "type": "title",
+      "duration": 3.0
+    },
+    {
+      "type": "anchor",
+      "headline": "ENERGY CEASEFIRE",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Welcome to KOWEN News."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "President Trump says Russia and Ukraine have agreed to an *energy ceasefire*, effective immediately."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "But Moscow has *not confirmed it*, and Ukraine says it found out *from the media*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Within hours, Kyiv reported a Russian strike on a *power plant in Kharkiv*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We look at what Trump announced, what each side is saying, and why this deal is so closely tied to *diesel prices* in America."
+        }
+      ]
+    },
+    {
+      "type": "xpost",
+      "logo": "TRUTH",
+      "name": "Donald J. Trump",
+      "handle": "@realDonaldTrump",
+      "person": {
+        "char": "trump"
+      },
+      "post": "Effective immediately, there is an ENERGY CEASEFIRE in the War between Russia and Ukraine. Both parties have agreed. Do not break it!",
+      "date": "Sunday, October 11, 2026",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "It came in a short post on Truth Social on Sunday morning."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Effective immediately, Trump wrote, there is an *energy ceasefire* in the war between Russia and Ukraine."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Both parties have agreed. *Do not break it*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "That was the entire statement. No details on *what targets* are covered, *how long* it lasts, or *who would monitor* it."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The White House did not immediately answer requests for more information."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "WHAT WE KNOW",
+      "items": [
+        {
+          "year": "TRUMP",
+          "text": "\"Both parties have agreed\""
+        },
+        {
+          "year": "MOSCOW",
+          "text": "No confirmation"
+        },
+        {
+          "year": "KYIV",
+          "text": "\"We learned from the media\""
+        },
+        {
+          "year": "RULES",
+          "text": "No details, no monitoring plan"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Here is where things stand. Trump says *both sides* signed on."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The Kremlin has *not confirmed* any agreement."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine says it supports the idea, but was *not told* in advance."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And so far, nobody has published the *terms* of the deal."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "WHY NOW",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "To understand why Trump wants this, you have to follow the *diesel*."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "HOW WE GOT HERE",
+      "items": [
+        {
+          "year": "SEP 14",
+          "text": "Trump: both sides agree \"not to hit\" energy"
+        },
+        {
+          "year": "OCT 9",
+          "text": "Trump-Putin diesel deal"
+        },
+        {
+          "year": "OCT 10",
+          "text": "Trump: Ukraine needs \"a new leader\""
+        },
+        {
+          "year": "OCT 11",
+          "text": "\"ENERGY CEASEFIRE\""
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "For weeks, Trump has pressed Zelensky to *stop striking Russian oil refineries*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He argues those strikes have cut *global diesel supplies* and pushed up fuel prices for Americans."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Diesel prices in the U.S. have hit *record highs* since the U.S. launched its war with Iran in February."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "On Friday, Trump struck a *diesel deal* with Vladimir Putin."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "On Saturday, after Zelensky criticized that deal, Trump said Ukraine should get *a new leader who can make a deal*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And on Sunday came the *ceasefire post*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Kyiv says hitting Moscow's oil industry is a *legitimate strategy*, because oil money pays for *Russia's war*."
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "tag": "TRUMP-PUTIN DIESEL DEAL · OCT 9",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Under Friday's deal, the U.S. agreed to lift sanctions on *Russian fuel*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Trump said Russia would *immediately* release three hundred thousand tons of diesel to the American and global market."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Then *five hundred thousand tons* in November, and another *million* after that."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The Treasury Department authorized *temporary sanctions relief* to make those shipments possible."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukrainian and European officials reacted with *dismay*, saying the money will help pay for *Russia's war*."
+        }
+      ]
+    },
+    {
+      "type": "pump",
+      "title": "U.S. DIESEL, PER GALLON",
+      "prices": [
+        {
+          "label": "RECORD (SEP 15)",
+          "value": 6.285,
+          "hot": true
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Diesel moves trucks, tractors and freight trains, so its price shows up in *almost everything Americans buy*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Farmers, truckers and businesses that run *heavy equipment* are feeling it most."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And with the *midterm elections* weeks away, fuel prices have become a major political issue."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine's refinery strikes hit Russian *fuel production and exports*. Stopping them could put *more Russian diesel* on the market."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "KYIV RESPONDS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "So how did Ukraine react? With a *yes*, but a cautious one."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Volodymyr Zelensky",
+      "role": "President of Ukraine · evening address",
+      "person": {
+        "char": "zelensky"
+      },
+      "quote": "Ready to refrain from striking Russian energy infrastructure, and we count on the same readiness from Russia.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Zelensky said Ukraine *welcomed* the announcement, calling it *good news for everyone*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He said Ukraine is *ready to stop* striking Russian energy infrastructure, and counts on *the same readiness* from Russia."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He said Ukraine has proposed many steps to calm the war, but Putin had *one answer* to all of them. *Nyet*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He said Kyiv is staying in contact with Washington, and that he had discussed the news with Canada's Mark Carney, Finland's Alexander Stubb and NATO chief *Mark Rutte*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Volodymyr Zelensky",
+      "role": "President of Ukraine · ABC News",
+      "person": {
+        "char": "zelensky"
+      },
+      "quote": "Don't attack us. Don't kill our children. We will stop attack your diesel.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Earlier on Sunday, in an interview with ABC News, Zelensky made his offer to Moscow very simple."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "*Don't attack us. Don't kill our children.* We will stop attack your diesel."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He also asked Trump to give the Kremlin *a signal* not to attack Ukraine's energy system."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Zelensky also pushed back on the idea that Ukraine is to blame for fuel prices."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Everybody in the world understands, he said, that prices are rising *because of the war in the Middle East*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Asked why Trump and Elon Musk blame him, he said it is *more difficult to stop Putin* than to pressure others."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "plain": true,
+      "name": "Kharkiv",
+      "role": "Power plant attacked · Oct 11",
+      "person": {
+        "char": "soldier"
+      },
+      "quote": "Ukraine says Russia hit energy sites in Kyiv and Kharkiv after the ceasefire post.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "But on the ground, the attacks *did not stop*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Zelensky said Ukrainian skies were *full of Russian Shahed drones* all day, with glide bombs and strikes on energy infrastructure."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "A *power plant in Kharkiv* was attacked in the evening. His office confirmed it came *after* Trump's post."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukrainian officials reported more strikes on Monday morning, including on an *energy facility* on the outskirts of Kharkiv."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "A day earlier, a Russian bombing in *Zaporizhzhia* killed twenty three people, including *four children*, according to Zelensky."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Volodymyr Zelensky",
+      "role": "Warsaw Security Forum · Oct 12",
+      "person": {
+        "char": "zelensky"
+      },
+      "quote": "We didn't know about it. We learned from the media. This looks strange.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On Monday, speaking at the Warsaw Security Forum, Zelensky went further."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "We *didn't know about it*. We learned from the media, he said."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "We do support it, but I have not heard approval from the Russian side, and *this looks strange*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "MOSCOW'S ANSWER",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "And what is Moscow saying? So far, *very little*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ru",
+      "name": "Dmitry Peskov",
+      "role": "Kremlin spokesman",
+      "person": {
+        "skin": 0,
+        "hair": 3,
+        "top": [
+          35,
+          35,
+          45
+        ],
+        "suit": true,
+        "tie": [
+          120,
+          30,
+          40
+        ]
+      },
+      "quote": "Contacts are ongoing. When we have anything to say on this topic, we'll be sure to keep you informed.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Kremlin spokesman Dmitry Peskov would only say that *contacts are ongoing*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He would not say *who* those contacts are with, the U.S., Ukraine, or both."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He also *declined to say* whether the ceasefire would cover only oil refineries."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In other words, Russia has *neither confirmed nor denied* that it agreed."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "WE'VE BEEN HERE BEFORE",
+      "items": [
+        {
+          "year": "MAR 25",
+          "text": "Putin agrees to 30-day energy pause"
+        },
+        {
+          "year": "SEP 14",
+          "text": "Trump: \"not to hit\" energy"
+        },
+        {
+          "year": "OCT 11",
+          "text": "\"ENERGY CEASEFIRE\""
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "This is not the first energy truce of this war."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In March 2025, after a call with Trump, Putin agreed to a *30-day pause* on strikes against energy targets."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Just last month, on September fourteenth, Trump said both countries had agreed *not to hit* each other's energy infrastructure."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Moscow did not confirm that one either, and both sides *kept attacking* energy sites."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "plain": true,
+      "name": "Winter is coming",
+      "role": "Ukraine's power grid",
+      "person": {
+        "char": "soldier"
+      },
+      "quote": "Ukrainian officials say Russia is \"weaponizing winter\" by targeting power, heat and water.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "For Ukraine, the stakes are high. Winter is weeks away."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Russia has spent the war trying to cut Ukrainian civilians off from *power, heat and running water*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukrainian officials call the strategy *weaponizing winter*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ru",
+      "plain": true,
+      "name": "Yandex data centers",
+      "role": "Ukrainian drone strikes · Oct 8-11",
+      "person": {
+        "skin": 0,
+        "hair": 1,
+        "top": [
+          200,
+          170,
+          40
+        ]
+      },
+      "quote": "Three strikes on Yandex facilities in four days. Taxi, shopping and banking apps went down.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine, meanwhile, keeps hitting targets *deep inside Russia*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "On Sunday, a drone attack shut down a *Yandex data center* in the city of Vladimir, east of Moscow."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It was the *third strike* on the tech giant's facilities in four days."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Users in dozens of Russian cities could *not order taxis* or reach *banking services*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Across the border, local officials said a Ukrainian drone strike in Russia's *Bryansk* region killed one man and wounded two women."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Volodymyr Zelensky",
+      "role": "President of Ukraine · ABC News",
+      "person": {
+        "char": "zelensky"
+      },
+      "quote": "Give us two months, 60 days off. Total ceasefire, 60 days, and we will organize elections.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Zelensky also answered Trump's call for a new leader."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Give us *60 days* of total ceasefire, he said, *and we will organize elections*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine has been under *martial law* since 2022, and its constitution bars elections while it is in force."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The Kremlin quickly *rejected* the 60-day idea, saying Russia wants a *lasting peace*, not a ceasefire."
+        }
+      ]
+    },
+    {
+      "type": "meeting",
+      "sign": "WHAT'S NEXT",
+      "screen": false,
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "So what happens now? The key question is simple. *Does Russia say yes?*"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The Trump administration has spent weeks trying to negotiate a *reciprocal halt* to energy attacks, as part of wider efforts to end the war."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "With the armies largely *deadlocked* on the front line, both sides have turned to a *long-range air war*, and energy is one of its main targets."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "If Moscow confirms, it would be the first *real pause* in the energy war in months."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "If it doesn't, this could go the way of September's announcement, *a truce on paper only*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Even if it holds, an energy ceasefire is *not a peace deal*. The fighting on the front line goes on."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And nobody has said *how violations* would be tracked."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "ENERGY CEASEFIRE",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "An energy ceasefire *announced in Washington*, but not yet confirmed in Moscow."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We'll keep following whether the strikes *actually stop*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "If you found this helpful, please *like and subscribe* for more."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "This has been KOWEN News. Thanks for watching."
+        }
+      ]
+    }
+  ]
+}

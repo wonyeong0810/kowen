@@ -1,0 +1,131 @@
+{
+  "title": "energy_ceasefire_short",
+  "format": "short",
+  "lang": "en",
+  "output": "out/energy_ceasefire_short.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.3
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.3
+    }
+  },
+  "punch": "CEASEFIRE... OR NOT",
+  "question": "Will Russia really stop? Comment below",
+  "scenes": [
+    {
+      "type": "xpost",
+      "logo": "TRUTH",
+      "name": "Donald J. Trump",
+      "handle": "@realDonaldTrump",
+      "person": {
+        "char": "trump"
+      },
+      "post": "Effective immediately, there is an ENERGY CEASEFIRE... Do not break it!",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Trump just announced a *ceasefire*. Russia hasn't agreed to it."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Effective immediately, he wrote, there is an *energy ceasefire* between Russia and Ukraine. *Do not break it*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "No details. No terms. Nobody said *who would check*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "plain": true,
+      "name": "Kharkiv",
+      "role": "Power plant attacked · Oct 11",
+      "person": {
+        "char": "soldier"
+      },
+      "quote": "",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Hours later, Ukraine says Russia hit a *power plant in Kharkiv*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Volodymyr Zelensky",
+      "role": "Warsaw Security Forum",
+      "person": {
+        "char": "zelensky"
+      },
+      "quote": "",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Zelensky says he learned about it *from the media*. We support it, he said, but *this looks strange*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "His offer to Moscow? *Don't attack us. Don't kill our children.* We will stop attack your diesel."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ru",
+      "name": "Dmitry Peskov",
+      "role": "Kremlin spokesman",
+      "person": {
+        "skin": 0,
+        "hair": 3,
+        "top": [
+          35,
+          35,
+          45
+        ],
+        "suit": true,
+        "tie": [
+          120,
+          30,
+          40
+        ]
+      },
+      "quote": "",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The Kremlin? Only that *contacts are ongoing*."
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "tag": "TRUMP-PUTIN DIESEL DEAL",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "It comes two days after Trump's *diesel deal* with Putin, as U.S. diesel sits near *record prices*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine's refinery strikes are *cutting Russian diesel* out of the market."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And Trump said the *same thing* last month. The strikes never stopped."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Will it work this time? *Tell us in the comments*."
+        }
+      ]
+    }
+  ]
+}
