@@ -1,0 +1,460 @@
+{
+  "title": "Saudi air defense running low",
+  "lang": "en",
+  "output": "out/saudi_air_defense.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.25
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.25
+    }
+  },
+  "ticker": [
+    "BREAKING: Saudi Arabia running low on missile interceptors after Houthi strikes",
+    "Missile strike on Riyadh airport kills 13, wounds about 300",
+    "Saudi Arabia asked France, Britain, Pakistan and Egypt for air defense support",
+    "Pakistan confirms its forces are in the kingdom under the Makkah defense pact",
+    "Trump weighs joining the fight against the Houthis",
+    "KOWEN NEWS"
+  ],
+  "scenes": [
+    {
+      "type": "title",
+      "duration": 3.0
+    },
+    {
+      "type": "anchor",
+      "headline": "SAUDI AIR DEFENSE RUNNING LOW",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Good evening, and welcome to KOWEN News."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Saudi Arabia, one of the world's biggest military spenders, is reportedly *running low* on the missiles it needs to shoot down incoming attacks."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "A Houthi missile has hit *Riyadh's main airport*, killing thirteen people."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "And the kingdom has turned to its allies, including *Pakistan*, for help."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Tonight: the attack, why the kingdom's shield is wearing thin, who is coming to help, and whether *America* could be pulled in."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Here's what's happening."
+        }
+      ]
+    },
+    {
+      "type": "airport",
+      "tag": "RIYADH · OCT 10",
+      "sign": "KING KHALID INTERNATIONAL AIRPORT",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On Saturday, a missile struck a passenger terminal at *King Khalid International Airport* in Riyadh."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Saudi authorities said twelve people were killed and around *three hundred* wounded, some critically."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "India's embassy later said one of its citizens had died of his injuries, bringing the toll to *thirteen*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It was the *deadliest attack* on a Gulf Arab nation since the Iran war began."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Yemen's Iran backed *Houthi rebels* claimed responsibility."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The next day, another projectile hit the same airport complex, killing one more person and injuring eleven. The airport in *Dammam* was also attacked."
+        }
+      ]
+    },
+    {
+      "type": "airdefense",
+      "tag": "SAUDI AIR DEFENSE",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Saudi Arabia defends itself mainly with American made systems, including *Patriot* and *THAAD* missile batteries."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Every incoming missile or drone can require one or more expensive *interceptor missiles* to stop it."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And according to Saudi officials cited by the Wall Street Journal, the kingdom is *running low* on those interceptors."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Officials say Saudi Arabia has been moving batteries around to protect *palaces* and *energy infrastructure*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Even successful interceptions carry risks. Debris from one intercepted ballistic missile reportedly hit a *kindergarten* and a medical clinic complex."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The United States has also seen its own interceptor stockpile *dwindle* during the war with Iran."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "SAUDI ARABIA ASKED FOR HELP",
+      "items": [
+        {
+          "year": "FR",
+          "text": "France"
+        },
+        {
+          "year": "UK",
+          "text": "Britain"
+        },
+        {
+          "year": "PK",
+          "text": "Pakistan"
+        },
+        {
+          "year": "EG",
+          "text": "Egypt"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Last month, regional officials told the Associated Press that Saudi Arabia had asked four countries to deploy *air defense support*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "France, Britain, *Pakistan*, and Egypt."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Money is not the problem. Saudi Arabia spent an estimated *eighty three billion dollars* on its military last year, the eighth most in the world."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The problem is *time*. Interceptors must be built, shipped and installed, and factories can't make them overnight."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "PAKISTAN STEPS IN",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "One ally has already answered: *Pakistan*."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "THE MAKKAH DEFENSE PACT",
+      "items": [
+        {
+          "year": "AUG 7",
+          "text": "Saudi, Pakistan, Turkiye sign pact"
+        },
+        {
+          "year": "OCT 5",
+          "text": "Allies agree to provide forces"
+        },
+        {
+          "year": "OCT 9",
+          "text": "Pakistan: forces are in Riyadh"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On August seventh, Saudi Arabia, Pakistan and Turkiye signed the *Makkah Joint Defense Agreement*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It commits the three countries to treat an armed attack on one as *an attack on all*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "On October fifth, at a meeting in Riyadh, the three allies agreed to provide *designated forces* and military capabilities under the pact."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Turkiye is also sending mainly *defensive and technical* support, according to Reuters."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Turkiye has *NATO's second largest army*. Together with Pakistan, it has condemned the Houthi attacks and agreed to join a Saudi-led coalition to protect shipping in the Red Sea."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "pk",
+      "name": "Lt. Gen. Ahmed Sharif Chaudhry",
+      "role": "Pakistan military spokesman · CNN",
+      "person": {
+        "char": "pak_officer"
+      },
+      "quote": "I can confirm that we, the forces of Pakistan, are already there. That I can assure you.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Pakistan's military spokesman, Lieutenant General Ahmed Sharif Chaudhry, confirmed the deployment in an interview with CNN."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "I can confirm that we, the forces of Pakistan, *are already there*, he said, serving in multiple capabilities and domains."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Reuters reported earlier this year that Pakistan had deployed some *eight thousand troops*, a squadron of fighter jets and an air defense system to the kingdom."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "pk",
+      "name": "Sajjad Haider Khan",
+      "role": "Pakistan Foreign Ministry spokesman",
+      "person": {
+        "skin": 1,
+        "hair": 0,
+        "top": [
+          30,
+          40,
+          50
+        ],
+        "suit": true,
+        "tie": [
+          0,
+          100,
+          50
+        ]
+      },
+      "quote": "Already we have substantial number of forces as well as resources in town, in Riyadh.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On Friday, Pakistan's foreign ministry said it has a *substantial* number of forces and resources in Riyadh."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But it drew a line. Pakistani troops would *not cross the border* to attack the Houthis. Their role is to defend Saudi territory."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Pakistan has trained and advised the Saudi military for decades, while Riyadh has repeatedly helped Pakistan *financially* in hard times."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "WHO IS HELPING?",
+      "items": [
+        {
+          "year": "US",
+          "text": "Patriot supplier, possible $9B sale"
+        },
+        {
+          "year": "PK",
+          "text": "Forces in the kingdom"
+        },
+        {
+          "year": "TR",
+          "text": "Defensive, technical support"
+        },
+        {
+          "year": "UK",
+          "text": "Air-to-air refuelling"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Several allies are involved, but their roles are *very different*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The United States remains Saudi Arabia's key missile defense supplier. In January, Washington approved a possible *nine billion dollar* sale of seven hundred thirty Patriot interceptors."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But approval of a sale does not mean the missiles have *arrived*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Britain has agreed to provide *air to air refuelling* for Saudi jets, according to the Guardian."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Pakistan has *denied* reports that its jets carried out air strikes. Whether its troops will take part in operations against the Houthis remains unclear."
+        }
+      ]
+    },
+    {
+      "type": "airdefense",
+      "tag": "A COSTLY CONTEST",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Experts point to a basic problem: *cost*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Using an advanced interceptor against a much cheaper drone or missile turns every attack into an *expensive exchange*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The Houthis don't need to match Saudi Arabia's budget. *Occasional hits* are enough to close airports and unsettle investors."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Last month, the Houthis also seized key areas along the *Bab el-Mandeb Strait*, and a Saudi-led coalition has been trying to take them back."
+        }
+      ]
+    },
+    {
+      "type": "meeting",
+      "sign": "CAN DIPLOMACY HELP?",
+      "screen": false,
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On the ground in Yemen, government forces and *UAE backed* brigades are fighting the Houthis, coordinating with Saudi air power."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But bombing alone has limits. A U.S. campaign in 2025 destroyed Houthi command sites and weapons stores, yet Reuters later reported it had *not cut their supply lines*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Diplomacy is another path. In May 2025, *Oman* announced a ceasefire between the United States and the Houthis."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Iran also has influence over the Houthis, though experts say influence is *not the same as control*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "India and Australia have condemned the attacks on Saudi Arabia. The Houthis, meanwhile, accuse the Saudis of striking the airport in *Sanaa*, Yemen's rebel held capital."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "WHAT'S NEXT",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "So could this war pull in *the United States* as well?"
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "sa",
+      "plain": true,
+      "name": "Mohammed bin Salman",
+      "role": "Crown Prince of Saudi Arabia",
+      "person": {
+        "char": "mbs"
+      },
+      "quote": "Seeking help from allies. Trump weighing joining the fight against the Houthis.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Saudi Crown Prince *Mohammed bin Salman* has been seeking assistance."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "President Trump says he is weighing *joining the fight* against the Houthis, and planned to speak with the crown prince."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But a U.S. intervention could prompt the Houthis to halt shipping through the *Bab el-Mandeb Strait*, at the southern end of the Red Sea."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "That route has become a crucial alternative to the *Strait of Hormuz*, already threatened by Iran."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "sa",
+      "name": "Prince Abdulaziz bin Salman",
+      "role": "Saudi Energy Minister",
+      "person": {
+        "char": "gulf"
+      },
+      "quote": "There is no way that somebody will break our back. We are like a phoenix.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Sunday's attack came as Riyadh hosted a major *international energy conference*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Saudi Energy Minister Prince Abdulaziz bin Salman struck a defiant tone. There is no way that somebody will *break our back*, he said. We are like a phoenix."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "For a kingdom trying to open up to tourism and investment, the attacks are a *serious threat*. Reporting for KOWEN News."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "SAUDI AIR DEFENSE RUNNING LOW",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "To recap tonight's top story."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "A Houthi missile strike on Riyadh's airport has killed *thirteen people*, the deadliest attack on a Gulf state since the Iran war began."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Saudi Arabia is reportedly *running low* on interceptors, and has asked France, Britain, Pakistan and Egypt for help."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Pakistan confirms its forces are *already in the kingdom*, under a new mutual defense pact."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "And President Trump says he is weighing whether to *join the fight* against the Houthis."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Allies are sending help, but no one can produce interceptors *overnight*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We'll keep following this story. That's all for tonight. This has been KOWEN News. Thanks for watching, and good night."
+        }
+      ]
+    }
+  ]
+}

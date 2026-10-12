@@ -1,0 +1,462 @@
+{
+  "title": "Russia plague scare",
+  "lang": "en",
+  "output": "out/russia_plague.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.25
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.25
+    }
+  },
+  "ticker": [
+    "BREAKING: Plague lab worker's death in Siberia sparks fears in Russia",
+    "About 200 contacts placed under medical observation in Irkutsk",
+    "Russia tells WHO: \"no plague case\", no pathogens detected",
+    "U.S. formally requests information from Russia",
+    "WHO asks Moscow about reports of a second suspicious pneumonia death",
+    "KOWEN NEWS"
+  ],
+  "scenes": [
+    {
+      "type": "title",
+      "duration": 3.0
+    },
+    {
+      "type": "anchor",
+      "headline": "PLAGUE IN RUSSIA?",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Good evening, and welcome to KOWEN News."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "In Siberia, a young woman who worked at a *plague research laboratory* has died."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Around *two hundred people* have been placed under medical observation, and hospitals have been put under quarantine."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Russia insists it was *not plague*. But experts say the official story doesn't add up."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "And with the world still remembering *COVID*, every unanswered question matters."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Tonight: what we know, what we don't, and why the world is *worried*."
+        }
+      ]
+    },
+    {
+      "type": "lab",
+      "tag": "IRKUTSK ANTI-PLAGUE INSTITUTE",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The woman was a lab technician at the *Irkutsk Anti-Plague Institute*, in southeastern Siberia."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Independent outlets identified her as a twenty eight year old employee named *Darya*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "According to Russian media reports, she told medical staff she had *accidentally broken a test tube* containing live bacteria while collecting samples."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "She was hospitalised on September twenty ninth with symptoms of *severe pneumonia*, in the town of Shelekhov near Irkutsk."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "She was placed on a ventilator, and *died* on October second."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "\"PLAGUE\"... OR NOT?",
+      "items": [
+        {
+          "year": "OCT 2",
+          "text": "Irkutsk: \"particularly dangerous infection\""
+        },
+        {
+          "year": "OCT 2",
+          "text": "Buryatia: \"died of plague\""
+        },
+        {
+          "year": "LATER",
+          "text": "Edited to \"possibly died from plague\""
+        },
+        {
+          "year": "MOSCOW",
+          "text": "Pneumonia of \"unknown\" origin"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "What killed her is still unclear, and officials have *contradicted each other*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Irkutsk's governor first spoke only of a suspected *particularly dangerous infection*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The head of neighbouring Buryatia said she had *died of plague*. His statement was later edited to say she had *possibly* died from plague."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Russia's health watchdog, Rospotrebnadzor, says she died of pneumonia of *unknown origin*, and that her illness was not linked to her work."
+        }
+      ]
+    },
+    {
+      "type": "hospital",
+      "tag": "IRKUTSK REGION",
+      "sign": "QUARANTINE",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Yet the response on the ground has been *dramatic*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "At least *one hundred ninety seven* people who may have had contact with her were placed under medical observation, more than a hundred of them in hospital wards."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The hospital in Shelekhov was put under *quarantine*. Public events in Irkutsk were cancelled."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Police reportedly opened a *criminal investigation* into possible health safety violations resulting in death."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Local media reported that *sixty workers* at the anti-plague institute were also in quarantine."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "She was forty weeks pregnant, and had to *change hospitals* after new quarantine rules meant her husband could no longer be with her during labor."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "One pregnant woman told CNN that at her maternity hospital, she was given a questionnaire titled *checklist for suspected highly dangerous infectious disease plague*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Some neighbouring regions introduced *quarantine controls* at their borders."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Residents are divided. One said ambulance doctors are driving around in *full Covid protective suits*. Another said everything is as usual, no visible changes."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "BORDER CONTROLS",
+      "items": [
+        {
+          "year": "KZ",
+          "text": "Kazakhstan: border quarantine checks"
+        },
+        {
+          "year": "KG",
+          "text": "Kyrgyzstan: border quarantine checks"
+        },
+        {
+          "year": "UZ",
+          "text": "Uzbekistan: border quarantine checks"
+        },
+        {
+          "year": "TJ",
+          "text": "Tajikistan: border quarantine checks"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Neighbouring countries are not taking chances."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Kazakhstan, Kyrgyzstan, Uzbekistan and Tajikistan have introduced *quarantine controls* at border crossings."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "China, however, does not appear to have added border measures, and flights from Irkutsk to China have *not been cancelled*, according to CNN."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "WHAT RUSSIA SAYS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Moscow, however, says there is *nothing to fear*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ru",
+      "plain": true,
+      "name": "Rospotrebnadzor",
+      "role": "Russia's health watchdog",
+      "person": {
+        "char": "hazmat"
+      },
+      "quote": "No epidemic risk. Over 90% of contacts checked. No dangerous pathogens found.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Russia's health watchdog says there is *no epidemic risk*, and that it is winding down its response."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It says medical checks have been completed for *over ninety percent* of her contacts, and no dangerous pathogens have been found."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The Kremlin says it informed the *World Health Organization* in accordance with established practice."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The Kremlin has urged people to rely on the watchdog's updates, rather than *rumors and speculation*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Irkutsk's governor says all known contacts are under observation, show *no signs of illness*, and have tested negative."
+        }
+      ]
+    },
+    {
+      "type": "un",
+      "name": "Tedros Adhanom Ghebreyesus",
+      "role": "Director-General, World Health Organization",
+      "speaker": {
+        "char": "tedros"
+      },
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The WHO says Russian regulators told it there is *no plague case*, and no evidence pneumonic plague played a part in her death."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Based on unofficial information, the WHO says the public health risk to the general population appears to be *low*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But the agency has asked Moscow for *lab results*, tests and further analysis."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It has also asked about media reports of *a second* suspicious pneumonia death in the region."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "CNN says it is not aware of any such second case, and *no local media or officials* have confirmed one."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "We want to put out fair, factual information, said the WHO's Maria Van Kerkhove, *and when we don't have an answer, we say so*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "us",
+      "name": "Jennifer Nuzzo",
+      "role": "Pandemic Center, Brown University · TIME",
+      "person": {
+        "skin": 0,
+        "hair": 1,
+        "top": [
+          60,
+          60,
+          80
+        ],
+        "long": true
+      },
+      "quote": "If it's plague, breathe a sigh of relief, because we know what to do about plague.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Experts say the pieces *don't fit*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "If a lab worker is exposed to plague, they take antibiotics. *You'd be fine*, said Jennifer Nuzzo of Brown University's Pandemic Center. You don't die, typically."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Quarantining two hundred people for a single case of pneumonia would be *unusual*, she said."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "If it's plague, breathe a sigh of relief, because we know what to do about plague. *The worry is it's not that*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "us",
+      "name": "Dr. Ashish Jha",
+      "role": "Former White House COVID coordinator · TIME",
+      "person": {
+        "skin": 1,
+        "hair": 3,
+        "top": [
+          40,
+          40,
+          50
+        ],
+        "suit": true,
+        "glasses": true
+      },
+      "quote": "You can't help but worry that there is something more here than meets the eye.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Dr. Ashish Jha, who led the White House COVID response under President Biden, raised a darker possibility: *an accidental release from a deliberate program*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Russia has a long history of *bioengineering pathogens*. The Soviet programs were officially shut down, but the current situation is unclear."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "You can't help but worry, Jha told TIME, that there is *something more here than meets the eye*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Jha said friends in the Trump administration have been *very worried*, but are not getting much information or data."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "WHAT IS PLAGUE?",
+      "items": [
+        {
+          "year": "BUBO",
+          "text": "Bubonic: swollen lymph nodes"
+        },
+        {
+          "year": "LUNG",
+          "text": "Pneumonic: spreads person to person"
+        },
+        {
+          "year": "CURE",
+          "text": "Treatable with early antibiotics"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The Irkutsk institute was founded in *1934* to fight plague, and employs around ninety five researchers. Plague still circulates naturally in wildlife across parts of *Siberia*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Plague is caused by the bacterium *Yersinia pestis*, usually carried by small mammals and their fleas."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The most dangerous form, *pneumonic plague*, infects the lungs and can spread from person to person through the air."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Untreated, it can kill within *a day*. But common antibiotics cure it if given early."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Plague is not gone from the world. The WHO counted nearly *four thousand cases* and four hundred twenty three deaths in ten countries between 2019 and 2025."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "WHAT'S NEXT",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "The case has now reached the *White House*."
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "tag": "WASHINGTON ASKS MOSCOW",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The United States has made a *formal request* to Russia for information."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Secretary of State Marco Rubio said it is incumbent upon Russia to *share more information* with the world. Maybe it's bigger than we thought, he said. We don't know."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "President Trump says he expects to speak with Vladimir Putin about the issue. The Kremlin says no call has been arranged, but *could be*, if requested."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "With independent media restricted in Russia, much of what is known comes from small regional outlets, *Telegram channels*, and leaks from medical staff."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "As one expert put it, infectious disease surveillance only works if countries report *early and honestly*. Reporting for KOWEN News."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "PLAGUE IN RUSSIA?",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "To recap tonight's top story."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "A lab worker at a Siberian *anti-plague institute* has died of severe pneumonia, and about two hundred contacts have been isolated."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Russia says it was *not plague*, and that there is no epidemic risk. There is no confirmed outbreak."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "But the WHO and the United States are still *demanding answers*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Four Central Asian neighbours have added *quarantine checks* at their borders."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Until Russia shares its lab results, the question remains: *what really killed her?*"
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We'll keep following this story. That's all for tonight. This has been KOWEN News. Thanks for watching, and good night."
+        }
+      ]
+    }
+  ]
+}

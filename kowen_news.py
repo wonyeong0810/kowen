@@ -435,6 +435,54 @@ def draw_char(d, cx, by, t, talking, key):
         rect(d, cx - 9, by - 44, 19, 8, (90, 110, 130))               # 바이저
         rect(d, cx - 9, by - 44, 19, 1, (150, 170, 190))
         _mouth(d, cx, by - 31, talking)
+    elif key in ("mbs", "gulf"):
+        # 걸프 지도자: 흰 토브 + 구트라(빨강 체크=mbs / 흰색) + 아갈(검은 줄), 검은 수염
+        rect(d, cx - 18, by - 24, 36, 26, (245, 245, 240))
+        rect(d, cx - 1, by - 24, 2, 10, (215, 215, 210))
+        cloth = (210, 50, 55) if key == "mbs" else (245, 245, 245)
+        d.polygon([(cx - 13, by - 50), (cx + 13, by - 50), (cx + 16, by - 20), (cx - 16, by - 20)], fill=cloth)
+        if key == "mbs":
+            for yy in range(by - 48, by - 20, 4):
+                for xx in range(cx - 14, cx + 15, 4):
+                    rect(d, xx, yy, 1, 1, (245, 240, 240))
+        rect(d, cx - 8, by - 44, 17, 18, skin)
+        rect(d, cx - 12, by - 52, 25, 4, (20, 20, 20))                    # 아갈
+        rect(d, cx - 8, by - 32, 17, 6, (25, 22, 20))                     # 수염
+        rect(d, cx - 4, by - 33, 9, 1, (25, 22, 20))
+        _eyes(d, cx, by - 39, t, gap=4, brow=(25, 22, 20))
+        rect(d, cx, by - 36, 2, 3, (220, 170, 135))
+        _mouth(d, cx, by - 30, talking, lips=(120, 60, 50))
+    elif key == "pak_officer":
+        # 파키스탄군 장교: 카키 정복 + 녹색 베레 + 콧수염
+        top = (150, 135, 95)
+        rect(d, cx - 18, by - 24, 36, 26, top)
+        rect(d, cx - 1, by - 24, 2, 26, (120, 105, 70))
+        for sx in (-12, 9):
+            rect(d, cx + sx, by - 22, 4, 3, (230, 200, 80))
+        rect(d, cx - 3, by - 28, 7, 5, (200, 150, 110))
+        rect(d, cx - 8, by - 46, 17, 19, (200, 150, 110))
+        rect(d, cx - 11, by - 52, 22, 7, (30, 90, 50))                    # 베레
+        rect(d, cx + 6, by - 50, 3, 3, (230, 200, 80))
+        _eyes(d, cx, by - 39, t, gap=4)
+        rect(d, cx - 4, by - 33, 9, 2, (30, 25, 20))                      # 콧수염
+        _mouth(d, cx, by - 30, talking)
+    elif key == "hazmat":
+        # 방역복 + 고글 + 마스크
+        rect(d, cx - 18, by - 24, 36, 26, (235, 235, 230))
+        d.ellipse([cx - 11, by - 54, cx + 11, by - 26], fill=(235, 235, 230))
+        rect(d, cx - 7, by - 44, 15, 14, skin)
+        rect(d, cx - 8, by - 42, 17, 5, (90, 140, 170))                   # 고글
+        rect(d, cx - 6, by - 35, 13, 6, (120, 180, 200))                  # 마스크
+    elif key == "tedros":
+        # WHO 사무총장: 짧은 머리, 콧수염, 정장
+        sk = (120, 80, 55)
+        _suit(d, cx, by, (30, 35, 50), tie=(60, 120, 190))
+        rect(d, cx - 3, by - 28, 7, 5, sk)
+        rect(d, cx - 8, by - 46, 17, 19, sk)
+        rect(d, cx - 8, by - 49, 17, 4, (25, 22, 20))
+        _eyes(d, cx, by - 39, t, gap=4, brow=(25, 22, 20))
+        rect(d, cx - 4, by - 33, 9, 2, (25, 22, 20))
+        _mouth(d, cx, by - 30, talking, lips=(90, 50, 40))
     elif key == "trump":
         draw_trump(d, cx, by, t, talking)
     elif key in ("general", "soldier"):
@@ -584,6 +632,22 @@ def draw_flag(d, kind, x, y, w, h):
         rect(d, x, y, w // 3, h, (30, 60, 160))
         rect(d, x + w // 3, y, w // 3, h, (240, 240, 240))
         rect(d, x + 2 * w // 3, y, w - 2 * w // 3, h, (220, 40, 50))
+    elif kind == "sa":
+        rect(d, x, y, w, h, (0, 110, 60))
+        rect(d, x + w // 5, y + h // 3, 3 * w // 5, 2, (240, 240, 240))
+        rect(d, x + w // 4, y + h // 2 + 4, w // 2, 2, (240, 240, 240))
+        rect(d, x + 3 * w // 4 - 3, y + h // 2 + 2, 3, 6, (240, 240, 240))
+    elif kind == "pk":
+        rect(d, x, y, w, h, (0, 100, 50))
+        rect(d, x, y, w // 4, h, (245, 245, 245))
+        cx2, cy2, r = x + 5 * w // 8, y + h // 2, h // 4
+        d.ellipse([cx2 - r, cy2 - r, cx2 + r, cy2 + r], fill=(245, 245, 245))
+        d.ellipse([cx2 - r + r // 3, cy2 - r - r // 6, cx2 + r + r // 3, cy2 + r - r // 6], fill=(0, 100, 50))
+        rect(d, cx2 + r // 2, cy2 - r // 2, 3, 3, (245, 245, 245))
+    elif kind == "who":
+        rect(d, x, y, w, h, (0, 120, 200))
+        d.ellipse([x + w // 2 - h // 4, y + h // 4, x + w // 2 + h // 4, y + 3 * h // 4], outline=(245, 245, 245), width=2)
+        rect(d, x + w // 2 - 1, y + h // 4 - 2, 2, h // 2 + 4, (245, 245, 245))
     elif kind == "kr":
         rect(d, x, y, w, h, (245, 245, 245))
         r = h // 4
@@ -1509,7 +1573,165 @@ class ClassroomScene(Scene):
                 d.text((FW - 40 - tw - 16 + (1 - k2) * 600, 106 + i * 52), row, font=font(32), fill=(255, 230, 120))
 
 
-SCENES = {"protest": ProtestScene, "classroom": ClassroomScene, "xpost": XPostScene, "press": PressScene, "dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
+class AirDefenseScene(Scene):
+    """방공 포대: 날아오는 미사일을 요격하고, 남은 요격미사일 게이지가 줄어든다."""
+    zoomable = False
+
+    def draw(self, d, t):
+        vgrad(d, 0, 120, (15, 20, 45), (60, 50, 70))
+        rnd = random.Random(2)
+        for _ in range(40):
+            rect(d, rnd.randint(0, W), rnd.randint(0, 80), 1, 1, (200, 200, 220))
+        rect(d, 0, 120, W, 60, (150, 130, 95))
+        for bx in range(180, W, 26):                                    # 도시 실루엣
+            bh = rnd.randint(14, 40)
+            rect(d, bx, 120 - bh, 22, bh, (35, 35, 50))
+        for i, lx in enumerate((40, 90)):                                # 발사대
+            rect(d, lx - 14, 112, 36, 10, (90, 95, 70))
+            d.polygon([(lx - 10, 112), (lx + 14, 92), (lx + 20, 96), (lx - 4, 114)], fill=(110, 115, 85))
+            for wx in (lx - 10, lx + 12):
+                rect(d, wx, 120, 6, 4, (30, 30, 30))
+        period = 2.4
+        for k2 in range(2):
+            ph = (t + k2 * 1.2) % period / period
+            mx, my = int(330 - ph * 170), int(10 + ph * 50)              # 날아오는 미사일
+            if ph < 0.75:
+                rect(d, mx, my, 6, 2, (230, 230, 230))
+                rect(d, mx + 6, my, 6, 2, (255, 160, 60))
+                ix, iy = int(60 + ph / 0.75 * (mx - 60)), int(100 - ph / 0.75 * (100 - my))
+                rect(d, ix, iy, 2, 4, (240, 240, 200))                   # 요격미사일
+                d.line([(60, 100), (ix, iy + 4)], fill=(200, 200, 190))
+            elif ph < 0.95:
+                r = int((ph - 0.75) / 0.2 * 14) + 3
+                d.ellipse([207 - r, 47 - r, 207 + r, 47 + r], fill=(255, 200, 90))
+
+    def overlay(self, d, t, cam):
+        tag = self.spec.get("tag", "")
+        tw = d.textlength(tag, font=font(32))
+        rect(d, SAFE_X + 32, 28, int(tw) + 32, 44, (30, 40, 90))
+        d.text((SAFE_X + 48, 34), tag, font=font(32), fill=(255, 255, 255))
+        level = 1.0 - 0.75 * min(1.0, t / max(1.0, self.duration * 0.8))  # 요격미사일 게이지
+        x0, y0 = FW - 360, 100
+        d.text((x0, y0 - 40), "INTERCEPTORS", font=font(32), fill=(255, 255, 255))
+        rect(d, x0, y0, 300, 36, (40, 40, 50))
+        col = (80, 200, 90) if level > 0.5 else (240, 180, 50) if level > 0.3 else (230, 50, 50)
+        rect(d, x0 + 4, y0 + 4, int(292 * level), 28, col)
+        if level <= 0.3 and int(t * 3) % 2 == 0:
+            d.text((x0, y0 + 44), "RUNNING LOW", font=font(32), fill=(255, 80, 80))
+
+
+class AirportScene(Scene):
+    """공격받은 공항 터미널: 불길과 연기, 멈춘 비행기."""
+    focus = (160, 80)
+
+    def draw(self, d, t):
+        vgrad(d, 0, 100, (90, 110, 140), (170, 160, 150))
+        rect(d, 30, 50, 260, 56, (200, 200, 205))
+        rect(d, 30, 46, 260, 6, (120, 125, 135))
+        for wx in range(40, 285, 12):
+            rect(d, wx, 60, 8, 30, (70, 110, 150))
+        d.polygon([(150, 46), (190, 46), (200, 70), (170, 80), (140, 66)], fill=(40, 35, 35))   # 파손 부위
+        for k2 in range(6):                                            # 연기와 불
+            ph = (t * 0.6 + k2 / 6) % 1
+            sx, sy = 170 + int(math.sin(k2 + t) * 8), int(60 - ph * 60)
+            r = 6 + int(ph * 14)
+            d.ellipse([sx - r, sy - r, sx + r, sy + r], fill=lerp((70, 65, 65), (150, 150, 150), ph))
+        for k2 in range(4):
+            fx = 158 + k2 * 8
+            fh = 6 + int(abs(math.sin(t * 8 + k2)) * 6)
+            rect(d, fx, 72 - fh, 5, fh, (255, 150 + k2 * 20, 40))
+        rect(d, 0, 106, W, 74, (95, 95, 100))
+        for lx in range(0, W, 30):
+            rect(d, lx, 140, 16, 2, (230, 220, 120))
+        rect(d, 40, 118, 70, 10, (235, 235, 240))                       # 비행기
+        rect(d, 64, 110, 18, 26, (220, 220, 225))
+        rect(d, 100, 112, 8, 8, (220, 220, 225))
+        rect(d, 46, 120, 4, 3, (70, 110, 150))
+
+    def overlay(self, d, t, cam):
+        tag = self.spec.get("tag", "")
+        tw = d.textlength(tag, font=font(32))
+        rect(d, SAFE_X + 32, 28, int(tw) + 32, 44, (150, 30, 30))
+        d.text((SAFE_X + 48, 34), tag, font=font(32), fill=(255, 255, 255))
+        cam.text(d, 160, 40, self.spec.get("sign", ""), 24, (40, 50, 70), center=True, shadow=False)
+
+
+class LabScene(Scene):
+    """방역 연구소 실험실: 방역복 연구원, 시험관, 깨진 시험관, 생물위험 표시."""
+    focus = (160, 80)
+
+    def draw(self, d, t):
+        rect(d, 0, 0, W, H, (205, 215, 210))
+        rect(d, 0, 0, W, 8, (170, 180, 175))
+        rect(d, 230, 16, 70, 50, (240, 240, 235))                         # 생물위험 표지
+        d.polygon([(265, 22), (292, 60), (238, 60)], fill=(250, 200, 40))
+        d.ellipse([259, 40, 271, 52], outline=(20, 20, 20), width=2)
+        rect(d, 0, 112, W, 12, (160, 165, 170))                           # 실험대
+        rect(d, 0, 124, W, 56, (120, 125, 130))
+        for i, tx in enumerate(range(150, 220, 10)):                       # 시험관
+            c = (200, 60, 60) if i % 2 else (90, 150, 200)
+            rect(d, tx, 92, 5, 20, (230, 240, 240))
+            rect(d, tx, 102, 5, 10, c)
+        rect(d, 146, 110, 70, 3, (100, 100, 110))
+        rect(d, 236, 108, 8, 4, (230, 240, 240))                          # 깨진 시험관
+        for k2 in range(5):
+            rect(d, 232 + k2 * 4, 110 + (k2 % 2), 2, 2, (200, 60, 60))
+        draw_char(d, 80, 124, t, False, "hazmat")
+        rect(d, 100, 98, 16, 6, (235, 235, 230))                          # 팔
+        if int(t * 1.5) % 2 == 0:                                         # 경고등
+            d.ellipse([20, 14, 36, 30], fill=(240, 60, 60))
+
+    def overlay(self, d, t, cam):
+        tag = self.spec.get("tag", "")
+        tw = d.textlength(tag, font=font(32))
+        rect(d, SAFE_X + 32, 28, int(tw) + 32, 44, (150, 30, 30))
+        d.text((SAFE_X + 48, 34), tag, font=font(32), fill=(255, 255, 255))
+        rect(d, FW - 268, 28, 236, 40, (0, 0, 0))
+        d.text((FW - 256, 32), "ILLUSTRATION", font=font(32), fill=(255, 230, 120))
+
+
+class HospitalScene(Scene):
+    """격리된 병원: 출입통제 테이프, 구급차, 마스크 쓴 사람들."""
+    focus = (160, 80)
+
+    def draw(self, d, t):
+        vgrad(d, 0, 100, (150, 170, 200), (200, 210, 220))
+        rect(d, 60, 8, 200, 76, (235, 235, 230))
+        for wx in range(72, 250, 20):
+            for wy in (18, 40):
+                rect(d, wx, wy, 12, 14, (120, 160, 190))
+        rect(d, 150, 0, 20, 14, (235, 235, 230))
+        rect(d, 157, 2, 6, 10, (220, 40, 40))
+        rect(d, 153, 5, 14, 4, (220, 40, 40))
+        rect(d, 140, 62, 40, 22, (150, 190, 210))
+        rect(d, 0, 84, W, 96, (130, 130, 135))
+        for k2 in range(0, W, 16):                                       # 출입통제 테이프
+            c = (250, 210, 40) if (k2 // 16) % 2 == 0 else (20, 20, 20)
+            rect(d, k2, 80 + int(math.sin(t * 2 + k2 * 0.1) * 1), 16, 4, c)
+        ax = 20 + int(math.sin(t * 0.5) * 4)                              # 구급차
+        rect(d, ax, 94, 60, 22, (245, 245, 245))
+        rect(d, ax + 46, 98, 12, 8, (150, 200, 230))
+        rect(d, ax + 20, 100, 12, 4, (220, 40, 40))
+        rect(d, ax + 24, 96, 4, 12, (220, 40, 40))
+        if int(t * 4) % 2 == 0:
+            rect(d, ax + 26, 90, 8, 4, (60, 120, 255))
+        for ax2 in (ax + 8, ax + 44):
+            rect(d, ax2, 114, 8, 6, (30, 30, 30))
+        for i, px in enumerate((210, 236, 262, 288)):                    # 마스크 쓴 사람들
+            rect(d, px - 6, 106, 12, 22, [(60, 90, 140), (140, 60, 60), (70, 70, 70), (90, 130, 90)][i])
+            rect(d, px - 4, 96, 8, 10, SKINS[i % 4])
+            rect(d, px - 4, 101, 8, 4, (200, 230, 240))
+
+    def overlay(self, d, t, cam):
+        tag = self.spec.get("tag", "")
+        tw = d.textlength(tag, font=font(32))
+        rect(d, SAFE_X + 32, 28, int(tw) + 32, 44, (150, 30, 30))
+        d.text((SAFE_X + 48, 34), tag, font=font(32), fill=(255, 255, 255))
+        cam.text(d, 160, 68, self.spec.get("sign", "QUARANTINE"), 24, (220, 40, 40), center=True, shadow=False)
+
+
+SCENES = {"airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
+          "protest": ProtestScene, "classroom": ClassroomScene, "xpost": XPostScene, "press": PressScene, "dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
           "signboard": SignboardScene, "meeting": MeetingScene, "reaction": ReactionScene,
           "chart": ChartScene, "interview": InterviewScene}
 
