@@ -149,6 +149,95 @@ def ukraine():
     finish(low, text, "out/ukraine_new_leader_thumb.png")
 
 
+def _two_line(d, y1, t1, c1, y2, t2, c2, size=112, cx=640):
+    big_text(d, (cx, y1), t1, size, c1, stroke=10, anchor="ma")
+    big_text(d, (cx, y2), t2, size, c2, stroke=10, anchor="ma")
+
+
+def _fr_flag(d, x, y, w, h):
+    k.rect(d, x, y, w // 3, h, (30, 60, 160))
+    k.rect(d, x + w // 3, y, w // 3, h, (225, 225, 230))
+    k.rect(d, x + 2 * w // 3, y, w - 2 * w // 3, h, (215, 40, 50))
+
+
+def _crowd(d, y0, w, seed=3):
+    import random
+    rnd = random.Random(seed)
+    for row, y in enumerate((y0, y0 + 8)):
+        x = -4 + row * 5
+        while x < w + 6:
+            k.rect(d, x, y + 6, 9, 20, rnd.choice([(200, 60, 60), (60, 110, 180), (220, 200, 60), (90, 160, 90)]))
+            k.rect(d, x + 1, y, 7, 7, rnd.choice(k.SKINS))
+            k.rect(d, x + 1, y - 1, 7, 2, rnd.choice(k.HAIRS))
+            if rnd.random() < 0.3:
+                k.rect(d, x + 4, y - 12, 1, 12, (120, 90, 60))
+                k.rect(d, x - 2, y - 19, 14, 8, (245, 245, 240))
+                k.rect(d, x, y - 17, 10, 2, (200, 30, 40))
+            x += 10 + rnd.randint(0, 2)
+
+
+def france():
+    low = Image.new("RGB", (TW, TH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, TW, 44, (12, 16, 40))
+    _fr_flag(d, 0, 44, TW, 46)
+    _crowd(d, 66, TW)
+    k.draw_char(d, 26, 92, 0.05, False, "student")
+    k.draw_char(d, 136, 92, 0.05, False, "riot_police")
+
+    def text(d):
+        _two_line(d, 135, "260,000 STUDENTS", (255, 255, 255), 245, "REVOLT?!", (255, 210, 60))
+
+    finish(low, text, "out/france_students_thumb.png")
+
+
+def _night_launchers(d, w, y_ground, h):
+    k.vgrad(d, 0, y_ground, (15, 20, 45), (70, 50, 70))
+    k.rect(d, 0, y_ground, w, h - y_ground, (150, 130, 95))
+    for lx in (20, 52):
+        k.rect(d, lx - 10, y_ground - 8, 26, 8, (90, 95, 70))
+        d.polygon([(lx - 6, y_ground - 8), (lx + 12, y_ground - 22), (lx + 16, y_ground - 18), (lx - 2, y_ground - 6)],
+                  fill=(110, 115, 85))
+    ex, ey = int(w * 0.58), max(14, y_ground - 24)        # 요격 폭발 (제목 띠 아래)
+    d.line([(64, y_ground - 22), (ex, ey)], fill=(220, 220, 200))
+    for r, c in ((9, (255, 140, 40)), (5, (255, 220, 120))):
+        d.ellipse([ex - r, ey - r, ex + r, ey + r], fill=c)
+
+
+def saudi():
+    low = Image.new("RGB", (TW, TH))
+    d = ImageDraw.Draw(low)
+    _night_launchers(d, TW, 80, TH)
+    k.rect(d, 0, 0, TW, 40, (12, 16, 40))
+    k.draw_char(d, 132, 94, 0.05, False, "mbs")
+
+    def text(d):
+        _two_line(d, 135, "SAUDI MISSILES", (255, 255, 255), 245, "RUNNING OUT?!", (255, 80, 60))
+
+    finish(low, text, "out/saudi_air_defense_thumb.png")
+
+
+def _biohazard(d, cx, cy, r):
+    d.polygon([(cx, cy - r), (cx + r, cy + r * 3 // 4), (cx - r, cy + r * 3 // 4)], fill=(250, 200, 40))
+    d.ellipse([cx - r // 3, cy - r // 6, cx + r // 3, cy + r // 2], outline=(20, 20, 20), width=2)
+
+
+def plague():
+    low = Image.new("RGB", (TW, TH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, TW, TH, (12, 16, 40))
+    k.draw_flag(d, "ru", 0, 44, TW, 46)
+    for i in range(0, TW, 8):                          # 격리 테이프
+        k.rect(d, i, 82, 8, 4, (250, 210, 40) if (i // 8) % 2 == 0 else (20, 20, 20))
+    k.draw_char(d, 34, 96, 0.05, False, "hazmat")
+    _biohazard(d, 128, 62, 14)
+
+    def text(d):
+        _two_line(d, 135, "PLAGUE IN", (255, 255, 255), 245, "RUSSIA?!", (255, 80, 60))
+
+    finish(low, text, "out/russia_plague_thumb.png")
+
+
 # ---------------------------------------------------------------- 숏츠용 세로 표지 (1080x1920)
 
 VW, VH = 135, 240
@@ -262,6 +351,57 @@ def ukraine_short():
     finish_v(low, text, "out/ukraine_new_leader_short_thumb.png")
 
 
+def france_short():
+    low = Image.new("RGB", (VW, VH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, VW, 120, (12, 16, 40))
+    _fr_flag(d, 0, 120, VW, 120)
+    _crowd(d, 150, VW)
+    k.draw_char(d, 34, 242, 0.05, False, "student")
+    k.draw_char(d, 102, 242, 0.05, False, "riot_police")
+
+    def text(d):
+        big_text(d, (540, 300), "260,000", 200, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 540), "STUDENTS", 160, (255, 210, 60), stroke=12, anchor="ma")
+        big_text(d, (540, 730), "REVOLT?!", 120, (255, 80, 60), stroke=10, anchor="ma")
+
+    finish_v(low, text, "out/france_students_short_thumb.png")
+
+
+def saudi_short():
+    low = Image.new("RGB", (VW, VH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, VW, VH, (12, 16, 40))
+    sub = Image.new("RGB", (VW, 120))
+    _night_launchers(ImageDraw.Draw(sub), VW, 90, 120)
+    low.paste(sub, (0, 120))
+    k.draw_char(d, 100, 242, 0.05, False, "mbs")
+
+    def text(d):
+        big_text(d, (540, 260), "SAUDI", 200, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 470), "MISSILES", 160, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 660), "RUNNING OUT?!", 96, (255, 80, 60), stroke=10, anchor="ma")
+
+    finish_v(low, text, "out/saudi_air_defense_short_thumb.png")
+
+
+def plague_short():
+    low = Image.new("RGB", (VW, VH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, VW, VH, (12, 16, 40))
+    k.draw_flag(d, "ru", 0, 120, VW, 120)
+    for i in range(0, VW, 8):
+        k.rect(d, i, 176, 8, 4, (250, 210, 40) if (i // 8) % 2 == 0 else (20, 20, 20))
+    k.draw_char(d, 40, 242, 0.05, False, "hazmat")
+    _biohazard(d, 100, 150, 18)
+
+    def text(d):
+        big_text(d, (540, 300), "PLAGUE", 220, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 540), "IN RUSSIA?!", 140, (255, 80, 60), stroke=12, anchor="ma")
+
+    finish_v(low, text, "out/russia_plague_short_thumb.png")
+
+
 if __name__ == "__main__":
     dmz()
     ocean()
@@ -271,3 +411,9 @@ if __name__ == "__main__":
     dmz_short()
     ukraine()
     ukraine_short()
+    france()
+    saudi()
+    plague()
+    france_short()
+    saudi_short()
+    plague_short()
