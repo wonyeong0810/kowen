@@ -429,7 +429,7 @@ def ceasefire():
     k.draw_char(d, 30, 106, 0.05, False, "trump")
 
     def text(d):
-        _two_line(d, 135, "ENERGY CEASEFIRE", (255, 210, 60), 245, "RUSSIA SILENT", (255, 80, 60), size=104)
+        _two_line(d, 135, "TRUMP'S ONE-MAN", (255, 255, 255), 245, "CEASEFIRE", (255, 210, 60), size=112)
 
     finish(low, text, "out/energy_ceasefire_thumb.png")
 
@@ -438,15 +438,16 @@ def ceasefire_short():
     low = Image.new("RGB", (VW, VH))
     d = ImageDraw.Draw(low)
     k.rect(d, 0, 0, VW, VH, (12, 16, 40))
-    k.draw_flag(d, "ua", 0, 130, VW // 2, 110)
-    k.draw_flag(d, "ru", VW // 2, 130, VW - VW // 2, 110)
-    _pylon(d, 100, 200, 40)
+    k.draw_flag(d, "ua", 70, 120, 65, 60)
+    k.draw_flag(d, "ru", 70, 180, 65, 60)
+    k.rect(d, 70, 179, 65, 2, (10, 10, 15))
+    _pylon(d, 102, 240, 44)
     k.draw_char(d, 40, 242, 0.05, False, "trump")
 
     def text(d):
-        big_text(d, (540, 260), "ENERGY", 200, (255, 210, 60), stroke=12, anchor="ma")
-        big_text(d, (540, 470), "CEASEFIRE", 160, (255, 255, 255), stroke=12, anchor="ma")
-        big_text(d, (540, 660), "RUSSIA SILENT", 110, (255, 80, 60), stroke=12, anchor="ma")
+        big_text(d, (540, 260), "ONE-MAN", 200, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 470), "CEASEFIRE", 160, (255, 210, 60), stroke=12, anchor="ma")
+        big_text(d, (540, 660), "BY TRUMP", 140, (255, 80, 60), stroke=12, anchor="ma")
 
     finish_v(low, text, "out/energy_ceasefire_short_thumb.png")
 
