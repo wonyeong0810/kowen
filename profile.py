@@ -16,7 +16,7 @@ def main():
         c = (20, 30, 70) if i % 2 else (14, 20, 50)
         d.polygon([(50, 40), (50 + math.cos(a) * 90, 40 + math.sin(a) * 90),
                    (50 + math.cos(a + 0.26) * 90, 40 + math.sin(a + 0.26) * 90)], fill=c)
-    cx, cy, R = 50, 38, 22                                 # 픽셀 지구본 (대서양 쪽에서 본 모습)
+    cx, cy, R = 50, 50, 22                                 # 픽셀 지구본 (대서양 쪽에서 본 모습)
     globe = Image.new("RGB", (2 * R + 1, 2 * R + 1), (40, 110, 210))
     g = ImageDraw.Draw(globe)
     green = (60, 170, 80)
@@ -27,14 +27,17 @@ def main():
     g.ellipse([20, 1, 26, 4], fill=(240, 240, 250))               # 그린란드/극지방
     mask = Image.new("L", globe.size, 0)
     ImageDraw.Draw(mask).ellipse([0, 0, 2 * R, 2 * R], fill=255)
+    globe = globe.resize((2 * 34 + 1, 2 * 34 + 1), Image.NEAREST)   # 크게
+    mask = mask.resize(globe.size, Image.NEAREST)
+    R = 34
     low.paste(globe, (cx - R, cy - R), mask)
     d.ellipse([cx - R, cy - R, cx + R, cy + R], outline=(230, 230, 255), width=2)
     img = low.resize((N * S, N * S), Image.NEAREST)
     d = ImageDraw.Draw(img)
-    d.text((400, 520), "KOWEN", font=k.font(112), fill=(255, 210, 60), anchor="ma",
-           stroke_width=6, stroke_fill=(0, 0, 0))
-    d.rectangle([290, 640, 510, 696], fill=(200, 30, 40))
-    d.text((400, 644), "NEWS", font=k.font(56), fill=(255, 255, 255), anchor="ma")
+    d.text((400, 280), "KOWEN", font=k.font(176), fill=(255, 210, 60), anchor="ma",
+           stroke_width=12, stroke_fill=(0, 0, 0))
+    d.rectangle([230, 450, 570, 540], fill=(200, 30, 40), outline=(0, 0, 0), width=8)
+    d.text((400, 456), "NEWS", font=k.font(96), fill=(255, 255, 255), anchor="ma")
     img.save("out/profile.png")
     # 원형 미리보기
     mask = Image.new("L", img.size, 0)
