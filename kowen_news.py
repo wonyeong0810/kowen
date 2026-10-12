@@ -1378,7 +1378,7 @@ def bgm(total):
     return out
 
 
-def build_audio(scenes, total):
+def build_audio(scenes, total, hits=False):
     buf = np.zeros(int(SR * (total + 1)))
 
     def add(start, sig):
@@ -1402,7 +1402,7 @@ def build_audio(scenes, total):
             swell = 0.5 + 0.5 * np.abs(np.sin(np.arange(n) / SR * 1.3))
             add(t0, noise * 0.25 * swell)
         for e in sc.timeline:
-            for te, _, _, _ in e["emph"]:   # 강조 '쿵' 효과음
+            for te, _, _, _ in (e["emph"] if hits else []):   # 강조 '쿵' 효과음
                 ht = np.arange(int(SR * 0.35)) / SR
                 hit = np.sin(2 * np.pi * (90 - 60 * ht) * ht) * np.exp(-ht * 9) * 0.35
                 add(t0 + te - 0.05, hit)
@@ -1486,7 +1486,7 @@ def render(ep_path):
         wf.setnchannels(1)
         wf.setsampwidth(2)
         wf.setframerate(SR)
-        wf.writeframes(build_audio(scenes, total).tobytes())
+        wf.writeframes(build_audio(scenes, total, ep.get("stinger", False)).tobytes())
 
     short = ep.get("format") == "short"
     OW, OH = (SW, SH) if short else (FW, FH)
