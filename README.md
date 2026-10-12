@@ -30,6 +30,7 @@ python3 kowen_news.py episodes/trump_ocean.json   # -> out/trump_ocean.mp4 (abou
 Copy `episodes/trump_ocean.json` and change the content.
 
 - `lang`: TTS language (`en`, `ko`, ...)
+- `flash` / `whoosh`: white flash and whoosh sound on scene changes (both off by default because the flash hurts eyes in the dark)
 - `zoom_cuts` / `stinger`: zoom cuts, and the pop-up caption with camera shake on emphasized words (both off by default; emphasized words are still highlighted in the subtitles)
 - `voices`: per-speaker voice, as `{"sid": 0-9, "speed": 1.2}`
 - `scenes[].lines`: `{"speaker": "...", "text": "..."}`. No duration is needed; it comes from the audio.

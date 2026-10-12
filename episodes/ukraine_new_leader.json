@@ -523,5 +523,7 @@
         }
       ]
     }
-  ]
+  ],
+  "flash": true,
+  "whoosh": true
 }

@@ -107,5 +107,7 @@
   ],
   "zoom_cuts": true,
   "stinger": true,
-  "layout": "classic"
+  "layout": "classic",
+  "flash": true,
+  "whoosh": true
 }

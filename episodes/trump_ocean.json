@@ -515,5 +515,7 @@
     }
   ],
   "zoom_cuts": true,
-  "stinger": true
+  "stinger": true,
+  "flash": true,
+  "whoosh": true
 }

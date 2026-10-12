@@ -1871,7 +1871,7 @@ def bgm(total):
     return out
 
 
-def build_audio(scenes, total, hits=False):
+def build_audio(scenes, total, hits=False, whoosh=False):
     buf = np.zeros(int(SR * (total + 1)))
 
     def add(start, sig):
@@ -1886,7 +1886,7 @@ def build_audio(scenes, total, hits=False):
             for k, nfreq in enumerate([523, 659, 784, 1047, 784, 1047]):
                 add(t0 + 0.2 + k * 0.14, square(nfreq, 0.13, 0.18))
                 add(t0 + 0.2 + k * 0.14, square(nfreq / 2, 0.13, 0.10))
-        else:  # 장면 전환 휙 소리
+        elif whoosh:  # 장면 전환 휙 소리 (기본 꺼짐)
             wt = np.arange(int(SR * 0.25)) / SR
             add(t0, np.random.default_rng(1).normal(0, 1, len(wt)) * np.sin(np.pi * wt / 0.25) * 0.08)
         if isinstance(sc, RallyScene):
@@ -2037,7 +2037,7 @@ def render(ep_path):
         wf.setnchannels(1)
         wf.setsampwidth(2)
         wf.setframerate(SR)
-        wf.writeframes(build_audio(scenes, total, ep.get("stinger", False)).tobytes())
+        wf.writeframes(build_audio(scenes, total, ep.get("stinger", False), ep.get("whoosh", False)).tobytes())
 
     short = ep.get("format") == "short"
     OW, OH = (SW, SH) if short else (FW, FH)
@@ -2090,8 +2090,8 @@ def render(ep_path):
                 draw_stinger(d, *em)
             draw_subtitle(d, sc, t)
             draw_ticker(d, ep.get("ticker", []), gt)
-        # 장면 전환: 짧은 화이트 플래시
-        if t < 0.12 and idx > 0:
+        # 장면 전환 화이트 플래시 (어두운 곳에서 눈부셔서 기본 꺼짐)
+        if ep.get("flash", False) and t < 0.12 and idx > 0:
             img = Image.blend(img, Image.new("RGB", img.size, (255, 255, 255)), 1 - t / 0.12)
         proc.stdin.write(img.tobytes())
         if fi % (FPS * 30) == 0:
