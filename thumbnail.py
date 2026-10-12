@@ -117,11 +117,11 @@ def ukraine():
     low = Image.new("RGB", (TW, TH))
     d = ImageDraw.Draw(low)
     k.rect(d, 0, 0, TW, TH, (12, 16, 40))
-    # 왼쪽: 어두운 성조기 줄무늬 (트럼프 금발이 잘 보이게)
+    # 왼쪽: 성조기
     for i in range(40, TH, 6):
-        k.rect(d, 0, i, 80, 3, (120, 25, 35))
-        k.rect(d, 0, i + 3, 80, 3, (40, 45, 70))
-    k.rect(d, 0, 40, 30, 21, (25, 35, 90))
+        k.rect(d, 0, i, 80, 3, (190, 30, 40))      # 빨강 줄
+        k.rect(d, 0, i + 3, 80, 3, (235, 235, 240))  # 흰 줄
+    k.rect(d, 0, 40, 30, 21, (30, 40, 110))      # 남색 칸 + 흰 별
     for sx in range(2, 28, 4):
         for sy in range(42, 60, 4):
             k.rect(d, sx, sy, 1, 1, (220, 220, 230))
