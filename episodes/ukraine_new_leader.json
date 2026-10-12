@@ -1,0 +1,527 @@
+{
+  "title": "Trump: Ukraine needs a new leader",
+  "lang": "en",
+  "output": "out/ukraine_new_leader.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.25
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.3
+    }
+  },
+  "ticker": [
+    "BREAKING: Trump says \"it's time for Ukraine to get a new president\"",
+    "Elon Musk: \"I agree, it's time for Ukraine to get a new leader\"",
+    "Zelensky: \"It's up to our people to choose\"",
+    "Zelensky offers elections if Russia agrees to a 60-day total ceasefire",
+    "Russian strike on Zaporizhzhia kills 20, including three children",
+    "KOWEN NEWS"
+  ],
+  "scenes": [
+    {
+      "type": "title",
+      "duration": 3.0
+    },
+    {
+      "type": "anchor",
+      "headline": "NEW LEADER FOR UKRAINE?",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Good evening, and welcome to KOWEN News."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "President Trump has called for Ukraine to *replace Volodymyr Zelensky*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Elon Musk quickly backed him, writing that it's *time for Ukraine to get a new leader*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "And Zelensky has fired back, saying the choice belongs to *the Ukrainian people*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Tonight: what Trump said, why Musk jumped in, how Kyiv is answering, and what it means for *peace talks*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "It all comes one day after Trump's *diesel deal with Russia*. Here's the story."
+        }
+      ]
+    },
+    {
+      "type": "press",
+      "tag": "WHITE HOUSE · OCT 10",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Speaking to reporters at the White House on Saturday, President Trump lashed out at Zelensky over Ukraine's *strikes on Russian oil refineries*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He said the strikes have hurt global *diesel supplies*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He wants to make problems for *our farmers, our ranchers* with diesel fuel, Trump said, because Russia supplies a large portion of the diesel fuel throughout the world."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Trump said he had told Zelensky directly. Don't hit refineries. There's plenty of targets. And he went out and he hit."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "*He better damn well stop*, Trump said."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "us",
+      "name": "Donald Trump",
+      "role": "President of the United States",
+      "person": {
+        "char": "trump"
+      },
+      "quote": "I think it's time for Ukraine to get a new president.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Then came the line that made headlines around the world. I think it's *time for Ukraine to get a new president*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "I suggest they get a new leader who can make a deal, he added, because he could have made many deals, but for some reason, *he never does*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Trump did not say who he thinks should *replace* Zelensky."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Under Ukraine's *martial law*, national elections are suspended while the war goes on."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "TRUMP VS ZELENSKY",
+      "items": [
+        {
+          "year": "FEB 25",
+          "text": "Trump calls Zelensky a \"dictator\""
+        },
+        {
+          "year": "FEB 25",
+          "text": "Oval Office shouting match"
+        },
+        {
+          "year": "OCT 26",
+          "text": "\"Time for a new president\""
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "This is not the first time Trump has questioned Zelensky's legitimacy."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In February 2025, he called Zelensky *a dictator without elections*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Days later, their meeting in the Oval Office turned into a *shouting match* in front of the cameras, and Zelensky left the White House early."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Washington and Kyiv later signed a minerals deal and patched things up, but this weekend's comments are the most direct call yet for Ukraine to *change its leader*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Trump later added that Zelensky *should have an election*."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "HOW WE GOT HERE",
+      "items": [
+        {
+          "year": "SEP 13",
+          "text": "Trump to Kyiv: \"Don't strike diesel\""
+        },
+        {
+          "year": "OCT 9",
+          "text": "Trump-Putin diesel deal"
+        },
+        {
+          "year": "OCT 10",
+          "text": "Trump: \"Time for a new president\""
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "For weeks, Trump has been urging Zelensky to *stop attacking* Russian energy infrastructure."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "U.S. diesel prices are near *record highs*, driven up by the U.S. war with Iran, and they've become a political problem for Republicans ahead of next month's midterms."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Trump has sought to blame those prices on Ukraine's strikes, rather than on the *war in Iran*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "On Friday, he struck a deal with Vladimir Putin to buy *Russian diesel*, easing U.S. sanctions to make it possible."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "That came just weeks after he signed a sweeping new *Russia sanctions law*."
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "tag": "TRUMP-PUTIN DIESEL DEAL · OCT 9",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The deal was announced while Ukrainian and European officials were in *Miami*, meeting U.S. negotiators on a plan to end the war."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine said the timing was no coincidence. Zelensky said the deal had *emboldened Moscow*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And according to Putin's aide Yuri Ushakov, Putin used the call to *reject* peace talks, saying Russia would keep fighting until its goals are achieved."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Hours after the deal, Ukraine struck *a major Russian oil hub* again."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "MUSK WEIGHS IN",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Within hours, one of the world's richest men joined the attack."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Elon Musk, who led the Trump administration's cost cutting effort known as *DOGE* last year, took to his own platform, X."
+        }
+      ]
+    },
+    {
+      "type": "xpost",
+      "name": "Elon Musk",
+      "handle": "@elonmusk",
+      "person": {
+        "char": "musk"
+      },
+      "post": "Zelenskyy has gone too far",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Elon Musk responded on X to a video of Trump's refinery comments."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Zelensky, he wrote, *has gone too far*."
+        }
+      ]
+    },
+    {
+      "type": "xpost",
+      "name": "Elon Musk",
+      "handle": "@elonmusk",
+      "person": {
+        "char": "musk"
+      },
+      "post": "I agree, it's time for Ukraine to get a new leader.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "In another comment, Musk went further, echoing the president almost word for word."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "I agree, *it's time for Ukraine to get a new leader*."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "MUSK VS ZELENSKY",
+      "items": [
+        {
+          "year": "NOV 24",
+          "text": "Musk joins Trump-Zelensky call"
+        },
+        {
+          "year": "FEB 25",
+          "text": "Musk accuses Zelensky of \"graft\""
+        },
+        {
+          "year": "OCT 26",
+          "text": "\"Time for a new leader\""
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "It is not the first time Musk has turned on Zelensky."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In November 2024, Musk joined a phone call between then president elect Trump and Zelensky, who *thanked him* for Starlink internet access in Ukraine."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But by February 2025, Musk was accusing Zelensky of running a *massive graft machine* feeding off the dead bodies of Ukrainian soldiers."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Now, he is openly backing the call for Zelensky to *step aside*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "KYIV RESPONDS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Kyiv did not stay quiet."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Andrii Sybiha",
+      "role": "Foreign Minister of Ukraine",
+      "person": {
+        "skin": 0,
+        "hair": 1,
+        "top": [
+          30,
+          35,
+          60
+        ],
+        "suit": true,
+        "tie": [
+          40,
+          90,
+          180
+        ]
+      },
+      "quote": "He has the support of the Ukrainian people, and they have the right to decide.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine's foreign minister, Andrii Sybiha, defended Zelensky on X."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He has the support of the Ukrainian people, Sybiha wrote, and *they have the right to decide*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Statements from abroad, he added, only confirm that *he is doing his job well*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Volodymyr Zelensky",
+      "role": "President of Ukraine · ABC News",
+      "person": {
+        "char": "zelensky"
+      },
+      "quote": "With all respect to President Trump, it's up to our society, up to our people to choose one or another leader.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On Sunday, Zelensky answered Trump himself, in an interview with *ABC News*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "With all respect to President Trump, he said, it's up to our society, *up to our people* to choose one or another leader."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Volodymyr Zelensky",
+      "role": "President of Ukraine",
+      "person": {
+        "char": "zelensky"
+      },
+      "quote": "Please tell Putin to give us two months, 60 days of total ceasefire, and we will organise elections.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine has not held a national election since Russia's full scale invasion in 2022."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Zelensky said he had a message for Trump's team. If they really want elections, please tell Putin to give us *sixty days of total ceasefire*, and we will organise elections."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He also offered a trade on the refinery strikes. Don't attack us. Don't kill our children. *We will stop attacking your diesel*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "plain": true,
+      "name": "Zaporizhzhia",
+      "role": "Russian strike · Oct 10",
+      "person": {
+        "char": "zelensky"
+      },
+      "quote": "20 killed, including 3 children. The third mass-casualty attack on Ukraine in four days.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The war itself shows no sign of slowing. On Saturday, a Russian attack on the city of Zaporizhzhia killed *twenty people*, including three children."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Zelensky linked it directly to the diesel deal. Today, he said, Russia said *thank you* for the lifting of sanctions on diesel exports, by dropping five glide bombs on residential buildings."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Earlier in the week, nearly *eighty civilians* were killed in Russian strikes, including at least thirty by a bomb in Kramatorsk, and twenty two by a missile in Pryluky, east of Kyiv."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It was the *third mass casualty attack* on Ukraine in four days."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Zelensky warned that every extra *billion dollars* Russia earns from exports will pay for weapons, drones and missiles."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He said he had spoken with French President Emmanuel Macron about *air defense*, and that Ukraine would receive new ammunition for its F-16 fighter jets."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "uk",
+      "plain": true,
+      "name": "Allies react",
+      "role": "Europe · U.S. Congress",
+      "person": {
+        "skin": 0,
+        "hair": 3,
+        "top": [
+          30,
+          40,
+          70
+        ],
+        "suit": true
+      },
+      "quote": "Britain says it will strengthen sanctions on Russia. Republican Rep. Don Bacon: apply more sanctions, not fewer.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine's European allies have expressed dismay at the Russian deal, and say they stand by their sanctions."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "British Prime Minister Andy Burnham spoke with Zelensky on Saturday, and London said it would *strengthen its sanctions* on Russia."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In Washington, Republican Congressman Don Bacon said it was time to apply *more sanctions*, not roll them back."
+        }
+      ]
+    },
+    {
+      "type": "meeting",
+      "sign": "WHAT'S NEXT",
+      "screen": false,
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "So what happens now?"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukrainian, European and American negotiators have been working in *Miami* on a common proposal to end the war."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But with Washington buying Russian diesel and calling for Zelensky's exit, Kyiv's trust in that process is being *tested*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Zelensky says Ukraine still needs *American support*, and hopes this dispute won't break the unity of Ukraine's allies."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In the U.S., all eyes are on the *midterm elections* on November third, where high fuel prices could cost Republicans."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Whether Trump's pressure on Zelensky helps or hurts at the ballot box, we'll know in *three weeks*. Reporting for KOWEN News."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "NEW LEADER FOR UKRAINE?",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "To recap tonight's top story."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "President Trump says it's time for Ukraine to get a *new president*, blaming Zelensky's refinery strikes for high diesel prices."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Elon Musk agrees. Zelensky says the decision belongs to *Ukrainians*, and offers elections if Russia accepts a sixty day ceasefire."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Ukraine's foreign minister says criticism from abroad only shows Zelensky *is doing his job*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "And in Zaporizhzhia, a Russian strike killed *twenty people*, a day after the diesel deal."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Meanwhile, Russian strikes on Ukrainian cities *continue*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We'll keep following this story. That's all for tonight. This has been KOWEN News. Thanks for watching, and good night."
+        }
+      ]
+    }
+  ]
+}

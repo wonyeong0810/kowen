@@ -352,6 +352,51 @@ def draw_char(d, cx, by, t, talking, key):
         rect(d, cx - 5, by - 33, 1, 3, (230, 190, 170))             # 팔자 주름
         rect(d, cx + 5, by - 33, 1, 3, (230, 190, 170))
         _mouth(d, cx, by - 30, talking, w=5, lips=(190, 120, 110))
+    elif key == "zelensky":
+        # 올리브색 맨투맨(삼지창 문양), 짧은 갈색 머리, 수염 자국
+        top = (75, 85, 55)
+        rect(d, cx - 18, by - 24, 36, 26, top)
+        rect(d, cx - 20, by - 18, 2, 20, top)
+        rect(d, cx + 18, by - 18, 2, 20, top)
+        rect(d, cx - 5, by - 25, 10, 2, (60, 70, 45))
+        rect(d, cx + 6, by - 18, 3, 4, (240, 200, 60))              # 삼지창 문양
+        rect(d, cx + 7, by - 20, 1, 2, (240, 200, 60))
+        rect(d, cx - 3, by - 28, 7, 5, skin)
+        rect(d, cx - 8, by - 46, 17, 19, skin)
+        rect(d, cx - 9, by - 50, 19, 5, (70, 50, 35))
+        rect(d, cx - 9, by - 46, 2, 4, (70, 50, 35))
+        rect(d, cx + 7, by - 46, 2, 4, (70, 50, 35))
+        rect(d, cx - 8, by - 33, 17, 6, (150, 115, 90))              # 짧은 수염
+        rect(d, cx - 4, by - 33, 9, 1, (150, 115, 90))
+        _eyes(d, cx, by - 39, t, gap=4, brow=(70, 50, 35))
+        rect(d, cx - 6, by - 36, 3, 1, (215, 170, 140))              # 다크서클
+        rect(d, cx + 4, by - 36, 3, 1, (215, 170, 140))
+        rect(d, cx, by - 35, 2, 3, (220, 170, 135))
+        _mouth(d, cx, by - 31, talking)
+    elif key == "musk":
+        # 검은 티셔츠, 뒤로 넘긴 짙은 머리(살짝 M자), 넓은 턱, 활짝 웃는 입
+        top = (20, 20, 22)
+        rect(d, cx - 19, by - 24, 38, 26, top)
+        rect(d, cx - 21, by - 18, 2, 20, top)
+        rect(d, cx + 19, by - 18, 2, 20, top)
+        rect(d, cx - 4, by - 24, 8, 3, skin)
+        rect(d, cx - 3, by - 28, 7, 5, skin)
+        rect(d, cx - 9, by - 47, 19, 21, skin)
+        rect(d, cx - 8, by - 28, 17, 2, (230, 185, 150))             # 넓은 턱
+        rect(d, cx - 9, by - 51, 19, 5, (55, 40, 30))
+        rect(d, cx - 9, by - 47, 2, 6, (55, 40, 30))
+        rect(d, cx + 8, by - 47, 2, 6, (55, 40, 30))
+        rect(d, cx - 6, by - 47, 3, 1, skin)                          # M자 이마
+        rect(d, cx + 4, by - 47, 3, 1, skin)
+        _eyes(d, cx, by - 40, t, gap=4, brow=(55, 40, 30))
+        rect(d, cx, by - 36, 2, 3, (220, 170, 135))
+        if talking:
+            _mouth(d, cx, by - 31, True, w=9)
+        else:
+            rect(d, cx - 5, by - 32, 11, 2, (250, 250, 250))          # 활짝 웃는 이
+            rect(d, cx - 5, by - 30, 11, 1, (150, 80, 70))
+    elif key == "trump":
+        draw_trump(d, cx, by, t, talking)
     elif key in ("general", "soldier"):
         # 육군 전투복(위장 무늬) + 베레모/전투모, 장군은 별 3개
         top = (85, 100, 60)
@@ -842,9 +887,13 @@ class MeetingScene(Scene):
             rect(d, x - 1, 102, 2, 12, (40, 40, 40))
 
     def overlay(self, d, t, cam):
-        cam.text(d, 160, 82, self.spec.get("sign", ""), 32,
-                 (40, 60, 110) if self.spec.get("screen", True) else (255, 255, 255), center=True,
-                 shadow=not self.spec.get("screen", True))
+        if not self.spec.get("screen", True):
+            tag = self.spec.get("sign", "")
+            tw = d.textlength(tag, font=font(32))
+            rect(d, 32, 28, int(tw) + 32, 44, (30, 40, 90))
+            d.text((48, 34), tag, font=font(32), fill=(255, 255, 255))
+        else:
+            cam.text(d, 160, 82, self.spec.get("sign", ""), 32, (40, 60, 110), center=True, shadow=False)
         if self.spec.get("screen", True) and t > self.duration * 0.4:
             cam.text(d, 160, 40, "EAST SEA", 40, (255, 255, 255), center=True)
             cam.text(d, 160, 56, "SEA OF JAPAN?", 24, (255, 255, 255), center=True)
@@ -1246,7 +1295,73 @@ class AuditScene(Scene):
                 d.text((sx - tw / 2, 154 + i * 44), txt, font=ff, fill=(255, 255, 255) if i == 0 else (200, 200, 220))
 
 
-SCENES = {"dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
+class XPostScene(Scene):
+    """X(트위터) 게시물 카드: 프로필 캐릭터 + 계정 + 글."""
+    zoomable = False
+
+    def draw(self, d, t):
+        rect(d, 0, 0, W, H, (10, 12, 16))
+        for y in range(0, H, 6):
+            rect(d, 0, y, W, 1, (16, 18, 24))
+        rect(d, 30, 10, 260, 116, (0, 0, 0))
+        d.rectangle([30, 10, 289, 125], outline=(60, 65, 75))
+        av = Image.new("RGB", (40, 40), (40, 50, 70))
+        draw_person(ImageDraw.Draw(av), 20, 60, t, False, self.spec.get("person", {"suit": True}), gesture=False)
+        mask = Image.new("L", (40, 40), 0)
+        ImageDraw.Draw(mask).ellipse([0, 0, 39, 39], fill=255)
+        d._image.paste(av, (36, 14), mask)
+
+    def overlay(self, d, t, cam):
+        name, handle = self.spec.get("name", ""), self.spec.get("handle", "")
+        d.text((320, 70), name, font=font(40), fill=(255, 255, 255))
+        d.text((320 + d.textlength(name, font=font(40)) + 16, 78), handle, font=font(32), fill=(130, 140, 155))
+        d.text((1080, 60), "X", font=font(64), fill=(255, 255, 255))
+        k = ease((t - 0.3) / 0.6)
+        if k > 0:
+            for i, row in enumerate(wrap(d, self.spec.get("post", ""), font(48), 920)[:4]):
+                d.text((150, 230 + i * 60), row, font=font(48), fill=(255, 255, 255))
+        date = self.spec.get("date", "")
+        if date:
+            d.text((150, 470), date, font=font(32), fill=(130, 140, 155))
+
+
+class PressScene(Scene):
+    """백악관 기자들 앞에서 말하는 트럼프."""
+    focus = (160, 70)
+
+    def draw(self, d, t):
+        for cx in range(0, W, 10):
+            rect(d, cx, 0, 8, 130, (30, 50, 120))
+            rect(d, cx + 8, 0, 2, 130, (20, 35, 90))
+        d.ellipse([228, 12, 268, 52], fill=(230, 200, 110))
+        d.ellipse([233, 17, 263, 47], fill=(40, 60, 130))
+        draw_trump(d, 160, 118, t)
+        rect(d, 0, 118, W, 62, (60, 45, 35))
+        # 기자들 머리 + 마이크 + 카메라
+        rnd = random.Random(21)
+        for x in range(-4, W, 22):
+            rect(d, x, 140 + rnd.randint(0, 6), 14, 14, rnd.choice(SKINS))
+            rect(d, x - 1, 136 + rnd.randint(0, 4), 16, 5, rnd.choice(HAIRS))
+            rect(d, x - 3, 154, 20, 26, rnd.choice([(40, 40, 50), (70, 60, 50), (90, 90, 100)]))
+        for i, mx in enumerate((120, 150, 175, 200)):
+            sway = int(math.sin(t * 2 + i) * 2)
+            d.line([(mx, 180), (mx + 10 + sway, 112)], fill=(30, 30, 30), width=2)
+            rect(d, mx + 8 + sway, 106, 6, 8, (40, 40, 40))
+        for cx in (30, 270):
+            rect(d, cx, 100, 24, 16, (30, 30, 30))
+            rect(d, cx + 24, 104, 8, 8, (60, 60, 60))
+            if int(t * 1.5 + cx) % 5 == 0:
+                rect(d, cx + 2, 96, 10, 4, (255, 255, 230))
+
+    def overlay(self, d, t, cam):
+        tag = self.spec.get("tag", "WHITE HOUSE")
+        f = font(32)
+        tw = d.textlength(tag, font=f)
+        rect(d, 32, 28, int(tw) + 32, 44, (30, 40, 90))
+        d.text((48, 34), tag, font=f, fill=(255, 255, 255))
+
+
+SCENES = {"xpost": XPostScene, "press": PressScene, "dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
           "signboard": SignboardScene, "meeting": MeetingScene, "reaction": ReactionScene,
           "chart": ChartScene, "interview": InterviewScene}
 
