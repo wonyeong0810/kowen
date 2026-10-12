@@ -773,7 +773,7 @@ class TitleScene(Scene):
         d.text((x + 6, y + 6), txt, font=f, fill=(0, 0, 0))
         d.text((x, y), txt, font=f, fill=(255, 210, 60))
         if t > 0.7:
-            sub = "EVENING NEWS"
+            sub = self.spec.get("subtitle", "")
             d.text(((FW - d.textlength(sub, font=font(32))) / 2, y + 120), sub,
                    font=font(32), fill=(230, 230, 255))
 

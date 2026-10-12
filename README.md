@@ -59,3 +59,11 @@ Copy `episodes/trump_ocean.json` and change the content.
 
 - No question marks or exclamation points in thumbnail text.
 - When a claim is unconfirmed, use a word like "SCARE" instead of a "?" so the text doesn't state it as fact.
+
+## Long-form script guidelines
+
+- Don't use time-of-day phrases. No "evening news", no "Good evening", no "good night".
+  - Opening: "Welcome to KOWEN News."
+- Closing: end with a call to action.
+  - "If you found this helpful, please like and subscribe for more. This has been KOWEN News. Thanks for watching."
+- The title card shows only the KOWEN NEWS logo (no subtitle).

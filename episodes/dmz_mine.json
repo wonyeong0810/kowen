@@ -23,7 +23,8 @@
   "scenes": [
     {
       "type": "title",
-      "duration": 3.0
+      "duration": 3.0,
+      "subtitle": "EVENING NEWS"
     },
     {
       "type": "anchor",
