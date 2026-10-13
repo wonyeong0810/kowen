@@ -1,0 +1,499 @@
+{
+  "title": "Trump wants to meet Kim Jong Un again",
+  "lang": "en",
+  "output": "out/trump_kim.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.25
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.25
+    }
+  },
+  "ticker": [
+    "Trump on meeting Kim Jong Un during Asia trip: \"I may. That would be exciting\"",
+    "North Korea fires multiple ballistic missiles - fourth launch in about a month",
+    "Kim opens new defense museum featuring the Hwasong-20 ICBM",
+    "Trump to attend APEC summit in Shenzhen, China, in mid-November",
+    "KOWEN NEWS"
+  ],
+  "scenes": [
+    {
+      "type": "title",
+      "duration": 3.0
+    },
+    {
+      "type": "anchor",
+      "headline": "TRUMP CALLS KIM",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Welcome to KOWEN News."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "President Trump says he *may meet Kim Jong Un* on his trip to Asia next month."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "I get along with him, Trump said. *That would be exciting*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "But on the very same day, North Korea fired *multiple ballistic missiles*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "And a day later, Kim showed off a missile built to *reach the United States*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Here is what Trump said, how Pyongyang is answering, and whether a fourth Trump-Kim summit could really happen."
+        }
+      ]
+    },
+    {
+      "type": "press",
+      "tag": "WHITE HOUSE · OCT 12",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Reporters asked Trump on Monday whether he would meet Kim during his Asia trip."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "*I may*, Trump answered. *That would be exciting*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He added a line he has used many times before. *I get along with him*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Trump is expected to meet Chinese President *Xi Jinping* on the sidelines of the APEC summit in *Shenzhen*, China, in mid-November."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The Wall Street Journal has reported that Trump privately discussed meeting Kim *at that summit*. No meeting has been set."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In recent weeks, Trump has said he would like a meeting with Kim *this year*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "us",
+      "name": "Donald Trump",
+      "role": "President of the United States",
+      "person": {
+        "char": "trump"
+      },
+      "quote": "I may. That would be exciting. I get along with him.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Trump has long described his relationship with Kim as *warm*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "During his first term, the two leaders exchanged letters that Trump once called *love letters*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "At a 2018 rally, he even said of Kim, *we fell in love*. He wrote me beautiful letters."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Earlier this month, he also met Kim's old friend, a former basketball star. More on that in a moment."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Now he appears ready to try *one more time*."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "TRUMP AND KIM",
+      "items": [
+        {
+          "year": "JUN 18",
+          "text": "Singapore: first summit"
+        },
+        {
+          "year": "FEB 19",
+          "text": "Hanoi: talks collapse"
+        },
+        {
+          "year": "JUN 19",
+          "text": "Trump steps into North Korea"
+        },
+        {
+          "year": "NOV 26",
+          "text": "APEC, Shenzhen"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The two have met *three times*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In June 2018 in *Singapore*, the first-ever summit between a sitting U.S. president and a North Korean leader."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In February 2019 in *Hanoi*, where talks broke down over sanctions and nuclear sites, and ended *without a deal*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And in June 2019 at the DMZ, where Trump became the first sitting U.S. president to *step into North Korea*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "None of those meetings produced a *diplomatic breakthrough*, and talks stopped altogether in 2019."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "THE RODMAN FACTOR",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Trump's push has also brought back a familiar face. *Dennis Rodman*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "us",
+      "plain": true,
+      "name": "Dennis Rodman",
+      "role": "Former NBA star · Dallas, Oct 1",
+      "person": {
+        "skin": 3,
+        "hair": 3,
+        "top": [
+          200,
+          40,
+          60
+        ]
+      },
+      "quote": "Trump: \"The one who knew him best was Dennis Rodman.\"",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Earlier this month, the former NBA star appeared with Trump at a truck plant near *Dallas*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "No official reason was given for his visit."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Asked whether Rodman was helping broker peace, Trump talked about Kim instead. The one who knew him best, Trump said, *was Dennis Rodman*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Rodman struck up an unlikely friendship with Kim more than a decade ago, and traveled to North Korea *several times* between 2013 and 2017."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "PYONGYANG ANSWERS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "So how did North Korea respond? Not with words. *With missiles*."
+        }
+      ]
+    },
+    {
+      "type": "koreamap",
+      "facts": [
+        "Launched from Pyongyang area",
+        "One flew more than 900 km",
+        "4th launch in about a month"
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The launch came just two days after North Korea marked the *81st anniversary* of its ruling Workers' Party."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "On Monday morning, the same day Trump spoke, North Korea fired *multiple ballistic missiles* toward the sea off its east coast."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "South Korea's military said one missile, launched from the Pyongyang area, flew *more than 900 kilometers*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Japan said at least two missiles were launched *17 minutes apart*, and one followed an *irregular* flight path. It suggested it may have been a *hypersonic weapon*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Pyongyang said it was testing an *upgraded component* for its tactical missiles."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It was North Korea's *fourth* ballistic missile launch in about a month."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "On October third, Pyongyang also tested a *hypersonic intermediate-range missile*, designed to evade missile defenses in South Korea and Japan."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Japan's Defense Minister *Shinjiro Koizumi* condemned the latest test."
+        }
+      ],
+      "place": "",
+      "facts_top": true
+    },
+    {
+      "type": "quote",
+      "flag": "nk",
+      "plain": true,
+      "name": "Kim Jong Un",
+      "role": "Defense Revolution Museum · Oct 11",
+      "person": {
+        "char": "kim_jong_un"
+      },
+      "quote": "On display: the Hwasong-20, an ICBM capable of reaching the United States.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "A day later, state media released photos of Kim opening a new *Defense Revolution Museum*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He was joined by his wife *Ri Sol Ju* and his daughter, known as *Ju Ae*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The centerpiece was the *Hwasong-20*, an intercontinental ballistic missile capable of reaching *the U.S. mainland*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The Hwasong-20 has *not yet been flight-tested*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Another expert said turning temporary weapons shows into a permanent museum presents Kim's nuclear buildup as a *completed and enduring legacy*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "A display beside it appeared to show a *multiple-warhead* design, and a map with ranges stretching to the Middle East, Australia and South America."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "One South Korean analyst called it *propaganda* aimed at gaining an edge before a possible summit with Washington."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "nk",
+      "name": "Kim Jong Un",
+      "role": "Supreme People's Assembly · Sept 2025",
+      "person": {
+        "char": "kim_jong_un"
+      },
+      "quote": "If the U.S. drops its absurd obsession with denuclearization, there is no reason not to sit down with them.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Kim has made his conditions clear."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Last year he said he still has *good memories* of Trump."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But he said talks are only possible if Washington drops what he called its *absurd obsession with denuclearization*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Pyongyang still demands the U.S. end its *hostile policy* before any talks."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "nk",
+      "name": "Kim Yo Jong",
+      "role": "Kim Jong Un's sister · August 2026",
+      "person": {
+        "char": "kim_yo_jong"
+      },
+      "quote": "The relationship between the two leaders remains excellent. However, the U.S.'s hostile policies haven't changed.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "In August, when Trump first said he expected to meet Kim later this year, Kim's powerful sister answered."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The relationship between the two leaders *remains excellent*, she said. However, the U.S.'s *hostile policies* haven't changed."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "North Korea also denied there had been *any direct communication* with Washington."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "This month, she also called Seoul's demand for an apology over the mine blast *despicable*, and rejected an offer of *medical equipment* from the South."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "SEOUL IN THE MIDDLE",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "And South Korea finds itself in a *tricky spot*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "kr",
+      "name": "Lee Jae-myung",
+      "role": "South Korea · presidential office",
+      "person": {
+        "char": "lee_jae_myung"
+      },
+      "quote": "Repeated missile launches violate U.N. Security Council resolutions. Stop immediately.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "President Lee Jae-myung's office said the launches *violate U.N. resolutions* and called for an immediate stop."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Just days earlier, Lee personally oversaw South Korea's first test of a *hypersonic missile*. Seoul's military called Monday's launch a *show of force* in response."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Lee's office said that weapon, once fully developed, would let Seoul *strike key targets by surprise*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Seoul had been working to help restart talks between Pyongyang and Washington, before a *landmine blast* in the DMZ wounded three South Korean soldiers."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "A joint South Korean and U.N. probe found the mines were *planted by North Korea*. Pyongyang denies it."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Lee pledged to *reopen dialogue* with the North in his very first speech after taking office in 2025."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "U.S. - SOUTH KOREA TENSIONS",
+      "items": [
+        {
+          "year": "AUG",
+          "text": "Trump scales back joint drills"
+        },
+        {
+          "year": "TRADE",
+          "text": "Threat over $54B Alaska gas deal"
+        },
+        {
+          "year": "TOTAL",
+          "text": "$350B Korean investment pledge"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Trump's outreach also comes as relations between Washington and Seoul are *strained*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In August, Trump ordered the Pentagon to *scale back military exercises* with South Korea."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He cited frustration that Seoul did not back U.S. operations against Iran, and said the drills sent an *inappropriate signal* to North Korea."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He has also threatened new trade penalties unless Seoul follows through on a *54 billion dollar* gas project in Alaska, part of a *350 billion dollar* investment pledge."
+        }
+      ]
+    },
+    {
+      "type": "meeting",
+      "sign": "WHAT'S NEXT",
+      "screen": false,
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "So will Trump and Kim meet again?"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Prediction market *Polymarket* shows the odds rising, from about *19 percent* to *27 percent* in a single day."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Kim has so far *not answered* Trump's offers in public."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Even if a meeting happens, history shows that a handshake and a photo do not guarantee a *deal*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The main sticking point has not changed since 2019. Washington wants *denuclearization*. Pyongyang says that is *off the table*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Some reports name the *ASEAN summit in Manila* on November sixteenth as another possible venue."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "All eyes now turn to Trump's trip to *China in November*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "TRUMP CALLS KIM",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Trump says he gets along with Kim. Kim, so far, is answering *with missiles*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We'll keep following whether a *fourth summit* really happens."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "If you found this helpful, please *like and subscribe* for more."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "This has been KOWEN News. Thanks for watching."
+        }
+      ]
+    }
+  ]
+}

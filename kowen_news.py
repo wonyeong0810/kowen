@@ -1336,12 +1336,15 @@ class KoreaMapScene(Scene):
         cam.text(d, 186, 22, "NORTH KOREA", 32, (255, 255, 255))
         cam.text(d, 196, 120, "SOUTH KOREA", 32, (255, 255, 255))
         cam.text(d, 196, 64, "DMZ", 40, (255, 90, 90))
-        cam.text(d, 40, 82, "Paju–Yeoncheon", 32, (255, 230, 60))
+        place = self.spec.get("place", "Paju–Yeoncheon")
+        if place:
+            cam.text(d, 40, 82, place, 32, (255, 230, 60))
         for i, row in enumerate(self.spec.get("facts", [])):
             k = ease((t - 0.5 - i * 0.6) / 0.4)
             if k > 0:
-                rect(d, int(40 - (1 - k) * 400), 420 + i * 52, 480, 44, (0, 0, 0))
-                d.text((56 - (1 - k) * 400, 426 + i * 52), row, font=font(32), fill=(255, 255, 255))
+                y = 40 if self.spec.get("facts_top") else 420
+                rect(d, int(40 - (1 - k) * 400), y + i * 52, 480, 44, (0, 0, 0))
+                d.text((56 - (1 - k) * 400, y + 6 + i * 52), row, font=font(32), fill=(255, 255, 255))
 
 
 class UNScene(Scene):
