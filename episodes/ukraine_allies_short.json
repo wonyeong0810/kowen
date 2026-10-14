@@ -1,0 +1,106 @@
+{
+  "title": "ukraine_allies_short",
+  "format": "short",
+  "lang": "en",
+  "output": "out/ukraine_allies_short.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.3
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.3
+    }
+  },
+  "punch": "UKRAINE VS ITS ALLIES",
+  "question": "Is Ukraine pushing its allies too far? Comment below",
+  "scenes": [
+    {
+      "type": "embassy",
+      "tag": "KYIV · OCT 8",
+      "sign": "EMBASSY OF KOREA",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "South Korea just *pulled its ambassador* out of Ukraine. The first recall since 2008."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Seoul says Zelensky revealed a *secret transfer* of two North Korean POWs, putting their families at risk."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Kyiv's answer? *I consider this matter already closed*."
+        }
+      ]
+    },
+    {
+      "type": "refinery",
+      "tag": "RUSSIAN REFINERIES",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Trump told Kyiv to stop hitting Russian refineries. *He better damn well stop*, he said. Ukraine kept hitting them."
+        }
+      ]
+    },
+    {
+      "type": "pipeline",
+      "tag": "DRUZHBA PIPELINE",
+      "left": "ua",
+      "right": "sk",
+      "left_label": "UKRAINE",
+      "right_label": "SLOVAKIA",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Slovakia accused Zelensky of *blocking its oil*. It cut off emergency power to Ukraine."
+        }
+      ]
+    },
+    {
+      "type": "envoys",
+      "tag": "KYIV · AUG 4",
+      "flags": [
+        "uk",
+        "jp",
+        "fr",
+        "us",
+        "pl",
+        "kr"
+      ],
+      "highlight": "jp",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Zelensky told Japan its support *wasn't as significant as it could have been*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Japan pledged about *six billion dollars* for this year alone."
+        }
+      ]
+    },
+    {
+      "type": "parcel",
+      "tag": "WHITE EAGLE → WARSAW",
+      "label": "",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "And when Poland stripped him of its *highest honor*, Zelensky *mailed it back*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The reason: Zelensky named an army unit after the *UPA*, a force behind the mass killing of Poles in World War Two."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Is Ukraine pushing its friends *too far*? Tell us in the comments."
+        }
+      ],
+      "compact": true
+    }
+  ]
+}

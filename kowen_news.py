@@ -2197,12 +2197,13 @@ class ParcelScene(Scene):
         rect(d, bx + 6, by + 40, 34, 16, (245, 245, 240))                   # 송장
         rect(d, bx + 8, by + 44, 30, 2, (90, 90, 90))
         rect(d, bx + 8, by + 49, 22, 2, (90, 90, 90))
-        draw_flag(d, "pl", 250, 20, 46, 30)
-        draw_flag(d, "ua", 24, 20, 46, 30)
+        lx, rx = (100, 174) if self.spec.get("compact") else (24, 250)
+        draw_flag(d, "pl", rx, 20, 46, 30)
+        draw_flag(d, "ua", lx, 20, 46, 30)
 
     def overlay(self, d, t, cam):
         _tag(d, self.spec.get("tag", ""), (150, 30, 40))
-        cam.text(d, 160, 16, self.spec.get("label", ""), 28, (40, 40, 50), center=True, shadow=False)
+        cam.text(d, 160, 56 if self.spec.get("compact") else 16, self.spec.get("label", ""), 28, (40, 40, 50), center=True, shadow=False)
 
 
 SCENES = {"envoys": EnvoysScene, "parcel": ParcelScene, "powflight": PowFlightScene, "embassy": EmbassyScene, "tanker": TankerScene, "refinery": RefineryScene, "pipeline": PipelineScene, "flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
