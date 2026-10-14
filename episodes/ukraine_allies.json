@@ -42,7 +42,7 @@
         },
         {
           "speaker": "Anchor",
-          "text": "Washington is furious over Ukraine's *refinery strikes*. And in Europe, a fight over an *oil pipeline* split the EU for months."
+          "text": "Washington is furious over *refinery strikes*, and fights with *Europe*, *Poland* and even *Japan* have spilled into the open."
         },
         {
           "speaker": "Anchor",
@@ -408,6 +408,166 @@
       ]
     },
     {
+      "type": "anchor",
+      "headline": "TOKYO AND WARSAW",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Ukraine has also had *public spats* with two more key supporters: *Japan* and *Poland*."
+        }
+      ]
+    },
+    {
+      "type": "envoys",
+      "tag": "KYIV · AUG 4",
+      "flags": [
+        "uk",
+        "jp",
+        "fr",
+        "us",
+        "pl",
+        "kr"
+      ],
+      "highlight": "jp",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "In August, Zelensky spoke to a gathering of ambassadors in Kyiv."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He singled out *Japan*. Ukraine's relations with Tokyo, he said, have *not met Kyiv's high expectations*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He noted that Japan had recently *eased its limits* on exporting lethal weapons."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Volodymyr Zelensky",
+      "role": "Meeting of ambassadors · Aug 4",
+      "person": {
+        "char": "zelensky"
+      },
+      "quote": "With all due respect, and we are grateful for Japan's support, but they have not been as significant as they could have been.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "With all due respect, and we are grateful for Japan's support, he said, the results *have not been as significant as they could have been*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Japan has pledged about *6 billion dollars* in humanitarian and technical aid for 2026 alone."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It also sent Ukraine a *1.3 billion dollar* grant funded by profits from frozen Russian assets."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Tokyo is now weighing *stronger defense cooperation* with Kyiv."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "POLAND VS UKRAINE",
+      "items": [
+        {
+          "year": "MAY 26",
+          "text": "Unit named \"Heroes of the UPA\""
+        },
+        {
+          "year": "JUN 19",
+          "text": "Poland strips Zelensky's top award"
+        },
+        {
+          "year": "JUN 20",
+          "text": "Zelensky mails it back"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Poland, Ukraine's closest neighbor and one of its biggest backers, had an even *bigger fight* with Kyiv."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In May, Zelensky gave a special forces unit the honorary name *Heroes of the UPA*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The UPA was a Ukrainian nationalist force. In World War Two, it carried out the *Volhynia massacres*, killing tens of thousands of Poles."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Poland officially calls the massacres *genocide*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "pl",
+      "name": "Karol Nawrocki",
+      "role": "President of Poland · Jun 19",
+      "person": {
+        "skin": 0,
+        "hair": 1,
+        "top": [
+          30,
+          35,
+          55
+        ],
+        "suit": true,
+        "tie": [
+          150,
+          30,
+          40
+        ]
+      },
+      "quote": "For the overwhelming majority of Polish society, the UPA remains, above all, a formation responsible for brutal crimes.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Polish President *Karol Nawrocki* responded by stripping Zelensky of Poland's highest honor, the *Order of the White Eagle*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He said Zelensky had given Russian propaganda *the best material*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Former Polish president *Lech Walesa* said the decision had insulted him and all Poles who were murdered."
+        }
+      ]
+    },
+    {
+      "type": "parcel",
+      "tag": "KYIV → WARSAW · JUN 20",
+      "label": "ORDER OF THE WHITE EAGLE",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Zelensky's reply? He *mailed the medal back* to Warsaw, by courier, the very next day."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He noted the same honor had once gone to *Catherine the Great*, *Mussolini* and Germany's *Gerhard Schroeder*. If Poland thinks it should stay with them, he said, Ukraine *will not argue*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Three former Ukrainian presidents returned their medals too."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Polish Prime Minister *Donald Tusk* called the row a strategic mistake that will *cost both sides*, and Brussels warned it *plays into Russia's hands*."
+        }
+      ]
+    },
+    {
       "type": "signboard",
       "title": "UKRAINE VS ITS PARTNERS",
       "items": [
@@ -422,12 +582,16 @@
         {
           "year": "EU",
           "text": "Druzhba pipeline standoff"
+        },
+        {
+          "year": "JP · PL",
+          "text": "Spats with Tokyo and Warsaw"
         }
       ],
       "lines": [
         {
           "speaker": "Reporter",
-          "text": "Three partners, three fights."
+          "text": "Partner after partner, the same pattern."
         },
         {
           "speaker": "Reporter",

@@ -610,6 +610,15 @@ def draw_us_flag(d, x, y, t, w=34, h=20):
 
 
 def draw_flag(d, kind, x, y, w, h):
+    if kind == "jp":
+        rect(d, x, y, w, h, (240, 240, 240))
+        r = min(w, h) * 3 // 10
+        d.ellipse([x + w // 2 - r, y + h // 2 - r, x + w // 2 + r, y + h // 2 + r], fill=(200, 30, 45))
+        return
+    if kind == "pl":
+        rect(d, x, y, w, h // 2, (240, 240, 240))
+        rect(d, x, y + h // 2, w, h - h // 2, (215, 30, 50))
+        return
     if kind in ("sk", "hu"):
         cols = [(240, 240, 240), (30, 70, 160), (220, 40, 40)] if kind == "sk" else [(205, 40, 50), (240, 240, 240), (60, 130, 70)]
         for i, c in enumerate(cols):
@@ -2140,7 +2149,63 @@ class PipelineScene(Scene):
         cam.text(d, 218, 48, self.spec.get("right_label", ""), 24, (255, 255, 255), center=True)
 
 
-SCENES = {"powflight": PowFlightScene, "embassy": EmbassyScene, "tanker": TankerScene, "refinery": RefineryScene, "pipeline": PipelineScene, "flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
+class EnvoysScene(Scene):
+    """키이우의 대사 회의: 연단의 젤렌스키 앞에 각국 대사들이 앉아 있고, 한 자리에 일본 국기 명패."""
+    focus = (160, 70)
+
+    def draw(self, d, t):
+        rect(d, 0, 0, W, 120, (60, 70, 100))
+        for x in range(0, W, 30):
+            rect(d, x, 0, 12, 120, (70, 82, 115))
+        draw_flag(d, "ua", 230, 14, 54, 34)
+        draw_char(d, 160, 78, t, False, "zelensky")
+        rect(d, 142, 62, 36, 26, (110, 80, 60))                          # 연단
+        rect(d, 0, 88, W, 92, (50, 45, 45))
+        flags = self.spec.get("flags", ["jp", "uk", "fr", "pl", "us", "kr"])
+        for i, fx in enumerate(range(18, W, 50)):                        # 뒤돌아 앉은 대사들
+            hx = fx + 10
+            rect(d, hx - 9, 104, 20, 18, (30, 32, 45))
+            rect(d, hx - 6, 94, 13, 12, HAIRS[i % len(HAIRS)])
+            kind = flags[i % len(flags)]
+            draw_flag(d, kind, hx + 12, 102, 12, 8)
+            if kind == self.spec.get("highlight") and int(t * 2) % 2 == 0:
+                d.rectangle([hx + 10, 100, hx + 25, 111], outline=(255, 230, 60))
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""))
+
+
+class ParcelScene(Scene):
+    """돌려보낸 훈장: 백색 독수리 훈장이 택배 상자에 담겨 바르샤바로 간다."""
+    focus = (160, 80)
+
+    def draw(self, d, t):
+        rect(d, 0, 0, W, 120, (205, 200, 190))
+        rect(d, 0, 120, W, 60, (150, 110, 80))
+        k = min(1.0, t / max(1.0, self.duration * 0.5))
+        bx, by = 110, 60
+        rect(d, bx, by + 20, 100, 44, (190, 150, 100))                     # 상자
+        rect(d, bx, by + 20, 100, 4, (160, 120, 80))
+        rect(d, bx + 46, by + 20, 8, 44, (210, 60, 60))                    # 테이프
+        lid = int(20 * (1 - k))
+        d.polygon([(bx, by + 20), (bx - 14, by + 20 - lid), (bx + 36, by + 20 - lid), (bx + 50, by + 20)], fill=(200, 160, 110))
+        my = int(by - 20 + k * 40)                                          # 훈장이 상자 안으로
+        if k < 1:
+            rect(d, bx + 44, my - 16, 12, 12, (220, 40, 50))
+            d.polygon([(bx + 50, my - 2), (bx + 40, my + 10), (bx + 50, my + 20), (bx + 60, my + 10)], fill=(240, 240, 240))
+            rect(d, bx + 48, my + 6, 4, 8, (230, 190, 70))
+        rect(d, bx + 6, by + 40, 34, 16, (245, 245, 240))                   # 송장
+        rect(d, bx + 8, by + 44, 30, 2, (90, 90, 90))
+        rect(d, bx + 8, by + 49, 22, 2, (90, 90, 90))
+        draw_flag(d, "pl", 250, 20, 46, 30)
+        draw_flag(d, "ua", 24, 20, 46, 30)
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""), (150, 30, 40))
+        cam.text(d, 160, 16, self.spec.get("label", ""), 28, (40, 40, 50), center=True, shadow=False)
+
+
+SCENES = {"envoys": EnvoysScene, "parcel": ParcelScene, "powflight": PowFlightScene, "embassy": EmbassyScene, "tanker": TankerScene, "refinery": RefineryScene, "pipeline": PipelineScene, "flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
           "protest": ProtestScene, "classroom": ClassroomScene, "xpost": XPostScene, "press": PressScene, "dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
           "signboard": SignboardScene, "meeting": MeetingScene, "reaction": ReactionScene,
           "chart": ChartScene, "interview": InterviewScene}
