@@ -49,7 +49,7 @@ Copy `episodes/trump_ocean.json` and change the content.
 
 ## Shorts guidelines (from channel analytics)
 
-- Target **30–40 seconds**.
+- Target **30–60 seconds** (up to 60s is fine with the slower 40+ pacing; keep the strong hook in the first 2 seconds).
 - **0–2s:** strong hook. Use `punch` for the first frame and open with the most striking line.
 - **Middle:** the key facts, changing scenes every few seconds.
 - **End:** finish on a question to viewers (`question`, plus a spoken line asking them to comment). Don't give away the full story, so the long-form video stays worth watching.
@@ -75,5 +75,5 @@ Copy `episodes/trump_ocean.json` and change the content.
 
 ## Voice pacing (audience is mostly 40+)
 
-- From the next episode on, speak slower: long-form Anchor and Reporter `speed` 1.1 (was 1.25), Shorts 1.15 (was 1.3).
+- From the next episode on, speak slower: long-form Anchor and Reporter `speed` 1.1 (was 1.25), Shorts 1.15 (was 1.3), and Shorts may run up to 60 seconds.
 - Slower speech makes episodes longer, so long-form scripts need fewer lines to stay in the 5-15 minute range.
