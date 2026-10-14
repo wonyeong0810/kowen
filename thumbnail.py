@@ -545,7 +545,7 @@ def ukraine_allies_short():
     def text(d):
         big_text(d, (540, 250), "UKRAINE", 200, (255, 210, 60), stroke=12, anchor="ma")
         big_text(d, (540, 470), "VS", 170, (255, 70, 60), stroke=12, anchor="ma")
-        big_text(d, (540, 660), "ITS ALLIES", 140, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 660), "ALLIES", 180, (255, 255, 255), stroke=12, anchor="ma")
 
     finish_v(low, text, "out/ukraine_allies_short_thumb.png")
 
