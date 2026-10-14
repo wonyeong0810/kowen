@@ -499,6 +499,22 @@ def trump_kim_short():
     finish_v(low, text, "out/trump_kim_short_thumb.png")
 
 
+def ukraine_allies():
+    low = Image.new("RGB", (TW, TH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, TW, TH, (12, 16, 40))
+    k.draw_flag(d, "ua", 0, 46, 58, 44)
+    k.draw_char(d, 30, 106, 0.05, False, "zelensky")
+    k.draw_char(d, 96, 106, 0.05, False, "lee_jae_myung")
+    k.draw_char(d, 128, 106, 0.05, False, "trump")
+
+    def text(d):
+        _two_line(d, 135, "UKRAINE VS", (255, 210, 60), 245, "ITS ALLIES", (255, 255, 255), size=120)
+        big_text(d, (500, 470), "VS", 110, (255, 60, 60), stroke=10, anchor="ma")
+
+    finish(low, text, "out/ukraine_allies_thumb.png")
+
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1:
