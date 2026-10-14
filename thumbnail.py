@@ -1,3 +1,4 @@
+import math
 #!/usr/bin/env python3
 """KOWEN News 영상 표지(썸네일) 생성기. 1280x720 PNG.
 
@@ -450,6 +451,28 @@ def ceasefire_short():
         big_text(d, (540, 660), "BY TRUMP", 140, (255, 80, 60), stroke=12, anchor="ma")
 
     finish_v(low, text, "out/energy_ceasefire_short_thumb.png")
+
+
+def trump_kim():
+    low = Image.new("RGB", (TW, TH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, TW, TH, (12, 16, 40))
+    k.draw_flag(d, "nk", 100, 46, 60, 44)
+    k.rect(d, 0, 46, 100, 44, (20, 24, 50))
+    for i in range(20):                                # 김정은 쪽으로 날아가는 미사일 궤적
+        q = i / 20
+        x, y = 104 - q * 40, 72 - math.sin(q * math.pi) * 18
+        if q < 0.8:
+            k.rect(d, int(x), int(y), 2, 1, (240, 240, 240))
+    k.rect(d, 66, 62, 5, 3, (230, 230, 230))       # 트럼프 쪽으로 향하는 탄두
+    k.rect(d, 71, 62, 3, 3, (255, 140, 40))
+    k.draw_char(d, 30, 106, 0.05, False, "trump")
+    k.draw_char(d, 130, 106, 0.05, False, "kim_jong_un")
+
+    def text(d):
+        _two_line(d, 135, "TRUMP CALLS KIM", (255, 255, 255), 245, "KIM FIRES MISSILES", (255, 80, 60), size=100)
+
+    finish(low, text, "out/trump_kim_thumb.png")
 
 
 if __name__ == "__main__":
