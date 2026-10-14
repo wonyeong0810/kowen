@@ -475,6 +475,30 @@ def trump_kim():
     finish(low, text, "out/trump_kim_thumb.png")
 
 
+def trump_kim_short():
+    low = Image.new("RGB", (VW, VH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, VW, VH, (12, 16, 40))
+    k.draw_flag(d, "nk", 75, 150, 60, 90)
+    for i in range(24):                                # 김정은 쪽에서 트럼프 쪽으로 날아가는 미사일
+        q = i / 24
+        x, y = 100 - q * 50, 170 - math.sin(q * math.pi) * 30
+        if q < 0.8:
+            k.rect(d, int(x), int(y), 2, 1, (240, 240, 240))
+    k.rect(d, 56, 166, 5, 3, (230, 230, 230))
+    k.rect(d, 61, 166, 3, 3, (255, 140, 40))
+    k.draw_char(d, 34, 242, 0.05, False, "trump")
+    k.draw_char(d, 106, 242, 0.05, False, "kim_jong_un")
+
+    def text(d):
+        big_text(d, (540, 260), "TRUMP", 200, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 470), "CALLS KIM", 150, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 650), "KIM FIRES", 120, (255, 80, 60), stroke=12, anchor="ma")
+        big_text(d, (540, 790), "MISSILES", 120, (255, 80, 60), stroke=12, anchor="ma")
+
+    finish_v(low, text, "out/trump_kim_short_thumb.png")
+
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1:
