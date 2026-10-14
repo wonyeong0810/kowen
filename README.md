@@ -67,3 +67,8 @@ Copy `episodes/trump_ocean.json` and change the content.
 - Closing: end with a call to action.
   - "If you found this helpful, please like and subscribe for more. This has been KOWEN News. Thanks for watching."
 - The title card shows only the KOWEN NEWS logo (no subtitle).
+
+## Scene guidelines
+
+- Reuse the frame templates freely: `anchor`, `quote`, `signboard`, `chart`, `xpost`, title card.
+- Reenactment scenes (what actually happened: the place, the event, the people) must be drawn new for every story. Do not recycle another episode's situation scene (e.g. the White House briefing, the Korea map, the generic meeting room); add a new scene class for the event instead.

@@ -55,8 +55,27 @@
       ]
     },
     {
-      "type": "press",
-      "tag": "WHITE HOUSE · OCT 12",
+      "type": "flight",
+      "tag": "TRUMP'S ASIA TRIP · NOVEMBER",
+      "stops": {
+        "SHENZHEN · APEC": [
+          60,
+          95
+        ],
+        "MANILA": [
+          78,
+          128
+        ]
+      },
+      "maybe": [
+        84,
+        34,
+        "KIM?"
+      ],
+      "dest": [
+        60,
+        95
+      ],
       "lines": [
         {
           "speaker": "Reporter",
@@ -117,24 +136,19 @@
       ]
     },
     {
-      "type": "signboard",
-      "title": "TRUMP AND KIM",
-      "items": [
+      "type": "summits",
+      "stops": [
         {
-          "year": "JUN 18",
-          "text": "Singapore: first summit"
+          "kind": "singapore",
+          "label": "SINGAPORE · JUNE 2018"
         },
         {
-          "year": "FEB 19",
-          "text": "Hanoi: talks collapse"
+          "kind": "hanoi",
+          "label": "HANOI · FEB 2019"
         },
         {
-          "year": "JUN 19",
-          "text": "Trump steps into North Korea"
-        },
-        {
-          "year": "NOV 26",
-          "text": "APEC, Shenzhen"
+          "kind": "dmz",
+          "label": "DMZ · JUNE 2019"
         }
       ],
       "lines": [
@@ -171,21 +185,9 @@
       ]
     },
     {
-      "type": "quote",
-      "flag": "us",
-      "plain": true,
-      "name": "Dennis Rodman",
-      "role": "Former NBA star · Dallas, Oct 1",
-      "person": {
-        "skin": 3,
-        "hair": 3,
-        "top": [
-          200,
-          40,
-          60
-        ]
-      },
-      "quote": "Trump: \"The one who knew him best was Dennis Rodman.\"",
+      "type": "truckplant",
+      "tag": "NEAR DALLAS · OCT 1",
+      "banner": "AMERICA FIRST",
       "lines": [
         {
           "speaker": "Reporter",
@@ -216,12 +218,11 @@
       ]
     },
     {
-      "type": "koreamap",
-      "facts": [
-        "Launched from Pyongyang area",
-        "One flew more than 900 km",
-        "4th launch in about a month"
-      ],
+      "type": "launch",
+      "tag": "NORTH KOREA · OCT 12",
+      "first": "~220 KM",
+      "second": "910+ KM",
+      "gap": "17 MINUTES APART",
       "lines": [
         {
           "speaker": "Reporter",
@@ -255,20 +256,12 @@
           "speaker": "Reporter",
           "text": "Japan's Defense Minister *Shinjiro Koizumi* condemned the latest test."
         }
-      ],
-      "place": "",
-      "facts_top": true
+      ]
     },
     {
-      "type": "quote",
-      "flag": "nk",
-      "plain": true,
-      "name": "Kim Jong Un",
-      "role": "Defense Revolution Museum · Oct 11",
-      "person": {
-        "char": "kim_jong_un"
-      },
-      "quote": "On display: the Hwasong-20, an ICBM capable of reaching the United States.",
+      "type": "museum",
+      "tag": "DEFENSE REVOLUTION MUSEUM · OCT 11",
+      "label": "HWASONG-20 ICBM",
       "lines": [
         {
           "speaker": "Reporter",
@@ -439,9 +432,8 @@
       ]
     },
     {
-      "type": "meeting",
-      "sign": "WHAT'S NEXT",
-      "screen": false,
+      "type": "apec",
+      "tag": "SHENZHEN · NOV 18-19",
       "lines": [
         {
           "speaker": "Reporter",

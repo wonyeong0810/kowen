@@ -1743,7 +1743,243 @@ class HospitalScene(Scene):
         cam.text(d, 160, 68, self.spec.get("sign", "QUARANTINE"), 24, (220, 40, 40), center=True, shadow=False)
 
 
-SCENES = {"airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
+def _tag(d, tag, bg=(30, 40, 90)):
+    if not tag:
+        return
+    tw = d.textlength(tag, font=font(32))
+    rect(d, SAFE_X + 32, 28, int(tw) + 32, 44, bg)
+    d.text((SAFE_X + 48, 34), tag, font=font(32), fill=(255, 255, 255))
+
+
+class FlightScene(Scene):
+    """대통령 전용기가 태평양을 건너 아시아 순방지로 향한다. 들를지 모르는 곳은 점선 '?'."""
+    zoomable = False
+
+    def draw(self, d, t):
+        vgrad(d, 0, 180, (20, 60, 120), (10, 30, 70))
+        for y in range(8, 180, 12):                                   # 잔물결
+            for x in range((y * 7) % 20, W, 20):
+                rect(d, x, y, 4, 1, (30, 75, 135))
+        d.polygon([(0, 0), (70, 0), (95, 30), (85, 70), (60, 95), (30, 120), (0, 125)], fill=(70, 120, 70))   # 중국
+        d.polygon([(70, 20), (92, 18), (96, 40), (84, 52), (78, 40)], fill=(90, 140, 85))                     # 한반도
+        d.polygon([(110, 30), (122, 28), (118, 60), (104, 70)], fill=(90, 140, 85))                           # 일본
+        d.polygon([(70, 120), (80, 118), (84, 140), (76, 150)], fill=(90, 140, 85))                           # 필리핀
+        d.polygon([(290, 0), (W, 0), (W, 90), (300, 70)], fill=(70, 120, 70))                                 # 미국
+        pts = {k: tuple(v) for k, v in self.spec.get("stops", {}).items()}
+        for name, (x, y) in pts.items():
+            rect(d, x - 2, y - 2, 5, 5, (255, 210, 60))
+        maybe = self.spec.get("maybe")
+        if maybe and int(t * 2) % 2 == 0:
+            d.ellipse([maybe[0] - 5, maybe[1] - 5, maybe[0] + 5, maybe[1] + 5], outline=(255, 80, 80), width=1)
+        start, end = (300, 40), tuple(self.spec.get("dest", (60, 95)))
+        k = min(1.0, t / max(1.0, self.duration * 0.7))
+        for i in range(0, 40):                                         # 지나온 항로 점선
+            q = i / 40
+            if q > k:
+                break
+            x = start[0] + (end[0] - start[0]) * q
+            y = start[1] + (end[1] - start[1]) * q - math.sin(q * math.pi) * 30
+            if i % 2 == 0:
+                rect(d, int(x), int(y), 2, 1, (240, 240, 250))
+        x = start[0] + (end[0] - start[0]) * k
+        y = start[1] + (end[1] - start[1]) * k - math.sin(k * math.pi) * 30
+        x, y = int(x), int(y)
+        rect(d, x - 9, y - 1, 18, 3, (235, 235, 240))                 # 기체 (왼쪽으로 비행)
+        rect(d, x - 9, y + 1, 18, 1, (60, 110, 190))
+        d.polygon([(x - 1, y), (x + 4, y - 7), (x + 6, y - 7), (x + 4, y)], fill=(225, 225, 230))
+        d.polygon([(x - 1, y + 2), (x + 4, y + 8), (x + 6, y + 8), (x + 4, y + 2)], fill=(225, 225, 230))
+        rect(d, x + 7, y - 4, 2, 4, (60, 110, 190))
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""))
+        for name, (x, y) in self.spec.get("stops", {}).items():
+            cam.text(d, x + 5, y - 4, name, 28, (255, 230, 120))
+        maybe = self.spec.get("maybe")
+        if maybe:
+            cam.text(d, maybe[0] + 7, maybe[1] - 6, maybe[2], 28, (255, 120, 120))
+
+
+class SummitsScene(Scene):
+    """세 번의 정상회담: 장소가 바뀌며 두 정상이 악수한다."""
+    zoomable = False
+
+    def _idx(self, t):
+        n = len(self.spec.get("stops", [])) or 1
+        return min(n - 1, int(t / max(0.1, self.duration) * n))
+
+    def draw(self, d, t):
+        st = self.spec.get("stops", [{}])[self._idx(t)]
+        kind = st.get("kind", "singapore")
+        if kind == "singapore":                                       # 성조기/인공기가 번갈아 선 무대
+            rect(d, 0, 0, W, 120, (150, 30, 40))
+            for i, fx in enumerate(range(20, W, 34)):
+                draw_flag(d, "us" if i % 2 == 0 else "nk", fx, 18, 26, 70)
+        elif kind == "hanoi":                                         # 호텔 회의장: 노란 벽과 커튼
+            rect(d, 0, 0, W, 120, (200, 170, 110))
+            for cx in range(0, W, 40):
+                rect(d, cx, 0, 14, 120, (170, 40, 40))
+            draw_flag(d, "us", 110, 20, 40, 26)
+            draw_flag(d, "nk", 170, 20, 40, 26)
+        else:                                                         # 판문점: 파란 막사 사이 군사분계선
+            vgrad(d, 0, 120, (120, 170, 220), (190, 210, 230))
+            for bx in (30, 120, 210):
+                rect(d, bx, 50, 70, 50, (60, 120, 200))
+                rect(d, bx, 46, 70, 6, (220, 220, 225))
+            rect(d, 0, 100, W, 20, (170, 160, 140))
+        rect(d, 0, 120, W, 60, (60, 50, 50) if kind != "dmz" else (150, 140, 120))
+        if kind == "dmz":
+            rect(d, 159, 100, 2, 80, (230, 230, 230))                 # 분계선 턱
+        sway = int(math.sin(t * 6) * 1)
+        draw_char(d, 130, 128, t, False, "trump")
+        draw_char(d, 190, 128, t, False, "kim_jong_un")
+        rect(d, 146, 112 + sway, 28, 6, (240, 195, 160))              # 맞잡은 손
+        rect(d, 158, 111 + sway, 4, 8, (225, 180, 150))
+
+    def overlay(self, d, t, cam):
+        st = self.spec.get("stops", [{}])[self._idx(t)]
+        _tag(d, st.get("label", ""), (150, 30, 40))
+
+
+class TruckPlantScene(Scene):
+    """트럭 공장 행사: 연단의 트럼프, 옆에 선 로드먼, 뒤로 늘어선 대형 트럭."""
+    focus = (160, 80)
+
+    def draw(self, d, t):
+        rect(d, 0, 0, W, 120, (70, 75, 85))
+        for x in range(0, W, 32):                                     # 철골 지붕
+            d.line([(x, 0), (x + 16, 20), (x + 32, 0)], fill=(95, 100, 110))
+        rect(d, 0, 20, W, 3, (110, 115, 125))
+        for i, tx in enumerate((10, 230)):                            # 보닛 긴 대형 트럭
+            c = [(190, 30, 40), (30, 70, 150)][i]
+            rect(d, tx, 70, 34, 26, c)
+            rect(d, tx + 34, 80, 46, 16, c)
+            rect(d, tx + 4, 74, 22, 10, (150, 190, 220))
+            rect(d, tx + 78, 82, 4, 12, (200, 200, 205))
+            rect(d, tx + 26, 50, 3, 22, (200, 200, 205))
+            for wx in (tx + 8, tx + 56):
+                d.ellipse([wx, 90, wx + 14, 104], fill=(25, 25, 25))
+        rect(d, 0, 104, W, 76, (120, 120, 125))
+        rect(d, 100, 20, 120, 14, (20, 30, 70))                       # 현수막
+        draw_char(d, 145, 132, t, False, "trump")
+        rect(d, 130, 104, 30, 30, (60, 40, 30))                       # 연단
+        rect(d, 140, 112, 10, 6, (220, 200, 120))
+        rod = {"skin": 3, "hair": 2, "top": [200, 40, 60], "glasses": True}
+        draw_person(d, 196, 124, t, False, rod, gesture=False)
+        for i, c in enumerate(((255, 80, 160), (80, 220, 255), (255, 220, 60))):   # 알록달록 머리
+            rect(d, 189 + i * 5, 92, 4, 4, c)
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""))
+        cam.text(d, 160, 23, self.spec.get("banner", ""), 28, (255, 255, 255), center=True)
+        cam.text(d, 145, 140, "TRUMP", 24, (255, 255, 255), center=True)
+        cam.text(d, 196, 140, "RODMAN", 24, (255, 230, 60), center=True)
+
+
+class LaunchScene(Scene):
+    """동해로 발사된 탄도미사일: 이동식 발사대, 짧은 궤적과 긴 '불규칙' 궤적."""
+    zoomable = False
+
+    def draw(self, d, t):
+        vgrad(d, 0, 110, (150, 190, 230), (220, 225, 230))
+        d.polygon([(0, 110), (0, 70), (40, 80), (90, 95), (110, 110)], fill=(90, 110, 80))   # 내륙 산
+        rect(d, 0, 110, 110, 70, (110, 130, 90))
+        rect(d, 110, 110, W, 70, (40, 90, 150))
+        for y in range(116, 180, 8):
+            for x in range(116 + (y % 16), W, 16):
+                rect(d, x, y, 5, 1, (70, 120, 175))
+        rect(d, 30, 98, 50, 10, (80, 90, 60))                          # 이동식 발사대
+        for wx in range(32, 78, 9):
+            d.ellipse([wx, 105, wx + 7, 112], fill=(25, 25, 25))
+        d.polygon([(40, 98), (70, 74), (74, 77), (46, 100)], fill=(110, 120, 85))
+        shots = [(0.15, 120, 22), (0.5, 300, 48)]                      # (시작비율, 착탄 x, 최고고도)
+        for i, (s0, x1, hgt) in enumerate(shots):
+            k = (t / max(1.0, self.duration) - s0) / 0.3
+            if k <= 0:
+                continue
+            k = min(1.0, k)
+            prev = None
+            for j in range(int(k * 60) + 1):
+                q = j / 60
+                x = 72 + (x1 - 72) * q
+                y = 74 + (38 * q) - math.sin(q * math.pi) * hgt * (1.6 if i else 1)
+                if i == 1 and q > 0.6:                                 # 불규칙 비행
+                    y += math.sin(q * 40) * 3
+                if prev:
+                    d.line([prev, (x, y)], fill=(250, 250, 250), width=1)
+                prev = (x, y)
+            if k < 1:
+                rect(d, int(prev[0]) - 1, int(prev[1]) - 1, 3, 3, (255, 150, 50))
+            else:
+                r = 4 + int(math.sin(t * 6) * 2)
+                d.ellipse([x1 - r, 112 - r // 2, x1 + r, 112 + r // 2], outline=(255, 255, 255))
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""), (150, 30, 40))
+        cam.text(d, 22, 114, "PYONGYANG AREA", 24, (255, 255, 255))
+        for s0, x1, label in ((0.15, 120, self.spec.get("first", "")), (0.5, 300, self.spec.get("second", ""))):
+            if t / max(1.0, self.duration) > s0 + 0.3:
+                cam.text(d, x1, 118, label, 28, (255, 230, 60), center=True)
+        if t / max(1.0, self.duration) > 0.5:
+            cam.text(d, 200, 150, self.spec.get("gap", ""), 28, (255, 255, 255), center=True)
+
+
+class MuseumScene(Scene):
+    """국방 박물관 개관: 거대한 ICBM과 발사차량 앞에 선 김정은 가족."""
+    focus = (160, 80)
+
+    def draw(self, d, t):
+        rect(d, 0, 0, W, 120, (200, 195, 185))
+        for x in range(0, W, 40):                                      # 기둥
+            rect(d, x, 0, 8, 120, (225, 220, 210))
+        rect(d, 0, 0, W, 10, (170, 30, 40))
+        for i in range(4):                                             # 매달린 드론 모형
+            dx = 30 + i * 80 + int(math.sin(t + i) * 2)
+            rect(d, dx, 18, 16, 3, (90, 95, 90))
+            rect(d, dx + 6, 14, 4, 4, (90, 95, 90))
+        rect(d, 40, 70, 240, 16, (90, 100, 70))                         # 11축 발사차량
+        for wx in range(46, 270, 20):
+            d.ellipse([wx, 82, wx + 12, 94], fill=(30, 30, 30))
+        rect(d, 60, 52, 200, 16, (70, 80, 60))                          # 미사일 (가로 거치)
+        d.polygon([(260, 52), (282, 60), (260, 68)], fill=(70, 80, 60))
+        rect(d, 120, 52, 2, 16, (200, 40, 40))
+        rect(d, 0, 100, W, 80, (150, 140, 130))
+        rect(d, 0, 100, W, 2, (120, 110, 100))
+        draw_char(d, 130, 140, t, False, "kim_jong_un")
+        wife = {"skin": 0, "hair": 0, "top": [30, 30, 40], "long": True}
+        draw_person(d, 170, 142, t, False, wife, gesture=False)
+        child = {"skin": 0, "hair": 0, "top": [20, 20, 25], "long": True}
+        draw_person(d, 100, 150, t, False, child, gesture=False)
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""), (150, 30, 40))
+        cam.text(d, 160, 40, self.spec.get("label", ""), 32, (255, 255, 255), center=True)
+
+
+class ApecScene(Scene):
+    """선전 APEC 회의장 밤 풍경: 마주 볼지 모르는 두 정상, 그 사이의 물음표."""
+    zoomable = False
+
+    def draw(self, d, t):
+        vgrad(d, 0, 120, (10, 15, 40), (60, 40, 90))
+        rnd = random.Random(5)
+        for bx in range(0, W, 18):                                     # 선전 스카이라인
+            bh = rnd.randint(30, 90)
+            rect(d, bx, 120 - bh, 15, bh, (25, 30, 55))
+            for wy in range(122 - bh, 118, 6):
+                if rnd.random() < 0.5:
+                    rect(d, bx + 3 + rnd.randint(0, 8), wy, 2, 2, (255, 220, 120))
+        rect(d, 0, 120, W, 60, (30, 30, 45))
+        draw_char(d, 90, 132, t, False, "trump")
+        draw_char(d, 230, 132, t, False, "kim_jong_un")
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""))
+        if int(t * 1.5) % 2 == 0:
+            cam.text(d, 160, 48, "?", 160, (255, 210, 60), center=True)
+
+
+
+SCENES = {"flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
           "protest": ProtestScene, "classroom": ClassroomScene, "xpost": XPostScene, "press": PressScene, "dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
           "signboard": SignboardScene, "meeting": MeetingScene, "reaction": ReactionScene,
           "chart": ChartScene, "interview": InterviewScene}
