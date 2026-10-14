@@ -72,3 +72,8 @@ Copy `episodes/trump_ocean.json` and change the content.
 
 - Reuse the frame templates freely: `anchor`, `quote`, `signboard`, `chart`, `xpost`, title card.
 - Reenactment scenes (what actually happened: the place, the event, the people) must be drawn new for every story. Do not recycle another episode's situation scene (e.g. the White House briefing, the Korea map, the generic meeting room); add a new scene class for the event instead.
+
+## Voice pacing (audience is mostly 40+)
+
+- From the next episode on, speak slower: long-form Anchor and Reporter `speed` 1.1 (was 1.25), Shorts 1.15 (was 1.3).
+- Slower speech makes episodes longer, so long-form scripts need fewer lines to stay in the 5-15 minute range.
