@@ -503,14 +503,23 @@ def ukraine_allies():
     low = Image.new("RGB", (TW, TH))
     d = ImageDraw.Draw(low)
     k.rect(d, 0, 0, TW, TH, (12, 16, 40))
-    k.draw_flag(d, "ua", 0, 46, 58, 44)
-    k.draw_char(d, 30, 106, 0.05, False, "zelensky")
-    k.draw_char(d, 96, 106, 0.05, False, "lee_jae_myung")
-    k.draw_char(d, 128, 106, 0.05, False, "trump")
+    k.draw_flag(d, "ua", 0, 46, 64, 44)                 # 왼쪽: 우크라이나
+    k.draw_flag(d, "kr", 70, 46, 45, 44)                # 오른쪽: 동맹국 국기 판
+    for i in range(46, TH, 6):                          # 성조기 (흰 줄은 톤 다운)
+        k.rect(d, 115, i, 45, 3, (190, 30, 40))
+        k.rect(d, 115, i + 3, 45, 3, (200, 200, 208))
+    k.rect(d, 115, 46, 18, 16, (30, 40, 110))
+    for y in range(46, TH, 2):                          # 갈라진 틈
+        x = 66 + (2 if (y // 4) % 2 else -2)
+        k.rect(d, x, y, 4, 2, (10, 10, 15))
+        k.rect(d, x + 1, y, 2, 2, (255, 60, 60))
+    k.draw_char(d, 32, 106, 0.05, False, "zelensky")
+    k.draw_char(d, 92, 106, 0.05, False, "lee_jae_myung")
+    k.draw_char(d, 134, 106, 0.05, False, "trump")
 
     def text(d):
-        _two_line(d, 135, "UKRAINE VS", (255, 210, 60), 245, "ITS ALLIES", (255, 255, 255), size=120)
-        big_text(d, (500, 470), "VS", 110, (255, 60, 60), stroke=10, anchor="ma")
+        big_text(d, (640, 112), "UKRAINE", 140, (255, 210, 60), stroke=12, anchor="ma")
+        big_text(d, (640, 240), "VS ALLIES", 104, (255, 70, 60), stroke=10, anchor="ma")
 
     finish(low, text, "out/ukraine_allies_thumb.png")
 
