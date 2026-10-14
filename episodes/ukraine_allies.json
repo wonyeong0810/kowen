@@ -1,0 +1,469 @@
+{
+  "title": "Ukraine clashes with its own allies",
+  "lang": "en",
+  "output": "out/ukraine_allies.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.25
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.25
+    }
+  },
+  "ticker": [
+    "South Korea recalls its ambassador to Ukraine - first recall since 2008",
+    "Ukraine FM Sybiha on POW row: \"I consider this matter already closed\"",
+    "Lee Jae-myung: Ukraine made the South Korean president a \"liar\"",
+    "Trump to Zelensky on refinery strikes: \"He better damn well stop\"",
+    "KOWEN NEWS"
+  ],
+  "scenes": [
+    {
+      "type": "title",
+      "duration": 3.0
+    },
+    {
+      "type": "anchor",
+      "headline": "UKRAINE VS ITS ALLIES",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Welcome to KOWEN News."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Ukraine depends on its friends to survive this war. But lately, it keeps *clashing with them*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "South Korea has *recalled its ambassador* from Kyiv, and is demanding a public apology Ukraine *refuses to give*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Washington is furious over Ukraine's *refinery strikes*. And in Europe, a fight over an *oil pipeline* split the EU for months."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We start in Seoul."
+        }
+      ]
+    },
+    {
+      "type": "powflight",
+      "tag": "KURSK → SEOUL",
+      "route": "TWO NORTH KOREAN POWs",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "It began with two North Korean soldiers."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "They were captured by Ukraine in January 2025, in Russia's *Kursk region*, where North Korea had sent troops to fight for Moscow."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Both said they wanted to live in *South Korea*. In mid-September, they arrived in Seoul."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Seoul says both governments had agreed to keep the transfer *secret*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The reason: the soldiers' *families are still in North Korea*, where they could face reprisals."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Under South Korea's constitution, all North Koreans are considered *citizens* of the South."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And both men had already been *photographed* by South Korean media, making them easy to identify."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Volodymyr Zelensky",
+      "role": "U.N. General Assembly · September 2026",
+      "person": {
+        "char": "zelensky"
+      },
+      "quote": "Disclosed the transfer of two North Korean POWs to South Korea.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Then, in a speech to the *United Nations General Assembly*, Zelensky announced the transfer to the world."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "South Korea's spy agency told lawmakers the move appeared aimed at building support in South Korea for *sending weapons to Ukraine*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Seoul has given Kyiv financial and humanitarian aid, but *no lethal weapons*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "South Korea has become a major *arms exporter*, with a multibillion dollar deal with Poland, but it has a long-standing policy of *not arming countries at war*."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "THE POW ROW",
+      "items": [
+        {
+          "year": "SEP 24",
+          "text": "Lee: \"deeply regrettable\""
+        },
+        {
+          "year": "SEP 25",
+          "text": "Kyiv: no secrecy deal existed"
+        },
+        {
+          "year": "SEP 28",
+          "text": "Seoul summons Ukraine's envoy"
+        },
+        {
+          "year": "OCT 8",
+          "text": "Seoul recalls its ambassador"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "President Lee Jae-myung called the disclosure *deeply regrettable*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The next day, a Zelensky adviser said there had been *no confidentiality agreement* at all."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Kyiv's foreign ministry later changed its tune, blaming *different interpretations* of the deal."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Seoul's presidential office said it was *Ukraine* that had asked for secrecy in the first place."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Kyiv was worried about criticism at home for not trading the soldiers for *Ukrainian prisoners* held by Russia."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Seoul summoned Ukraine's acting ambassador, and demanded an *official explanation and apology*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "kr",
+      "name": "Lee Jae-myung",
+      "role": "President of South Korea · on X",
+      "person": {
+        "char": "lee_jae_myung"
+      },
+      "quote": "This is a matter concerning the dignity of the Republic of Korea and its people and cannot be overlooked.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Lee then went further. He said Ukraine had made the South Korean president *a liar*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "This is a matter concerning the *dignity* of the Republic of Korea, he wrote, and cannot be overlooked."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "If Ukraine keeps refusing to publicly apologize, he warned, Seoul will take *further measures*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He also criticized Zelensky's chief of staff, *Kyrylo Budanov*, who had warned that tension on the Korean border was rising by the day. Lee said it sounded *as if he were wishing for war*."
+        }
+      ]
+    },
+    {
+      "type": "embassy",
+      "tag": "KYIV · OCT 8",
+      "sign": "EMBASSY OF THE REPUBLIC OF KOREA",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On October eighth, Seoul *recalled its ambassador* to Ukraine, Park Ki-chang."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It was South Korea's first ambassador recall since 2008, when it pulled its envoy from *Japan* over the Dokdo islets."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Park arrived back in Seoul on October tenth."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Seoul says he may return only after Ukraine admits the secrecy deal existed, *apologizes in public*, and promises it won't happen again."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "At home, some critics in Seoul pointed out that the government moved fast against Ukraine, while being *extremely cautious* over the North Korean landmine blast that wounded its own soldiers."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Andrii Sybiha",
+      "role": "Foreign Minister of Ukraine · Oct 12",
+      "person": {
+        "skin": 0,
+        "hair": 1,
+        "top": [
+          30,
+          35,
+          60
+        ],
+        "suit": true,
+        "tie": [
+          40,
+          90,
+          180
+        ]
+      },
+      "quote": "I consider this matter already closed.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Kyiv's answer? *I consider this matter already closed*, said Foreign Minister Andrii Sybiha."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine handed over the soldiers as *a sign of goodwill*, he said, and *fulfilled all its obligations*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine follows the *Geneva Convention*, he said, and respects South Korea's constitution."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Earlier, he had called it a *diplomatic misunderstanding*, and said South Korea is an *important country* for Ukraine."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Kyiv argues that revealing *that* the soldiers went to South Korea, rather than *how*, did not break any agreement."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Seoul's foreign minister said a private message from Ukraine included words of apology, but fell *short of expectations*. Kyiv called it an expression of *regret*."
+        }
+      ]
+    },
+    {
+      "type": "tanker",
+      "tag": "SOUTH KOREAN PORTS",
+      "claim": "UKRAINE'S CLAIM · OCT 6",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "And while Seoul was still waiting for an apology, a *second dispute* broke out."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine's sanctions commissioner, Vladyslav Vlasiuk, claimed fuel shipped from *South Korean ports* had helped Russia make up for refinery losses caused by Ukrainian strikes."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Seoul's presidential office *rejected* the claim the next day."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Seoul says petroleum products are *not on its list* of controlled exports to Russia."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "CLASH WITH WASHINGTON",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Seoul is not the only ally at odds with Kyiv. The biggest one is *Washington*."
+        }
+      ]
+    },
+    {
+      "type": "refinery",
+      "tag": "RUSSIAN OIL REFINERIES",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "For weeks, President Trump has told Zelensky to *stop striking Russian oil refineries*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He blames those strikes for cutting *global diesel supplies* and pushing up prices for American farmers and truckers."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Trump said he told Zelensky directly. Don't hit refineries. And he went out and *he hit*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "*He better damn well stop*, Trump said."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Kyiv says hitting Russia's oil industry is a *legitimate strategy*, because oil money pays for the war."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Days ago, Trump went around Kyiv entirely, striking a *diesel deal* with Putin and lifting sanctions on Russian fuel. Zelensky called it a *concession to Moscow*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "ua",
+      "name": "Volodymyr Zelensky",
+      "role": "President of Ukraine · ABC News",
+      "person": {
+        "char": "zelensky"
+      },
+      "quote": "With all respect to President Trump, it's up to our society, up to our people to choose one or another leader.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "When Trump said Ukraine should get *a new leader who can make a deal*, Zelensky pushed back."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "With all respect to President Trump, he said, it's *up to our people* to choose."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He also rejected blame for fuel prices, saying they are rising *because of the war in the Middle East*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Zelensky says Ukraine will stop hitting refineries only if Russia stops hitting *Ukraine's power grid*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "EUROPE'S PIPELINE FIGHT",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "And earlier this year, a fight over oil split Ukraine from *two EU members*."
+        }
+      ]
+    },
+    {
+      "type": "pipeline",
+      "tag": "DRUZHBA PIPELINE · JAN-APR 2026",
+      "left": "ua",
+      "right": "sk",
+      "left_label": "UKRAINE",
+      "right_label": "SLOVAKIA · HUNGARY",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "In January, Russian oil stopped flowing through the *Druzhba pipeline* to Slovakia and Hungary."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine said a *Russian drone strike* had wrecked the pipeline near the Brody oil hub, making transit *physically impossible*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Slovakia's Prime Minister *Robert Fico* accused Zelensky of lying, and of blocking the oil on purpose for *political leverage*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Slovakia, which relies on a single refinery built for Russian crude, declared an *energy state of emergency*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Slovakia cut *emergency electricity* to Ukraine in the middle of winter. Slovakia and Hungary also suspended *diesel exports* to Ukraine."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Hungary tied its veto on new EU sanctions against Russia to the oil flow. Kyiv told Budapest to send its complaints *to Moscow*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Oil only resumed in late April. That same day, a *90 billion euro* EU aid package for Ukraine was unblocked."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Fico welcomed the restart, but said the crisis had been used as a *geopolitical tool*, and that trust with Kyiv was *badly damaged*."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "UKRAINE VS ITS PARTNERS",
+      "items": [
+        {
+          "year": "SEOUL",
+          "text": "POW secret made public"
+        },
+        {
+          "year": "U.S.",
+          "text": "Refinery strikes despite Trump"
+        },
+        {
+          "year": "EU",
+          "text": "Druzhba pipeline standoff"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Three partners, three fights."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In each case, Kyiv says it is acting in its *own national interest* while fighting for survival."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But one analysis in The Diplomat concluded that Kyiv has *lost the trust* of Seoul, and that the damage cannot be repaired in private."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Ukraine's foreign ministry says *diplomacy should prevail over emotions*, and that talks with Seoul continue through private channels."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "UKRAINE VS ITS ALLIES",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "South Korea's ambassador is home, and Kyiv says the case is closed."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We'll keep following whether Ukraine and its allies can *mend these rifts*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "If you found this helpful, please *like and subscribe* for more."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "This has been KOWEN News. Thanks for watching."
+        }
+      ]
+    }
+  ]
+}

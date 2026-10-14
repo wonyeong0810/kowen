@@ -610,6 +610,15 @@ def draw_us_flag(d, x, y, t, w=34, h=20):
 
 
 def draw_flag(d, kind, x, y, w, h):
+    if kind in ("sk", "hu"):
+        cols = [(240, 240, 240), (30, 70, 160), (220, 40, 40)] if kind == "sk" else [(205, 40, 50), (240, 240, 240), (60, 130, 70)]
+        for i, c in enumerate(cols):
+            rect(d, x, y + i * h // 3, w, h // 3 + (h % 3 if i == 2 else 0), c)
+        if kind == "sk":
+            rect(d, x + w // 4, y + h // 5, w // 5, h * 3 // 5, (220, 40, 40))
+            rect(d, x + w // 4 + 1, y + h // 5 + 1, w // 5 - 2, h * 3 // 5 - 2, (220, 40, 40))
+            rect(d, x + w // 4 + w // 10 - 1, y + h // 5 + 2, 2, h * 3 // 5 - 4, (240, 240, 240))
+        return
     if kind == "uk":
         rect(d, x, y, w, h, (30, 40, 120))
         d.line([(x, y), (x + w - 1, y + h - 1)], fill=(240, 240, 240), width=3)
@@ -1979,7 +1988,159 @@ class ApecScene(Scene):
 
 
 
-SCENES = {"flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
+class PowFlightScene(Scene):
+    """밤 활주로: 쿠르스크에서 붙잡힌 북한군 포로 두 명이 호송을 받으며 서울행 비행기에 오른다."""
+    focus = (160, 80)
+
+    def draw(self, d, t):
+        vgrad(d, 0, 100, (8, 10, 30), (30, 35, 70))
+        rnd = random.Random(9)
+        for _ in range(30):
+            rect(d, rnd.randint(0, W), rnd.randint(0, 70), 1, 1, (200, 200, 220))
+        rect(d, 0, 100, W, 80, (45, 45, 55))
+        for lx in range(0, W, 24):
+            rect(d, lx, 104, 3, 2, (255, 210, 90) if int(t * 3 + lx) % 2 else (120, 100, 60))
+        rect(d, 170, 66, 130, 22, (210, 210, 220))                     # 수송기 동체
+        d.polygon([(300, 66), (316, 50), (318, 66)], fill=(200, 200, 210))
+        d.polygon([(220, 76), (260, 76), (240, 96)], fill=(190, 190, 200))
+        for wx in range(180, 290, 10):
+            rect(d, wx, 72, 5, 4, (60, 80, 110))
+        d.polygon([(180, 88), (150, 112), (160, 112), (190, 88)], fill=(150, 150, 160))   # 탑승 계단
+        walk = min(1.0, t / max(1.0, self.duration * 0.8))
+        for i in range(2):                                              # 모자 쓴 포로 둘 + 호송원
+            x = int(40 + walk * 90 + i * 14)
+            rect(d, x, 92, 8, 16, (70, 75, 60))
+            rect(d, x + 1, 84, 6, 7, (235, 190, 155))
+            rect(d, x, 82, 8, 4, (40, 40, 40))
+        gx = int(30 + walk * 90)
+        rect(d, gx, 90, 9, 18, (30, 35, 50))
+        rect(d, gx + 1, 82, 7, 7, (225, 180, 150))
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""))
+        cam.text(d, 160, 20, self.spec.get("route", ""), 32, (255, 230, 120), center=True)
+
+
+class EmbassyScene(Scene):
+    """키이우의 한국 대사관: 태극기 아래 대사가 짐을 들고 차에 오른다(소환)."""
+    focus = (160, 80)
+
+    def draw(self, d, t):
+        vgrad(d, 0, 110, (150, 170, 190), (200, 205, 210))
+        rect(d, 40, 30, 240, 80, (215, 205, 185))
+        rect(d, 40, 26, 240, 6, (160, 150, 135))
+        for wx in range(56, 270, 26):
+            for wy in (42, 70):
+                rect(d, wx, wy, 14, 16, (90, 110, 140))
+        rect(d, 146, 76, 28, 34, (110, 80, 60))
+        rect(d, 158, 0, 2, 30, (200, 200, 200))                          # 깃대 + 태극기
+        draw_flag(d, "kr", 160, 2, 30, 20)
+        rect(d, 0, 110, W, 70, (120, 120, 125))
+        k = min(1.0, t / max(1.0, self.duration * 0.6))
+        cx = int(150 + k * 70)
+        draw_person(d, cx, 140, t, False, {"skin": 0, "hair": 3, "top": [30, 35, 55], "suit": True}, gesture=False)
+        rect(d, cx + 12, 122, 10, 12, (90, 60, 40))                       # 서류가방
+        rect(d, 240, 112, 70, 20, (25, 25, 30))                          # 대기 중인 차
+        rect(d, 252, 104, 44, 10, (35, 35, 45))
+        for wx in (248, 290):
+            d.ellipse([wx, 126, wx + 12, 138], fill=(10, 10, 10))
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""), (40, 60, 140))
+        cam.text(d, 100, 33, self.spec.get("sign", ""), 20, (40, 40, 50), center=True, shadow=False)
+
+
+class TankerScene(Scene):
+    """항구에서 출항하는 유조선: 연료 수출 논란."""
+    zoomable = False
+
+    def draw(self, d, t):
+        vgrad(d, 0, 100, (170, 190, 210), (210, 215, 220))
+        for cx in range(10, 120, 26):                                     # 항만 크레인
+            rect(d, cx, 30, 3, 70, (200, 80, 40))
+            rect(d, cx, 30, 22, 3, (200, 80, 40))
+        for tx in range(20, 110, 24):                                     # 저장 탱크
+            rect(d, tx, 82, 20, 18, (225, 225, 225))
+        rect(d, 0, 100, W, 80, (50, 90, 130))
+        for y in range(106, 180, 8):
+            for x in range((y * 3) % 18, W, 18):
+                rect(d, x, y, 6, 1, (80, 120, 160))
+        sx = int(130 + (t * 6) % 40)
+        d.polygon([(sx, 96), (sx + 150, 96), (sx + 140, 116), (sx + 8, 116)], fill=(150, 40, 40))
+        rect(d, sx + 5, 90, 140, 7, (60, 60, 70))
+        rect(d, sx + 118, 72, 22, 20, (235, 235, 235))
+        rect(d, sx + 126, 64, 6, 8, (40, 40, 40))
+        for px in range(sx + 14, sx + 110, 18):
+            rect(d, px, 86, 10, 4, (200, 200, 60))
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""))
+        q = self.spec.get("claim", "")
+        if q:
+            tw = d.textlength(q, font=font(32))
+            rect(d, VIEW_R - int(tw) - 64, 28, int(tw) + 32, 44, (150, 30, 40))
+            d.text((VIEW_R - tw - 48, 34), q, font=font(32), fill=(255, 255, 255))
+
+
+class RefineryScene(Scene):
+    """밤의 러시아 정유소: 드론이 날아들고 증류탑이 불탄다."""
+    zoomable = False
+
+    def draw(self, d, t):
+        vgrad(d, 0, 120, (10, 10, 25), (50, 30, 40))
+        rect(d, 0, 112, W, 68, (35, 35, 40))
+        for i, (tx, th) in enumerate(((60, 70), (90, 90), (120, 60), (210, 80), (240, 65))):
+            rect(d, tx, 112 - th, 12, th, (90, 90, 100))
+            for yy in range(112 - th + 6, 112, 10):
+                rect(d, tx - 2, yy, 16, 2, (120, 120, 130))
+        for bx in (150, 175):
+            d.ellipse([bx, 92, bx + 22, 114], fill=(170, 170, 175))
+        for k2 in range(8):                                               # 불길과 검은 연기
+            ph = (t * 0.7 + k2 / 8) % 1
+            sx = 96 + int(math.sin(k2 * 2 + t) * 10)
+            sy = int(40 - ph * 40)
+            r = 5 + int(ph * 14)
+            d.ellipse([sx - r, sy - r, sx + r, sy + r], fill=lerp((60, 40, 30), (25, 25, 30), ph))
+        for k2 in range(6):
+            fh = 8 + int(abs(math.sin(t * 7 + k2)) * 10)
+            rect(d, 86 + k2 * 4, 22 - fh + 20, 4, fh, (255, 130 + k2 * 18, 40))
+        dx = int(W - (t * 50) % (W + 40))                                 # 날아드는 드론
+        d.polygon([(dx, 30), (dx + 12, 26), (dx + 12, 34)], fill=(200, 200, 200))
+        rect(d, dx + 12, 29, 6, 2, (200, 200, 200))
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""), (150, 30, 40))
+
+
+class PipelineScene(Scene):
+    """멈춘 드루즈바 송유관: 국경을 넘는 파이프와 잠긴 밸브, 비어가는 저장 탱크."""
+    zoomable = False
+
+    def draw(self, d, t):
+        vgrad(d, 0, 100, (160, 185, 210), (215, 220, 215))
+        rect(d, 0, 100, W, 80, (120, 140, 90))
+        rect(d, 158, 40, 3, 140, (240, 240, 240))                          # 국경선
+        for y in range(40, 180, 8):
+            rect(d, 158, y, 3, 4, (220, 40, 40))
+        rect(d, 0, 110, W, 10, (90, 95, 100))                               # 송유관
+        rect(d, 0, 110, W, 2, (130, 135, 140))
+        for jx in range(20, W, 40):
+            rect(d, jx, 108, 4, 14, (70, 75, 80))
+        rect(d, 120, 98, 16, 12, (180, 40, 40))                             # 잠긴 밸브
+        rect(d, 116, 94, 24, 4, (180, 40, 40))
+        lvl = 1.0 - 0.7 * min(1.0, t / max(1.0, self.duration))
+        rect(d, 220, 60, 50, 50, (210, 210, 210))
+        rect(d, 224, 64 + int(42 * (1 - lvl)), 42, int(42 * lvl), (40, 40, 40))
+        draw_flag(d, self.spec.get("left", "ua"), 40, 50, 36, 24)
+        draw_flag(d, self.spec.get("right", "sk"), 200, 20, 36, 24)
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""))
+        cam.text(d, 58, 78, self.spec.get("left_label", ""), 24, (255, 255, 255), center=True)
+        cam.text(d, 218, 48, self.spec.get("right_label", ""), 24, (255, 255, 255), center=True)
+
+
+SCENES = {"powflight": PowFlightScene, "embassy": EmbassyScene, "tanker": TankerScene, "refinery": RefineryScene, "pipeline": PipelineScene, "flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
           "protest": ProtestScene, "classroom": ClassroomScene, "xpost": XPostScene, "press": PressScene, "dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
           "signboard": SignboardScene, "meeting": MeetingScene, "reaction": ReactionScene,
           "chart": ChartScene, "interview": InterviewScene}
