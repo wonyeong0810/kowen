@@ -524,6 +524,32 @@ def ukraine_allies():
     finish(low, text, "out/ukraine_allies_thumb.png")
 
 
+def ukraine_allies_short():
+    low = Image.new("RGB", (VW, VH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, VW, VH, (12, 16, 40))
+    for i, kind in enumerate(("kr", "us", "jp", "pl", "sk")):   # 동맹국 국기 줄
+        x = 4 + i * 26
+        if kind == "us":
+            for yy in range(126, 142, 4):
+                k.rect(d, x, yy, 24, 2, (190, 30, 40))
+                k.rect(d, x, yy + 2, 24, 2, (200, 200, 208))
+            k.rect(d, x, 126, 10, 8, (30, 40, 110))
+        else:
+            k.draw_flag(d, kind, x, 126, 24, 16)
+    k.draw_flag(d, "ua", 20, 160, 95, 80)
+    for y in range(146, 160, 2):                        # 갈라진 틈
+        k.rect(d, 0, y, VW, 1, (10, 10, 15)) if y % 4 else k.rect(d, 0, y, VW, 1, (255, 60, 60))
+    k.draw_char(d, 67, 242, 0.05, False, "zelensky")
+
+    def text(d):
+        big_text(d, (540, 250), "UKRAINE", 200, (255, 210, 60), stroke=12, anchor="ma")
+        big_text(d, (540, 470), "VS", 170, (255, 70, 60), stroke=12, anchor="ma")
+        big_text(d, (540, 660), "ITS ALLIES", 140, (255, 255, 255), stroke=12, anchor="ma")
+
+    finish_v(low, text, "out/ukraine_allies_short_thumb.png")
+
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1:
