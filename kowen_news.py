@@ -669,13 +669,49 @@ def draw_flag(d, kind, x, y, w, h):
         rect(d, x + w // 2 - 1, y + h // 4 - 2, 2, h // 2 + 4, (245, 245, 245))
     elif kind == "kr":
         rect(d, x, y, w, h, (245, 245, 245))
-        r = h // 4
-        d.pieslice([x + w // 2 - r, y + h // 2 - r, x + w // 2 + r, y + h // 2 + r], 180, 360, fill=(200, 30, 50))
-        d.pieslice([x + w // 2 - r, y + h // 2 - r, x + w // 2 + r, y + h // 2 + r], 0, 180, fill=(30, 60, 150))
-        for tx, ty in ((x + w // 6, y + h // 5), (x + 5 * w // 6 - 6, y + h // 5),
-                       (x + w // 6, y + 4 * h // 5 - 6), (x + 5 * w // 6 - 6, y + 4 * h // 5 - 6)):
-            for k2 in range(3):
-                rect(d, tx, ty + k2 * 2, 6, 1, (20, 20, 20))
+        cx, cy = x + w / 2, y + h / 2
+        r = h / 4
+        red, blue, black = (205, 30, 50), (0, 52, 120), (20, 20, 20)
+        # 태극: 위 빨강/아래 파랑, 작은 반원 두 개로 S자 경계 (깃발 대각선 방향으로 기울임)
+        ang = math.atan2(2, 3)
+        def P(u, v):
+            ca, sa = math.cos(ang), math.sin(ang)
+            return (cx + u * ca - v * sa, cy + u * sa + v * ca)
+        ca, sa = math.cos(ang), math.sin(ang)
+        for py in range(int(cy - r) - 1, int(cy + r) + 2):
+            for px in range(int(cx - r) - 1, int(cx + r) + 2):
+                ex, ey = px + 0.5 - cx, py + 0.5 - cy
+                u, v = ex * ca + ey * sa, -ex * sa + ey * ca
+                if u * u + v * v > r * r:
+                    continue
+                col = red if v < 0 else blue
+                if (u + r / 2) ** 2 + v * v <= (r / 2) ** 2:
+                    col = red
+                elif (u - r / 2) ** 2 + v * v <= (r / 2) ** 2:
+                    col = blue
+                d.point((px, py), fill=col)
+        # 4괘: 건(좌상) 곤(우하) 감(우상) 리(좌하)
+        bl, th = h / 4, max(1.0, h / 24)
+        gap = th * 0.5
+        for (dx, dy), pat in (((-1, -1), "111"), ((1, 1), "000"), ((1, -1), "010"), ((-1, 1), "101")):
+            dist = math.hypot(w / 2, h / 2) * 0.62
+            norm = math.hypot(3 * dx, 2 * dy)
+            ux, uy = 3 * dx / norm, 2 * dy / norm               # 중심에서 바깥쪽
+            vx, vy = -uy, ux                                    # 막대 방향
+            if h < 34:                                          # 작은 깃발은 괘를 단순한 막대로
+                pat = "1"
+            for k2, bit in enumerate(pat):
+                o = dist + (k2 - (len(pat) - 1) / 2) * (th + gap) * 1.6
+                if len(pat) == 1:
+                    th = max(2.0, h / 6)
+                bx, by = cx + ux * o, cy + uy * o
+                segs = [(-bl / 2, bl / 2)] if bit == "1" else [(-bl / 2, -bl / 12), (bl / 12, bl / 2)]
+                for a0, a1 in segs:
+                    pts = [(bx + vx * a0 - ux * th / 2, by + vy * a0 - uy * th / 2),
+                           (bx + vx * a1 - ux * th / 2, by + vy * a1 - uy * th / 2),
+                           (bx + vx * a1 + ux * th / 2, by + vy * a1 + uy * th / 2),
+                           (bx + vx * a0 + ux * th / 2, by + vy * a0 + uy * th / 2)]
+                    d.polygon(pts, fill=black)
     elif kind == "nk":
         rect(d, x, y, w, h, (30, 60, 160))
         rect(d, x, y + h // 6, w, 4 * h // 6, (245, 245, 245))
