@@ -1,0 +1,135 @@
+{
+  "title": "trump_kim_short",
+  "format": "short",
+  "lang": "en",
+  "output": "out/trump_kim_short.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.3
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.3
+    }
+  },
+  "punch": "TRUMP CALLS KIM",
+  "question": "Should Trump meet Kim again? Comment below",
+  "scenes": [
+    {
+      "type": "flight",
+      "tag": "TRUMP'S ASIA TRIP",
+      "stops": {
+        "SHENZHEN": [
+          60,
+          95
+        ]
+      },
+      "maybe": [
+        84,
+        34,
+        "KIM?"
+      ],
+      "dest": [
+        60,
+        95
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Trump wants to meet Kim Jong Un *again*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Asked about a meeting on his Asia trip next month, he said *I may. That would be exciting*. I get along with him."
+        }
+      ]
+    },
+    {
+      "type": "launch",
+      "tag": "NORTH KOREA · OCT 12",
+      "first": "~220 KM",
+      "second": "910+ KM",
+      "gap": "17 MINUTES APART",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Kim's answer came the *same day*. Multiple *ballistic missiles*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "One flew more than *900 kilometers*. Japan says it may have been *hypersonic*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It was the North's *fourth launch* in about a month."
+        }
+      ],
+      "far": 250
+    },
+    {
+      "type": "museum",
+      "tag": "DEFENSE REVOLUTION MUSEUM",
+      "label": "HWASONG-20 ICBM",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The next day, Kim showed off the *Hwasong-20*, a missile built to *reach the United States*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "His wife and daughter were *right by his side*."
+        }
+      ]
+    },
+    {
+      "type": "summits",
+      "stops": [
+        {
+          "kind": "singapore",
+          "label": "SINGAPORE · 2018"
+        },
+        {
+          "kind": "hanoi",
+          "label": "HANOI · 2019"
+        },
+        {
+          "kind": "dmz",
+          "label": "DMZ · 2019"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Trump once said of Kim, *we fell in love*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "They've met *three times*. Singapore, Hanoi, the DMZ."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "*No deal* came out of any of them."
+        }
+      ]
+    },
+    {
+      "type": "apec",
+      "tag": "SHENZHEN · NOV 18-19",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Trump heads to China in November. *No meeting* has been set."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Kim says he'll only talk if the U.S. *drops denuclearization*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Should Trump meet him again? *Tell us in the comments*."
+        }
+      ]
+    }
+  ]
+}

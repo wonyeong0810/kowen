@@ -1891,7 +1891,7 @@ class LaunchScene(Scene):
         for wx in range(32, 78, 9):
             d.ellipse([wx, 105, wx + 7, 112], fill=(25, 25, 25))
         d.polygon([(40, 98), (70, 74), (74, 77), (46, 100)], fill=(110, 120, 85))
-        shots = [(0.15, 120, 22), (0.5, 300, 48)]                      # (시작비율, 착탄 x, 최고고도)
+        shots = [(0.15, 120, 22), (0.5, self.spec.get("far", 300), 48)]                      # (시작비율, 착탄 x, 최고고도)
         for i, (s0, x1, hgt) in enumerate(shots):
             k = (t / max(1.0, self.duration) - s0) / 0.3
             if k <= 0:
@@ -1915,10 +1915,10 @@ class LaunchScene(Scene):
 
     def overlay(self, d, t, cam):
         _tag(d, self.spec.get("tag", ""), (150, 30, 40))
-        cam.text(d, 22, 114, "PYONGYANG AREA", 24, (255, 255, 255))
-        for s0, x1, label in ((0.15, 120, self.spec.get("first", "")), (0.5, 300, self.spec.get("second", ""))):
+        cam.text(d, max(22, SAFE_X // 4 + 4), 114, "PYONGYANG AREA", 24, (255, 255, 255))
+        for s0, x1, label in ((0.15, 120, self.spec.get("first", "")), (0.5, self.spec.get("far", 300), self.spec.get("second", ""))):
             if t / max(1.0, self.duration) > s0 + 0.3:
-                cam.text(d, x1, 118, label, 28, (255, 230, 60), center=True)
+                cam.text(d, min(x1, VIEW_R // 4 - 24), 118, label, 28, (255, 230, 60), center=True)
         if t / max(1.0, self.duration) > 0.5:
             cam.text(d, 200, 150, self.spec.get("gap", ""), 28, (255, 255, 255), center=True)
 
