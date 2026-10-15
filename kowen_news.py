@@ -1,3 +1,4 @@
+import re
 #!/usr/bin/env python3
 """KOWEN News - 픽셀 캐릭터 뉴스 영상 생성기.
 
@@ -2274,6 +2275,15 @@ class HookScene(Scene):
         hop = SR // FPS
         env = np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) for i in range(0, len(audio), hop)])
         adur = len(audio) / SR
+        self.spoken = []                                    # (단어, 시작 시각)
+        ends = [st for _, _, st in self.word_t[1:]] + [adur]
+        for (part, emph, st), en in zip(self.word_t, ends):
+            ws = part.split()
+            tot = max(1, sum(len(w) + 1 for w in ws))
+            off = 0
+            for w in ws:
+                self.spoken.append((re.sub(r"[^A-Z0-9']", "", w.upper()), st + (en - st) * off / tot * 0.9))
+                off += len(w) + 1
         self.timeline = [{"start": 0.0, "end": adur + GAP, "adur": adur, "line": line, "audio": audio,
                           "env": env, "clean": clean, "emph": []}]
         self.duration = adur + GAP + spec.get("pause", 0.9)
@@ -2490,11 +2500,21 @@ def compose_short_v2(frame, sc, t, gt, total, ep, focus_x):
         size = int(150 - 30 * (1 - k))
         hf = font(size)
         disp = sc.spec.get("text", "")
-        emph_words = set(w.upper() for w in " ".join(disp.split("*")[1::2]).split())
-        words = disp.replace("*", "").split()
+        emph_words = set(w.upper() for w in " ".join(disp.split("*")[1::2]).replace("/", " ").split())
+        beats = [b.replace("*", "").split() for b in disp.split("/")]
+        beat_t, si = [], 0                                  # 마디의 첫 단어를 말하는 시각
+        for bw in beats:
+            key = re.sub(r"[^A-Z0-9']", "", bw[0].upper()) if bw else ""
+            bt = beat_t[-1] if beat_t else 0.0
+            for j in range(si, len(sc.spoken)):
+                if sc.spoken[j][0] == key:
+                    bt, si = sc.spoken[j][1], j + 1
+                    break
+            beat_t.append(bt)
+        words = [(w, bi) for bi, bw in enumerate(beats) for w in bw]
         rows, cur = [], []
         for w in words:
-            if cur and d.textlength(" ".join(cur + [w]), font=hf) > SW - 100:
+            if cur and d.textlength(" ".join(x for x, _ in cur + [w]), font=hf) > SW - 100:
                 rows.append(cur); cur = []
             cur.append(w)
         if cur:
@@ -2503,14 +2523,20 @@ def compose_short_v2(frame, sc, t, gt, total, ep, focus_x):
         y0 = (SH - len(rows) * lh) // 2 - 60
         sp_w = d.textlength(" ", font=hf)
         for i, row in enumerate(rows):
-            x = (SW - d.textlength(" ".join(row), font=hf)) / 2
-            for w in row:
+            x = (SW - d.textlength(" ".join(w for w, _ in row), font=hf)) / 2
+            for w, bi in row:
                 ww = d.textlength(w, font=hf)
-                on = w.upper() in emph_words and sc.emph_on(w, t)
-                if on:
-                    rect(d, int(x - 12), y0 + i * lh - 6, int(ww + 24), int(size * 1.12), (200, 30, 40))
-                col = (255, 210, 60) if w.upper() in emph_words else (255, 255, 255)
-                d.text((x, y0 + i * lh), w, font=hf, fill=col, stroke_width=9, stroke_fill=(0, 0, 0))
+                bt = beat_t[bi]
+                if t >= bt:                                   # 마디가 말해질 때 '빰' 하고 등장
+                    kk = ease((t - bt) / 0.12)
+                    wf = font(int(size * (0.75 + 0.25 * kk)))
+                    on = w.upper() in emph_words
+                    if on:
+                        rect(d, int(x - 12), y0 + i * lh - 6, int(ww + 24), int(size * 1.12), (200, 30, 40))
+                    col = (255, 210, 60) if on else (255, 255, 255)
+                    dx = (ww - d.textlength(w, font=wf)) / 2
+                    d.text((x + dx, y0 + i * lh + (size - wf.size) / 2), w, font=wf, fill=col,
+                           stroke_width=9, stroke_fill=(0, 0, 0))
                 x += ww + sp_w
         rect(d, 40, 60, 300, 64, (255, 200, 60))
         d.text((56, 66), "KOWEN NEWS", font=font(52), fill=(15, 20, 50))
