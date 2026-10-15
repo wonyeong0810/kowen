@@ -2243,6 +2243,32 @@ class ParcelScene(Scene):
         cam.text(d, 160, 56 if self.spec.get("compact") else 16, self.spec.get("label", ""), 28, (40, 40, 50), center=True, shadow=False)
 
 
+_ASR = None
+
+
+def word_times(audio):
+    """오프라인 음성 인식으로 단어별 시작 시각(초) 목록. 모델이 없으면 빈 목록."""
+    global _ASR
+    D = os.path.expanduser("~/models/asr-zipformer-en/") if not os.path.isdir("/home/user/models/asr-zipformer-en") else "/home/user/models/asr-zipformer-en/"
+    if not os.path.isdir(D):
+        return []
+    import sherpa_onnx
+    if _ASR is None:
+        _ASR = sherpa_onnx.OfflineRecognizer.from_transducer(
+            encoder=D + "encoder-epoch-99-avg-1.int8.onnx", decoder=D + "decoder-epoch-99-avg-1.int8.onnx",
+            joiner=D + "joiner-epoch-99-avg-1.int8.onnx", tokens=D + "tokens.txt")
+    st = _ASR.create_stream()
+    st.accept_waveform(SR, audio)
+    _ASR.decode_stream(st)
+    out = []
+    for tok, ts in zip(st.result.tokens, st.result.timestamps):
+        if tok.startswith(" ") or not out:
+            out.append([tok.strip(), ts])
+        else:
+            out[-1][0] += tok
+    return [(w.upper(), ts) for w, ts in out]
+
+
 class HookScene(Scene):
     """숏츠 첫 장면: 빈 배경 가운데 큰 글씨로 후킹 멘트. 천천히 말하고, *강조* 단어는 한 박자 쉬고 더 느리고 크게.
     말이 끝나면 잠깐 쉰 뒤 본론으로."""
@@ -2254,41 +2280,47 @@ class HookScene(Scene):
         vc = vcfg.get(line["speaker"], {"sid": 1})
         raw = line["text"]                                   # 예: "*Ukraine* / is fighting / its own / *allies*."
         clean = re.sub(r"\s+", " ", raw.replace("*", "").replace("/", " ")).strip()
-        # 문장은 한 번에 읽어서 사람처럼 자연스러운 억양을 살리고,
-        # 마디 경계는 마디별 길이 비율로 대략 잡은 뒤 근처의 숨 쉬는 지점(소리가 가장 작은 곳)에 맞춤
-        sp = spec.get("speed", 0.95)
-        spoken = clean if clean[-1:] in ".!?" else clean + "."
+        # 문장은 한 번에 읽어서 자연스러운 억양을 살림. 강조 마디 뒤에는 쉼표, 끝은 느낌표로 힘을 줌.
+        sp = spec.get("speed", 0.85)
+        beats = [b.split() for b in raw.split("/") if b.split()]
+        parts = []
+        for k, words in enumerate(beats):
+            plain = " ".join(w.replace("*", "") for w in words).rstrip(".!?")
+            if k < len(beats) - 1 and any("*" in w for w in words):
+                plain += ","
+            parts.append(plain)
+        spoken = " ".join(parts).rstrip(",") + "!"
         audio = voices.say(spoken, vc["sid"], sp).copy()
         adur = len(audio) / SR
-        beats = []
-        for b in raw.split("/"):
-            words = b.split()
-            if words:
-                plain = " ".join(w.replace("*", "") for w in words)
-                beats.append((words, len(voices.say(plain, vc["sid"], sp))))
-        tot = sum(n for _, n in beats) or 1
-        hop = SR // 100
-        env = np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) for i in range(0, len(audio), hop)])
-        self.beats, acc, bounds = [], 0, [0.0]
-        for words, n in beats[:-1]:
-            acc += n
-            guess = adur * acc / tot
-            lo, hi = int((guess - 0.18) * 100), int((guess + 0.18) * 100)
-            lo, hi = max(lo, int(bounds[-1] * 100) + 5), min(hi, len(env) - 1)
-            bt = (lo + int(np.argmin(env[lo:hi]))) / 100 if hi > lo else guess
-            bounds.append(bt)
-        for (words, _), bt in zip(beats, bounds):
-            self.beats.append((words, bt))
-        # 강조: 그 마디 소리만 살짝 크게 (부드럽게 올렸다 내림)
-        gain = np.full(len(audio), 0.8, dtype=np.float32)
-        for k, (words, _) in enumerate(beats):
+        # 음성 인식으로 실제 단어 시작 시각을 찾아 마디를 정확히 맞춤
+        wt = word_times(audio)                                # [(단어, 시작)]
+        exp = [re.sub(r"[^A-Z']", "", w.replace("*", "").upper()) for bw in beats for w in bw]
+        got = [w for w, _ in wt]
+        start = [None] * len(exp)
+        import difflib
+        for blk in difflib.SequenceMatcher(None, exp, got, autojunk=False).get_matching_blocks():
+            for q in range(blk.size):
+                start[blk.a + q] = wt[blk.b + q][1]
+        bounds, wi = [], 0
+        for words in beats:
+            st = start[wi] if wi < len(start) else None
+            if st is None:                                     # 못 맞춘 단어는 앞뒤 사이로 추정
+                nxt = next((start[q] for q in range(wi, len(start)) if start[q] is not None), adur)
+                prv = bounds[-1] if bounds else 0.0
+                st = (prv + nxt) / 2 if bounds else 0.0
+            bounds.append(max(0.0, st - 0.05))
+            wi += len(words)
+        bounds[0] = 0.0
+        self.beats = list(zip(beats, bounds))
+        # 강조 마디는 소리를 키움 (부드럽게)
+        gain = np.full(len(audio), 0.7, dtype=np.float32)
+        for k, words in enumerate(beats):
             if any("*" in w for w in words):
                 a0 = int(SR * bounds[k])
                 a1 = int(SR * bounds[k + 1]) if k + 1 < len(bounds) else len(audio)
                 gain[a0:a1] = 1.0
-        ker = np.ones(int(SR * 0.06), dtype=np.float32) / int(SR * 0.06)
-        gain = np.convolve(gain, ker, mode="same")
-        audio = audio * gain
+        ker = np.ones(int(SR * 0.05), dtype=np.float32) / int(SR * 0.05)
+        audio = audio * np.convolve(gain, ker, mode="same")
         audio = np.clip(audio, -1, 1)
         hop = SR // FPS
         env = np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) for i in range(0, len(audio), hop)])

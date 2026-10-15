@@ -49,7 +49,7 @@ Copy `episodes/trump_ocean.json` and change the content.
 
 ## Shorts guidelines (from channel analytics)
 
-- Open with a `hook` scene: blank background, the hook read aloud slowly (`speed`, default 0.95), then a short pause (`pause`, default 0.9s) before the story. Write only the spoken line (no separate `text`) so screen and voice always match. Split it into beats with `/` and mark key words with `*...*`, e.g. `*Ukraine* / is fighting / with its own / *allies*.` Only the beat being spoken is on screen, centered and big, replaced by the next one. Key words are just louder (no pause, no slowdown) and shown in a red box.
+- Open with a `hook` scene: blank background, the hook read aloud slowly in one natural take (`speed`, default 0.85; a comma is added after emphasized beats and the line ends with `!`), then a short pause (`pause`, default 0.9s) before the story. Write only the spoken line (no separate `text`) so screen and voice always match. Split it into beats with `/` and mark key words with `*...*`, e.g. `*Ukraine* / is fighting / with its own / *allies*.` Only the beat being spoken is on screen, centered and big, replaced by the next one. Key words are just louder (no pause, no slowdown) and shown in a red box. Beat timing comes from offline speech recognition of the generated audio, so text and voice line up; this needs the ASR model below.
 - Target **30–60 seconds** (up to 60s is fine with the slower 40+ pacing; keep the strong hook in the first 2 seconds).
 - **0–2s:** strong hook. Use `punch` for the first frame and open with the most striking line.
 - **Middle:** the key facts, changing scenes every few seconds.
@@ -78,3 +78,12 @@ Copy `episodes/trump_ocean.json` and change the content.
 
 - From the next episode on, speak slower: long-form Anchor and Reporter `speed` 1.1 (was 1.25), Shorts 1.15 (was 1.3), and Shorts may run up to 60 seconds.
 - Slower speech makes episodes longer, so long-form scripts need fewer lines to stay in the 5-15 minute range.
+
+## Speech recognition model (for Shorts hook sync)
+
+```
+mkdir -p ~/models && cd ~/models
+curl -sSL -o asr.tar.bz2 https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-en-2023-06-26.tar.bz2
+tar xjf asr.tar.bz2 && mv sherpa-onnx-zipformer-en-2023-06-26 asr-zipformer-en && rm asr.tar.bz2
+```
+Without it, beat timing falls back to an even split by word count.
