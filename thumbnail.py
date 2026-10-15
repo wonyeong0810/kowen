@@ -567,6 +567,25 @@ def tiger_posts():
     finish(low, text, "out/trump_tiger_posts_thumb.png")
 
 
+def tiger_posts_short():
+    low = Image.new("RGB", (VW, VH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, VW, VH, (12, 16, 40))
+    k.rect(d, 8, 120, 119, 80, (110, 60, 200))          # Truth Social 보라 화면
+    k.rect(d, 10, 122, 115, 76, (30, 20, 50))
+    k.draw_tiger(d, 60, 156, 0.3, flip=True, pose="stand")
+    k.draw_char(d, 40, 242, 0.05, False, "trump")
+
+    def text(d):
+        big_text(d, (540, 250), "TRUMP'S", 190, (255, 210, 60), stroke=12, anchor="ma")
+        big_text(d, (540, 460), "TIGER POST", 150, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 640), "SPARKS OUTRAGE", 100, (255, 70, 60), stroke=12, anchor="ma")
+        d.rectangle([640, 1000, 980, 1070], fill=(110, 60, 200))
+        d.text((664, 1008), "AI VIDEO", font=k.font(56), fill=(255, 255, 255))
+
+    finish_v(low, text, "out/trump_tiger_posts_short_thumb.png")
+
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1:
