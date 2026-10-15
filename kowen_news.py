@@ -2254,35 +2254,34 @@ class HookScene(Scene):
         vc = vcfg.get(line["speaker"], {"sid": 1})
         raw = line["text"]                                   # 예: "*Ukraine* / is fighting / its own / *allies*."
         clean = re.sub(r"\s+", " ", raw.replace("*", "").replace("/", " ")).strip()
-        audio = voices.say(clean, vc["sid"], spec.get("speed", 0.95)).copy()
-        adur = len(audio) / SR
-        n = max(1, len(clean))
-        tpos = lambda ci: adur * ci / n                      # 글자 위치 → 대략적인 시각
-        # 마디: 화면에 띄울 글은 말하는 문장 그대로
-        self.beats, ci = [], 0
+        # 마디마다 따로 읽어 이어 붙임 → 화면에 뜨는 시각이 목소리와 정확히 맞음
+        sp = spec.get("speed", 0.95)
+        self.beats, chunks, t = [], [], 0.0
         for b in raw.split("/"):
             words = b.split()
             if not words:
                 continue
             plain = " ".join(w.replace("*", "") for w in words)
-            k = clean.find(plain, ci)
-            k = ci if k < 0 else k
-            self.beats.append((words, tpos(k)))
-            ci = k + len(plain)
-        # 강조 단어: 쉬지 않고 소리만 크게
-        audio *= 0.72
-        for m in re.finditer(r"\*([^*]+)\*", raw):
-            w = m.group(1).strip()
-            k = clean.find(w)
-            if k < 0:
-                continue
-            a0, a1 = int(SR * max(0, tpos(k) - 0.05)), int(SR * min(adur, tpos(k + len(w)) + 0.08))
-            ramp = np.ones(a1 - a0, dtype=np.float32) / 0.72
-            f = min(len(ramp) // 4, int(SR * 0.03))
-            if f > 0:
-                ramp[:f] = np.linspace(1, 1 / 0.72, f)
-                ramp[-f:] = np.linspace(1 / 0.72, 1, f)
-            audio[a0:a1] *= ramp
+            a = voices.say(plain, vc["sid"], sp).copy()
+            idx = np.where(np.abs(a) > 0.02)[0]                # 마디 사이 텀은 짧게
+            if len(idx):
+                a = a[max(0, idx[0] - 200): idx[-1] + int(SR * 0.06)]
+            loud = [w for w in words if "*" in w]
+            if loud and len(loud) == len(words):
+                a *= 1.0                                      # 강조 마디: 소리만 크게
+            else:
+                a *= 0.72
+                for w in loud:                                # 마디 안의 강조 단어만 크게 (글자 위치로 추정)
+                    k = plain.find(w.replace("*", "").rstrip(".,!?"))
+                    if k >= 0:
+                        a0 = int(len(a) * k / len(plain))
+                        a1 = int(len(a) * (k + len(w)) / len(plain))
+                        a[a0:a1] /= 0.72
+            self.beats.append((words, t))
+            chunks.append(a)
+            t += len(a) / SR
+        audio = np.concatenate(chunks) if chunks else np.zeros(1, dtype=np.float32)
+        adur = len(audio) / SR
         audio = np.clip(audio, -1, 1)
         hop = SR // FPS
         env = np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) for i in range(0, len(audio), hop)])
