@@ -2537,31 +2537,34 @@ def compose_short_v2(frame, sc, t, gt, total, ep, focus_x):
         cur_b = max([bi for bi, bt in enumerate(beat_t) if t >= bt] or [0])   # 지금 말하는 마디 하나만
         bt = beat_t[cur_b] if beat_t else 0.0
         kk = ease((t - bt) / 0.12)
-        size = int(170 * (0.75 + 0.25 * kk))
+        size = 170                                          # 줄바꿈은 항상 최종 크기로 고정
         hf = font(size)
         bw = beats[cur_b] if beats else []
+        disp = [(w.replace("*", "").upper().rstrip(".,!?;:"), "*" in w) for w in bw]
         rows, cur = [], []
-        for w in bw:
-            if cur and d.textlength(" ".join(cur + [w]).replace("*", "").upper(), font=hf) > SW - 100:
+        for w in disp:
+            if cur and d.textlength(" ".join(x for x, _ in cur + [w]), font=hf) > SW - 100:
                 rows.append(cur); cur = []
             cur.append(w)
         if cur:
             rows.append(cur)
         lh = int(size * 1.25)
-        y0 = (SH - len(rows) * lh) // 2 - 60
-        sp_w = d.textlength(" ", font=hf)
+        layer = Image.new("RGBA", (SW, len(rows) * lh + 40), (0, 0, 0, 0))
+        ld = ImageDraw.Draw(layer)
+        sp_w = ld.textlength(" ", font=hf)
         for i, row in enumerate(rows):
-            x = (SW - d.textlength(" ".join(row).replace("*", "").upper(), font=hf)) / 2
-            for w in row:
-                ww = d.textlength(w, font=hf)
-                on = w.startswith("*") or w.rstrip(".,!?").endswith("*")
-                w = w.replace("*", "").upper().rstrip(".,!?;:")
-                ww = d.textlength(w, font=hf)
+            x = (SW - ld.textlength(" ".join(w for w, _ in row), font=hf)) / 2
+            for w, on in row:
+                ww = ld.textlength(w, font=hf)
                 if on:
-                    rect(d, int(x - 14), y0 + i * lh - 8, int(ww + 28), int(size * 1.15), (200, 30, 40))
-                d.text((x, y0 + i * lh), w, font=hf, fill=(255, 210, 60) if on else (255, 255, 255),
-                       stroke_width=10, stroke_fill=(0, 0, 0))
+                    ld.rectangle([int(x - 14), 12 + i * lh, int(x + ww + 14), 12 + i * lh + int(size * 1.15)], fill=(200, 30, 40))
+                ld.text((x, 20 + i * lh), w, font=hf, fill=(255, 210, 60) if on else (255, 255, 255),
+                        stroke_width=10, stroke_fill=(0, 0, 0))
                 x += ww + sp_w
+        sc_k = 0.75 + 0.25 * kk                             # 살짝 커지며 등장 (모양은 그대로)
+        lw, lh2 = max(1, int(layer.width * sc_k)), max(1, int(layer.height * sc_k))
+        layer = layer.resize((lw, lh2), Image.LANCZOS)
+        img.paste(layer, ((SW - lw) // 2, (SH - lh2) // 2 - 60), layer)
         rect(d, 40, 60, 300, 64, (255, 200, 60))
         d.text((56, 66), "KOWEN NEWS", font=font(52), fill=(15, 20, 50))
         rect(d, 0, SH - 16, int(SW * gt / total), 16, (255, 200, 60))
