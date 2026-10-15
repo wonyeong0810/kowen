@@ -2242,7 +2242,22 @@ class ParcelScene(Scene):
         cam.text(d, 160, 56 if self.spec.get("compact") else 16, self.spec.get("label", ""), 28, (40, 40, 50), center=True, shadow=False)
 
 
-SCENES = {"envoys": EnvoysScene, "parcel": ParcelScene, "powflight": PowFlightScene, "embassy": EmbassyScene, "tanker": TankerScene, "refinery": RefineryScene, "pipeline": PipelineScene, "flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
+class HookScene(Scene):
+    """숏츠 첫 장면: 아무것도 없는 배경 가운데 큰 글씨로 후킹 멘트를 말하고, 잠깐 쉰 뒤 본론으로."""
+    zoomable = False
+
+    def __init__(self, spec, voices, vcfg):
+        super().__init__(spec, voices, vcfg)
+        self.duration += spec.get("pause", 0.8)
+
+    def draw(self, d, t):
+        rect(d, 0, 0, W, H, (12, 16, 40))
+
+    def overlay(self, d, t, cam):
+        pass
+
+
+SCENES = {"hook": HookScene, "envoys": EnvoysScene, "parcel": ParcelScene, "powflight": PowFlightScene, "embassy": EmbassyScene, "tanker": TankerScene, "refinery": RefineryScene, "pipeline": PipelineScene, "flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
           "protest": ProtestScene, "classroom": ClassroomScene, "xpost": XPostScene, "press": PressScene, "dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
           "signboard": SignboardScene, "meeting": MeetingScene, "reaction": ReactionScene,
           "chart": ChartScene, "interview": InterviewScene}
@@ -2435,6 +2450,22 @@ def compose_short_v2(frame, sc, t, gt, total, ep, focus_x):
     """숏츠 v2: 첫 2초 '펀치' 문구로 스와이프 막기, 하단 상시 FULL STORY 표시, 끝은 질문으로 롱폼 유도."""
     img = Image.new("RGB", (SW, SH), (12, 16, 40))
     d = ImageDraw.Draw(img)
+    if isinstance(sc, HookScene):   # 빈 화면 + 가운데 큰 후킹 문구 (흔들림/번쩍임 없이 살짝 커지며 등장)
+        k = ease(t / 0.25)
+        size = int(150 - 30 * (1 - k))
+        hf = font(size)
+        rows = wrap(d, sc.spec.get("text", ""), hf, SW - 100)[:5]
+        lh = int(size * 1.15)
+        y0 = (SH - len(rows) * lh) // 2 - 60
+        cols = sc.spec.get("colors", [])
+        for i, row in enumerate(rows):
+            c = tuple(cols[i]) if i < len(cols) else (255, 255, 255)
+            d.text(((SW - d.textlength(row, font=hf)) / 2, y0 + i * lh), row, font=hf, fill=c,
+                   stroke_width=9, stroke_fill=(0, 0, 0))
+        rect(d, 40, 60, 300, 64, (255, 200, 60))
+        d.text((56, 66), "KOWEN NEWS", font=font(52), fill=(15, 20, 50))
+        rect(d, 0, SH - 16, int(SW * gt / total), 16, (255, 200, 60))
+        return img
     cx = int(max(0, min(FW - SW, focus_x - SW // 2)))
     img.paste(frame.crop((cx, 0, cx + SW, FH)), (0, BAND_Y))
     rect(d, 0, BAND_Y - 8, SW, 8, (255, 200, 60))

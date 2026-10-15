@@ -49,6 +49,7 @@ Copy `episodes/trump_ocean.json` and change the content.
 
 ## Shorts guidelines (from channel analytics)
 
+- Open with a `hook` scene: blank background, one big centered line (the hook) read aloud, then a short pause (`pause`, default 0.8s) before the story starts. Don't use the old `punch` banner.
 - Target **30–60 seconds** (up to 60s is fine with the slower 40+ pacing; keep the strong hook in the first 2 seconds).
 - **0–2s:** strong hook. Use `punch` for the first frame and open with the most striking line.
 - **Middle:** the key facts, changing scenes every few seconds.
