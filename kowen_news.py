@@ -2254,34 +2254,41 @@ class HookScene(Scene):
         vc = vcfg.get(line["speaker"], {"sid": 1})
         raw = line["text"]                                   # 예: "*Ukraine* / is fighting / its own / *allies*."
         clean = re.sub(r"\s+", " ", raw.replace("*", "").replace("/", " ")).strip()
-        # 마디마다 따로 읽어 이어 붙임 → 화면에 뜨는 시각이 목소리와 정확히 맞음
+        # 문장은 한 번에 읽어서 사람처럼 자연스러운 억양을 살리고,
+        # 마디 경계는 마디별 길이 비율로 대략 잡은 뒤 근처의 숨 쉬는 지점(소리가 가장 작은 곳)에 맞춤
         sp = spec.get("speed", 0.95)
-        self.beats, chunks, t = [], [], 0.0
+        spoken = clean if clean[-1:] in ".!?" else clean + "."
+        audio = voices.say(spoken, vc["sid"], sp).copy()
+        adur = len(audio) / SR
+        beats = []
         for b in raw.split("/"):
             words = b.split()
-            if not words:
-                continue
-            plain = " ".join(w.replace("*", "") for w in words)
-            a = voices.say(plain, vc["sid"], sp).copy()
-            idx = np.where(np.abs(a) > 0.02)[0]                # 마디 사이 텀은 짧게
-            if len(idx):
-                a = a[max(0, idx[0] - 200): idx[-1] + int(SR * 0.06)]
-            loud = [w for w in words if "*" in w]
-            if loud and len(loud) == len(words):
-                a *= 1.0                                      # 강조 마디: 소리만 크게
-            else:
-                a *= 0.72
-                for w in loud:                                # 마디 안의 강조 단어만 크게 (글자 위치로 추정)
-                    k = plain.find(w.replace("*", "").rstrip(".,!?"))
-                    if k >= 0:
-                        a0 = int(len(a) * k / len(plain))
-                        a1 = int(len(a) * (k + len(w)) / len(plain))
-                        a[a0:a1] /= 0.72
-            self.beats.append((words, t))
-            chunks.append(a)
-            t += len(a) / SR
-        audio = np.concatenate(chunks) if chunks else np.zeros(1, dtype=np.float32)
-        adur = len(audio) / SR
+            if words:
+                plain = " ".join(w.replace("*", "") for w in words)
+                beats.append((words, len(voices.say(plain, vc["sid"], sp))))
+        tot = sum(n for _, n in beats) or 1
+        hop = SR // 100
+        env = np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) for i in range(0, len(audio), hop)])
+        self.beats, acc, bounds = [], 0, [0.0]
+        for words, n in beats[:-1]:
+            acc += n
+            guess = adur * acc / tot
+            lo, hi = int((guess - 0.18) * 100), int((guess + 0.18) * 100)
+            lo, hi = max(lo, int(bounds[-1] * 100) + 5), min(hi, len(env) - 1)
+            bt = (lo + int(np.argmin(env[lo:hi]))) / 100 if hi > lo else guess
+            bounds.append(bt)
+        for (words, _), bt in zip(beats, bounds):
+            self.beats.append((words, bt))
+        # 강조: 그 마디 소리만 살짝 크게 (부드럽게 올렸다 내림)
+        gain = np.full(len(audio), 0.8, dtype=np.float32)
+        for k, (words, _) in enumerate(beats):
+            if any("*" in w for w in words):
+                a0 = int(SR * bounds[k])
+                a1 = int(SR * bounds[k + 1]) if k + 1 < len(bounds) else len(audio)
+                gain[a0:a1] = 1.0
+        ker = np.ones(int(SR * 0.06), dtype=np.float32) / int(SR * 0.06)
+        gain = np.convolve(gain, ker, mode="same")
+        audio = audio * gain
         audio = np.clip(audio, -1, 1)
         hop = SR // FPS
         env = np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) for i in range(0, len(audio), hop)])
