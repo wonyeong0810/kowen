@@ -1,0 +1,115 @@
+{
+  "title": "trump_tiger_posts_short",
+  "format": "short",
+  "lang": "en",
+  "output": "out/trump_tiger_posts_short.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.15
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.15
+    }
+  },
+  "question": "Should the president delete these posts? Comment below",
+  "scenes": [
+    {
+      "type": "hook",
+      "pause": 0.9,
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "*Trump* / posted a man's / final moments / online."
+        }
+      ]
+    },
+    {
+      "type": "latepost",
+      "tag": "TRUTH SOCIAL · OCT 13",
+      "posts": [
+        [
+          "POST 1",
+          "Tiger attack footage"
+        ],
+        [
+          "POST 2",
+          "Big cat montage"
+        ],
+        [
+          "POST 3",
+          "AI tiger video"
+        ]
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "A man was killed by a *tiger* at a wildlife park in England."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "His family begged people to *stop sharing* the video."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "That same day, Trump posted it to *13 million followers*. Caption: *Don't ever mess with nature*."
+        }
+      ]
+    },
+    {
+      "type": "tigerai",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Hours later, he posted an *AI video* of himself wrestling and hugging a tiger, set to *The Lion Sleeps Tonight*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In it, the AI Trump even *copies a hand gesture* the man made during the real attack."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "uk",
+      "name": "Piers Morgan",
+      "role": "Trump's longtime friend",
+      "person": {
+        "skin": 0,
+        "hair": 3,
+        "top": [
+          30,
+          35,
+          55
+        ],
+        "suit": true
+      },
+      "quote": "",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Even his old friend Piers Morgan said: *appallingly tasteless. Delete it*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "South Yorkshire's mayor said the president was *using AI to mock* a family's grief."
+        }
+      ]
+    },
+    {
+      "type": "zooclosed",
+      "tag": "YORKSHIRE WILDLIFE PARK",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The White House gave *no explanation*, and only referred reporters to the posts."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Should the president *delete them*? Tell us in the comments."
+        }
+      ]
+    }
+  ]
+}
