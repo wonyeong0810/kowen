@@ -2252,48 +2252,43 @@ class HookScene(Scene):
         self.spec = spec
         line = spec["lines"][0]
         vc = vcfg.get(line["speaker"], {"sid": 1})
-        sp = spec.get("speed", 0.95)
-        clean, _ = parse_emph(line["text"])
-        parts = line["text"].split("*")
-        chunks, self.word_t = [], []
-        t = 0.0
-        for k, part in enumerate(parts):
-            part = part.strip()
-            if not part:
+        raw = line["text"]                                   # 예: "*Ukraine* / is fighting / its own / *allies*."
+        clean = re.sub(r"\s+", " ", raw.replace("*", "").replace("/", " ")).strip()
+        audio = voices.say(clean, vc["sid"], spec.get("speed", 0.95)).copy()
+        adur = len(audio) / SR
+        n = max(1, len(clean))
+        tpos = lambda ci: adur * ci / n                      # 글자 위치 → 대략적인 시각
+        # 마디: 화면에 띄울 글은 말하는 문장 그대로
+        self.beats, ci = [], 0
+        for b in raw.split("/"):
+            words = b.split()
+            if not words:
                 continue
-            emph = k % 2 == 1
-            if emph and chunks:
-                gap = np.zeros(int(SR * 0.18), dtype=np.float32)
-                chunks.append(gap)
-                t += len(gap) / SR
-            a = voices.say(part, vc["sid"], sp * (0.82 if emph else 1.0))
-            a = a * (1.0 if emph else 0.8)
-            self.word_t.append((part, emph, t))
-            chunks.append(a)
-            t += len(a) / SR
-        audio = np.concatenate(chunks) if chunks else np.zeros(1, dtype=np.float32)
+            plain = " ".join(w.replace("*", "") for w in words)
+            k = clean.find(plain, ci)
+            k = ci if k < 0 else k
+            self.beats.append((words, tpos(k)))
+            ci = k + len(plain)
+        # 강조 단어: 쉬지 않고 소리만 크게
+        audio *= 0.72
+        for m in re.finditer(r"\*([^*]+)\*", raw):
+            w = m.group(1).strip()
+            k = clean.find(w)
+            if k < 0:
+                continue
+            a0, a1 = int(SR * max(0, tpos(k) - 0.05)), int(SR * min(adur, tpos(k + len(w)) + 0.08))
+            ramp = np.ones(a1 - a0, dtype=np.float32) / 0.72
+            f = min(len(ramp) // 4, int(SR * 0.03))
+            if f > 0:
+                ramp[:f] = np.linspace(1, 1 / 0.72, f)
+                ramp[-f:] = np.linspace(1 / 0.72, 1, f)
+            audio[a0:a1] *= ramp
+        audio = np.clip(audio, -1, 1)
         hop = SR // FPS
         env = np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) for i in range(0, len(audio), hop)])
-        adur = len(audio) / SR
-        self.spoken = []                                    # (단어, 시작 시각)
-        ends = [st for _, _, st in self.word_t[1:]] + [adur]
-        for (part, emph, st), en in zip(self.word_t, ends):
-            ws = part.split()
-            tot = max(1, sum(len(w) + 1 for w in ws))
-            off = 0
-            for w in ws:
-                self.spoken.append((re.sub(r"[^A-Z0-9']", "", w.upper()), st + (en - st) * off / tot * 0.9))
-                off += len(w) + 1
         self.timeline = [{"start": 0.0, "end": adur + GAP, "adur": adur, "line": line, "audio": audio,
                           "env": env, "clean": clean, "emph": []}]
         self.duration = adur + GAP + spec.get("pause", 0.9)
-
-    def emph_on(self, word, t):
-        """강조 단어는 말해질 때부터 빨간 박스로 켜짐."""
-        for part, emph, st in self.word_t:
-            if emph and word.strip(",.").upper() in part.upper().split():
-                return t >= st
-        return False
 
     def draw(self, d, t):
         rect(d, 0, 0, W, H, (12, 16, 40))
@@ -2499,18 +2494,8 @@ def compose_short_v2(frame, sc, t, gt, total, ep, focus_x):
         k = ease(t / 0.25)
         size = int(150 - 30 * (1 - k))
         hf = font(size)
-        disp = sc.spec.get("text", "")
-        emph_words = set(w.upper() for w in " ".join(disp.split("*")[1::2]).replace("/", " ").split())
-        beats = [b.replace("*", "").split() for b in disp.split("/")]
-        beat_t, si = [], 0                                  # 마디의 첫 단어를 말하는 시각
-        for bw in beats:
-            key = re.sub(r"[^A-Z0-9']", "", bw[0].upper()) if bw else ""
-            bt = beat_t[-1] if beat_t else 0.0
-            for j in range(si, len(sc.spoken)):
-                if sc.spoken[j][0] == key:
-                    bt, si = sc.spoken[j][1], j + 1
-                    break
-            beat_t.append(bt)
+        beats = [[w for w in bw] for bw, _ in sc.beats]
+        beat_t = [bt for _, bt in sc.beats]
         cur_b = max([bi for bi, bt in enumerate(beat_t) if t >= bt] or [0])   # 지금 말하는 마디 하나만
         bt = beat_t[cur_b] if beat_t else 0.0
         kk = ease((t - bt) / 0.12)
@@ -2519,7 +2504,7 @@ def compose_short_v2(frame, sc, t, gt, total, ep, focus_x):
         bw = beats[cur_b] if beats else []
         rows, cur = [], []
         for w in bw:
-            if cur and d.textlength(" ".join(cur + [w]), font=hf) > SW - 100:
+            if cur and d.textlength(" ".join(cur + [w]).replace("*", "").upper(), font=hf) > SW - 100:
                 rows.append(cur); cur = []
             cur.append(w)
         if cur:
@@ -2528,10 +2513,12 @@ def compose_short_v2(frame, sc, t, gt, total, ep, focus_x):
         y0 = (SH - len(rows) * lh) // 2 - 60
         sp_w = d.textlength(" ", font=hf)
         for i, row in enumerate(rows):
-            x = (SW - d.textlength(" ".join(row), font=hf)) / 2
+            x = (SW - d.textlength(" ".join(row).replace("*", "").upper(), font=hf)) / 2
             for w in row:
                 ww = d.textlength(w, font=hf)
-                on = w.upper() in emph_words
+                on = w.startswith("*") or w.rstrip(".,!?").endswith("*")
+                w = w.replace("*", "").upper().rstrip(".,!?;:")
+                ww = d.textlength(w, font=hf)
                 if on:
                     rect(d, int(x - 14), y0 + i * lh - 8, int(ww + 28), int(size * 1.15), (200, 30, 40))
                 d.text((x, y0 + i * lh), w, font=hf, fill=(255, 210, 60) if on else (255, 255, 255),
