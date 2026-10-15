@@ -578,10 +578,8 @@ def tiger_posts_short():
 
     def text(d):
         big_text(d, (540, 250), "TRUMP'S", 190, (255, 210, 60), stroke=12, anchor="ma")
-        big_text(d, (540, 460), "TIGER POST", 150, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 460), "AI VIDEO", 170, (255, 255, 255), stroke=12, anchor="ma")
         big_text(d, (540, 640), "SPARKS OUTRAGE", 100, (255, 70, 60), stroke=12, anchor="ma")
-        d.rectangle([640, 1000, 980, 1070], fill=(110, 60, 200))
-        d.text((664, 1008), "AI VIDEO", font=k.font(56), fill=(255, 255, 255))
 
     finish_v(low, text, "out/trump_tiger_posts_short_thumb.png")
 
