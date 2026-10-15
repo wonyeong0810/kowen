@@ -2335,7 +2335,105 @@ class HookScene(Scene):
         pass
 
 
-SCENES = {"hook": HookScene, "envoys": EnvoysScene, "parcel": ParcelScene, "powflight": PowFlightScene, "embassy": EmbassyScene, "tanker": TankerScene, "refinery": RefineryScene, "pipeline": PipelineScene, "flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
+class LatePostScene(Scene):
+    """한밤의 백악관 집무실: 휴대폰 불빛 속 트럼프, 게시물 알림이 하나씩 위로 떠오른다."""
+    focus = (160, 80)
+
+    def draw(self, d, t):
+        vgrad(d, 0, 120, (10, 12, 30), (25, 25, 50))
+        for wx in (30, 250):                                             # 창문 + 달
+            rect(d, wx, 16, 40, 60, (20, 30, 60))
+            rect(d, wx + 19, 16, 2, 60, (60, 55, 50))
+        d.ellipse([262, 24, 274, 36], fill=(230, 230, 200))
+        rect(d, 0, 118, W, 62, (60, 40, 40))
+        draw_char(d, 160, 112, t, False, "trump")
+        rect(d, 110, 104, 100, 20, (90, 60, 40))                          # 책상
+        rect(d, 166, 92, 8, 12, (20, 20, 25))                             # 휴대폰 + 불빛
+        rect(d, 167, 93, 6, 9, (120, 170, 230))
+        n = len(self.spec.get("posts", []))
+        for i in range(n):
+            st = self.duration * i / max(1, n)
+            if t < st:
+                continue
+            k = min(1.0, (t - st) / 1.2)
+            y = int(88 - k * 60)
+            x = 70 + (i % 2) * 22
+            rect(d, x, y, 34, 10, (240, 240, 245))
+            rect(d, x + 2, y + 2, 6, 6, (110, 60, 200))
+            rect(d, x + 10, y + 3, 20, 1, (120, 120, 130))
+            rect(d, x + 10, y + 6, 14, 1, (120, 120, 130))
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""))
+        posts = self.spec.get("posts", [])
+        n = len(posts)
+        for i, (clock, label) in enumerate(posts):
+            if t >= self.duration * i / max(1, n):
+                y = 100 + i * 50
+                tw = d.textlength(clock + "  " + label, font=font(30))
+                rect(d, VIEW_R - int(tw) - 64, y, int(tw) + 32, 42, (0, 0, 0))
+                d.text((VIEW_R - tw - 48, y + 6), clock + "  ", font=font(30), fill=(255, 210, 60))
+                d.text((VIEW_R - tw - 48 + d.textlength(clock + "  ", font=font(30)), y + 6), label, font=font(30), fill=(255, 255, 255))
+
+
+class ZooClosedScene(Scene):
+    """문 닫힌 야생동물 공원: 텅 빈 고가 산책로와 'CLOSED' 표지 (사고 장면은 보여주지 않음)."""
+    focus = (160, 80)
+
+    def draw(self, d, t):
+        vgrad(d, 0, 100, (150, 160, 175), (200, 200, 200))
+        rect(d, 0, 100, W, 80, (90, 120, 70))
+        for tx in range(0, W, 22):                                        # 나무
+            d.ellipse([tx, 52, tx + 26, 86], fill=(50, 90, 50))
+            rect(d, tx + 11, 84, 4, 18, (80, 60, 40))
+        rect(d, 0, 76, W, 5, (140, 120, 90))                               # 고가 산책로
+        for px in range(10, W, 30):
+            rect(d, px, 81, 3, 22, (120, 100, 80))
+        rect(d, 110, 108, 100, 40, (230, 230, 225))                         # 굳게 닫힌 정문
+        for bx in range(114, 206, 8):
+            rect(d, bx, 110, 2, 36, (60, 60, 60))
+        rect(d, 128, 118, 64, 16, (200, 30, 40))
+        rect(d, 0, 146, W, 6, (200, 190, 60))                               # 출입통제 테이프
+        for x in range(0, W, 12):
+            rect(d, x, 146, 6, 6, (20, 20, 20))
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""))
+        cam.text(d, 160, 121, "CLOSED", 36, (255, 255, 255), center=True)
+
+
+class FeedScene(Scene):
+    """반응 피드: 아바타와 함께 짧은 반응 글이 아래에서 위로 쌓인다."""
+    zoomable = False
+
+    def draw(self, d, t):
+        rect(d, 0, 0, W, H, (16, 18, 26))
+        rect(d, 60, 0, 200, H, (24, 27, 38))
+        items = self.spec.get("items", [])
+        n = len(items)
+        for i, it in enumerate(items):
+            st = self.duration * i / max(1, n)
+            if t < st:
+                continue
+            y = 12 + i * 30
+            rect(d, 66, y, 188, 26, (34, 38, 52))
+            av = Image.new("RGB", (60, 60), (60, 70, 90))
+            draw_person(ImageDraw.Draw(av), 30, 86, t, False, it.get("person", {"suit": True}), gesture=False)
+            d._image.paste(av.resize((20, 20), Image.NEAREST), (70, y + 3))
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""))
+        items = self.spec.get("items", [])
+        n = len(items)
+        for i, it in enumerate(items):
+            if t < self.duration * i / max(1, n):
+                continue
+            y = (12 + i * 30) * 4
+            d.text((372, y + 8), it.get("name", ""), font=font(26), fill=(255, 210, 60) if it.get("pro") else (130, 200, 255))
+            d.text((372, y + 44), it.get("text", ""), font=font(30), fill=(255, 255, 255))
+
+
+SCENES = {"latepost": LatePostScene, "zooclosed": ZooClosedScene, "feed": FeedScene, "hook": HookScene, "envoys": EnvoysScene, "parcel": ParcelScene, "powflight": PowFlightScene, "embassy": EmbassyScene, "tanker": TankerScene, "refinery": RefineryScene, "pipeline": PipelineScene, "flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
           "protest": ProtestScene, "classroom": ClassroomScene, "xpost": XPostScene, "press": PressScene, "dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
           "signboard": SignboardScene, "meeting": MeetingScene, "reaction": ReactionScene,
           "chart": ChartScene, "interview": InterviewScene}

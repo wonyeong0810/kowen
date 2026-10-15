@@ -1,0 +1,558 @@
+{
+  "title": "Trump's tiger posts",
+  "lang": "en",
+  "output": "out/trump_tiger_posts.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.1
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.1
+    }
+  },
+  "ticker": [
+    "Trump posts video of fatal tiger attack in England, then an AI video of himself with a tiger",
+    "Victim's family: the footage is causing \"severe distress\" - please stop sharing it",
+    "Piers Morgan: \"Appallingly tasteless. Delete it, President Trump\"",
+    "White House refers questions to the posts themselves",
+    "KOWEN NEWS"
+  ],
+  "scenes": [
+    {
+      "type": "title",
+      "duration": 3.0
+    },
+    {
+      "type": "anchor",
+      "headline": "TRUMP'S TIGER POSTS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Welcome to KOWEN News."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "President Trump is facing a wave of criticism over a string of *strange posts* on his social media account."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "He shared real footage of a man being *attacked by a tiger* at a British wildlife park, a man who later died."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Hours later, he posted an *AI video* of himself playing with a tiger."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "The man's family had begged the public *not to share* the footage."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "A note before we begin. We will *not show* the attack in this report."
+        }
+      ]
+    },
+    {
+      "type": "latepost",
+      "tag": "TRUTH SOCIAL · OCT 13",
+      "posts": [
+        [
+          "POST 1",
+          "Tiger attack footage"
+        ],
+        [
+          "POST 2",
+          "Big cat attack montage"
+        ],
+        [
+          "POST 3",
+          "AI video: Trump & tiger"
+        ]
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "It happened on Tuesday, October thirteenth, in *three posts*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "First, a 41-second video from *Yorkshire Wildlife Park* in England, appearing to show a tiger attacking a man inside its enclosure."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He shared it with his roughly *13 million followers* on Truth Social. The White House's *Rapid Response* account also posted it on X."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Minutes later, a second video. A *24-second montage* of big cats attacking people, set to music, with no caption."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "News outlets said it was not clear whether all of that footage was *real*, or partly made with AI."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Then, late that night, the third post. An *AI-generated video* of Trump himself with a tiger."
+        }
+      ]
+    },
+    {
+      "type": "xpost",
+      "logo": "TRUTH",
+      "name": "Donald J. Trump",
+      "handle": "@realDonaldTrump",
+      "person": {
+        "char": "trump"
+      },
+      "post": "Don't ever mess with nature! President DJT",
+      "date": "Oct 13, 2026 · [video not shown]",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The caption on the first video read: *Don't ever mess with nature!* President DJT."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "That was the only explanation he gave."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "When reporters asked the White House why the president shared it, the White House simply *referred them to the posts*."
+        }
+      ]
+    },
+    {
+      "type": "xpost",
+      "logo": "TRUTH",
+      "name": "Donald J. Trump",
+      "handle": "@realDonaldTrump",
+      "person": {
+        "char": "trump"
+      },
+      "post": "[AI video: Trump points at a tiger, then wrestles and hugs it. Music: \"The Lion Sleeps Tonight\"]",
+      "date": "Oct 13, 2026 · late night",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The AI video shows Trump on a lawn, pointing at a tiger, then *wrestling and hugging* the animal."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The soundtrack: the 1961 hit *The Lion Sleeps Tonight*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Fact-checkers at *Snopes* confirmed Trump really posted it."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "They noted the AI Trump *copies a hand gesture* the man made during the real attack."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "THE VICTIM",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "The man in that first video was a real person, and his family is *grieving*."
+        }
+      ]
+    },
+    {
+      "type": "zooclosed",
+      "tag": "YORKSHIRE WILDLIFE PARK · DONCASTER",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Police identified him as *William Chapman*, 23, a former child actor who appeared on British television."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "On Saturday, October tenth, he entered a tiger enclosure at the park and suffered *fatal injuries*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Witnesses said he had climbed down from a raised walkway. Some visitors tried to *distract the tiger*, without success."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The tiger, a 420-pound Amur tiger named *Altai*, was not hurt. The park says it will *not* be put down."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The park stayed *closed* for days, and the local council has opened a *health and safety investigation*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Police had asked the public *not to share* any footage of the incident."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "A former government zoo adviser said that, despite the best security, a *determined person* can sometimes get into an enclosure."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Visitors have left *flowers* at the park entrance, and an inquest into his death is due to open at Doncaster coroner's court."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "uk",
+      "plain": true,
+      "name": "William Chapman's family",
+      "role": "Statement · Oct 13",
+      "person": {
+        "skin": 0,
+        "hair": 2,
+        "top": [
+          40,
+          40,
+          50
+        ],
+        "long": true
+      },
+      "quote": "The publication and circulation of deeply offensive media content is causing them severe distress at an exceptionally vulnerable time. We ask people to stop doing this.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On the same day Trump posted, the family released a statement."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "They said they were *utterly devastated*, and described William as a *bright, warm and engaging* young man who had suffered from significant mental illness."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The circulation of deeply offensive media content, they said, is causing *severe distress* at an exceptionally vulnerable time."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "*We ask people to stop doing this.*"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "His old stage school paid tribute too, saying he will be *truly missed* and remembered with great fondness."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "uk",
+      "name": "Oliver Coppard",
+      "role": "Mayor of South Yorkshire",
+      "person": {
+        "skin": 0,
+        "hair": 1,
+        "top": [
+          40,
+          45,
+          60
+        ],
+        "suit": true,
+        "tie": [
+          150,
+          30,
+          40
+        ]
+      },
+      "quote": "The president of the United States now using AI to mock that incident... should be greeted with the contempt it deserves.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Local leaders in England were furious. South Yorkshire's mayor, *Oliver Coppard*, said the family had contacted his office about the pain the videos were causing."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The president of the United States, he said, is now *using AI to mock* the incident, for little more than a cheap laugh on social media."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It should be greeted, he said, with *the contempt it deserves*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Downing Street said people should *respect the family's wishes*, but would not comment on the president's posts, saying he has a press secretary for that."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "uk",
+      "name": "Will Travers",
+      "role": "Executive President, Born Free Foundation",
+      "person": {
+        "skin": 0,
+        "hair": 3,
+        "top": [
+          40,
+          70,
+          40
+        ],
+        "glasses": true
+      },
+      "quote": "Not only incredibly insensitive... It increases the risk to the lives of humans and captive wild animals.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Animal welfare groups were also alarmed by the *AI video*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "*Will Travers* of the Born Free Foundation called it not only incredibly insensitive, but *reckless*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Such videos, he warned, can encourage people to seek *direct, high-risk contact* with captive wild animals."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "THE BACKLASH",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "The reaction online was swift, and it came even from *Trump's friends*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "uk",
+      "name": "Piers Morgan",
+      "role": "Broadcaster · Trump's longtime friend",
+      "person": {
+        "skin": 0,
+        "hair": 3,
+        "top": [
+          30,
+          35,
+          55
+        ],
+        "suit": true
+      },
+      "quote": "This is appallingly tasteless. Delete it, President @realDonaldTrump.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "British broadcaster *Piers Morgan*, who won Trump's Celebrity Apprentice in 2008 and has known him for nearly two decades, was blunt."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "*This is appallingly tasteless*, he wrote. *Delete it*, President Trump."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "His post was viewed more than *1.7 million* times."
+        }
+      ]
+    },
+    {
+      "type": "feed",
+      "tag": "CRITICS REACT",
+      "items": [
+        {
+          "name": "Ron Filipkowski · former prosecutor",
+          "text": "\"Either he's been hacked or...\"",
+          "person": {
+            "skin": 0,
+            "hair": 3,
+            "top": [
+              40,
+              40,
+              60
+            ],
+            "suit": true
+          }
+        },
+        {
+          "name": "Aiden McLaughlin · Vanity Fair",
+          "text": "\"Lion snuff films\"",
+          "person": {
+            "skin": 0,
+            "hair": 1,
+            "top": [
+              60,
+              60,
+              80
+            ]
+          }
+        },
+        {
+          "name": "Aaron Parnas · lawyer",
+          "text": "\"Bizarre and concerning\"",
+          "person": {
+            "skin": 1,
+            "hair": 0,
+            "top": [
+              30,
+              30,
+              40
+            ],
+            "suit": true
+          }
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Former federal prosecutor *Ron Filipkowski* wondered if the account had been *hacked*, or if a White House aide was sending some kind of message."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Vanity Fair's Washington correspondent said the president was posting *lion snuff films*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Lawyer *Aaron Parnas* called it bizarre and *concerning behavior*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Under the White House's own post on X, many commenters called it *disgusting* and *disrespectful* to the man who died."
+        }
+      ]
+    },
+    {
+      "type": "feed",
+      "tag": "SUPPORTERS REACT",
+      "items": [
+        {
+          "name": "Ryan Fournier · Students for Trump",
+          "text": "\"DON'T MESS WITH NATURE!\"",
+          "pro": true,
+          "person": {
+            "skin": 0,
+            "hair": 1,
+            "top": [
+              150,
+              30,
+              40
+            ]
+          }
+        },
+        {
+          "name": "White House",
+          "text": "Referred questions to the posts",
+          "pro": true,
+          "person": {
+            "skin": 0,
+            "hair": 3,
+            "top": [
+              30,
+              40,
+              90
+            ],
+            "suit": true
+          }
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Not everyone was critical."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "*Ryan Fournier*, founder of Students for Trump, said the president was sending a *clear message*. Don't mess with nature."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "When you cross boundaries with wild animals, he wrote, *nature wins every time*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But even some supporters pushed back. *I voted for you, but not for this*, one commenter wrote under the White House post."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "A PATTERN",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "For many observers, this was not a one-off, but part of a *long pattern* in how the president uses social media."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "TRUMP'S UNUSUAL POSTS",
+      "items": [
+        {
+          "year": "GAZA",
+          "text": "AI video of Gaza as a luxury resort"
+        },
+        {
+          "year": "KING",
+          "text": "AI \"King Trump\" video dumping sludge on protesters"
+        },
+        {
+          "year": "MEDBED",
+          "text": "Apparent AI video promoting \"MedBeds\""
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "This is not the first time Trump's posts have raised eyebrows."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In early 2025, he shared an *AI-generated vision of Gaza* rebuilt as a luxury resort, complete with a giant golden statue of himself."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Later that year, after nationwide *No Kings* protests, he posted an AI video of himself as *King Trump*, flying a jet and dumping brown sludge on protesters."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He also shared an apparent AI video promoting so-called *MedBed* hospitals, a long-running online conspiracy theory, before it was taken down."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He once posted an image of himself as *Jesus Christ*, and deleted it after criticism from religious groups."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "And critics point out he has attacked people *after their deaths* before, including Senator *John McCain*, Congressman *John Dingell*, and director *Rob Reiner*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Fact-checkers at Snopes now keep a running list of *things Trump really posted*, because so many sound too strange to be true."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "One researcher calls the White House's use of AI memes *memetic warfare*, where anyone offended is cast as someone who simply *can't take a joke*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "TRUMP'S TIGER POSTS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "So far, the White House has *not explained* why the president shared the videos."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "A grieving family asked the public to stop sharing their son's final moments. That *same day*, the president of the United States shared them with his followers."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "If you found this helpful, please *like and subscribe* for more."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "This has been KOWEN News. Thanks for watching."
+        }
+      ]
+    }
+  ]
+}
