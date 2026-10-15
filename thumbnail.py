@@ -550,6 +550,23 @@ def ukraine_allies_short():
     finish_v(low, text, "out/ukraine_allies_short_thumb.png")
 
 
+def tiger_posts():
+    low = Image.new("RGB", (TW, TH))
+    d = ImageDraw.Draw(low)
+    k.rect(d, 0, 0, TW, TH, (12, 16, 40))
+    k.rect(d, 70, 42, 90, 48, (110, 60, 200))           # Truth Social 보라 카드
+    k.rect(d, 72, 44, 86, 46, (30, 20, 50))
+    k.draw_tiger(d, 108, 64, 0.3, flip=True, pose="stand")
+    k.draw_char(d, 34, 106, 0.05, False, "trump")
+
+    def text(d):
+        _two_line(d, 135, "TRUMP'S TIGER POST", (255, 210, 60), 245, "SPARKS OUTRAGE", (255, 70, 60), size=100)
+        d.rectangle([1000, 352, 1264, 412], fill=(110, 60, 200))
+        d.text((1022, 360), "AI VIDEO", font=k.font(48), fill=(255, 255, 255))
+
+    finish(low, text, "out/trump_tiger_posts_thumb.png")
+
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1:
