@@ -2433,7 +2433,72 @@ class FeedScene(Scene):
             d.text((372, y + 44), it.get("text", ""), font=font(30), fill=(255, 255, 255))
 
 
-SCENES = {"latepost": LatePostScene, "zooclosed": ZooClosedScene, "feed": FeedScene, "hook": HookScene, "envoys": EnvoysScene, "parcel": ParcelScene, "powflight": PowFlightScene, "embassy": EmbassyScene, "tanker": TankerScene, "refinery": RefineryScene, "pipeline": PipelineScene, "flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
+def draw_tiger(d, x, y, t, flip=False, pose="stand"):
+    """픽셀 호랑이 (x, y = 몸통 왼쪽 위). pose: stand / pounce / sit."""
+    o, blk, wh = (225, 120, 40), (30, 25, 20), (245, 235, 220)
+    sgn = -1 if flip else 1
+    bx = x
+    lift = -6 if pose == "pounce" else 0
+    rect(d, bx, y + lift, 40, 16, o)                                # 몸통
+    for sx in range(bx + 4, bx + 38, 7):
+        rect(d, sx, y + lift, 2, 10, blk)
+    hx = bx + (40 if not flip else -16)
+    rect(d, hx, y - 6 + lift, 16, 16, o)                            # 머리
+    rect(d, hx + 2, y + 4 + lift, 12, 6, wh)
+    rect(d, hx + (10 if not flip else 3), y - 2 + lift, 2, 2, blk)
+    rect(d, hx + (2 if not flip else 11), y - 9 + lift, 3, 3, o)
+    rect(d, hx + (11 if not flip else 2), y - 9 + lift, 3, 3, o)
+    for lx in (bx + 3, bx + 12, bx + 26, bx + 34):                   # 다리
+        rect(d, lx, y + 16 + lift, 4, 10 + (0 if pose != "pounce" else -4), o)
+    tx = bx - 10 if not flip else bx + 40
+    wag = int(math.sin(t * 6) * 3)
+    rect(d, tx, y + 2 + wag, 10, 3, o)
+    rect(d, tx + (0 if not flip else 7), y + 2 + wag, 3, 3, blk)
+
+
+class TigerAIScene(Scene):
+    """트럼프가 올린 AI 영상을 픽셀로 재연: 잔디밭에서 호랑이를 가리키고, 뒹굴고, 껴안는다."""
+    zoomable = False
+
+    def draw(self, d, t):
+        rect(d, 0, 0, W, H, (12, 12, 16))
+        x0, y0, w, h = 70, 8, 180, 128                                    # 휴대폰 화면 속 영상
+        rect(d, x0 - 4, y0 - 4, w + 8, h + 8, (40, 40, 48))
+        sub = Image.new("RGB", (w, h))
+        sd = ImageDraw.Draw(sub)
+        vgrad(sd, 0, 60, (120, 180, 230), (180, 210, 235))
+        rect(sd, 0, 60, w, 68, (70, 150, 60))
+        for gx in range(0, w, 9):
+            rect(sd, gx, 64 + (gx * 7) % 20, 2, 3, (60, 130, 50))
+        rect(sd, 10, 30, 60, 30, (240, 240, 240))                          # 뒤편 흰 건물
+        for cx in range(14, 68, 10):
+            rect(sd, cx, 34, 3, 26, (220, 220, 225))
+        ph = t / max(1.0, self.duration)
+        if ph < 0.33:                                                     # 1) 가리키기
+            draw_char(sd, 50, 118, t, False, "trump")
+            draw_tiger(sd, 110, 92, t, flip=True)
+        elif ph < 0.7:                                                    # 2) 뒹굴기
+            j = int(abs(math.sin(t * 7)) * 6)
+            draw_char(sd, 80 + int(math.sin(t * 5) * 6), 118 - j, t, False, "trump")
+            draw_tiger(sd, 84 + int(math.cos(t * 5) * 6), 88 + j, t, flip=True, pose="pounce")
+        else:                                                             # 3) 껴안기
+            draw_char(sd, 70, 118, t, False, "trump")
+            draw_tiger(sd, 100, 90, t, flip=True, pose="sit")          # 트럼프에게 머리를 기댄 호랑이
+            for hx in range(3):                                           # 하트
+                hy = int(40 - ((t * 20 + hx * 12) % 30))
+                rect(sd, 70 + hx * 18, hy, 4, 3, (230, 60, 90))
+        d._image.paste(sub, (x0, y0))
+
+    def overlay(self, d, t, cam):
+        tag = "AI VIDEO POSTED BY TRUMP · RECREATED"
+        tw = d.textlength(tag, font=font(28))
+        rect(d, SAFE_X + 32, 28, int(tw) + 32, 40, (110, 60, 200))
+        d.text((SAFE_X + 48, 32), tag, font=font(28), fill=(255, 255, 255))
+        if int(t * 2) % 2 == 0:
+            d.text((VIEW_R - 200, 40), "♪ AI", font=font(36), fill=(255, 210, 60))
+
+
+SCENES = {"tigerai": TigerAIScene, "latepost": LatePostScene, "zooclosed": ZooClosedScene, "feed": FeedScene, "hook": HookScene, "envoys": EnvoysScene, "parcel": ParcelScene, "powflight": PowFlightScene, "embassy": EmbassyScene, "tanker": TankerScene, "refinery": RefineryScene, "pipeline": PipelineScene, "flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
           "protest": ProtestScene, "classroom": ClassroomScene, "xpost": XPostScene, "press": PressScene, "dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
           "signboard": SignboardScene, "meeting": MeetingScene, "reaction": ReactionScene,
           "chart": ChartScene, "interview": InterviewScene}

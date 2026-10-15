@@ -107,7 +107,7 @@
         "char": "trump"
       },
       "post": "Don't ever mess with nature! President DJT",
-      "date": "Oct 13, 2026 · [video not shown]",
+      "date": "Oct 13 · [footage not shown]",
       "lines": [
         {
           "speaker": "Reporter",
@@ -124,15 +124,7 @@
       ]
     },
     {
-      "type": "xpost",
-      "logo": "TRUTH",
-      "name": "Donald J. Trump",
-      "handle": "@realDonaldTrump",
-      "person": {
-        "char": "trump"
-      },
-      "post": "[AI video: Trump points at a tiger, then wrestles and hugs it. Music: \"The Lion Sleeps Tonight\"]",
-      "date": "Oct 13, 2026 · late night",
+      "type": "tigerai",
       "lines": [
         {
           "speaker": "Reporter",
