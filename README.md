@@ -49,7 +49,7 @@ Copy `episodes/trump_ocean.json` and change the content.
 
 ## Shorts guidelines (from channel analytics)
 
-- Open with a `hook` scene: blank background, one big centered line (the hook) read aloud, then a short pause (`pause`, default 0.8s) before the story starts. Don't use the old `punch` banner. The hook is read slower (`speed`, default 0.95); wrap key words in `*...*` in both `text` and the spoken line — they get a short beat before them, are read slower and louder, and light up in a red box when spoken. Split `text` into beats with `/` (e.g. `*UKRAINE* / IS FIGHTING / ITS OWN / *ALLIES*`); each beat pops in on screen the moment it is spoken, instead of the whole sentence showing at once.
+- Open with a `hook` scene: blank background, one big centered line (the hook) read aloud, then a short pause (`pause`, default 0.8s) before the story starts. Don't use the old `punch` banner. The hook is read slower (`speed`, default 0.95); wrap key words in `*...*` in both `text` and the spoken line — they get a short beat before them, are read slower and louder, and light up in a red box when spoken. Split `text` into beats with `/` (e.g. `*UKRAINE* / IS FIGHTING / ITS OWN / *ALLIES*`); only the beat being spoken is on screen — it pops in alone in the center and is replaced by the next beat (the last beat stays until the pause ends).
 - Target **30–60 seconds** (up to 60s is fine with the slower 40+ pacing; keep the strong hook in the first 2 seconds).
 - **0–2s:** strong hook. Use `punch` for the first frame and open with the most striking line.
 - **Middle:** the key facts, changing scenes every few seconds.

@@ -2511,10 +2511,15 @@ def compose_short_v2(frame, sc, t, gt, total, ep, focus_x):
                     bt, si = sc.spoken[j][1], j + 1
                     break
             beat_t.append(bt)
-        words = [(w, bi) for bi, bw in enumerate(beats) for w in bw]
+        cur_b = max([bi for bi, bt in enumerate(beat_t) if t >= bt] or [0])   # 지금 말하는 마디 하나만
+        bt = beat_t[cur_b] if beat_t else 0.0
+        kk = ease((t - bt) / 0.12)
+        size = int(170 * (0.75 + 0.25 * kk))
+        hf = font(size)
+        bw = beats[cur_b] if beats else []
         rows, cur = [], []
-        for w in words:
-            if cur and d.textlength(" ".join(x for x, _ in cur + [w]), font=hf) > SW - 100:
+        for w in bw:
+            if cur and d.textlength(" ".join(cur + [w]), font=hf) > SW - 100:
                 rows.append(cur); cur = []
             cur.append(w)
         if cur:
@@ -2523,20 +2528,14 @@ def compose_short_v2(frame, sc, t, gt, total, ep, focus_x):
         y0 = (SH - len(rows) * lh) // 2 - 60
         sp_w = d.textlength(" ", font=hf)
         for i, row in enumerate(rows):
-            x = (SW - d.textlength(" ".join(w for w, _ in row), font=hf)) / 2
-            for w, bi in row:
+            x = (SW - d.textlength(" ".join(row), font=hf)) / 2
+            for w in row:
                 ww = d.textlength(w, font=hf)
-                bt = beat_t[bi]
-                if t >= bt:                                   # 마디가 말해질 때 '빰' 하고 등장
-                    kk = ease((t - bt) / 0.12)
-                    wf = font(int(size * (0.75 + 0.25 * kk)))
-                    on = w.upper() in emph_words
-                    if on:
-                        rect(d, int(x - 12), y0 + i * lh - 6, int(ww + 24), int(size * 1.12), (200, 30, 40))
-                    col = (255, 210, 60) if on else (255, 255, 255)
-                    dx = (ww - d.textlength(w, font=wf)) / 2
-                    d.text((x + dx, y0 + i * lh + (size - wf.size) / 2), w, font=wf, fill=col,
-                           stroke_width=9, stroke_fill=(0, 0, 0))
+                on = w.upper() in emph_words
+                if on:
+                    rect(d, int(x - 14), y0 + i * lh - 8, int(ww + 28), int(size * 1.15), (200, 30, 40))
+                d.text((x, y0 + i * lh), w, font=hf, fill=(255, 210, 60) if on else (255, 255, 255),
+                       stroke_width=10, stroke_fill=(0, 0, 0))
                 x += ww + sp_w
         rect(d, 40, 60, 300, 64, (255, 200, 60))
         d.text((56, 66), "KOWEN NEWS", font=font(52), fill=(15, 20, 50))
