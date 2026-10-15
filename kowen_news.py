@@ -2243,12 +2243,47 @@ class ParcelScene(Scene):
 
 
 class HookScene(Scene):
-    """숏츠 첫 장면: 아무것도 없는 배경 가운데 큰 글씨로 후킹 멘트를 말하고, 잠깐 쉰 뒤 본론으로."""
+    """숏츠 첫 장면: 빈 배경 가운데 큰 글씨로 후킹 멘트. 천천히 말하고, *강조* 단어는 한 박자 쉬고 더 느리고 크게.
+    말이 끝나면 잠깐 쉰 뒤 본론으로."""
     zoomable = False
 
     def __init__(self, spec, voices, vcfg):
-        super().__init__(spec, voices, vcfg)
-        self.duration += spec.get("pause", 0.8)
+        self.spec = spec
+        line = spec["lines"][0]
+        vc = vcfg.get(line["speaker"], {"sid": 1})
+        sp = spec.get("speed", 0.95)
+        clean, _ = parse_emph(line["text"])
+        parts = line["text"].split("*")
+        chunks, self.word_t = [], []
+        t = 0.0
+        for k, part in enumerate(parts):
+            part = part.strip()
+            if not part:
+                continue
+            emph = k % 2 == 1
+            if emph and chunks:
+                gap = np.zeros(int(SR * 0.18), dtype=np.float32)
+                chunks.append(gap)
+                t += len(gap) / SR
+            a = voices.say(part, vc["sid"], sp * (0.82 if emph else 1.0))
+            a = a * (1.0 if emph else 0.8)
+            self.word_t.append((part, emph, t))
+            chunks.append(a)
+            t += len(a) / SR
+        audio = np.concatenate(chunks) if chunks else np.zeros(1, dtype=np.float32)
+        hop = SR // FPS
+        env = np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) for i in range(0, len(audio), hop)])
+        adur = len(audio) / SR
+        self.timeline = [{"start": 0.0, "end": adur + GAP, "adur": adur, "line": line, "audio": audio,
+                          "env": env, "clean": clean, "emph": []}]
+        self.duration = adur + GAP + spec.get("pause", 0.9)
+
+    def emph_on(self, word, t):
+        """강조 단어는 말해질 때부터 빨간 박스로 켜짐."""
+        for part, emph, st in self.word_t:
+            if emph and word.strip(",.").upper() in part.upper().split():
+                return t >= st
+        return False
 
     def draw(self, d, t):
         rect(d, 0, 0, W, H, (12, 16, 40))
@@ -2454,14 +2489,29 @@ def compose_short_v2(frame, sc, t, gt, total, ep, focus_x):
         k = ease(t / 0.25)
         size = int(150 - 30 * (1 - k))
         hf = font(size)
-        rows = wrap(d, sc.spec.get("text", ""), hf, SW - 100)[:5]
-        lh = int(size * 1.15)
+        disp = sc.spec.get("text", "")
+        emph_words = set(w.upper() for w in " ".join(disp.split("*")[1::2]).split())
+        words = disp.replace("*", "").split()
+        rows, cur = [], []
+        for w in words:
+            if cur and d.textlength(" ".join(cur + [w]), font=hf) > SW - 100:
+                rows.append(cur); cur = []
+            cur.append(w)
+        if cur:
+            rows.append(cur)
+        lh = int(size * 1.25)
         y0 = (SH - len(rows) * lh) // 2 - 60
-        cols = sc.spec.get("colors", [])
+        sp_w = d.textlength(" ", font=hf)
         for i, row in enumerate(rows):
-            c = tuple(cols[i]) if i < len(cols) else (255, 255, 255)
-            d.text(((SW - d.textlength(row, font=hf)) / 2, y0 + i * lh), row, font=hf, fill=c,
-                   stroke_width=9, stroke_fill=(0, 0, 0))
+            x = (SW - d.textlength(" ".join(row), font=hf)) / 2
+            for w in row:
+                ww = d.textlength(w, font=hf)
+                on = w.upper() in emph_words and sc.emph_on(w, t)
+                if on:
+                    rect(d, int(x - 12), y0 + i * lh - 6, int(ww + 24), int(size * 1.12), (200, 30, 40))
+                col = (255, 210, 60) if w.upper() in emph_words else (255, 255, 255)
+                d.text((x, y0 + i * lh), w, font=hf, fill=col, stroke_width=9, stroke_fill=(0, 0, 0))
+                x += ww + sp_w
         rect(d, 40, 60, 300, 64, (255, 200, 60))
         d.text((56, 66), "KOWEN NEWS", font=font(52), fill=(15, 20, 50))
         rect(d, 0, SH - 16, int(SW * gt / total), 16, (255, 200, 60))
