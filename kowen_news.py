@@ -2287,9 +2287,9 @@ class HookScene(Scene):
         for k, words in enumerate(beats):
             plain = " ".join(w.replace("*", "") for w in words).rstrip(".!?")
             if k < len(beats) - 1 and any("*" in w for w in words):
-                plain += ","
+                plain += "!"                                   # 강조 마디는 느낌표로 끊어 힘 있게
             parts.append(plain)
-        spoken = " ".join(parts).rstrip(",") + "!"
+        spoken = " ".join(parts).rstrip(",!") + "!"
         audio = voices.say(spoken, vc["sid"], sp).copy()
         adur = len(audio) / SR
         # 음성 인식으로 실제 단어 시작 시각을 찾아 마디를 정확히 맞춤
