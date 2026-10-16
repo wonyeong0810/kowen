@@ -2498,17 +2498,24 @@ class TigerAIScene(Scene):
             d.text((VIEW_R - 200, 40), "♪ AI", font=font(36), fill=(255, 210, 60))
 
 
-def draw_roadster(d, x, y, ang=0.0, col=(200, 20, 30), mirror=False):
-    """낮고 날렵한 픽셀 로드스터 (x, y = 차체 중심). ang = 회전(라디안), mirror = 위아래 뒤집은 모양."""
-    pts = [(-16, 2), (-14, -2), (-6, -3), (-2, -6), (6, -6), (12, -2), (16, -1), (16, 3), (-16, 3)]
+def draw_roadster(d, x, y, ang=0.0, col=(200, 20, 30), mirror=False, k=1.6):
+    """픽셀 로드스터 (x, y = 차체 중심). ang = 회전(라디안), mirror = 위아래 뒤집은 모양, k = 크기."""
     ca, sa = math.cos(ang), math.sin(ang)
     m = -1 if mirror else 1
-    P = lambda u, v: (x + u * ca - m * v * sa, y + u * sa + m * v * ca)
-    d.polygon([P(u, v) for u, v in pts], fill=col)
-    d.polygon([P(u, v) for u, v in [(-1, -5), (5, -5), (9, -2), (-4, -2)]], fill=(40, 50, 70))   # 유리
-    for wu in (-10, 10):                                                                          # 바퀴
+    P = lambda u, v: (x + k * (u * ca - m * v * sa), y + k * (u * sa + m * v * ca))
+    poly = lambda pts, c: d.polygon([P(u, v) for u, v in pts], fill=c)
+    dark = tuple(int(c * 0.6) for c in col)
+    poly([(-17, 3), (-17, -1), (-13, -3), (-5, -4), (-1, -7), (6, -7), (11, -3), (17, -2), (18, 1), (17, 3)], col)  # 차체
+    poly([(-17, 1), (18, 1), (17, 3), (-17, 3)], dark)                                                             # 아랫단
+    poly([(0, -6), (5, -6), (9, -3), (-3, -3)], (35, 45, 70))                                                       # 유리
+    poly([(1, -6), (3, -6), (2, -4), (0, -4)], (150, 180, 220))                                                    # 유리 반사
+    poly([(16, -2), (18, -1), (18, 0), (16, 0)], (255, 240, 200))                                                  # 전조등
+    poly([(-17, -1), (-16, -1), (-16, 1), (-17, 1)], (255, 60, 60))                                                # 후미등
+    for wu in (-10, 11):                                                                                           # 바퀴 + 휠
         cx, cy = P(wu, 3)
-        d.ellipse([cx - 3, cy - 3, cx + 3, cy + 3], fill=(20, 20, 20))
+        r = 3.6 * k
+        d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(15, 15, 18))
+        d.ellipse([cx - r * 0.5, cy - r * 0.5, cx + r * 0.5, cy + r * 0.5], fill=(170, 170, 180))
 
 
 class RampStuntScene(Scene):
@@ -2530,7 +2537,7 @@ class RampStuntScene(Scene):
         for lx in (cx - 40, cx + 40):
             rect(d, lx, cy, 3, 50, (110, 110, 120))
         ph = (t % 7.0) / 7.0                                               # 7초마다 반복
-        r = R - 6
+        r = R - 13                                                         # 바퀴가 램프 안쪽 면에 닿도록
         th_end = 1.6 * math.pi
         if ph < 0.15:                                                      # 오른쪽에서 진입
             x, y = 316 - ph / 0.15 * (316 - cx), 111
