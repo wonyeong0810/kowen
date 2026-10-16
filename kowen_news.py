@@ -2498,7 +2498,120 @@ class TigerAIScene(Scene):
             d.text((VIEW_R - 200, 40), "♪ AI", font=font(36), fill=(255, 210, 60))
 
 
-SCENES = {"tigerai": TigerAIScene, "latepost": LatePostScene, "zooclosed": ZooClosedScene, "feed": FeedScene, "hook": HookScene, "envoys": EnvoysScene, "parcel": ParcelScene, "powflight": PowFlightScene, "embassy": EmbassyScene, "tanker": TankerScene, "refinery": RefineryScene, "pipeline": PipelineScene, "flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
+def draw_roadster(d, x, y, ang=0.0, col=(200, 20, 30), mirror=False):
+    """낮고 날렵한 픽셀 로드스터 (x, y = 차체 중심). ang = 회전(라디안), mirror = 위아래 뒤집은 모양."""
+    pts = [(-16, 2), (-14, -2), (-6, -3), (-2, -6), (6, -6), (12, -2), (16, -1), (16, 3), (-16, 3)]
+    ca, sa = math.cos(ang), math.sin(ang)
+    m = -1 if mirror else 1
+    P = lambda u, v: (x + u * ca - m * v * sa, y + u * sa + m * v * ca)
+    d.polygon([P(u, v) for u, v in pts], fill=col)
+    d.polygon([P(u, v) for u, v in [(-1, -5), (5, -5), (9, -2), (-4, -2)]], fill=(40, 50, 70))   # 유리
+    for wu in (-10, 10):                                                                          # 바퀴
+        cx, cy = P(wu, 3)
+        d.ellipse([cx - 3, cy - 3, cx + 3, cy + 3], fill=(20, 20, 20))
+
+
+class RampStuntScene(Scene):
+    """시연: 거대한 곡면 램프를 타고 올라가 거꾸로 달리다, 공중으로 날아올라 압축공기를 뿜으며 회전, 착지."""
+    zoomable = False
+
+    def draw(self, d, t):
+        vgrad(d, 0, 120, (25, 30, 60), (90, 70, 90))
+        rnd = random.Random(4)
+        for _ in range(30):
+            rect(d, rnd.randint(0, W), rnd.randint(0, 60), 1, 1, (210, 210, 230))
+        rect(d, 0, 120, W, 60, (60, 60, 65))
+        for x in range(0, W, 10):                                          # 관중
+            rect(d, x + 2, 128 + (x * 3) % 4, 6, 8, (30, 30, 40))
+            rect(d, x + 3, 124 + (x * 3) % 4, 4, 4, (200, 170, 140))
+        cx, cy, R = 120, 70, 46                                             # 루프 램프
+        d.arc([cx - R, cy - R, cx + R, cy + R], 200, 160, fill=(170, 175, 185), width=5)
+        rect(d, 0, 114, cx, 6, (170, 175, 185))
+        for lx in (cx - 40, cx + 40):
+            rect(d, lx, cy, 3, 50, (110, 110, 120))
+        ph = (t % 7.0) / 7.0                                               # 7초마다 반복
+        r = R - 6
+        th_end = 1.6 * math.pi
+        if ph < 0.15:                                                      # 오른쪽에서 진입
+            x, y = 316 - ph / 0.15 * (316 - cx), 111
+            draw_roadster(d, int(x), int(y), math.pi, mirror=True)
+        elif ph < 0.55:                                                    # 램프를 따라 올라가 거꾸로 달림
+            th = math.pi / 2 + (ph - 0.15) / 0.4 * (th_end - math.pi / 2)
+            x, y = cx + math.cos(th) * r, cy + math.sin(th) * r
+            draw_roadster(d, int(x), int(y), th + math.pi / 2, mirror=True)
+        elif ph < 0.85:                                                    # 날아올라 반 바퀴 돌며 압축공기 분사
+            q = (ph - 0.55) / 0.3
+            x0, y0 = cx + math.cos(th_end) * r, cy + math.sin(th_end) * r
+            x = x0 + (292 - x0) * q
+            y = y0 + (111 - y0) * q - math.sin(q * math.pi) * 28
+            for k2 in range(3):
+                if int(t * 10 + k2) % 2 == 0:
+                    d.ellipse([x - 24 - k2 * 5, y - 3 + k2, x - 17 - k2 * 5, y + 3 + k2], fill=(230, 235, 245))
+            draw_roadster(d, int(x), int(y), -math.pi * (1 - q))
+        else:                                                              # 착지
+            q = (ph - 0.85) / 0.15
+            draw_roadster(d, int(292 + q * 12), 111)
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""))
+
+
+class LaunchTimerScene(Scene):
+    """가속 테스트: 출발선에서 튀어나가는 로드스터와 0→60mph 타이머."""
+    zoomable = False
+
+    def draw(self, d, t):
+        vgrad(d, 0, 100, (150, 180, 220), (210, 220, 230))
+        rect(d, 0, 100, W, 80, (70, 70, 75))
+        for x in range(0, W, 24):
+            rect(d, x, 138, 12, 2, (230, 230, 230))
+        rect(d, 40, 100, 3, 80, (240, 240, 240))
+        ph = (t % 3.0) / 3.0
+        x = 40 + (0 if ph < 0.3 else min(1.0, (ph - 0.3) / 0.25) ** 2 * 300)
+        draw_roadster(d, int(x), 126)
+        if 0.3 < ph < 0.6:
+            for k2 in range(4):
+                rect(d, int(x) - 22 - k2 * 10, 124 + k2 % 2, 8, 2, (200, 200, 210))
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""))
+        ph = (t % 3.0) / 3.0
+        v = 0.0 if ph < 0.3 else min(self.spec.get("time", 0.81), (ph - 0.3) / 0.25 * self.spec.get("time", 0.81))
+        txt = f"0-60 MPH  {v:0.2f} s"
+        tw = d.textlength(txt, font=font(64))
+        rect(d, (W * 4 - int(tw)) // 2 - 24, 90, int(tw) + 48, 90, (0, 0, 0))
+        d.text(((W * 4 - tw) / 2, 100), txt, font=font(64), fill=(255, 210, 60) if v >= 0.8 else (255, 255, 255))
+
+
+class RevealStageScene(Scene):
+    """공개 행사 무대: 대형 스크린 앞 로드스터와 무대 위 머스크, 객석의 휴대폰 불빛."""
+    focus = (160, 80)
+
+    def draw(self, d, t):
+        rect(d, 0, 0, W, H, (8, 8, 14))
+        rect(d, 60, 8, 200, 60, (20, 24, 40))                              # 대형 스크린
+        rect(d, 62, 10, 196, 56, (30, 40, 70))
+        draw_roadster(d, 160, 44, 0.0)
+        for i in range(5):                                                 # 조명
+            a = math.sin(t * 1.3 + i) * 0.3
+            x0 = 40 + i * 60
+            d.polygon([(x0, 0), (x0 - 8 + int(a * 40), 110), (x0 + 8 + int(a * 40), 110)], fill=(28, 28, 40))
+        rect(d, 30, 100, 260, 14, (50, 50, 60))                             # 무대
+        draw_roadster(d, 210, 96, 0.0)
+        draw_char(d, 110, 102, t, False, "musk")
+        rnd = random.Random(7)
+        for x in range(0, W, 9):                                           # 객석 + 휴대폰 불빛
+            yy = 128 + rnd.randint(0, 6)
+            rect(d, x, yy, 7, 10, (25, 25, 32))
+            rect(d, x + 1, yy - 4, 5, 4, (60, 50, 45))
+            if rnd.random() < 0.3 and int(t * 2 + x) % 3:
+                rect(d, x + 2, yy - 9, 3, 4, (200, 220, 255))
+
+    def overlay(self, d, t, cam):
+        _tag(d, self.spec.get("tag", ""))
+
+
+SCENES = {"revealstage": RevealStageScene, "rampstunt": RampStuntScene, "launchtimer": LaunchTimerScene, "tigerai": TigerAIScene, "latepost": LatePostScene, "zooclosed": ZooClosedScene, "feed": FeedScene, "hook": HookScene, "envoys": EnvoysScene, "parcel": ParcelScene, "powflight": PowFlightScene, "embassy": EmbassyScene, "tanker": TankerScene, "refinery": RefineryScene, "pipeline": PipelineScene, "flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
           "protest": ProtestScene, "classroom": ClassroomScene, "xpost": XPostScene, "press": PressScene, "dmz": DMZScene, "koreamap": KoreaMapScene, "un": UNScene, "audit": AuditScene, "call": CallScene, "pump": PumpScene, "quote": QuoteScene, "title": TitleScene, "anchor": AnchorScene, "rally": RallyScene, "map": MapScene,
           "signboard": SignboardScene, "meeting": MeetingScene, "reaction": ReactionScene,
           "chart": ChartScene, "interview": InterviewScene}

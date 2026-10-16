@@ -1,0 +1,491 @@
+{
+  "title": "Tesla's flying Roadster",
+  "lang": "en",
+  "output": "out/tesla_flying_roadster.mp4",
+  "voices": {
+    "Anchor": {
+      "sid": 5,
+      "speed": 1.1
+    },
+    "Reporter": {
+      "sid": 1,
+      "speed": 1.1
+    }
+  },
+  "ticker": [
+    "Tesla's new Roadster drives upside down, flies and lands in Texas demo",
+    "Musk: \"Turns out the future does have flying cars\"",
+    "Tesla claims 0-60 mph in 0.81 seconds - not yet independently verified",
+    "Production not expected before 2028 - price not announced",
+    "KOWEN NEWS"
+  ],
+  "scenes": [
+    {
+      "type": "title",
+      "duration": 3.0
+    },
+    {
+      "type": "anchor",
+      "headline": "TESLA'S FLYING CAR",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Welcome to KOWEN News."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Tesla has finally shown off its long-awaited new *Roadster*, and it did things you would never expect from a car."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "It drove *upside down* on a giant curved ramp, launched into the air, *flipped*, and landed back on its wheels."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Elon Musk says it proves the future has *flying cars*."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We look at what Tesla showed, how it works, and the big questions it left *unanswered*."
+        }
+      ]
+    },
+    {
+      "type": "revealstage",
+      "tag": "TESLA LIVESTREAM · OCT 15",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The reveal was livestreamed, with Musk on stage alongside Tesla design chief *Franz von Holzhausen* and engineering vice president *Lars Moravy*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Musk promised *some crazy stuff*, and compared the car to *James Bond's* gadget-loaded car."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He warned that success was *not guaranteed*. But, he said, *excitement is 100 percent guaranteed*."
+        }
+      ]
+    },
+    {
+      "type": "rampstunt",
+      "tag": "SPACEX FACILITY · McGREGOR, TEXAS · OCT 15",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The demonstration took place on Thursday night at a *SpaceX facility* in McGregor, Texas."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Reporters from *Reuters* were there to witness it."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The redesigned Roadster sped up a massive *curved ramp*, and kept driving as the ramp curled over, until the car was *upside down*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Then it *launched into the air*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "As it rotated, powerful bursts of *compressed air* helped control its movement, before it landed safely back on its wheels."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "One outlet said it looked more like a *Hollywood stunt show* than a traditional car launch."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "us",
+      "name": "Elon Musk",
+      "role": "CEO, Tesla",
+      "person": {
+        "char": "musk"
+      },
+      "quote": "Well, it worked.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "*Well, it worked*, Musk joked after the stunt, as the audience cheered."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "*Flying cars are real*, added Lars Moravy, Tesla's vice president of vehicle engineering."
+        }
+      ]
+    },
+    {
+      "type": "xpost",
+      "name": "Elon Musk",
+      "handle": "@elonmusk",
+      "person": {
+        "char": "musk"
+      },
+      "post": "Turns out the future does have flying cars",
+      "date": "Oct 16, 2026",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Musk later posted the video on X with a short caption. *Turns out the future does have flying cars.*"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Tesla's official account shared it too, writing simply: *Real life, baby.*"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "One clip of the stunt racked up about *1.7 million views*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The footage spread fast on X, drawing reactions from public figures including Florida Governor *Ron DeSantis* and Congresswoman *Elise Stefanik*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "HOW IT WORKS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "So how does a car stick to a ramp *upside down*, and then fly?"
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "THE TECH BEHIND IT",
+      "items": [
+        {
+          "year": "FANS",
+          "text": "Suction keeps the car stuck to the surface"
+        },
+        {
+          "year": "THRUST",
+          "text": "SpaceX cold-gas thrusters"
+        },
+        {
+          "year": "AIR",
+          "text": "Bursts of compressed air steer it midair"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "The trick is two systems working together."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "First, a *fan-powered system* creates enough suction to keep the car pressed against a surface, even when it is *upside down*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Tesla calls it a *multi-mode suction system*. It works like a so-called *fan car*, a design that has been used on race cars before."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Second, *cold-gas thrusters* developed with SpaceX, Musk's rocket company."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "They release bursts of *high-pressure gas* to create thrust. On spacecraft, the same kind of thruster is used to steer in orbit."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "That is what lets the Roadster *lift off* the ground and adjust its position in midair."
+        }
+      ]
+    },
+    {
+      "type": "launchtimer",
+      "tag": "ACCELERATION TEST · TESLA FOOTAGE",
+      "time": 0.81,
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Tesla also showed a recorded *acceleration test*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "In it, the Roadster went from zero to 60 miles an hour in just *0.81 seconds*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "That would make it one of the *fastest-accelerating* vehicles ever built."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But that number has *not been independently verified*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "THE SKEPTICS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Not everyone is convinced Tesla is still *ahead of the pack*."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "RIVALS ALREADY THERE",
+      "items": [
+        {
+          "year": "McMURTRY",
+          "text": "Fan car that drives upside down"
+        },
+        {
+          "year": "BYD",
+          "text": "Yangwang U9 hypercar that can jump"
+        },
+        {
+          "year": "RIMAC",
+          "text": "Nevera R: speed records"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Electric car site *Electrek* pointed out that Tesla is no longer the first to many of these tricks."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Britain's *McMurtry Spierling*, a fan car, has already driven upside down."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "China's *BYD* has shown its Yangwang U9 hypercar *jumping* over potholes, using active suspension."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Meanwhile, electric cars from Croatia's *Rimac* and China's *Xiaomi* have been setting speed and lap records."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Electrek also questioned some numbers on Tesla's display, saying the claimed *4,700 kilograms* of downforce seems potentially *unreal* for a small two-seater."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "us",
+      "plain": true,
+      "name": "Wall Street",
+      "role": "TSLA · before the reveal",
+      "person": {
+        "skin": 0,
+        "hair": 3,
+        "top": [
+          30,
+          35,
+          55
+        ],
+        "suit": true
+      },
+      "quote": "Tesla shares closed at $362.44 on Thursday, down 1.29%, before the evening reveal. Q3 earnings: October 21.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "On Wall Street, Tesla shares closed down *1.3 percent* on Thursday, before the reveal."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Analysts say the Roadster could give the stock a *short-lived* boost, but investors are focused on Tesla's *earnings report* on October twenty-first."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Earlier this month, Tesla reported about *486,000* deliveries for the quarter, beating forecasts, but still *down* from a year earlier."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Musk himself has said the Roadster will *not move* Tesla's finances in a major way."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "NINE YEARS LATE",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "For many Tesla fans, the bigger surprise is that the Roadster *showed up at all*."
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "THE LONG ROAD",
+      "items": [
+        {
+          "year": "NOV 17",
+          "text": "Roadster unveiled: 0-60 in 1.9 s"
+        },
+        {
+          "year": "2020",
+          "text": "Promised first deliveries"
+        },
+        {
+          "year": "OCT 26",
+          "text": "Flying demo in Texas"
+        },
+        {
+          "year": "2028",
+          "text": "Expected production"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Tesla's very first car, back in 2008, was also called the *Roadster*. The new one was meant to be its triumphant return."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Tesla first unveiled the second-generation Roadster back in *November 2017*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "It promised zero to 60 in *1.9 seconds*, a top speed over 250 miles an hour, and a range of up to *620 miles*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Deliveries were supposed to start in *2020*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Customers paid a *50,000 dollar* deposit to reserve one. A limited Founders Series cost *250,000 dollars* up front."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "But production was delayed again and again, as Tesla focused on mass-market cars, the Cybertruck, and self-driving. Some buyers *asked for refunds*."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "flag": "us",
+      "name": "Elon Musk",
+      "role": "CEO, Tesla · earlier post on X",
+      "person": {
+        "char": "musk"
+      },
+      "quote": "This will actually be able to fly very briefly. I always laughed at flying cars & now making one.",
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Musk has teased a flying Roadster for years."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He once said an optional *SpaceX package* would let the car fly *very briefly*, in short hops."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "I always laughed at flying cars, he wrote, and *now making one*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He warned the ride would be safe, but *very intense*, like a hardcore roller coaster."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Back in 2019, he gave more detail: the thrusters would use *ultra-high pressure air*, stored in a tank *in place of the two rear seats*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "He promised a mind-blowing demo more than once. Last November, on Joe Rogan's podcast, he teased an *unforgettable* one."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "BIG QUESTIONS",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "The demo was spectacular. But can anyone actually *buy one*, and *drive it*?"
+        }
+      ]
+    },
+    {
+      "type": "signboard",
+      "title": "STILL UNANSWERED",
+      "items": [
+        {
+          "year": "PRICE",
+          "text": "Not announced"
+        },
+        {
+          "year": "ROADS",
+          "text": "No approval to fly on public roads"
+        },
+        {
+          "year": "FLIGHT",
+          "text": "How long it can stay airborne"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "Reporter",
+          "text": "Tesla did not announce a *final price*, or detailed production specs."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The original base model was listed at *200,000 dollars*. Delays and the SpaceX package could push that higher."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "The demo was done under *controlled conditions*, and there is no sign the car has any approval to fly on *public roads*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Under U.S. rules, vehicles that leave the ground are usually treated as *aircraft*, overseen by the *FAA*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Asked whether the Roadster is street legal, Musk joked: *Depends on your street.*"
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Musk himself has called the Roadster an *engineering showcase*, not a big money-maker, and maybe one of Tesla's last cars designed mainly for *human drivers*."
+        },
+        {
+          "speaker": "Reporter",
+          "text": "Production is not expected before *2028*."
+        }
+      ]
+    },
+    {
+      "type": "anchor",
+      "headline": "TESLA'S FLYING CAR",
+      "lines": [
+        {
+          "speaker": "Anchor",
+          "text": "Tesla proved it can get a Roadster *into the air* and back down safely."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "Turning that into a car people can *buy and drive* is the next challenge."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "We'll be watching Tesla's *earnings call* on October twenty-first for any update on the Roadster."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "If you found this helpful, please *like and subscribe* for more."
+        },
+        {
+          "speaker": "Anchor",
+          "text": "This has been KOWEN News. Thanks for watching."
+        }
+      ]
+    }
+  ]
+}
