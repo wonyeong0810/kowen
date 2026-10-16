@@ -2281,7 +2281,7 @@ class HookScene(Scene):
         raw = line["text"]                                   # 예: "*Ukraine* / is fighting / its own / *allies*."
         clean = re.sub(r"\s+", " ", raw.replace("*", "").replace("/", " ")).strip()
         # 문장은 한 번에 읽어서 자연스러운 억양을 살림. 강조 마디 뒤에는 쉼표, 끝은 느낌표로 힘을 줌.
-        sp = spec.get("speed", 0.85)
+        sp = spec.get("speed", 0.95)
         beats = [b.split() for b in raw.split("/") if b.split()]
         parts = []
         for k, words in enumerate(beats):
