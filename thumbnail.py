@@ -601,6 +601,25 @@ def tesla_roadster():
     finish(low, text, "out/tesla_flying_roadster_thumb.png")
 
 
+def tesla_roadster_short():
+    low = Image.new("RGB", (VW, VH))
+    d = ImageDraw.Draw(low)
+    k.vgrad(d, 0, VH, (12, 16, 40), (50, 40, 70))
+    cx, cy, R = 80, 168, 34                                 # 곡면 램프
+    for k2 in range(3):
+        d.arc([cx - R - k2, cy - R - k2, cx + R + k2, cy + R + k2], -150, 90, fill=(185, 190, 200), width=1)
+    k.rect(d, 0, cy + R, cx, 2, (185, 190, 200))
+    k.draw_roadster(d, cx, cy - R + 11, -math.pi, k=1.4)     # 꼭대기에 거꾸로 붙은 차
+    k.draw_char(d, 30, 242, 0.05, False, "musk")
+
+    def text(d):
+        big_text(d, (540, 250), "TESLA'S", 190, (255, 255, 255), stroke=12, anchor="ma")
+        big_text(d, (540, 460), "FLYING", 190, (255, 70, 60), stroke=12, anchor="ma")
+        big_text(d, (540, 670), "CAR", 190, (255, 70, 60), stroke=12, anchor="ma")
+
+    finish_v(low, text, "out/tesla_flying_roadster_short_thumb.png")
+
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1:
