@@ -1,0 +1,31 @@
+{
+  "title": "tesla_flying_roadster_short",
+  "format": "short",
+  "lang": "en",
+  "output": "out/tesla_flying_roadster_short.mp4",
+  "voices": {"Anchor": {"sid": 5, "speed": 1.15}, "Reporter": {"sid": 1, "speed": 1.15}},
+  "question": "Would you buy a flying Tesla? Comment below",
+  "scenes": [
+    {"type": "hook", "pause": 0.9, "lines": [{"speaker": "Reporter", "text": "*Tesla's* new car / just drove / *upside down*."}]},
+    {"type": "rampstunt", "tag": "McGREGOR, TEXAS · OCT 15",
+     "lines": [
+      {"speaker": "Reporter", "text": "At a SpaceX site in Texas, the new *Roadster* climbed a giant curved ramp."},
+      {"speaker": "Reporter", "text": "It drove *upside down*, launched into the air, *flipped*, and landed on its wheels."},
+      {"speaker": "Reporter", "text": "Fans underneath *suck it to the track*. SpaceX thrusters push it into the air."}
+    ]},
+    {"type": "launchtimer", "tag": "ACCELERATION TEST", "time": 0.81,
+     "lines": [
+      {"speaker": "Reporter", "text": "Tesla also claims zero to 60 in *0.81 seconds*, though that's not independently verified."}
+    ]},
+    {"type": "quote", "flag": "us", "name": "Elon Musk", "role": "CEO, Tesla", "person": {"char": "musk"}, "quote": "",
+     "lines": [
+      {"speaker": "Reporter", "text": "Turns out the future does have *flying cars*, Musk posted."},
+      {"speaker": "Reporter", "text": "Is it street legal? *Depends on your street*, he joked."}
+    ]},
+    {"type": "revealstage", "tag": "TESLA ROADSTER",
+     "lines": [
+      {"speaker": "Reporter", "text": "But there's no price yet, no approval to fly on public roads, and production isn't expected before *2028*."},
+      {"speaker": "Reporter", "text": "Would you buy one? *Tell us in the comments*."}
+    ]}
+  ]
+}

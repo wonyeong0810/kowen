@@ -2526,6 +2526,7 @@ class RampStuntScene(Scene):
     zoomable = False
     CX, CY, RT = 214, 62, 48
     TH_END = -1.75
+    focus = (176, 80)                                                   # 숏츠 세로 화면에서도 램프와 착지 지점이 다 보이게
 
     def _path(self, t):
         win = min(9.0, max(4.0, self.duration * 0.7))
@@ -2544,14 +2545,14 @@ class RampStuntScene(Scene):
         x0, y0 = cx + math.cos(th) * r, cy + math.sin(th) * r
         if p < 0.9:
             q = (p - 0.62) / 0.28
-            x = x0 - q * (x0 - 70)
+            x = x0 - q * (x0 - 92)
             y = y0 + (gy - y0) * q * q - math.sin(q * math.pi) * 10
             a0 = th - math.pi / 2
             ang = a0 + (-math.pi - a0) * min(1.0, q * 2)
             sv = math.cos(min(1.0, q * 1.3) * math.pi)
             return ("fly", x, y, ang, sv)
         q = min(1.0, (p - 0.9) / 0.1)
-        return ("land", 70 - ease(q) * 18, gy, -math.pi, -1.0)
+        return ("land", 92 - ease(q) * 14, gy, -math.pi, -1.0)
 
     def draw(self, d, t):
         vgrad(d, 0, 118, (14, 18, 40), (60, 50, 80))
@@ -2599,9 +2600,9 @@ class LaunchTimerScene(Scene):
         for x in range(0, W, 24):
             rect(d, x, 96, 12, 2, (230, 230, 230))
         rect(d, 0, 120, W, 60, (60, 110, 60))
-        rect(d, 40, 70, 3, 50, (240, 240, 240))
+        rect(d, 92, 70, 3, 50, (240, 240, 240))
         k2 = 0.0 if t < self.GO else min(1.0, (t - self.GO) / self.RUN)
-        x = 30 + (k2 ** 2) * 340
+        x = 66 + (k2 ** 2) * 320
         if x < W + 30:
             draw_roadster(d, int(x), 104)
             if 0 < k2 < 1:
