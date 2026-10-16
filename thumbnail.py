@@ -584,6 +584,23 @@ def tiger_posts_short():
     finish_v(low, text, "out/trump_tiger_posts_short_thumb.png")
 
 
+def tesla_roadster():
+    low = Image.new("RGB", (TW, TH))
+    d = ImageDraw.Draw(low)
+    k.vgrad(d, 0, TH, (12, 16, 40), (50, 40, 70))
+    cx, cy, R = 116, 70, 18                                 # 곡면 램프 (문구 아래)
+    for k2 in range(3):
+        d.arc([cx - R - k2, cy - R - k2, cx + R + k2, cy + R + k2], -150, 90, fill=(185, 190, 200), width=1)
+    k.rect(d, 60, cy + R, cx - 60, 2, (185, 190, 200))
+    k.draw_roadster(d, cx, cy - R + 9, -math.pi, k=1.2)      # 램프 꼭대기에 거꾸로 붙은 차
+    k.draw_char(d, 30, 106, 0.05, False, "musk")
+
+    def text(d):
+        _two_line(d, 135, "TESLA'S", (255, 255, 255), 245, "FLYING CAR", (255, 70, 60), size=120)
+
+    finish(low, text, "out/tesla_flying_roadster_thumb.png")
+
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1:
