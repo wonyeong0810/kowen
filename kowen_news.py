@@ -2498,10 +2498,11 @@ class TigerAIScene(Scene):
             d.text((VIEW_R - 200, 40), "♪ AI", font=font(36), fill=(255, 210, 60))
 
 
-def draw_roadster(d, x, y, ang=0.0, col=(200, 20, 30), mirror=False, k=1.6):
+def draw_roadster(d, x, y, ang=0.0, col=(200, 20, 30), mirror=False, k=1.6, sv=1.0):
     """픽셀 로드스터 (x, y = 차체 중심). ang = 회전(라디안), mirror = 위아래 뒤집은 모양, k = 크기."""
     ca, sa = math.cos(ang), math.sin(ang)
-    m = -1 if mirror else 1
+    sv = sv if abs(sv) >= 0.25 else (0.25 if sv >= 0 else -0.25)
+    m = (-1 if mirror else 1) * sv
     P = lambda u, v: (x + k * (u * ca - m * v * sa), y + k * (u * sa + m * v * ca))
     poly = lambda pts, c: d.polygon([P(u, v) for u, v in pts], fill=c)
     dark = tuple(int(c * 0.6) for c in col)
@@ -2514,80 +2515,107 @@ def draw_roadster(d, x, y, ang=0.0, col=(200, 20, 30), mirror=False, k=1.6):
     for wu in (-10, 11):                                                                                           # 바퀴 + 휠
         cx, cy = P(wu, 3)
         r = 3.6 * k
-        d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(15, 15, 18))
-        d.ellipse([cx - r * 0.5, cy - r * 0.5, cx + r * 0.5, cy + r * 0.5], fill=(170, 170, 180))
+        ry = max(0.6, r * abs(sv))
+        d.ellipse([cx - r, cy - ry, cx + r, cy + ry], fill=(15, 15, 18))
+        d.ellipse([cx - r * 0.5, cy - ry * 0.5, cx + r * 0.5, cy + ry * 0.5], fill=(170, 170, 180))
 
 
 class RampStuntScene(Scene):
-    """시연: 거대한 곡면 램프를 타고 올라가 거꾸로 달리다, 공중으로 날아올라 압축공기를 뿜으며 회전, 착지."""
+    """시연 재연 (한 번만): 활주로를 달려 곡면 램프를 타고 수직 벽을 지나 천장 쪽에서 거꾸로 달린 뒤,
+    램프 끝에서 떨어져 나와 공중에서 옆으로 구르며(압축공기 분사) 바퀴로 착지, 정지."""
     zoomable = False
+    CX, CY, RT = 214, 62, 48
+    TH_END = -1.75
+
+    def _path(self, t):
+        win = min(9.0, max(4.0, self.duration * 0.7))
+        p = min(1.0, t / win)
+        cx, cy = self.CX, self.CY
+        r = self.RT - 12
+        gy = cy + r
+        if p < 0.22:
+            q = p / 0.22
+            return ("drive", 14 + q * (cx - 14), gy, 0.0, 1.0)
+        if p < 0.62:
+            q = (p - 0.22) / 0.4
+            th = math.pi / 2 + q * (self.TH_END - math.pi / 2)
+            return ("ramp", cx + math.cos(th) * r, cy + math.sin(th) * r, th - math.pi / 2, 1.0)
+        th = self.TH_END
+        x0, y0 = cx + math.cos(th) * r, cy + math.sin(th) * r
+        if p < 0.9:
+            q = (p - 0.62) / 0.28
+            x = x0 - q * (x0 - 70)
+            y = y0 + (gy - y0) * q * q - math.sin(q * math.pi) * 10
+            a0 = th - math.pi / 2
+            ang = a0 + (-math.pi - a0) * min(1.0, q * 2)
+            sv = math.cos(min(1.0, q * 1.3) * math.pi)
+            return ("fly", x, y, ang, sv)
+        q = min(1.0, (p - 0.9) / 0.1)
+        return ("land", 70 - ease(q) * 18, gy, -math.pi, -1.0)
 
     def draw(self, d, t):
-        vgrad(d, 0, 120, (25, 30, 60), (90, 70, 90))
+        vgrad(d, 0, 118, (14, 18, 40), (60, 50, 80))
         rnd = random.Random(4)
-        for _ in range(30):
-            rect(d, rnd.randint(0, W), rnd.randint(0, 60), 1, 1, (210, 210, 230))
-        rect(d, 0, 120, W, 60, (60, 60, 65))
-        for x in range(0, W, 10):                                          # 관중
-            rect(d, x + 2, 128 + (x * 3) % 4, 6, 8, (30, 30, 40))
-            rect(d, x + 3, 124 + (x * 3) % 4, 4, 4, (200, 170, 140))
-        cx, cy, R = 120, 70, 46                                             # 루프 램프
-        d.arc([cx - R, cy - R, cx + R, cy + R], 200, 160, fill=(170, 175, 185), width=5)
-        rect(d, 0, 114, cx, 6, (170, 175, 185))
-        for lx in (cx - 40, cx + 40):
-            rect(d, lx, cy, 3, 50, (110, 110, 120))
-        ph = (t % 7.0) / 7.0                                               # 7초마다 반복
-        r = R - 13                                                         # 바퀴가 램프 안쪽 면에 닿도록
-        th_end = 1.6 * math.pi
-        if ph < 0.15:                                                      # 오른쪽에서 진입
-            x, y = 316 - ph / 0.15 * (316 - cx), 111
-            draw_roadster(d, int(x), int(y), math.pi, mirror=True)
-        elif ph < 0.55:                                                    # 램프를 따라 올라가 거꾸로 달림
-            th = math.pi / 2 + (ph - 0.15) / 0.4 * (th_end - math.pi / 2)
-            x, y = cx + math.cos(th) * r, cy + math.sin(th) * r
-            draw_roadster(d, int(x), int(y), th + math.pi / 2, mirror=True)
-        elif ph < 0.85:                                                    # 날아올라 반 바퀴 돌며 압축공기 분사
-            q = (ph - 0.55) / 0.3
-            x0, y0 = cx + math.cos(th_end) * r, cy + math.sin(th_end) * r
-            x = x0 + (292 - x0) * q
-            y = y0 + (111 - y0) * q - math.sin(q * math.pi) * 28
+        for _ in range(28):
+            rect(d, rnd.randint(0, W), rnd.randint(0, 50), 1, 1, (210, 210, 230))
+        for hx, hw, hh in ((0, 60, 30), (60, 40, 22), (280, 40, 26)):
+            rect(d, hx, 118 - hh, hw, hh, (28, 30, 44))
+        for lx in (30, 300):
+            rect(d, lx, 40, 2, 78, (90, 90, 100))
+            rect(d, lx - 4, 38, 10, 4, (255, 240, 190))
+        rect(d, 0, 118, W, 62, (55, 55, 60))
+        for x in range(0, W, 20):
+            rect(d, x, 140, 10, 2, (200, 200, 200))
+        cx, cy, R = self.CX, self.CY, self.RT
+        for k2 in range(5):
+            rr = R + k2
+            d.arc([cx - rr, cy - rr, cx + rr, cy + rr], math.degrees(self.TH_END), 90,
+                  fill=(185, 190, 200) if k2 < 4 else (120, 125, 135), width=1)
+        rect(d, 0, cy + R, cx, 4, (185, 190, 200))
+        for a in (0.3, -0.4, -1.1):
+            ex, ey = cx + math.cos(a) * (R + 4), cy + math.sin(a) * (R + 4)
+            d.line([(ex, ey), (ex + 14, 118)], fill=(100, 100, 110), width=2)
+        d.line([(cx, cy - R - 4), (cx + 30, 118)], fill=(100, 100, 110), width=2)
+        mode, x, y, ang, sv = self._path(t)
+        if mode == "fly":
             for k2 in range(3):
-                if int(t * 10 + k2) % 2 == 0:
-                    d.ellipse([x - 24 - k2 * 5, y - 3 + k2, x - 17 - k2 * 5, y + 3 + k2], fill=(230, 235, 245))
-            draw_roadster(d, int(x), int(y), -math.pi * (1 - q))
-        else:                                                              # 착지
-            q = (ph - 0.85) / 0.15
-            draw_roadster(d, int(292 + q * 12), 111)
+                if int(t * 12 + k2) % 2 == 0:
+                    px, py = x + 22 + k2 * 6, y - 2 + k2 * 3
+                    d.ellipse([px - 3, py - 3, px + 3, py + 3], fill=(235, 240, 250))
+        draw_roadster(d, int(x), int(y), ang, sv=sv)
 
     def overlay(self, d, t, cam):
         _tag(d, self.spec.get("tag", ""))
-
 
 class LaunchTimerScene(Scene):
-    """가속 테스트: 출발선에서 튀어나가는 로드스터와 0→60mph 타이머."""
+    """가속 테스트: 출발선에서 한 번 튀어나가는 로드스터와 0→60mph 타이머 (자막 위쪽에 배치)."""
     zoomable = False
+    GO = 1.2                                                           # 출발 시각(초)
+    RUN = 0.9                                                          # 화면을 가로지르는 시간
 
     def draw(self, d, t):
-        vgrad(d, 0, 100, (150, 180, 220), (210, 220, 230))
-        rect(d, 0, 100, W, 80, (70, 70, 75))
+        vgrad(d, 0, 70, (150, 180, 220), (210, 220, 230))
+        rect(d, 0, 70, W, 50, (70, 70, 75))
         for x in range(0, W, 24):
-            rect(d, x, 138, 12, 2, (230, 230, 230))
-        rect(d, 40, 100, 3, 80, (240, 240, 240))
-        ph = (t % 3.0) / 3.0
-        x = 40 + (0 if ph < 0.3 else min(1.0, (ph - 0.3) / 0.25) ** 2 * 300)
-        draw_roadster(d, int(x), 126)
-        if 0.3 < ph < 0.6:
-            for k2 in range(4):
-                rect(d, int(x) - 22 - k2 * 10, 124 + k2 % 2, 8, 2, (200, 200, 210))
+            rect(d, x, 96, 12, 2, (230, 230, 230))
+        rect(d, 0, 120, W, 60, (60, 110, 60))
+        rect(d, 40, 70, 3, 50, (240, 240, 240))
+        k2 = 0.0 if t < self.GO else min(1.0, (t - self.GO) / self.RUN)
+        x = 30 + (k2 ** 2) * 340
+        if x < W + 30:
+            draw_roadster(d, int(x), 104)
+            if 0 < k2 < 1:
+                for q in range(4):
+                    rect(d, int(x) - 34 - q * 10, 102 + q % 2, 8, 2, (200, 200, 210))
 
     def overlay(self, d, t, cam):
         _tag(d, self.spec.get("tag", ""))
-        ph = (t % 3.0) / 3.0
-        v = 0.0 if ph < 0.3 else min(self.spec.get("time", 0.81), (ph - 0.3) / 0.25 * self.spec.get("time", 0.81))
+        tot = self.spec.get("time", 0.81)
+        v = 0.0 if t < self.GO else min(tot, (t - self.GO) / self.RUN * tot * 1.1)
         txt = f"0-60 MPH  {v:0.2f} s"
         tw = d.textlength(txt, font=font(64))
         rect(d, (W * 4 - int(tw)) // 2 - 24, 90, int(tw) + 48, 90, (0, 0, 0))
-        d.text(((W * 4 - tw) / 2, 100), txt, font=font(64), fill=(255, 210, 60) if v >= 0.8 else (255, 255, 255))
+        d.text(((W * 4 - tw) / 2, 100), txt, font=font(64), fill=(255, 210, 60) if v >= tot else (255, 255, 255))
 
 
 class RevealStageScene(Scene):
@@ -2598,7 +2626,6 @@ class RevealStageScene(Scene):
         rect(d, 0, 0, W, H, (8, 8, 14))
         rect(d, 60, 8, 200, 60, (20, 24, 40))                              # 대형 스크린
         rect(d, 62, 10, 196, 56, (30, 40, 70))
-        draw_roadster(d, 160, 44, 0.0)
         for i in range(5):                                                 # 조명
             a = math.sin(t * 1.3 + i) * 0.3
             x0 = 40 + i * 60
@@ -2616,6 +2643,7 @@ class RevealStageScene(Scene):
 
     def overlay(self, d, t, cam):
         _tag(d, self.spec.get("tag", ""))
+        cam.text(d, 160, 30, "ROADSTER", 56, (230, 230, 240), center=True)
 
 
 SCENES = {"revealstage": RevealStageScene, "rampstunt": RampStuntScene, "launchtimer": LaunchTimerScene, "tigerai": TigerAIScene, "latepost": LatePostScene, "zooclosed": ZooClosedScene, "feed": FeedScene, "hook": HookScene, "envoys": EnvoysScene, "parcel": ParcelScene, "powflight": PowFlightScene, "embassy": EmbassyScene, "tanker": TankerScene, "refinery": RefineryScene, "pipeline": PipelineScene, "flight": FlightScene, "summits": SummitsScene, "truckplant": TruckPlantScene, "launch": LaunchScene, "museum": MuseumScene, "apec": ApecScene, "airdefense": AirDefenseScene, "airport": AirportScene, "lab": LabScene, "hospital": HospitalScene,
